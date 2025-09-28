@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://components/HitBoxComponent.tscn" type="PackedScene" id=2]
+[ext_resource path="res://entities/projectile/projectile.gd" type="Script" id=3]
+
+[node name="Baseprojectile" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="HitBoxComponent" parent="." instance=ExtResource( 2 )]
+collision_layer = 0
+collision_mask = 5
+
+[node name="LifeTime" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true

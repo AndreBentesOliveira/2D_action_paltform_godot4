@@ -1,0 +1,57 @@
+[gd_scene load_steps=11 format=3 uid="uid://bn57htgptip2v"]
+
+[ext_resource type="PackedScene" path="res://components/HitFlashComponent.tscn" id="1"]
+[ext_resource type="Texture2D" uid="uid://gao67epk6pql" path="res://entities/enemys/enemyteste.png" id="2"]
+[ext_resource type="PackedScene" path="res://components/HitBoxComponent.tscn" id="3"]
+[ext_resource type="PackedScene" path="res://components/HealthComponent.tscn" id="4"]
+[ext_resource type="PackedScene" path="res://components/HurtBox.tscn" id="5"]
+[ext_resource type="Material" uid="uid://befrf25u6tyx3" path="res://effects/shaders/hitflash_shadermaterial.tres" id="6"]
+
+[sub_resource type="CircleShape2D" id="1"]
+
+[sub_resource type="CircleShape2D" id="2"]
+
+[sub_resource type="AtlasTexture" id="3"]
+atlas = ExtResource("2")
+region = Rect2(0, 0, 19, 24)
+
+[sub_resource type="SpriteFrames" id="4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("3")
+}],
+"loop": true,
+"name": &"IDLE_ENEMY",
+"speed": 5.0
+}]
+
+[node name="BaseEnemy" type="Node2D"]
+position = Vector2(-1450, 756)
+
+[node name="HealthComponent" parent="." instance=ExtResource("4")]
+max_health = 5
+
+[node name="HitFlashComponent" parent="." instance=ExtResource("1")]
+sprite = NodePath("../AnimatedSprite")
+
+[node name="HitBoxComponent" parent="." instance=ExtResource("3")]
+collision_layer = 0
+damage = 10
+knockback_force = 250
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxComponent"]
+shape = SubResource("1")
+
+[node name="HurtBox" parent="." node_paths=PackedStringArray("healthcomponent", "hitflashcomponent") instance=ExtResource("5")]
+healthcomponent = NodePath("../HealthComponent")
+hitflashcomponent = NodePath("../HitFlashComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("2")
+
+[node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
+material = ExtResource("6")
+sprite_frames = SubResource("4")
+animation = &"IDLE_ENEMY"
+flip_h = true
