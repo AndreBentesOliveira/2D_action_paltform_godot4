@@ -1,11 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://bn57htgptip2v"]
+[gd_scene load_steps=10 format=3 uid="uid://bn57htgptip2v"]
 
 [ext_resource type="PackedScene" path="res://components/HitFlashComponent.tscn" id="1"]
 [ext_resource type="Texture2D" uid="uid://gao67epk6pql" path="res://entities/enemys/enemyteste.png" id="2"]
 [ext_resource type="PackedScene" path="res://components/HitBoxComponent.tscn" id="3"]
-[ext_resource type="PackedScene" path="res://components/HealthComponent.tscn" id="4"]
+[ext_resource type="PackedScene" uid="uid://lafm0n3g6bhk" path="res://components/HealthComponent.tscn" id="4"]
 [ext_resource type="PackedScene" path="res://components/HurtBox.tscn" id="5"]
-[ext_resource type="Material" uid="uid://befrf25u6tyx3" path="res://effects/shaders/hitflash_shadermaterial.tres" id="6"]
 
 [sub_resource type="CircleShape2D" id="1"]
 
@@ -36,7 +35,7 @@ max_health = 5
 sprite = NodePath("../AnimatedSprite")
 
 [node name="HitBoxComponent" parent="." instance=ExtResource("3")]
-collision_layer = 0
+collision_layer = 2
 damage = 10
 knockback_force = 250
 
@@ -51,7 +50,6 @@ hitflashcomponent = NodePath("../HitFlashComponent")
 shape = SubResource("2")
 
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
-material = ExtResource("6")
 sprite_frames = SubResource("4")
 animation = &"IDLE_ENEMY"
 flip_h = true

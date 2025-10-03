@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cvq3rvwuouqrn"]
+[gd_scene load_steps=7 format=3 uid="uid://cvq3rvwuouqrn"]
 
 [ext_resource type="Script" uid="uid://dnw4dfvlsgnsa" path="res://Levels/World.gd" id="1"]
 [ext_resource type="PackedScene" path="res://entities/ScreenCamera/ScreenCamera.tscn" id="3"]
@@ -6,6 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://bn57htgptip2v" path="res://entities/enemys/BaseEnemy.tscn" id="7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j5go0"]
+size = Vector2(336, 20)
+
+[sub_resource type="QuadMesh" id="QuadMesh_j5go0"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1")
@@ -18,12 +21,6 @@ position = Vector2(179, 73)
 player = NodePath("../Player")
 segment_size = Vector2(341, 200)
 
-[node name="BaseEnemy" parent="." instance=ExtResource("7")]
-position = Vector2(542, 132)
-
-[node name="BaseEnemy2" parent="." instance=ExtResource("7")]
-position = Vector2(394, 84)
-
 [node name="BaseEnemy3" parent="." instance=ExtResource("7")]
 position = Vector2(69, 131)
 rotation = 1.00396
@@ -34,4 +31,10 @@ collision_layer = 2
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(143, 0)
 shape = SubResource("RectangleShape2D_j5go0")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="StaticBody2D"]
+position = Vector2(143, -1.90735e-06)
+scale = Vector2(336, 20)
+mesh = SubResource("QuadMesh_j5go0")

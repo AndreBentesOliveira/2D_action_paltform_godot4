@@ -75,22 +75,17 @@ func x_movement(delta: float) -> void:
 	if x_dir == 0:
 		velocity.x = Vector2(velocity.x, 0).move_toward(Vector2.ZERO, deceleration * delta).x
 		return
-
 	var does_input_dir_follow_momentum = sign(velocity.x) == x_dir
-
 	# If we are doing movement inputs and above max speed, don't accelerate nor decelerate
 	# Except if we are turning
 	# (This keeps our momentum gained from outside or slopes)
 	if abs(velocity.x) >= max_speed and does_input_dir_follow_momentum:
 		return
-
 	# Are we turning?
 	# Deciding between acceleration and turn_acceleration
 	var accel_rate : float = acceleration if does_input_dir_follow_momentum else turning_acceleration
-
 	# Accelerate
 	velocity.x += x_dir * accel_rate * delta
-
 	set_direction(x_dir) # This is purely for visuals
 
 

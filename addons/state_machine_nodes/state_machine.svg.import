@@ -2,16 +2,17 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cvy8lvxwpaaro"
-path="res://.godot/imported/idle_fire_sprite.png-c8a7f60b11eacef1a48772cb633edc6b.ctex"
+uid="uid://b2rkcs8krybuc"
+path="res://.godot/imported/state_machine.svg-07fa60d2c11149ac9cb82e290d2c79b1.ctex"
 metadata={
+"has_editor_variant": true,
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://entities/Player/idle_fire_sprite.png"
-dest_files=["res://.godot/imported/idle_fire_sprite.png-c8a7f60b11eacef1a48772cb633edc6b.ctex"]
+source_file="res://addons/state_machine_nodes/state_machine.svg"
+dest_files=["res://.godot/imported/state_machine.svg-07fa60d2c11149ac9cb82e290d2c79b1.ctex"]
 
 [params]
 
@@ -32,3 +33,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=true
+editor/convert_colors_with_editor_theme=true
