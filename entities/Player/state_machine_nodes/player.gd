@@ -12,6 +12,28 @@ var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 @export var turning_acceleration : float = 13500
 @export var deceleration: float = 3200
 
+# JUMP VARIABLES ------------------- #
+## Height in world units. For a tile-based game, you likely want to multiply
+## by tile size to tune in numbers of tiles.
+@export var jump_height : float = 211.3
+@export var jump_cut : float = 0.2
+@export var jump_gravity_acceleration : float = 4000
+## Speed that marks the peak of our jump. (This close to zero speed we're
+## switching from moving up to moving down.) During this peak, we reduce
+## gravity with jump_hang_gravity_mult to give some hang time.
+@export var jump_hang_speed_threshold : float = 2.0
+## Speed multiplier for the peak of our jump to reduce gravity when within
+## jump_hang_speed_threshold.
+@export var jump_hang_gravity_mult : float = 0.1
+# Timers
+@export var jump_coyote : float = 0.08
+@export var jump_buffer : float = 0.1
+
+var jump_coyote_timer : float = 0
+var jump_buffer_timer : float = 0
+var is_jumping := false
+# ----------------------------------- #
+
 var is_attacking := false
 
 func _ready() -> void:
