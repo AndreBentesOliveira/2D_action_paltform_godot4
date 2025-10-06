@@ -1,9 +1,9 @@
-extends CharacterBody2D
+extends CharacterBody3D
 
 
-var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
+#var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 
-@export var fire_component : Node
+#@export var fire_component : Node
 @export var sprite: Node
 @onready var state_machine: StateMachine = $StateMachine
 
@@ -11,6 +11,13 @@ var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 @export var acceleration: float = 3000
 @export var turning_acceleration : float = 13500
 @export var deceleration: float = 3200
+
+# GRAVITY ----- #
+@export var gravity_acceleration : float = 4500
+## Won't apply gravity if falling faster than this speed to prevent massive
+## acceleration in long falls.
+@export_range(0, 5000) var max_gravity_falling_speed : float = 1000
+# ------------- #
 
 # JUMP VARIABLES ------------------- #
 ## Height in world units. For a tile-based game, you likely want to multiply
@@ -42,13 +49,13 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	if !sprite.flip_h:
-		fire_component.position.x = 14.0
-	else:
-		fire_component.position.x = -14.0
+	#if !sprite.flip_h:
+		#fire_component.position.x = 14.0
+	#else:
+		#fire_component.position.x = -14.0
 		
-	if not is_on_floor():
-		velocity.y += gravity * 2.0 * delta
+	#if not is_on_floor():
+		#velocity.y -= gravity * 2.0 * delta
 	if Input.is_action_just_pressed("attack"):
 		is_attacking = true
 		$ShootSpriteCd.start()
@@ -56,10 +63,11 @@ func _physics_process(delta: float) -> void:
 		if !sprite.flip_h:
 			proj_dir.x = 1
 		else: proj_dir.x = -1
-		fire_component.shoot(proj_dir)
+		#fire_component.shoot(proj_dir)
 	# The following line will only be processed if 'StateMachine.auto_process' is set to 'false'.
 	state_machine.call_physics_process(delta)
-	
+	velocity.z = 0
+	#apply_gravity(delta)
 	move_and_slide()
 
 
@@ -69,7 +77,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func _on_state_machine_state_transitioned(_old_state: StringName, new_state: StringName, _state_data: Dictionary) -> void:
-	$Label.text = new_state
+	$Label.text = str(new_state)
 
 
 func load_input_map() -> void:
@@ -103,6 +111,29 @@ func load_input_map() -> void:
 	# Walk (Right)
 	add_keys.call(&"walk_right", [KEY_RIGHT, KEY_D])
 	add_pads.call(&"walk_right", [JOY_BUTTON_DPAD_RIGHT])
+
+
+func apply_gravity(delta: float) -> void:
+	var applied_gravity : float = 0
+
+	# No gravity if we are grounded
+	if jump_coyote_timer > 0:
+		return
+
+	# Normal gravity limit
+	if velocity.y <= max_gravity_falling_speed:
+		applied_gravity = gravity_acceleration * delta
+	# else: we're falling too fast for more gravity.
+
+	# If moving upwards while jumping, use jump_gravity_acceleration to achieve lower gravity
+	if is_jumping and velocity.y < 0:
+		applied_gravity = jump_gravity_acceleration * delta
+
+	# Lower the gravity at the peak of our jump (where velocity is the smallest)
+	if is_jumping and abs(velocity.y) < jump_hang_speed_threshold:
+		applied_gravity *= jump_hang_gravity_mult
+
+	velocity.y -= applied_gravity
 
 
 func _on_shoot_sprite_cd_timeout() -> void:

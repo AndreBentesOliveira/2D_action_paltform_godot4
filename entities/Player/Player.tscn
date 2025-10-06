@@ -229,4 +229,11 @@ projectile_scene = ExtResource("6")
 [node name="ShootSpriteCd" type="Timer" parent="."]
 wait_time = 0.5
 
+[node name="Label" type="Label" parent="."]
+offset_left = -20.0
+offset_top = -44.0
+offset_right = 20.0
+offset_bottom = -21.0
+
+[connection signal="state_transitioned" from="StateMachine" to="." method="_on_state_machine_state_transitioned"]
 [connection signal="timeout" from="ShootSpriteCd" to="." method="_on_shoot_sprite_cd_timeout"]
