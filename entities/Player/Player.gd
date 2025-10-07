@@ -7,8 +7,6 @@ extends CharacterBody3D
 @export var sprite: Node
 @export var ledge_grab_offset : Vector3
 @onready var state_machine: StateMachine = $StateMachine
-@onready var floor_check_ray = $FloorCheckRay
-@onready var wall_check_ray = $WallCheckRay
 
 
 @export var max_speed: float = 600
@@ -46,11 +44,7 @@ var is_jumping := false
 # ----------------------------------- #
 
 var is_attacking := false
-var is_hanging_on_ledge := false
-var can_check_for_ledge := true
 
-@export var max_grab_height_diff: float = 0.5
-@export var min_grab_height_diff: float = -0.5 # Usamos um valor negativo para "abaixo"
 
 func _ready() -> void:
 	load_input_map()
@@ -66,21 +60,12 @@ func _physics_process(delta: float) -> void:
 		#pass
 		#$RayCastManager.position.x = -0.062
 	
-	
-	if Input.is_action_just_pressed("attack"):
-		is_attacking = true
-		$ShootSpriteCd.start()
-		var proj_dir = Vector2.ZERO
-		if !sprite.flip_h:
-			proj_dir.x = 1
-		else: proj_dir.x = -1
 	# The following line will only be processed if 'StateMachine.auto_process' is set to 'false'.
 	state_machine.call_physics_process(delta)
 	velocity.z = 0
 	#if not is_on_floor():
 		#check_for_ledge()
-	if not is_hanging_on_ledge:
-		apply_gravity(delta)
+	apply_gravity(delta)
 	timers(delta)
 	move_and_slide()
 
@@ -176,7 +161,3 @@ func timers(delta: float) -> void:
 	# This way everything is contained in just 1 script with no node requirements
 	jump_coyote_timer -= delta
 	jump_buffer_timer -= delta
-
-
-func _on_shoot_sprite_cd_timeout() -> void:
-	is_attacking = false

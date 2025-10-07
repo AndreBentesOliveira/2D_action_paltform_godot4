@@ -10,8 +10,6 @@ func _enter_state(_old_state: StringName, _params: Dictionary) -> void:
 
 func _physics_process(_delta: float) -> void:
 	player.x_movement(_delta)
-	if player.can_check_for_ledge:
-		check_for_ledge()
 	jump_logic(_delta)
 	if name == &"Jump":
 		#var minimum: float = JUMP_VELOCITY * 0.5
@@ -65,42 +63,8 @@ func jump_logic(_delta: float) -> void:
 		#player.velocity.y = player.jump_hang_speed_threshold
 
 func check_for_ledge():
-# 1. Checa se há uma parede à frente.
-	if not player.wall_check_ray.is_colliding():
-		return
-
-	var wall_point = player.wall_check_ray.get_collision_point()
-	var wall_normal = player.wall_check_ray.get_collision_normal()
-	
-	# 2. !! NOVA VERIFICAÇÃO DE ALTURA !!
-	# Calculamos a diferença vertical entre o ponto de origem do raio e o ponto de colisão na parede.
-	var height_difference = wall_point.y - player.wall_check_ray.global_position.y
-	
-	# Se a diferença de altura estiver fora da nossa "janela" permitida, nós ignoramos a beirada.
-	if height_difference > player.max_grab_height_diff or height_difference < player.min_grab_height_diff:
-		return # A beirada está muito alta ou muito baixa.
-
-	# 3. Posiciona o raio de checagem do chão (lógica anterior).
-	# A partir daqui, o código continua como antes, mas agora só roda para beiradas na altura certa.
-	player.floor_check_ray.global_position = wall_point - (wall_normal * 0.1) + Vector3(0, 1.0, 0)
-	player.floor_check_ray.force_raycast_update()
-
-	# 4. Checa se há um chão acima da parede.
-	if player.floor_check_ray.is_colliding():
-		var floor_normal = player.floor_check_ray.get_collision_normal()
-
-		if floor_normal.is_equal_approx(Vector3.UP):
-			var ledge_point = player.floor_check_ray.get_collision_point()
-			
-			# BEIRADA VÁLIDA ENCONTRADA!
-			print("Beirada válida encontrada na altura correta!")
-			grab_ledge(ledge_point, wall_normal)
+	pass
 
 
 func grab_ledge(ledge_point: Vector3, wall_normal: Vector3) -> void:
-	
-	player.velocity = Vector3.ZERO
-	## Posiciona o jogador no ponto exato da beirada, aplicando o offset.
-	## O cálculo com a normal da parede garante que o jogador fique "colado" nela.
-	player.global_position = ledge_point + (wall_normal * player.ledge_grab_offset.x) + (Vector3.UP * player.ledge_grab_offset.y)
-	return enter_state(&"GrabEdge")
+	pass
