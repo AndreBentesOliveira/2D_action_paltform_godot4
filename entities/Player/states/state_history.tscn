@@ -1,0 +1,60 @@
+[gd_scene load_steps=4 format=3 uid="uid://qorhampe1ns5"]
+
+[ext_resource type="Script" uid="uid://dynt0cbauuusc" path="res://entities/Player/states/history.gd" id="1_bokbj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a4okr"]
+content_margin_left = 16.0
+content_margin_top = 4.0
+content_margin_right = 16.0
+content_margin_bottom = 4.0
+bg_color = Color(0, 0, 0, 0.501961)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wldyn"]
+content_margin_left = 16.0
+content_margin_top = 16.0
+content_margin_right = 16.0
+content_margin_bottom = 16.0
+draw_center = false
+border_width_left = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 0.501961)
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="StateHistory" type="VBoxContainer" node_paths=PackedStringArray("state_machine")]
+custom_minimum_size = Vector2(192, 164)
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -226.0
+offset_top = -201.0
+offset_right = -31.0
+offset_bottom = -37.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/separation = 0
+script = ExtResource("1_bokbj")
+state_machine = NodePath("")
+metadata/_edit_group_ = true
+
+[node name="Count" type="Label" parent="."]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_a4okr")
+text = "History -/-"
+horizontal_alignment = 3
+
+[node name="Panel" type="PanelContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_wldyn")
+
+[node name="List" type="TextEdit" parent="Panel"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+editable = false

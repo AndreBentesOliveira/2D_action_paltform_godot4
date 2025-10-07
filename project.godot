@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="mega_robot2D"
-run/main_scene="uid://cx7btiufghoac"
+run/main_scene="uid://ckxrci77f0bq7"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="uid://bhraegywqw5aa"
 
