@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/jump_fire_sprite.png-2f454d6484ae4238bbd6627f
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

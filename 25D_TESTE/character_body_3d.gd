@@ -49,6 +49,7 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
+	%VelocityY.text = str(velocity.y)
 	#if !sprite.flip_h:
 		#fire_component.position.x = 14.0
 	#else:
@@ -67,7 +68,8 @@ func _physics_process(delta: float) -> void:
 	# The following line will only be processed if 'StateMachine.auto_process' is set to 'false'.
 	state_machine.call_physics_process(delta)
 	velocity.z = 0
-	#apply_gravity(delta)
+	apply_gravity(delta)
+	timers(delta)
 	move_and_slide()
 
 
@@ -77,7 +79,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func _on_state_machine_state_transitioned(_old_state: StringName, new_state: StringName, _state_data: Dictionary) -> void:
-	$Label.text = str(new_state)
+	%State.text = str(new_state)
 
 
 func load_input_map() -> void:
@@ -126,14 +128,41 @@ func apply_gravity(delta: float) -> void:
 	# else: we're falling too fast for more gravity.
 
 	# If moving upwards while jumping, use jump_gravity_acceleration to achieve lower gravity
-	if is_jumping and velocity.y < 0:
+	if is_jumping and velocity.y > 0:
 		applied_gravity = jump_gravity_acceleration * delta
 
 	# Lower the gravity at the peak of our jump (where velocity is the smallest)
-	if is_jumping and abs(velocity.y) < jump_hang_speed_threshold:
+	if is_jumping and abs(velocity.y) > jump_hang_speed_threshold:
 		applied_gravity *= jump_hang_gravity_mult
 
 	velocity.y -= applied_gravity
+
+func x_movement(delta: float) -> void:
+	var x_dir: float = Input.get_axis(&"walk_left", &"walk_right")
+	if x_dir != 0.0:
+		sprite.flip_h = x_dir < 0.0
+		# Brake if we're not doing movement inputs.
+	if x_dir == 0:
+		velocity.x = Vector2(velocity.x, 0).move_toward(Vector2.ZERO, deceleration * delta).x
+
+	var does_input_dir_follow_momentum = sign(velocity.x) == x_dir
+		# If we are doing movement inputs and above max speed, don't accelerate nor decelerate
+		# Except if we are turning
+		# (This keeps our momentum gained from outside or slopes)
+	if abs(velocity.x) >= max_speed and does_input_dir_follow_momentum:
+		return
+		# Are we turning?
+		# Deciding between acceleration and turn_acceleration
+	var accel_rate : float = acceleration if does_input_dir_follow_momentum else turning_acceleration
+		# Accelerate
+	velocity.x += x_dir * accel_rate * delta
+
+
+func timers(delta: float) -> void:
+	# Using timer nodes here would mean unnecessary functions and node calls
+	# This way everything is contained in just 1 script with no node requirements
+	jump_coyote_timer -= delta
+	jump_buffer_timer -= delta
 
 
 func _on_shoot_sprite_cd_timeout() -> void:
