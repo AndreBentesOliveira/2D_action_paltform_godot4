@@ -1,16 +1,20 @@
 extends "common_state.gd"
 
+var eledge_grab := false
+
 func _enter_state(_old_state: StringName, _params: Dictionary) -> void:
 	if _old_state == "GrabEdge":
+		eledge_grab = true
 		player.head_ray_cast.enabled = false
 		player.eyes_ray_cast.enabled = false
+		await get_tree().create_timer(0.1).timeout
+		player.head_ray_cast.enabled = true
+		player.eyes_ray_cast.enabled = true
 	sprite.play(&"jump")
 	#player.velocity.y = 1.0
 
 
 func _physics_process(_delta: float) -> void:
-	player.head_ray_cast.enabled = true
-	player.eyes_ray_cast.enabled = true
 	player.x_movement(_delta)
 	check_for_ledge()
 	jump_logic(_delta)
@@ -43,10 +47,11 @@ func jump_logic(_delta: float) -> void:
 		player.jump_buffer_timer = player.jump_buffer
 
 	# Jump if grounded, there is jump input, and we aren't jumping already
-	if player.jump_coyote_timer > 0 and player.jump_buffer_timer > 0 and not player.is_jumping:
+	if (player.jump_coyote_timer > 0 and player.jump_buffer_timer > 0 and not player.is_jumping) or eledge_grab:
 		player.is_jumping = true
 		player.jump_coyote_timer = 0
 		player.jump_buffer_timer = 0
+		eledge_grab = false
 
 		# Compute the jump force based on gravity. Not 100% accurate since we
 		# vary gravity at different phases of the jump, but a useful estimate.
@@ -69,9 +74,3 @@ func jump_logic(_delta: float) -> void:
 
 func check_for_ledge():
 	player.can_eledge_grab = not player.head_ray_cast.is_colliding() and player.eyes_ray_cast.is_colliding()
-	#eyes_ray_cast 
-
-
-
-func grab_ledge(ledge_point: Vector3, wall_normal: Vector3) -> void:
-	pass

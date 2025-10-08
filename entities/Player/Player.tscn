@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://ccm2qrfqwwjry" path="res://entities/Player/sprites/jump_fire_sprite.png" id="7_6tce4"]
 [ext_resource type="Script" uid="uid://cqes4e6wria0w" path="res://entities/Player/states/grab_edge.gd" id="7_85j51"]
 [ext_resource type="Texture2D" uid="uid://ca7bkrmoln62d" path="res://entities/Player/sprites/idle_sprite.png" id="8_rra6x"]
-[ext_resource type="Texture2D" uid="uid://bcj80km42ne41" path="res://entities/Player/sprites/hurt_sprite.png" id="9_85j51"]
+[ext_resource type="Texture2D" uid="uid://b2iba651ldqi6" path="res://entities/Player/sprites/eledge_grab.png" id="9_85j51"]
 [ext_resource type="Texture2D" uid="uid://cwblwxawstot3" path="res://entities/Player/sprites/jump_sprite.png" id="9_b3mlh"]
 [ext_resource type="Texture2D" uid="uid://bs65petgokmun" path="res://entities/Player/sprites/walk_sprite.png" id="10_p3y6h"]
 
@@ -141,17 +141,17 @@ metadata/_custom_type_script = "uid://dsnjlxvj4s1uu"
 double_sided = false
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_egyt8")
-animation = &"idle"
+animation = &"grab_edge"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_kct3s")
 
 [node name="HeadRayCast" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0616645, 0.112405, 0)
-target_position = Vector3(0.1, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0616645, 0.0989544, 0)
+target_position = Vector3(0.07, 0, 0)
 
 [node name="EyesRayCast" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0616645, 0.0371625, 0)
-target_position = Vector3(0.1, 0, 0)
+target_position = Vector3(0.07, 0, 0)
 
 [connection signal="state_transitioned" from="StateMachine" to="." method="_on_state_machine_state_transitioned"]

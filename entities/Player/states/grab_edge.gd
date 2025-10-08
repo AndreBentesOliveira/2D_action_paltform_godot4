@@ -3,9 +3,8 @@ extends "common_state.gd"
 
 func _enter_state(_old_state: StringName, _params: Dictionary) -> void:
 	player.velocity = Vector3.ZERO
-	var offset_y = 0.1
+	var offset_y = 0.04
 	player.global_position.y -= offset_y
-	print(player.can_eledge_grab)
 	sprite.play(&"grab_edge")
 
 
