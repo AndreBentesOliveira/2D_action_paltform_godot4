@@ -7,7 +7,8 @@ extends CharacterBody3D
 @export var sprite: Node
 @export var ledge_grab_offset : Vector3
 @onready var state_machine: StateMachine = $StateMachine
-
+@onready var eyes_ray_cast = $EyesRayCast
+@onready var head_ray_cast = $HeadRayCast
 
 @export var max_speed: float = 600
 @export var acceleration: float = 3000
@@ -44,6 +45,7 @@ var is_jumping := false
 # ----------------------------------- #
 
 var is_attacking := false
+var can_eledge_grab := false
 
 
 func _ready() -> void:
@@ -65,7 +67,8 @@ func _physics_process(delta: float) -> void:
 	velocity.z = 0
 	#if not is_on_floor():
 		#check_for_ledge()
-	apply_gravity(delta)
+	if not can_eledge_grab:
+		apply_gravity(delta)
 	timers(delta)
 	move_and_slide()
 

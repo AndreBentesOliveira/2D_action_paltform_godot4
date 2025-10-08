@@ -1,16 +1,21 @@
 extends "common_state.gd"
 
 func _enter_state(_old_state: StringName, _params: Dictionary) -> void:
-	#if _old_state == "GrabEdge":
-		#player.can_check_for_ledge = false
-		
+	if _old_state == "GrabEdge":
+		player.head_ray_cast.enabled = false
+		player.eyes_ray_cast.enabled = false
 	sprite.play(&"jump")
-	#player.velocity.y = JUMP_VELOCITY
+	#player.velocity.y = 1.0
 
 
 func _physics_process(_delta: float) -> void:
+	player.head_ray_cast.enabled = true
+	player.eyes_ray_cast.enabled = true
 	player.x_movement(_delta)
+	check_for_ledge()
 	jump_logic(_delta)
+	if player.can_eledge_grab:
+		return enter_state(&"GrabEdge")
 	if name == &"Jump":
 		#var minimum: float = JUMP_VELOCITY * 0.5
 		#if Input.is_action_just_released(&"jump") and player.velocity.y < minimum:
@@ -63,7 +68,9 @@ func jump_logic(_delta: float) -> void:
 		#player.velocity.y = player.jump_hang_speed_threshold
 
 func check_for_ledge():
-	pass
+	player.can_eledge_grab = not player.head_ray_cast.is_colliding() and player.eyes_ray_cast.is_colliding()
+	#eyes_ray_cast 
+
 
 
 func grab_ledge(ledge_point: Vector3, wall_normal: Vector3) -> void:

@@ -1,6 +1,6 @@
 [gd_scene load_steps=21 format=3 uid="uid://dpuqtlr1m3dcj"]
 
-[ext_resource type="Script" uid="uid://bb2cx1iw4xeo2" path="res://entities/Player/player.gd" id="1_cm1li"]
+[ext_resource type="Script" uid="uid://bb2cx1iw4xeo2" path="res://entities/Player/Player.gd" id="1_cm1li"]
 [ext_resource type="Script" uid="uid://cyjj3nyqr8e3y" path="res://addons/state_machine_nodes/state_machine.gd" id="2_d3nms"]
 [ext_resource type="Script" uid="uid://dybeln8tcynbv" path="res://entities/Player/states/idle.gd" id="3_85j51"]
 [ext_resource type="Script" uid="uid://s4f7tis06bjh" path="res://entities/Player/states/walk.gd" id="4_aq80t"]
@@ -146,12 +146,12 @@ animation = &"idle"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_kct3s")
 
-[node name="WallCheckRay" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0616645, 0, 0)
-target_position = Vector3(0.101, 0, 0)
+[node name="HeadRayCast" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0616645, 0.112405, 0)
+target_position = Vector3(0.1, 0, 0)
 
-[node name="FloorCheckRay" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1808, 0.611768, 0)
-target_position = Vector3(0, -0.57, 0)
+[node name="EyesRayCast" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0616645, 0.0371625, 0)
+target_position = Vector3(0.1, 0, 0)
 
 [connection signal="state_transitioned" from="StateMachine" to="." method="_on_state_machine_state_transitioned"]
