@@ -21,10 +21,6 @@ func _physics_process(_delta: float) -> void:
 	if player.can_eledge_grab:
 		return enter_state(&"GrabEdge")
 	if name == &"Jump":
-		#var minimum: float = JUMP_VELOCITY * 0.5
-		#if Input.is_action_just_released(&"jump") and player.velocity.y < minimum:
-			#player.velocity.y = minimum
-
 		if player.velocity.y <= 0.0:
 			return enter_state(&"Fall")
 
