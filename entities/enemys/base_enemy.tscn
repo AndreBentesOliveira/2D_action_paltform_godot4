@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://wuxreq5m5fuh"]
+
+[ext_resource type="Script" uid="uid://ctiasay8lw82c" path="res://entities/enemys/base_enemy.gd" id="1_dpifa"]
+[ext_resource type="Script" uid="uid://cyjj3nyqr8e3y" path="res://addons/state_machine_nodes/state_machine.gd" id="2_14ai2"]
+
+[node name="BaseEnemy" type="CharacterBody3D"]
+script = ExtResource("1_dpifa")
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("2_14ai2")
+metadata/_custom_type_script = "uid://cyjj3nyqr8e3y"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+
+[node name="Visuals" type="Node3D" parent="."]
+
+[node name="Sprite" type="AnimatedSprite3D" parent="Visuals"]
+texture_filter = 0

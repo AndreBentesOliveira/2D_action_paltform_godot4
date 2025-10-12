@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://ckxrci77f0bq7"]
+[gd_scene load_steps=20 format=3 uid="uid://ckxrci77f0bq7"]
 
 [ext_resource type="PackedScene" uid="uid://dpuqtlr1m3dcj" path="res://entities/Player/Player.tscn" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://dut2oucca4lq4" path="res://entities/camera.gd" id="2_0xm2m"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cej3yoosomfd2" path="res://addons/proto-csgs/textures/dark/texture_13.png" id="4_lquwl"]
 [ext_resource type="Texture2D" uid="uid://bn66p4ar3fje4" path="res://addons/proto-csgs/textures/red/texture_13.png" id="5_7mycd"]
 [ext_resource type="Texture2D" uid="uid://c0x0tvmbhaqck" path="res://addons/proto-csgs/textures/orange/texture_13.png" id="5_lquwl"]
+[ext_resource type="PackedScene" uid="uid://blkkntk13e4q1" path="res://entities/enemys/first_enemy/first_enemy.tscn" id="7_lgr22"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fd1d0"]
 sky_energy_multiplier = 1.5
@@ -154,3 +155,6 @@ material = SubResource("StandardMaterial3D_w48qg")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.5, 1, 0, 0)
 material = SubResource("StandardMaterial3D_272bh")
 block_color = 3
+
+[node name="FirstEnemy" parent="." instance=ExtResource("7_lgr22")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.54496, 0.586937, 0)

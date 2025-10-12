@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bdfyi736su7r5"]
+
+[ext_resource type="Script" uid="uid://cbvogbh3rb4vv" path="res://components/grabable_component.gd" id="1_6u3hh"]
+
+[node name="GrabableComponent" type="Area3D"]
+script = ExtResource("1_6u3hh")
+
+[node name="GrabPoint" type="Marker3D" parent="."]

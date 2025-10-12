@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dnbtgpsho8fol"]
+
+[ext_resource type="Script" uid="uid://b1cog65jg3too" path="res://components/gripper_component.gd" id="1_1bqd6"]
+
+[node name="GripperComponent" type="Area3D"]
+script = ExtResource("1_1bqd6")

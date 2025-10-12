@@ -1,0 +1,67 @@
+[gd_scene load_steps=11 format=3 uid="uid://blkkntk13e4q1"]
+
+[ext_resource type="PackedScene" uid="uid://wuxreq5m5fuh" path="res://entities/enemys/base_enemy.tscn" id="1_fmmrf"]
+[ext_resource type="Script" uid="uid://cqji5xbertph5" path="res://entities/enemys/first_enemy/first_enemy.gd" id="2_popww"]
+[ext_resource type="Texture2D" uid="uid://b61wqofekqbdl" path="res://entities/enemys/first_enemy/base_enemy_grabed.png" id="2_qp6f8"]
+[ext_resource type="Script" uid="uid://c7arulpt1e5v0" path="res://entities/enemys/enemy_common_states/enemy_idle.gd" id="3_ip25l"]
+[ext_resource type="Texture2D" uid="uid://cmi1gh1kw22pu" path="res://entities/enemys/first_enemy/base_enemy_sprite.png" id="3_popww"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ip25l"]
+atlas = ExtResource("3_popww")
+region = Rect2(0, 0, 15, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bgamg"]
+atlas = ExtResource("3_popww")
+region = Rect2(16, 0, 15, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ny6ie"]
+atlas = ExtResource("3_popww")
+region = Rect2(32, 0, 15, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s6nou"]
+atlas = ExtResource("3_popww")
+region = Rect2(48, 0, 15, 11)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d53md"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_qp6f8")
+}],
+"loop": true,
+"name": &"grabbed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ip25l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bgamg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ny6ie")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s6nou")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="FirstEnemy" instance=ExtResource("1_fmmrf")]
+script = ExtResource("2_popww")
+
+[node name="StateMachine" parent="." index="0" node_paths=PackedStringArray("initial_state", "common_node")]
+initial_state = NodePath("idle")
+common_node = NodePath("..")
+
+[node name="idle" type="Node" parent="StateMachine" index="0"]
+script = ExtResource("3_ip25l")
+metadata/_custom_type_script = "uid://dsnjlxvj4s1uu"
+
+[node name="Sprite" parent="Visuals" index="0"]
+flip_h = true
+sprite_frames = SubResource("SpriteFrames_d53md")
+animation = &"idle"

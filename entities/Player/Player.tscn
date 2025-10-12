@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dpuqtlr1m3dcj"]
+[gd_scene load_steps=24 format=3 uid="uid://dpuqtlr1m3dcj"]
 
 [ext_resource type="Script" uid="uid://bb2cx1iw4xeo2" path="res://entities/Player/Player.gd" id="1_cm1li"]
 [ext_resource type="Script" uid="uid://cyjj3nyqr8e3y" path="res://addons/state_machine_nodes/state_machine.gd" id="2_d3nms"]
@@ -8,10 +8,12 @@
 [ext_resource type="Script" uid="uid://cbni6oj5s6c2w" path="res://entities/Player/states/fall.gd" id="6_xwu5i"]
 [ext_resource type="Texture2D" uid="uid://ccm2qrfqwwjry" path="res://entities/Player/sprites/jump_fire_sprite.png" id="7_6tce4"]
 [ext_resource type="Script" uid="uid://cqes4e6wria0w" path="res://entities/Player/states/grab_edge.gd" id="7_85j51"]
+[ext_resource type="Script" uid="uid://bb75srgb7skxr" path="res://entities/Player/states/grab_entitie.gd" id="8_10ubs"]
 [ext_resource type="Texture2D" uid="uid://ca7bkrmoln62d" path="res://entities/Player/sprites/idle_sprite.png" id="8_rra6x"]
 [ext_resource type="Texture2D" uid="uid://b2iba651ldqi6" path="res://entities/Player/sprites/eledge_grab.png" id="9_85j51"]
 [ext_resource type="Texture2D" uid="uid://cwblwxawstot3" path="res://entities/Player/sprites/jump_sprite.png" id="9_b3mlh"]
 [ext_resource type="Texture2D" uid="uid://bs65petgokmun" path="res://entities/Player/sprites/walk_sprite.png" id="10_p3y6h"]
+[ext_resource type="PackedScene" uid="uid://dnbtgpsho8fol" path="res://components/gripper_component.tscn" id="13_lf238"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_egyt8"]
 atlas = ExtResource("8_rra6x")
@@ -96,6 +98,9 @@ animations = [{
 radius = 0.0694377
 height = 0.240949
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_10ubs"]
+size = Vector3(0.086, 0.03, 0.04)
+
 [node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("sprite")]
 script = ExtResource("1_cm1li")
 sprite = NodePath("Sprite3D")
@@ -137,6 +142,10 @@ metadata/_custom_type_script = "uid://dsnjlxvj4s1uu"
 script = ExtResource("7_85j51")
 metadata/_custom_type_script = "uid://dsnjlxvj4s1uu"
 
+[node name="GrabEntitie" type="Node" parent="StateMachine"]
+script = ExtResource("8_10ubs")
+metadata/_custom_type_script = "uid://dsnjlxvj4s1uu"
+
 [node name="Sprite3D" type="AnimatedSprite3D" parent="."]
 double_sided = false
 texture_filter = 0
@@ -153,5 +162,11 @@ target_position = Vector3(0.07, 0, 0)
 [node name="EyesRayCast" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0616645, 0.0371625, 0)
 target_position = Vector3(0.07, 0, 0)
+
+[node name="GripperComponent" parent="." instance=ExtResource("13_lf238")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GripperComponent"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00891113, -0.115633, 0)
+shape = SubResource("BoxShape3D_10ubs")
 
 [connection signal="state_transitioned" from="StateMachine" to="." method="_on_state_machine_state_transitioned"]
