@@ -1,6 +1,6 @@
-[gd_scene load_steps=24 format=3 uid="uid://dpuqtlr1m3dcj"]
+[gd_scene load_steps=26 format=3 uid="uid://dpuqtlr1m3dcj"]
 
-[ext_resource type="Script" uid="uid://bb2cx1iw4xeo2" path="res://entities/Player/Player.gd" id="1_cm1li"]
+[ext_resource type="Script" uid="uid://bb2cx1iw4xeo2" path="res://entities/Player/player.gd" id="1_cm1li"]
 [ext_resource type="Script" uid="uid://cyjj3nyqr8e3y" path="res://addons/state_machine_nodes/state_machine.gd" id="2_d3nms"]
 [ext_resource type="Script" uid="uid://dybeln8tcynbv" path="res://entities/Player/states/idle.gd" id="3_85j51"]
 [ext_resource type="Script" uid="uid://s4f7tis06bjh" path="res://entities/Player/states/walk.gd" id="4_aq80t"]
@@ -12,8 +12,17 @@
 [ext_resource type="Texture2D" uid="uid://ca7bkrmoln62d" path="res://entities/Player/sprites/idle_sprite.png" id="8_rra6x"]
 [ext_resource type="Texture2D" uid="uid://b2iba651ldqi6" path="res://entities/Player/sprites/eledge_grab.png" id="9_85j51"]
 [ext_resource type="Texture2D" uid="uid://cwblwxawstot3" path="res://entities/Player/sprites/jump_sprite.png" id="9_b3mlh"]
+[ext_resource type="Script" uid="uid://dvcprylokd63q" path="res://entities/Player/states/trow_entitie.gd" id="9_vsvda"]
 [ext_resource type="Texture2D" uid="uid://bs65petgokmun" path="res://entities/Player/sprites/walk_sprite.png" id="10_p3y6h"]
+[ext_resource type="Texture2D" uid="uid://diwfk6fbjw7wf" path="res://entities/Player/sprites/grab.png" id="13_jpjna"]
 [ext_resource type="PackedScene" uid="uid://dnbtgpsho8fol" path="res://components/gripper_component.tscn" id="13_lf238"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kct3s"]
+radius = 0.0694377
+height = 0.240949
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_10ubs"]
+size = Vector3(0.127, 0.036, 0.073)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_egyt8"]
 atlas = ExtResource("8_rra6x")
@@ -59,6 +68,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("13_jpjna")
+}],
+"loop": true,
+"name": &"grab_entitie",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_egyt8")
 }, {
 "duration": 1.0,
@@ -94,16 +111,9 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kct3s"]
-radius = 0.0694377
-height = 0.240949
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_10ubs"]
-size = Vector3(0.086, 0.03, 0.04)
-
 [node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("sprite")]
 script = ExtResource("1_cm1li")
-sprite = NodePath("Sprite3D")
+sprite = NodePath("Visuals/Sprite3D")
 ledge_grab_offset = Vector3(0.15, 0, 0)
 max_speed = 1.5
 acceleration = 2.0
@@ -146,11 +156,9 @@ metadata/_custom_type_script = "uid://dsnjlxvj4s1uu"
 script = ExtResource("8_10ubs")
 metadata/_custom_type_script = "uid://dsnjlxvj4s1uu"
 
-[node name="Sprite3D" type="AnimatedSprite3D" parent="."]
-double_sided = false
-texture_filter = 0
-sprite_frames = SubResource("SpriteFrames_egyt8")
-animation = &"grab_edge"
+[node name="TrowEntitie" type="Node" parent="StateMachine"]
+script = ExtResource("9_vsvda")
+metadata/_custom_type_script = "uid://dsnjlxvj4s1uu"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_kct3s")
@@ -164,9 +172,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0616645, 0.0371625, 0)
 target_position = Vector3(0.07, 0, 0)
 
 [node name="GripperComponent" parent="." instance=ExtResource("13_lf238")]
+grip_offset = Vector3(-0.024, -0.069, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="GripperComponent"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00891113, -0.115633, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.12142, 0)
 shape = SubResource("BoxShape3D_10ubs")
+
+[node name="Visuals" type="Node3D" parent="."]
+
+[node name="Sprite3D" type="AnimatedSprite3D" parent="Visuals"]
+double_sided = false
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_egyt8")
+animation = &"grab_entitie"
 
 [connection signal="state_transitioned" from="StateMachine" to="." method="_on_state_machine_state_transitioned"]

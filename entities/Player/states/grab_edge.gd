@@ -16,6 +16,6 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed(&"jump"):
 		player.can_eledge_grab = false
 		return enter_state(&"Jump")
-	if event.is_action_pressed(&"crouch"):
+	if event.is_action_pressed(&"down_button"):
 		player.can_eledge_grab = false
 		return enter_state(&"Fall")

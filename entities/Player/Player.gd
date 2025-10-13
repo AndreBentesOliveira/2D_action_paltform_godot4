@@ -9,6 +9,8 @@ extends CharacterBody3D
 @onready var state_machine: StateMachine = $StateMachine
 @onready var eyes_ray_cast = $EyesRayCast
 @onready var head_ray_cast = $HeadRayCast
+@onready var gripper_component: Gripper = $GripperComponent
+
 
 @export var max_speed: float = 600
 @export var acceleration: float = 3000
@@ -46,11 +48,13 @@ var is_jumping := false
 
 var is_attacking := false
 var can_eledge_grab := false
+var grab_entitie := false
+var entitie_grabbed : CharacterBody3D
 
 
 func _ready() -> void:
+	gripper_component.grab.connect(on_player_grab_entitie)
 	load_input_map()
-	#state_label.text = state_machine.state
 
 
 func _physics_process(delta: float) -> void:
@@ -161,6 +165,15 @@ func x_movement(delta: float) -> void:
 		# Accelerate
 	velocity.x += x_dir * accel_rate * delta
 
+
+func on_player_grab_entitie(entitie: CharacterBody3D):
+	grab_entitie = true
+	entitie_grabbed = entitie
+	if entitie.grabbed_texture == null:
+		return
+	print(entitie.grabbed_texture)
+	
+	
 
 func timers(delta: float) -> void:
 	# Using timer nodes here would mean unnecessary functions and node calls

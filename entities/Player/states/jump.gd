@@ -11,7 +11,6 @@ func _enter_state(_old_state: StringName, _params: Dictionary) -> void:
 		player.head_ray_cast.enabled = true
 		player.eyes_ray_cast.enabled = true
 	sprite.play(&"jump")
-	#player.velocity.y = 1.0
 
 
 func _physics_process(_delta: float) -> void:
@@ -20,6 +19,8 @@ func _physics_process(_delta: float) -> void:
 	jump_logic(_delta)
 	if player.can_eledge_grab:
 		return enter_state(&"GrabEdge")
+	if player.grab_entitie:
+		return enter_state(&"GrabEntitie")
 	if name == &"Jump":
 		if player.velocity.y <= 0.0:
 			return enter_state(&"Fall")

@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cej3yoosomfd2" path="res://addons/proto-csgs/textures/dark/texture_13.png" id="4_lquwl"]
 [ext_resource type="Texture2D" uid="uid://bn66p4ar3fje4" path="res://addons/proto-csgs/textures/red/texture_13.png" id="5_7mycd"]
 [ext_resource type="Texture2D" uid="uid://c0x0tvmbhaqck" path="res://addons/proto-csgs/textures/orange/texture_13.png" id="5_lquwl"]
-[ext_resource type="PackedScene" uid="uid://blkkntk13e4q1" path="res://entities/enemys/first_enemy/first_enemy.tscn" id="7_lgr22"]
+[ext_resource type="PackedScene" uid="uid://ci5vu1sap676e" path="res://entities/enemys/first_enemy/first_enemy.tscn" id="7_lgr22"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fd1d0"]
 sky_energy_multiplier = 1.5
@@ -125,8 +125,8 @@ size = Vector3(1, 2.3, 1)
 material = SubResource("StandardMaterial3D_efxa6")
 
 [node name="ProtoCSGBox3D4" parent="Meshs" instance=ExtResource("3_1bvp3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, 1.49012e-08)
-size = Vector3(2, 1, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.8, 0, 1.49012e-08)
+size = Vector3(16.6, 1, 1)
 material = SubResource("StandardMaterial3D_dg77c")
 
 [node name="ProtoCSGBox3D5" parent="Meshs" instance=ExtResource("3_1bvp3")]
@@ -157,4 +157,4 @@ material = SubResource("StandardMaterial3D_272bh")
 block_color = 3
 
 [node name="FirstEnemy" parent="." instance=ExtResource("7_lgr22")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.54496, 0.586937, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6, 0.6, 0)

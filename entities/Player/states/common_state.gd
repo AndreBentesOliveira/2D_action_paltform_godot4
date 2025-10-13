@@ -10,4 +10,4 @@ var sprite: AnimatedSprite3D
 
 func _state_machine_ready() -> void:
 	player = get_common_node()
-	sprite = player.get_node("Sprite3D")
+	sprite = player.get_node("Visuals/Sprite3D")

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://ckttal4cbtx7p"]
 
-[ext_resource type="PackedScene" uid="uid://ckxrci77f0bq7" path="res://Main.tscn" id="1_n2sj2"]
+[ext_resource type="PackedScene" uid="uid://ckxrci77f0bq7" path="res://main.tscn" id="1_n2sj2"]
 
 [node name="SubViewportContainer" type="SubViewportContainer"]
 texture_filter = 1

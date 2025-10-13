@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://sq2tljtri5n3"]
+
+[ext_resource type="Script" uid="uid://d3cx154jam3ac" path="res://entities/base_entitie.gd" id="1_574ob"]
+[ext_resource type="PackedScene" uid="uid://bdfyi736su7r5" path="res://components/grabable_component.tscn" id="2_373be"]
+
+[node name="BaseEntitie" type="CharacterBody3D"]
+script = ExtResource("1_574ob")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+
+[node name="Visuals" type="Node3D" parent="."]
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Visuals"]
+
+[node name="GrabableComponent" parent="." instance=ExtResource("2_373be")]

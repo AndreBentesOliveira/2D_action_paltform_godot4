@@ -1,2 +1,2 @@
-extends CharacterBody3D
+extends Entitie
 class_name Enemy
