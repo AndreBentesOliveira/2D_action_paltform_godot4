@@ -74,8 +74,6 @@ func _physics_process(delta: float) -> void:
 	velocity.z = 0
 	#if not is_on_floor():
 		#check_for_ledge()
-	if not can_eledge_grab:
-		apply_gravity(delta)
 	timers(delta)
 	move_and_slide()
 

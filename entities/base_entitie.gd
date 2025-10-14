@@ -35,10 +35,13 @@ func grabbed_and_trow_logic(delta):
 		sprite.hide()
 	elif thrown:
 		velocity.x += (velocity.x + 0.5) * thrown_dir * delta
+		print(velocity)
+		sprite.show()
+		move_and_slide()
 
 
 func was_thrown(direction: bool):
-	if direction:
+	if not direction:
 		thrown_dir = 1
 	else:
 		thrown_dir = -1

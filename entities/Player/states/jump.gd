@@ -4,6 +4,8 @@ var eledge_grab := false
 var entitie_grab : = false
 
 func _enter_state(_old_state: StringName, _params: Dictionary) -> void:
+	eledge_grab = false
+	entitie_grab = false
 	if _old_state == "GrabEntitie":
 		entitie_grab = true
 	if _old_state == "GrabEdge":
@@ -18,6 +20,7 @@ func _enter_state(_old_state: StringName, _params: Dictionary) -> void:
 
 func _physics_process(_delta: float) -> void:
 	player.x_movement(_delta)
+	player.apply_gravity(_delta)
 	check_for_ledge()
 	jump_logic(_delta)
 	if player.can_eledge_grab:

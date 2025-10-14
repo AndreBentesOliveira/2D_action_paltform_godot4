@@ -1,5 +1,6 @@
-[gd_scene load_steps=20 format=3 uid="uid://ckxrci77f0bq7"]
+[gd_scene load_steps=22 format=3 uid="uid://ckxrci77f0bq7"]
 
+[ext_resource type="Script" uid="uid://ewewltobs1v6" path="res://main.gd" id="1_5vw27"]
 [ext_resource type="PackedScene" uid="uid://dpuqtlr1m3dcj" path="res://entities/Player/Player.tscn" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://dut2oucca4lq4" path="res://entities/camera.gd" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://dxw7cledbpiia" path="res://addons/proto-csgs/proto_csg_box_3d.tscn" id="3_1bvp3"]
@@ -31,6 +32,12 @@ uv1_offset = Vector3(0.5, 0.5, 0.5)
 uv1_triplanar = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_efxa6"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_lquwl")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vivmo"]
 resource_local_to_scene = true
 albedo_texture = ExtResource("4_lquwl")
 uv1_offset = Vector3(0.5, 0.5, 0.5)
@@ -73,6 +80,7 @@ uv1_offset = Vector3(0.5, 0.5, 0.5)
 uv1_triplanar = true
 
 [node name="Main" type="Node3D"]
+script = ExtResource("1_5vw27")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 10
@@ -124,6 +132,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.65, 0)
 size = Vector3(1, 2.3, 1)
 material = SubResource("StandardMaterial3D_efxa6")
 
+[node name="ProtoCSGBox3D9" parent="Meshs" instance=ExtResource("3_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.85, -0.4, 0)
+size = Vector3(6.7, 0.2, 1)
+material = SubResource("StandardMaterial3D_vivmo")
+
 [node name="ProtoCSGBox3D4" parent="Meshs" instance=ExtResource("3_1bvp3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.8, 0, 1.49012e-08)
 size = Vector3(16.6, 1, 1)
@@ -160,4 +173,4 @@ block_color = 3
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6, 0.6, 0)
 
 [node name="FirstEnemy2" parent="." instance=ExtResource("7_lgr22")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1, 0.9, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0)
