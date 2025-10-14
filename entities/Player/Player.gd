@@ -171,7 +171,11 @@ func on_player_grab_entitie(entitie: CharacterBody3D):
 	entitie_grabbed = entitie
 	if entitie.grabbed_texture == null:
 		return
-	print(entitie.grabbed_texture)
+	var sprite_texture = Sprite3D.new()
+	sprite_texture.texture_filter = BaseMaterial3D.TEXTURE_FILTER_NEAREST
+	sprite_texture.texture = entitie.grabbed_texture
+	sprite.get_parent().add_child(sprite_texture)
+	sprite_texture.global_position += entitie.texture_ofset_when_grabbed
 	
 	
 

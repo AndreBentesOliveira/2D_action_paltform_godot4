@@ -4,7 +4,7 @@ extends Enemy
 
 
 func _ready() -> void:
-	pass
+	start()
 
 
 func _physics_process(delta: float) -> void:

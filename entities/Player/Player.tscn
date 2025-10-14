@@ -1,6 +1,6 @@
 [gd_scene load_steps=26 format=3 uid="uid://dpuqtlr1m3dcj"]
 
-[ext_resource type="Script" uid="uid://bb2cx1iw4xeo2" path="res://entities/Player/player.gd" id="1_cm1li"]
+[ext_resource type="Script" uid="uid://bb2cx1iw4xeo2" path="res://entities/Player/Player.gd" id="1_cm1li"]
 [ext_resource type="Script" uid="uid://cyjj3nyqr8e3y" path="res://addons/state_machine_nodes/state_machine.gd" id="2_d3nms"]
 [ext_resource type="Script" uid="uid://dybeln8tcynbv" path="res://entities/Player/states/idle.gd" id="3_85j51"]
 [ext_resource type="Script" uid="uid://s4f7tis06bjh" path="res://entities/Player/states/walk.gd" id="4_aq80t"]
@@ -184,6 +184,6 @@ shape = SubResource("BoxShape3D_10ubs")
 double_sided = false
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_egyt8")
-animation = &"grab_entitie"
+animation = &"idle"
 
 [connection signal="state_transitioned" from="StateMachine" to="." method="_on_state_machine_state_transitioned"]

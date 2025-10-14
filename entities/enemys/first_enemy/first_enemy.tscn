@@ -30,6 +30,7 @@ size = Vector3(0.0919922, 0.0272002, 0.1)
 [node name="FirstEnemy" instance=ExtResource("1_y5gwa")]
 script = ExtResource("2_phhhl")
 grabbed_texture = ExtResource("2_qp6f8")
+texture_ofset_when_grabbed = Vector3(0, -0.09, 0)
 
 [node name="idle" type="Node" parent="StateMachine" index="0"]
 script = ExtResource("3_popww")

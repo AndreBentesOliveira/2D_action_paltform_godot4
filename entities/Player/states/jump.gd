@@ -1,8 +1,11 @@
 extends "common_state.gd"
 
 var eledge_grab := false
+var entitie_grab : = false
 
 func _enter_state(_old_state: StringName, _params: Dictionary) -> void:
+	if _old_state == "GrabEntitie":
+		entitie_grab = true
 	if _old_state == "GrabEdge":
 		eledge_grab = true
 		player.head_ray_cast.enabled = false
@@ -21,6 +24,9 @@ func _physics_process(_delta: float) -> void:
 		return enter_state(&"GrabEdge")
 	if player.grab_entitie:
 		return enter_state(&"GrabEntitie")
+	#if already_jump:
+		#if player.is_on_floor():
+			#return enter_state(&"TrowEntitie")
 	if name == &"Jump":
 		if player.velocity.y <= 0.0:
 			return enter_state(&"Fall")
@@ -44,16 +50,15 @@ func jump_logic(_delta: float) -> void:
 		player.jump_buffer_timer = player.jump_buffer
 
 	# Jump if grounded, there is jump input, and we aren't jumping already
-	if (player.jump_coyote_timer > 0 and player.jump_buffer_timer > 0 and not player.is_jumping) or eledge_grab:
+	if (player.jump_coyote_timer > 0 and player.jump_buffer_timer > 0 and not player.is_jumping) or (entitie_grab or eledge_grab):
 		player.is_jumping = true
 		player.jump_coyote_timer = 0
 		player.jump_buffer_timer = 0
 		eledge_grab = false
-
+		entitie_grab = false
 		# Compute the jump force based on gravity. Not 100% accurate since we
 		# vary gravity at different phases of the jump, but a useful estimate.
 		player.velocity.y = sqrt(2 * player.jump_gravity_acceleration * player.jump_height)
-
 	# We're not actually interested in checking if the player is holding the jump button
 #	if get_input().jump:pass
 
