@@ -158,12 +158,12 @@ metadata/_custom_type_script = "uid://dsnjlxvj4s1uu"
 script = ExtResource("8_10ubs")
 metadata/_custom_type_script = "uid://dsnjlxvj4s1uu"
 
-[node name="TrowEntitie" type="Node" parent="StateMachine"]
-script = ExtResource("9_vsvda")
-metadata/_custom_type_script = "uid://dsnjlxvj4s1uu"
-
 [node name="JumpGrab" type="Node" parent="StateMachine"]
 script = ExtResource("10_yj2w5")
+metadata/_custom_type_script = "uid://dsnjlxvj4s1uu"
+
+[node name="TrowEntitie" type="Node" parent="StateMachine"]
+script = ExtResource("9_vsvda")
 metadata/_custom_type_script = "uid://dsnjlxvj4s1uu"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -191,5 +191,7 @@ double_sided = false
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_egyt8")
 animation = &"grab_entitie"
+
+[node name="Node" type="Node" parent="."]
 
 [connection signal="state_transitioned" from="StateMachine" to="." method="_on_state_machine_state_transitioned"]

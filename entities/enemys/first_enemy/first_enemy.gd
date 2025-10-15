@@ -2,7 +2,6 @@ extends Enemy
 
 @onready var state_machine: StateMachine = $StateMachine
 
-
 func _ready() -> void:
 	start()
 

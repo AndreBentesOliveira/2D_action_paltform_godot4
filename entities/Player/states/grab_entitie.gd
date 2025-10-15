@@ -4,8 +4,8 @@ extends "common_state.gd"
 func _enter_state(_old_state: StringName, _params: Dictionary) -> void:
 	player.gripper_component.enabled = false
 	player.velocity = Vector3.ZERO
-	var offset_y = 0.04
-	player.global_position.y -= offset_y
+	#var offset_y = 0.04
+	#player.global_position.y -= offset_y
 	sprite.play(&"grab_entitie")
 
 

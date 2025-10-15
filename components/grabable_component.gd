@@ -11,4 +11,6 @@ func _ready() -> void:
 func on_grabable_area_entered(area):
 	if not enabled:
 		return
+	if not area.enabled:
+		return
 	grabbed.emit(area.get_parent())
