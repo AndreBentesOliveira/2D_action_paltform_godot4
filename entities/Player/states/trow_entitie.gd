@@ -14,7 +14,6 @@ func _enter_state(_old_state: StringName, _params: Dictionary) -> void:
 
 func _physics_process(_delta: float) -> void:
 	player.velocity = Vector3.ZERO
-	
 
 
 func _unhandled_input(event: InputEvent) -> void:
