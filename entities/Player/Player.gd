@@ -111,8 +111,8 @@ func load_input_map() -> void:
 	add_pads.call(&"jump", [JOY_BUTTON_DPAD_UP, JOY_BUTTON_A, JOY_BUTTON_B])
 	
 	# Crouch
-	add_keys.call(&"crouch", [KEY_DOWN, KEY_S])
-	add_pads.call(&"crouch", [JOY_BUTTON_DPAD_DOWN])
+	add_keys.call(&"down_button", [KEY_DOWN, KEY_S])
+	add_pads.call(&"down_button", [JOY_BUTTON_DPAD_DOWN])
 	
 	# Walk (Left)
 	add_keys.call(&"walk_left", [KEY_LEFT, KEY_A])
@@ -168,7 +168,7 @@ func x_movement(delta: float) -> void:
 
 
 func on_player_grab_entitie(entitie: CharacterBody3D):
-	gripper_component.get_node("CollisionShape3D").call_deferred("set","disabled", true) 
+	gripper_area_disable(true)
 	grab_entitie = true
 	entitie_grabbed = entitie
 	entitie.get_parent().remove_child(entitie)
@@ -187,3 +187,7 @@ func timers(delta: float) -> void:
 	# This way everything is contained in just 1 script with no node requirements
 	jump_coyote_timer -= delta
 	jump_buffer_timer -= delta
+
+
+func gripper_area_disable(value: bool):
+	gripper_component.get_node("CollisionShape3D").call_deferred("set","disabled", value) 
