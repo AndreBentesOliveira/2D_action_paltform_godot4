@@ -3,7 +3,7 @@ extends "common_state.gd"
 var is_rotating: bool = false
 
 func _enter_state(_old_state: StringName, _params: Dictionary) -> void:
-	print("Params: " + str(_params))
+	#print("Params: " + str(_params))
 	if _old_state == &"TrowEntitie":
 		rotate_to_angle(Vector3(0, 0, 0), .1)
 	sprite.play(&"idle")

@@ -7,14 +7,14 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	state_machine.call_physics_process(delta)
+	#state_machine.call_physics_process(delta)
 	grabbed_and_trow_logic(delta)
 
 
 func _on_grabable_component_area_entered(area: Area3D) -> void:
-	print(area.get_parent())
-	sprite.play("invisible")
+	#sprite.play("invisible")
 	target_gripper = area.get_parent()
-	$CollisionShape3D.call_deferred("set_disabled", true) 
+	#$GrabableComponent.enabled = false
+	#$CollisionShape3D.call_deferred("set","disabled", true) 
+	#$GrabableComponent/CollisionShape3D.call_deferred("set","disabled", true)
 	grabbed = true
-	print(grabbed)

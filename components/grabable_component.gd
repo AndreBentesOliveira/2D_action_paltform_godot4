@@ -9,6 +9,9 @@ func _ready() -> void:
 
 
 func on_grabable_area_entered(area):
+	print(area.enabled)
+	if area is not Gripper:
+		return
 	if not enabled:
 		return
 	if not area.enabled:

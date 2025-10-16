@@ -59,16 +59,19 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	%VelocityY.text = str("%.2f" % velocity.y)
+	%VelocityX.text = str("%.2f" % velocity.x)
 	if !sprite.flip_h:
 		eyes_ray_cast.position.x = 0.062
 		head_ray_cast.position.x = 0.062
 		eyes_ray_cast.target_position.x = 0.07
 		head_ray_cast.target_position.x = 0.07
+		$TrowMark.position.x = 0.079
 	else:
 		eyes_ray_cast.position.x = -0.062
 		head_ray_cast.position.x = -0.062
 		eyes_ray_cast.target_position.x = -0.07
 		head_ray_cast.target_position.x = -0.07
+		$TrowMark.position.x = -0.079
 	# The following line will only be processed if 'StateMachine.auto_process' is set to 'false'.
 	state_machine.call_physics_process(delta)
 	velocity.z = 0
@@ -165,8 +168,11 @@ func x_movement(delta: float) -> void:
 
 
 func on_player_grab_entitie(entitie: CharacterBody3D):
+	gripper_component.get_node("CollisionShape3D").call_deferred("set","disabled", true) 
 	grab_entitie = true
 	entitie_grabbed = entitie
+	entitie.get_parent().remove_child(entitie)
+	
 	if entitie.grabbed_texture == null:
 		return
 	var sprite_texture = Sprite3D.new()
@@ -174,7 +180,6 @@ func on_player_grab_entitie(entitie: CharacterBody3D):
 	sprite_texture.texture = entitie.grabbed_texture
 	sprite.get_parent().add_child(sprite_texture)
 	sprite_texture.global_position += entitie.texture_ofset_when_grabbed
-	
 	
 
 func timers(delta: float) -> void:
