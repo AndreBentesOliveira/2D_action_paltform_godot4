@@ -19,6 +19,10 @@ config/icon="uid://bhraegywqw5aa"
 
 enabled=PackedStringArray("res://addons/state_machine_nodes/plugin.cfg")
 
+[global_group]
+
+entities_layer=""
+
 [input]
 
 move_right={

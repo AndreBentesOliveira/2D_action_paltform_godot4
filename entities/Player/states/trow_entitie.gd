@@ -31,8 +31,8 @@ func rotate_to_angle(angulo_alvo_graus: Vector3, duracao: float) -> void:
 	await tween.finished
 	is_rotating = false
 	print("Rotação para ", angulo_alvo_graus, "° concluída.")
-	
-	player.get_parent().add_child(player.entitie_grabbed)
+	var entities = get_tree().get_first_node_in_group("entities_layer")
+	entities.add_child(player.entitie_grabbed)
 	player.entitie_grabbed.global_position = player.get_node("TrowMark").global_position
 	player.entitie_grabbed.was_thrown(sprite.flip_h)
 	visuals.get_children()[1].queue_free()

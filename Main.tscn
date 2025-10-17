@@ -150,8 +150,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.5, 1, 0, 0)
 material = SubResource("StandardMaterial3D_272bh")
 block_color = 3
 
-[node name="FirstEnemy" parent="." instance=ExtResource("7_lgr22")]
+[node name="EntitiesLayer" type="Node3D" parent="." groups=["entities_layer"]]
+
+[node name="FirstEnemy" parent="EntitiesLayer" instance=ExtResource("7_lgr22")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3, 0.9, 0)
 
-[node name="FirstEnemy2" parent="." instance=ExtResource("7_lgr22")]
+[node name="FirstEnemy2" parent="EntitiesLayer" instance=ExtResource("7_lgr22")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0)

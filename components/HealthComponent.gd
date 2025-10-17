@@ -1,10 +1,11 @@
 extends Node
 
 signal health_changed(value)
-signal _take_damage(knockback)
+signal die
 
 @export var max_health : int
 @export var debug : bool
+
 var health: int
 var alive := true
 var invencible := false
@@ -17,12 +18,11 @@ func _ready():
 
 
 func take_damage(damage_amount, knockback_force):
-	if debug:
-		print("take damage %s, Health: %s/%s" % [damage_amount, health, max_health])
 	if invencible:
 		return
+	if debug:
+		print("take damage %s, Health: %s/%s" % [damage_amount, health, max_health])
 	health -= damage_amount
-	_take_damage.emit(knockback_force)
 	if health <= 0:
 		explode()
 
