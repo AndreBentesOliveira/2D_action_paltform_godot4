@@ -2,7 +2,7 @@ extends "common_state.gd"
 
 
 func _enter_state(_old_state: StringName, _params: Dictionary) -> void:
-	player.gripper_area_disable(false)
+	player.gripper_area_disable(true)
 	player.velocity = Vector3.ZERO
 	var offset_y = 0.04
 	player.global_position.y -= offset_y
@@ -22,4 +22,4 @@ func _unhandled_input(event: InputEvent) -> void:
 		return enter_state(&"Fall")
 
 func _exit_state(new_state: StringName, state_data: Dictionary) -> void:
-	player.gripper_area_disable(true)
+	player.gripper_area_disable(false)
