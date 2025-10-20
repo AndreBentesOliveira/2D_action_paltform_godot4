@@ -7,6 +7,7 @@ class_name Entitie
 @onready var grabable_component: Grabable = $GrabableComponent
 @onready var sprite: AnimatedSprite3D = $Visuals/AnimatedSprite3D
 @onready var visuals : Node = $Visuals
+@onready var thrown_collider: RayCast3D = $ThrownCollider
 
 
 var grabbed := false
@@ -19,6 +20,8 @@ var thrown_dir : int = 0
 
 
 func start() -> void:
+	thrown_collider.call_deferred("set","enabled", false)
+	print(self)
 	if sprite.sprite_frames != null:
 		pass
 	if can_be_grabbed:
@@ -28,7 +31,17 @@ func start() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	pass
+	trow_ray_cast_manager()
+	grabbed_and_trow_logic(delta)
+	
+	#if grabbed:
+		#pass
+	#elif  thrown:
+		#$CollisionShape3D.call_deferred("set","disabled", true)
+		#if hit_box_component.has_node("CollisionShape3D"):
+			#hit_box_component.get_node("CollisionShape3D").call_deferred("set","disabled", true)
+		#if hurt_box.has_node("CollisionShape3D"):
+			#hurt_box.get_node("CollisionShape3D").call_deferred("set","disabled", true)
 
 
 func grabbed_and_trow_logic(delta):
@@ -43,9 +56,18 @@ func grabbed_and_trow_logic(delta):
 
 
 func was_thrown(direction: bool):
+	thrown_collider.call_deferred("set","enabled", true)
 	if not direction:
 		thrown_dir = 1
 	else:
 		thrown_dir = -1
+	thrown_collider.target_position.x *= thrown_dir
 	grabbed = false
 	thrown = true
+
+
+func trow_ray_cast_manager():
+	if thrown_collider.is_colliding():
+		print("BATEU: " + str(thrown_collider.get_collider()))
+		grabbed = false
+		thrown = false

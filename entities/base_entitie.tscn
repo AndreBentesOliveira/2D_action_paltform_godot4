@@ -13,3 +13,9 @@ script = ExtResource("1_574ob")
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Visuals"]
 
 [node name="GrabableComponent" parent="." instance=ExtResource("2_373be")]
+collision_layer = 8
+collision_mask = 8
+
+[node name="ThrownCollider" type="RayCast3D" parent="."]
+target_position = Vector3(0.1, 0, 0)
+collision_mask = 5

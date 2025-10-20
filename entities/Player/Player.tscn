@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://dpuqtlr1m3dcj"]
+[gd_scene load_steps=29 format=3 uid="uid://dpuqtlr1m3dcj"]
 
 [ext_resource type="Script" uid="uid://bb2cx1iw4xeo2" path="res://entities/Player/Player.gd" id="1_cm1li"]
 [ext_resource type="Script" uid="uid://cyjj3nyqr8e3y" path="res://addons/state_machine_nodes/state_machine.gd" id="2_d3nms"]
@@ -17,6 +17,7 @@
 [ext_resource type="Script" uid="uid://dg8dl3u84ocuc" path="res://entities/Player/states/jump_grab.gd" id="10_yj2w5"]
 [ext_resource type="Texture2D" uid="uid://diwfk6fbjw7wf" path="res://entities/Player/sprites/grab.png" id="13_jpjna"]
 [ext_resource type="PackedScene" uid="uid://dnbtgpsho8fol" path="res://components/gripper_component.tscn" id="13_lf238"]
+[ext_resource type="PackedScene" uid="uid://vj60wmefmix5" path="res://components/HurtBoxComponent.tscn" id="18_vlwca"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kct3s"]
 radius = 0.0694377
@@ -112,6 +113,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_62gbw"]
+radius = 0.0803245
+
 [node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("sprite")]
 collision_layer = 2
 script = ExtResource("1_cm1li")
@@ -178,6 +182,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0616645, 0.0371625, 0)
 target_position = Vector3(0.07, 0, 0)
 
 [node name="GripperComponent" parent="." instance=ExtResource("13_lf238")]
+collision_layer = 8
+collision_mask = 8
 grip_offset = Vector3(-0.024, -0.069, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="GripperComponent"]
@@ -217,5 +223,12 @@ text = "velocity.y"
 [node name="VelocityX" type="Label" parent="MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+
+[node name="HurtBox" parent="." instance=ExtResource("18_vlwca")]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HurtBox"]
+shape = SubResource("SphereShape3D_62gbw")
 
 [connection signal="state_transitioned" from="StateMachine" to="." method="_on_state_machine_state_transitioned"]

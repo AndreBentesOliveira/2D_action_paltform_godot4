@@ -72,6 +72,7 @@ quit={
 3d_physics/layer_1="enviroment"
 3d_physics/layer_2="player"
 3d_physics/layer_3="enemys"
+3d_physics/layer_4="grab_and_grip"
 
 [rendering]
 

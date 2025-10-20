@@ -10,6 +10,7 @@ func _ready() -> void:
 
 
 func on_area_entered(area: Hitbox) -> void:
+	print_debug(area.get_parent())
 	if not area is Hitbox:
 		return
 	if healthcomponent == null:
