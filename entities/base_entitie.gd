@@ -1,6 +1,8 @@
 extends CharacterBody3D
 class_name Entitie
 
+signal collide_when_thrown(object)
+
 @export var can_be_grabbed : bool
 @export var grabbed_texture : Texture
 @export var texture_ofset_when_grabbed : Vector3
@@ -21,7 +23,6 @@ var thrown_dir : int = 0
 
 func start() -> void:
 	thrown_collider.call_deferred("set","enabled", false)
-	print(self)
 	if sprite.sprite_frames != null:
 		pass
 	if can_be_grabbed:
@@ -31,17 +32,7 @@ func start() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	trow_ray_cast_manager()
-	grabbed_and_trow_logic(delta)
-	
-	#if grabbed:
-		#pass
-	#elif  thrown:
-		#$CollisionShape3D.call_deferred("set","disabled", true)
-		#if hit_box_component.has_node("CollisionShape3D"):
-			#hit_box_component.get_node("CollisionShape3D").call_deferred("set","disabled", true)
-		#if hurt_box.has_node("CollisionShape3D"):
-			#hurt_box.get_node("CollisionShape3D").call_deferred("set","disabled", true)
+	pass
 
 
 func grabbed_and_trow_logic(delta):
@@ -68,6 +59,7 @@ func was_thrown(direction: bool):
 
 func trow_ray_cast_manager():
 	if thrown_collider.is_colliding():
-		print("BATEU: " + str(thrown_collider.get_collider()))
+		#print("BATEU: " + str(thrown_collider.get_collider()))
 		grabbed = false
 		thrown = false
+		collide_when_thrown.emit(thrown_collider.get_collider())

@@ -1,7 +1,7 @@
 extends Node3D
 
 @export var health_component : Node
-@export var sprite : AnimatedSprite3D
+@export var sprite : Texture
 
 func _ready() -> void:
 	if not sprite == null:

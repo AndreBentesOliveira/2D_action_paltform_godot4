@@ -65,12 +65,18 @@ func _physics_process(delta: float) -> void:
 		head_ray_cast.position.x = 0.062
 		eyes_ray_cast.target_position.x = 0.07
 		head_ray_cast.target_position.x = 0.07
+		#teste
+		$RayCast1.target_position.x = 0.135
+		#teste
 		$TrowMark.position.x = 0.079
 	else:
 		eyes_ray_cast.position.x = -0.062
 		head_ray_cast.position.x = -0.062
 		eyes_ray_cast.target_position.x = -0.07
 		head_ray_cast.target_position.x = -0.07
+		#teste
+		$RayCast1.target_position.x = -0.135
+		#teste
 		$TrowMark.position.x = -0.079
 	# The following line will only be processed if 'StateMachine.auto_process' is set to 'false'.
 	state_machine.call_physics_process(delta)

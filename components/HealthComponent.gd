@@ -5,19 +5,19 @@ signal die
 
 @export var max_health : int
 @export var debug : bool
-
+@export var death_component: Node
 var health: int
 var alive := true
 var invencible := false
 
 
 func _ready():
+	health = max_health
 	if debug:
 		print("Health: %s/%s" % [health, max_health])
-	health = max_health
 
 
-func take_damage(damage_amount, knockback_force):
+func take_damage(damage_amount):
 	if invencible:
 		return
 	if debug:
