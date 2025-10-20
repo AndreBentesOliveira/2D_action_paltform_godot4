@@ -1,11 +1,11 @@
 extends Node3D
 
 @export var health_component : Node
-@export var sprite : Texture
+@export var texture : Texture
 
 func _ready() -> void:
-	if not sprite == null:
-		$GPUParticles3D.texture = sprite.texture
+	if not texture == null:
+		$GPUParticles3D.texture = texture
 	if not health_component == null:
 		health_component.die.connect(on_died)
 

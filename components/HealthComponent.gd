@@ -41,4 +41,4 @@ func health_persent():
 func explode():
 	if debug:
 		print(str(get_parent().name) + " die")
-	get_parent().queue_free()
+	die.emit()

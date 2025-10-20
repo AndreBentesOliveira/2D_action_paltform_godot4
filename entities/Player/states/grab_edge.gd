@@ -29,7 +29,6 @@ func _physics_process(_delta: float) -> void:
 			var ledge_point = player.get_node("RayCast2").get_collision_point()
 		
 			var edge_position = ledge_point + (wall_normal * player.ledge_grab_offset.x) + (Vector3.UP * player.ledge_grab_offset.y)
-			print(edge_position)
 			player.global_position = edge_position
 
 

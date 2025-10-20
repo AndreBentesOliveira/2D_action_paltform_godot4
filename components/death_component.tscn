@@ -1,6 +1,24 @@
-[gd_scene load_steps=2 format=3 uid="uid://du24pmqu1sykk"]
+[gd_scene load_steps=6 format=3 uid="uid://du24pmqu1sykk"]
 
 [ext_resource type="Script" uid="uid://8rcwrf72151y" path="res://components/death_component.gd" id="1_lcu1u"]
+[ext_resource type="Texture2D" uid="uid://b61wqofekqbdl" path="res://entities/enemys/first_enemy/base_enemy_grabed.png" id="2_aamas"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_mwkmo"]
+particle_flag_disable_z = true
+direction = Vector3(0.5, 1, 0)
+initial_velocity_min = 3.0
+initial_velocity_max = 3.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t5qci"]
+transparency = 1
+shading_mode = 0
+albedo_texture = ExtResource("2_aamas")
+texture_filter = 0
+billboard_mode = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_g34sr"]
+material = SubResource("StandardMaterial3D_t5qci")
+size = Vector2(0.147, 0.1)
 
 [node name="DeathComponent" type="Node3D"]
 script = ExtResource("1_lcu1u")
@@ -8,3 +26,6 @@ script = ExtResource("1_lcu1u")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+amount = 1
+process_material = SubResource("ParticleProcessMaterial_mwkmo")
+draw_pass_1 = SubResource("QuadMesh_g34sr")
