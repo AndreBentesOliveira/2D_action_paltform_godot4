@@ -3,8 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://b5cwxrq76l7yw" path="res://entities/enemys/base_enemy.tscn" id="1_y5gwa"]
 [ext_resource type="Script" uid="uid://cqji5xbertph5" path="res://entities/enemys/first_enemy/first_enemy.gd" id="2_phhhl"]
 [ext_resource type="Texture2D" uid="uid://b61wqofekqbdl" path="res://entities/enemys/first_enemy/base_enemy_grabed.png" id="2_qp6f8"]
-[ext_resource type="Script" uid="uid://dsnjlxvj4s1uu" path="res://addons/state_machine_nodes/state_node.gd" id="3_popww"]
 [ext_resource type="PackedScene" uid="uid://du24pmqu1sykk" path="res://components/death_component.tscn" id="4_ip25l"]
+[ext_resource type="Script" uid="uid://b0wapire6ula1" path="res://entities/enemys/enemy_common_states/enemy_patrol.gd" id="5_ip25l"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_bgamg"]
 radius = 0.0815262
@@ -39,27 +39,22 @@ radius = 0.0642338
 
 [node name="FirstEnemy" instance=ExtResource("1_y5gwa")]
 script = ExtResource("2_phhhl")
-grabbed_texture = ExtResource("2_qp6f8")
 texture_ofset_when_grabbed = Vector3(0, -0.09, 0)
 
-[node name="DeathComponent" parent="." index="0" instance=ExtResource("4_ip25l")]
+[node name="DeathComponent" parent="." index="0" node_paths=PackedStringArray("health_component") instance=ExtResource("4_ip25l")]
+health_component = NodePath("../HealthComponent")
+texture = ExtResource("2_qp6f8")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="." index="1"]
 shape = SubResource("SphereShape3D_bgamg")
 
-[node name="idle" type="Node" parent="StateMachine" index="0"]
-script = ExtResource("3_popww")
-metadata/_custom_type_script = "uid://dsnjlxvj4s1uu"
-
-[node name="Grabbed" type="Node" parent="StateMachine" index="1"]
-script = ExtResource("3_popww")
-metadata/_custom_type_script = "uid://dsnjlxvj4s1uu"
+[node name="Patrol" parent="StateMachine" index="1"]
+script = ExtResource("5_ip25l")
 
 [node name="CollisionShape3D" parent="." index="4"]
 shape = SubResource("BoxShape3D_popww")
 
 [node name="AnimatedSprite3D" parent="Visuals" index="0"]
-texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_qp6f8")
 animation = &"idle"
 
@@ -81,5 +76,10 @@ collision_mask = 2
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HurtBox" index="0"]
 shape = SubResource("SphereShape3D_popww")
 debug_color = Color(0.847169, 0.000957224, 0.906666, 0.42)
+
+[node name="DebugLabel" parent="." index="10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.141516, 0)
+pixel_size = 0.0023
+text = "idle"
 
 [connection signal="area_entered" from="GrabableComponent" to="." method="_on_grabable_component_area_entered"]

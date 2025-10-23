@@ -94,7 +94,7 @@ smoothness = 5.0
 offset = Vector3(0, 0.335, 1)
 
 [node name="Player" parent="." instance=ExtResource("1_ig7tw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 0.7, 0)
 
 [node name="Meshs" type="Node3D" parent="."]
 
@@ -127,9 +127,9 @@ size = Vector3(1.5, 0.4, 1)
 material = SubResource("StandardMaterial3D_ycdy4")
 
 [node name="ProtoCSGBox3D" parent="Meshs/ProtoCSGBox3D5" instance=ExtResource("3_1bvp3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15, 0.2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 1.49011e-08)
 operation = 2
-size = Vector3(1, 0.7, 0.6)
+size = Vector3(1, 0.6, 1)
 material = SubResource("StandardMaterial3D_kek77")
 
 [node name="ProtoCSGBox3D6" parent="Meshs" instance=ExtResource("3_1bvp3")]

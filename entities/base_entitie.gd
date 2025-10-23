@@ -14,7 +14,7 @@ signal collide_when_thrown(object)
 
 var grabbed := false
 var target_gripper : CharacterBody3D
-var gripper_ofset := Vector3(0, -0.150, 0)
+#var gripper_ofset := Vector3(0, -0.150, 0)
 
 
 var thrown := false
@@ -25,19 +25,21 @@ func start() -> void:
 	thrown_collider.call_deferred("set","enabled", false)
 	if sprite.sprite_frames != null:
 		pass
-	if can_be_grabbed:
-		grabable_component.enabled = true
-	else:
-		grabable_component.enabled = false
+	if grabable_component.has_node("CollisionShape3D"):
+		if can_be_grabbed:
+			grabable_component.get_node("CollisionShape3D").call_deferred("set","enabled", true)
+		else:
+			grabable_component.get_node("CollisionShape3D").call_deferred("set","enabled", false)
 
 
 func _physics_process(delta: float) -> void:
-	pass
+	trow_ray_cast_manager()
+	grabbed_and_trow_logic(delta)
 
 
 func grabbed_and_trow_logic(delta):
 	if grabbed:
-		global_position = target_gripper.global_position + gripper_ofset
+		global_position = target_gripper.global_position + texture_ofset_when_grabbed
 		sprite.hide()
 	elif thrown:
 		velocity.x = 80.0 * thrown_dir * delta

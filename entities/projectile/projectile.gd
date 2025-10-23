@@ -13,7 +13,7 @@ func _process(delta):
 	position += direction * speed * delta
 
 
-func on_hitbox_area_entered(area: Area2D):
+func on_hitbox_area_entered(area: Area3D):
 	explode()
 
 

@@ -1,16 +1,11 @@
 extends CharacterBody3D
 
-
-#var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
-
-#@export var fire_component : Node
 @export var sprite: Node
 @export var ledge_grab_offset : Vector3
 @onready var state_machine: StateMachine = $StateMachine
 @onready var eyes_ray_cast = $EyesRayCast
 @onready var head_ray_cast = $HeadRayCast
 @onready var gripper_component: Gripper = $GripperComponent
-
 
 @export var max_speed: float = 600
 @export var acceleration: float = 3000
@@ -193,7 +188,6 @@ func timers(delta: float) -> void:
 	# This way everything is contained in just 1 script with no node requirements
 	jump_coyote_timer -= delta
 	jump_buffer_timer -= delta
-
 
 func gripper_area_disable(value: bool):
 	gripper_component.get_node("CollisionShape3D").call_deferred("set","disabled", value) 

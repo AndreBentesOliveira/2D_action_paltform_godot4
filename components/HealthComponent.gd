@@ -5,7 +5,7 @@ signal die
 
 @export var max_health : int
 @export var debug : bool
-@export var death_component: Node
+
 var health: int
 var alive := true
 var invencible := false
@@ -42,3 +42,4 @@ func explode():
 	if debug:
 		print(str(get_parent().name) + " die")
 	die.emit()
+	get_parent().queue_free()

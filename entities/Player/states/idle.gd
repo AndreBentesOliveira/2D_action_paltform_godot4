@@ -10,11 +10,6 @@ func _enter_state(_old_state: StringName, _params: Dictionary) -> void:
 
 
 func _physics_process(_delta: float) -> void:
-	#if player.is_attacking:
-		#sprite.play(&"idle_shoot")
-	#else:
-		#sprite.play(&"idle")
-	
 	if player.is_on_floor():
 		if Input.get_axis(&"walk_left", &"walk_right") != 0.0:
 			return enter_state(&"Walk")

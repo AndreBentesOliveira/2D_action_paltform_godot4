@@ -1,12 +1,14 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=3 format=3 uid="uid://tc2vnnrm8k2r"]
 
-[ext_resource path="res://components/HitBoxComponent.tscn" type="PackedScene" id=2]
-[ext_resource path="res://entities/projectile/projectile.gd" type="Script" id=3]
+[ext_resource type="PackedScene" uid="uid://dmior2oihtvyn" path="res://components/HitBoxComponent.tscn" id="2"]
+[ext_resource type="Script" uid="uid://dl1hh3fd4eynp" path="res://entities/projectile/projectile.gd" id="3"]
 
-[node name="Baseprojectile" type="Node2D"]
-script = ExtResource( 3 )
+[node name="Baseprojectile" type="Node3D"]
+script = ExtResource("3")
 
-[node name="HitBoxComponent" parent="." instance=ExtResource( 2 )]
+[node name="Sprite3D" type="Sprite3D" parent="."]
+
+[node name="HitBoxComponent" parent="." instance=ExtResource("2")]
 collision_layer = 0
 collision_mask = 5
 

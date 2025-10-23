@@ -10,8 +10,7 @@ func enemy_start() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	trow_ray_cast_manager()
-	grabbed_and_trow_logic(delta)
+	super(delta)
 	if grabbed:
 		pass
 	elif  thrown:
@@ -20,3 +19,7 @@ func _physics_process(delta: float) -> void:
 			hit_box_component.get_node("CollisionShape3D").call_deferred("set","disabled", true)
 		if hurt_box.has_node("CollisionShape3D"):
 			hurt_box.get_node("CollisionShape3D").call_deferred("set","disabled", true)
+
+
+func _on_state_machine_state_transitioned(old_state: StringName, new_state: StringName, state_data: Dictionary) -> void:
+	$DebugLabel.text = str(new_state)

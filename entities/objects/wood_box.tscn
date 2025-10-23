@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://b070x1aaiy43e"]
+
+[ext_resource type="PackedScene" uid="uid://sq2tljtri5n3" path="res://entities/base_entitie.tscn" id="1_44g7a"]
+[ext_resource type="Texture2D" uid="uid://cs5yhf4i503t7" path="res://entities/objects/wood_box_sprite.png" id="2_swu3p"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_44g7a"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_swu3p")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_44g7a"]
+size = Vector3(1, 0.0403137, 1)
+
+[node name="WoodBox" instance=ExtResource("1_44g7a")]
+grabbed_texture = ExtResource("2_swu3p")
+texture_ofset_when_grabbed = Vector3(0, -0.15, 0)
+
+[node name="AnimatedSprite3D" parent="Visuals" index="0"]
+sprite_frames = SubResource("SpriteFrames_44g7a")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GrabableComponent" index="1"]
+transform = Transform3D(0.16834, 0, 0, 0, 0.546203, 0, 0, 0, 1, 0, 0.0849413, 0)
+shape = SubResource("BoxShape3D_44g7a")

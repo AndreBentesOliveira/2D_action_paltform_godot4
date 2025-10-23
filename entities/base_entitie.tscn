@@ -11,6 +11,7 @@ script = ExtResource("1_574ob")
 [node name="Visuals" type="Node3D" parent="."]
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Visuals"]
+texture_filter = 0
 
 [node name="GrabableComponent" parent="." instance=ExtResource("2_373be")]
 collision_layer = 8

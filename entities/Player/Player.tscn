@@ -192,7 +192,7 @@ shape = SubResource("BoxShape3D_10ubs")
 double_sided = false
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_egyt8")
-animation = &"grab_entitie"
+animation = &"idle"
 
 [node name="TrowMark" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0786603, 0, 0)
