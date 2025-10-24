@@ -117,15 +117,6 @@ collision_layer = 2
 script = ExtResource("1_cm1li")
 sprite = NodePath("Visuals/Sprite3D")
 ledge_grab_offset = Vector3(0.202, -0.105, 0)
-max_speed = 1.5
-acceleration = 2.0
-turning_acceleration = 5.0
-deceleration = 5.0
-gravity_acceleration = 5.0
-max_gravity_falling_speed = 25.0
-jump_height = 0.7
-jump_cut = 0.7
-jump_gravity_acceleration = 2.5
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "common_node")]
 script = ExtResource("2_d3nms")

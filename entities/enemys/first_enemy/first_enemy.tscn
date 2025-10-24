@@ -1,13 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://ci5vu1sap676e"]
+[gd_scene load_steps=11 format=3 uid="uid://ci5vu1sap676e"]
 
 [ext_resource type="PackedScene" uid="uid://b5cwxrq76l7yw" path="res://entities/enemys/base_enemy.tscn" id="1_y5gwa"]
 [ext_resource type="Script" uid="uid://cqji5xbertph5" path="res://entities/enemys/first_enemy/first_enemy.gd" id="2_phhhl"]
 [ext_resource type="Texture2D" uid="uid://b61wqofekqbdl" path="res://entities/enemys/first_enemy/base_enemy_grabed.png" id="2_qp6f8"]
 [ext_resource type="PackedScene" uid="uid://du24pmqu1sykk" path="res://components/death_component.tscn" id="4_ip25l"]
-[ext_resource type="Script" uid="uid://b0wapire6ula1" path="res://entities/enemys/enemy_common_states/enemy_patrol.gd" id="5_ip25l"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_bgamg"]
-radius = 0.0815262
+[sub_resource type="BoxShape3D" id="BoxShape3D_ip25l"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_popww"]
 size = Vector3(0.1, 0.1, 0.1)
@@ -37,7 +35,7 @@ radius = 0.05216
 [sub_resource type="SphereShape3D" id="SphereShape3D_popww"]
 radius = 0.0642338
 
-[node name="FirstEnemy" instance=ExtResource("1_y5gwa")]
+[node name="Slime" instance=ExtResource("1_y5gwa")]
 script = ExtResource("2_phhhl")
 texture_ofset_when_grabbed = Vector3(0, -0.09, 0)
 
@@ -46,10 +44,8 @@ health_component = NodePath("../HealthComponent")
 texture = ExtResource("2_qp6f8")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="." index="1"]
-shape = SubResource("SphereShape3D_bgamg")
-
-[node name="Patrol" parent="StateMachine" index="1"]
-script = ExtResource("5_ip25l")
+transform = Transform3D(0.0988129, 0, 0, 0, 0.0988129, 0, 0, 0, 0.0988129, 0, 0, 0)
+shape = SubResource("BoxShape3D_ip25l")
 
 [node name="CollisionShape3D" parent="." index="4"]
 shape = SubResource("BoxShape3D_popww")

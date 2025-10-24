@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://ckxrci77f0bq7"]
+[gd_scene load_steps=23 format=3 uid="uid://ckxrci77f0bq7"]
 
 [ext_resource type="Script" uid="uid://ewewltobs1v6" path="res://main.gd" id="1_5vw27"]
 [ext_resource type="PackedScene" uid="uid://dpuqtlr1m3dcj" path="res://entities/Player/Player.tscn" id="1_ig7tw"]
@@ -61,6 +61,12 @@ albedo_texture = ExtResource("4_lquwl")
 uv1_offset = Vector3(0.5, 0.5, 0.5)
 uv1_triplanar = true
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2cqfq"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_lquwl")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5vw27"]
 resource_local_to_scene = true
 albedo_texture = ExtResource("5_7mycd")
@@ -90,11 +96,13 @@ transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 
 size = 2.609
 script = ExtResource("2_0xm2m")
 target = NodePath("../Player")
-smoothness = 5.0
+smoothness = 4.0
 offset = Vector3(0, 0.335, 1)
 
 [node name="Player" parent="." instance=ExtResource("1_ig7tw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 0.7, 0)
+jump_coyote = 0.1
+jump_buffer = 0.2
 
 [node name="Meshs" type="Node3D" parent="."]
 
@@ -127,10 +135,16 @@ size = Vector3(1.5, 0.4, 1)
 material = SubResource("StandardMaterial3D_ycdy4")
 
 [node name="ProtoCSGBox3D" parent="Meshs/ProtoCSGBox3D5" instance=ExtResource("3_1bvp3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 1.49011e-08)
+transform = Transform3D(0.866025, -0.5, 0, 0.5, 0.866025, 0, 0, 0, 1, -0.386602, 0.25, 1.49011e-08)
 operation = 2
-size = Vector3(1, 0.6, 1)
+size = Vector3(1.2, 0.6, 1)
 material = SubResource("StandardMaterial3D_kek77")
+
+[node name="ProtoCSGBox3D2" parent="Meshs/ProtoCSGBox3D5" instance=ExtResource("3_1bvp3")]
+transform = Transform3D(0.862593, 0.505898, 0, -0.505898, 0.862593, 0, 0, 0, 1, 0.713398, 0.15, 1.49011e-08)
+operation = 2
+size = Vector3(1.2, 0.6, 1)
+material = SubResource("StandardMaterial3D_2cqfq")
 
 [node name="ProtoCSGBox3D6" parent="Meshs" instance=ExtResource("3_1bvp3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0.7, -1)
@@ -150,8 +164,14 @@ block_color = 3
 
 [node name="EntitiesLayer" type="Node3D" parent="." groups=["entities_layer"]]
 
-[node name="FirstEnemy" parent="EntitiesLayer" instance=ExtResource("7_lgr22")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3, 0.9, 0)
+[node name="Slime" parent="EntitiesLayer" instance=ExtResource("7_lgr22")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.7, 0)
 
-[node name="FirstEnemy2" parent="EntitiesLayer" instance=ExtResource("7_lgr22")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0)
+[node name="Slime2" parent="EntitiesLayer" instance=ExtResource("7_lgr22")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 1, 0)
+
+[node name="Slime3" parent="EntitiesLayer" instance=ExtResource("7_lgr22")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7, 1, 0)
+
+[node name="Slime4" parent="EntitiesLayer" instance=ExtResource("7_lgr22")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 1.4, 0)

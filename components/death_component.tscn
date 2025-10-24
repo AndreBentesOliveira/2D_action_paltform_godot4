@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://8rcwrf72151y" path="res://components/death_component.gd" id="1_lcu1u"]
 [ext_resource type="Texture2D" uid="uid://b61wqofekqbdl" path="res://entities/enemys/first_enemy/base_enemy_grabed.png" id="2_aamas"]
+[ext_resource type="Material" uid="uid://bjlqm5c4a48ky" path="res://effects/thrown_die.tres" id="2_mwkmo"]
 
 [sub_resource type="Animation" id="Animation_mwkmo"]
 length = 0.001
@@ -53,16 +54,6 @@ _data = {
 &"default": SubResource("Animation_aamas")
 }
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_mwkmo"]
-particle_flag_disable_z = true
-direction = Vector3(0, 1, 0)
-spread = 0.0
-initial_velocity_min = 3.0
-initial_velocity_max = 3.0
-angular_velocity_min = 720.0
-angular_velocity_max = 720.0
-gravity = Vector3(0, -7, 0)
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t5qci"]
 transparency = 1
 shading_mode = 0
@@ -89,5 +80,5 @@ libraries = {
 emitting = false
 amount = 1
 lifetime = 2.0
-process_material = SubResource("ParticleProcessMaterial_mwkmo")
+process_material = ExtResource("2_mwkmo")
 draw_pass_1 = SubResource("QuadMesh_g34sr")

@@ -7,24 +7,24 @@ extends CharacterBody3D
 @onready var head_ray_cast = $HeadRayCast
 @onready var gripper_component: Gripper = $GripperComponent
 
-@export var max_speed: float = 600
-@export var acceleration: float = 3000
-@export var turning_acceleration : float = 13500
-@export var deceleration: float = 3200
+@export var max_speed: float = 1.5
+@export var acceleration: float = 2.0
+@export var turning_acceleration : float = 5.0
+@export var deceleration: float = 5.0
 
 # GRAVITY ----- #
-@export var gravity_acceleration : float = 4500
+@export var gravity_acceleration : float = 5.0
 ## Won't apply gravity if falling faster than this speed to prevent massive
 ## acceleration in long falls.
-@export_range(0, 5000) var max_gravity_falling_speed : float = 1000
+@export_range(0, 5000) var max_gravity_falling_speed : float = 2.0
 # ------------- #
 
 # JUMP VARIABLES ------------------- #
 ## Height in world units. For a tile-based game, you likely want to multiply
 ## by tile size to tune in numbers of tiles.
-@export var jump_height : float = 211.3
-@export var jump_cut : float = 0.2
-@export var jump_gravity_acceleration : float = 4000
+@export var jump_height : float = 0.7
+@export var jump_cut : float = 0.7
+@export var jump_gravity_acceleration : float = 2.5
 ## Speed that marks the peak of our jump. (This close to zero speed we're
 ## switching from moving up to moving down.) During this peak, we reduce
 ## gravity with jump_hang_gravity_mult to give some hang time.
@@ -145,7 +145,7 @@ func apply_gravity(delta: float) -> void:
 		applied_gravity *= jump_hang_gravity_mult
 
 	velocity.y -= applied_gravity
-
+	
 
 func x_movement(delta: float) -> void:
 	var x_dir: float = Input.get_axis(&"walk_left", &"walk_right")

@@ -11,6 +11,7 @@ func enemy_start() -> void:
 
 func _physics_process(delta: float) -> void:
 	super(delta)
+	move_and_slide()
 	if grabbed:
 		pass
 	elif  thrown:

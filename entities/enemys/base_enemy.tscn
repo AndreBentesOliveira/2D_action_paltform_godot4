@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://lafm0n3g6bhk" path="res://components/HealthComponent.tscn" id="4_sb2ln"]
 [ext_resource type="PackedScene" uid="uid://vj60wmefmix5" path="res://components/HurtBoxComponent.tscn" id="5_6mhc8"]
 [ext_resource type="Script" uid="uid://c7arulpt1e5v0" path="res://entities/enemys/enemy_common_states/enemy_idle.gd" id="5_ir5xu"]
-[ext_resource type="Script" uid="uid://dsnjlxvj4s1uu" path="res://addons/state_machine_nodes/state_node.gd" id="6_mmi2y"]
+[ext_resource type="Script" uid="uid://b0wapire6ula1" path="res://entities/enemys/enemy_common_states/enemy_patrol.gd" id="6_mmi2y"]
 
 [node name="BaseEnemy" instance=ExtResource("1_usihd")]
 collision_layer = 4

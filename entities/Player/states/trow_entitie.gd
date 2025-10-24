@@ -30,7 +30,6 @@ func rotate_to_angle(angulo_alvo_graus: Vector3, duracao: float) -> void:
 	.set_ease(Tween.EASE_OUT)
 	await tween.finished
 	is_rotating = false
-	print("Rotação para ", angulo_alvo_graus, "° concluída.")
 	var entities = get_tree().get_first_node_in_group("entities_layer")
 	entities.add_child(player.entitie_grabbed)
 	player.entitie_grabbed.global_position = player.get_node("TrowMark").global_position

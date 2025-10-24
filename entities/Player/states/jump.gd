@@ -4,6 +4,7 @@ var eledge_grab := false
 var entitie_grab : = false
 
 func _enter_state(_old_state: StringName, _params: Dictionary) -> void:
+	visuals.rotation = Vector3.ZERO
 	eledge_grab = false
 	entitie_grab = false
 	if _old_state == "GrabEntitie":

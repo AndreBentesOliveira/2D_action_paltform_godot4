@@ -6,7 +6,6 @@ class_name Hurtbox
 
 
 func _ready() -> void:
-	print(get_parent().name + " " + str(healthcomponent))
 	area_entered.connect(on_area_entered)
 	#body_entered.connect(on_body_entered)
 

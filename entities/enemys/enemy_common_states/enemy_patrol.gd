@@ -8,5 +8,4 @@ func _enter_state(_old_state: StringName, _params: Dictionary) -> void:
 func _physics_process(_delta: float) -> void:
 	if enemy_node.rand_change_state(_delta):
 		return enter_state(&"Idle")
-	
-	enemy_node.velocity.x += 0.2 * _delta
+	enemy_node.velocity.x += -0.2 * _delta

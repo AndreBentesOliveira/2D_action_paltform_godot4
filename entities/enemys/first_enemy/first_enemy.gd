@@ -13,10 +13,6 @@ func _ready() -> void:
 	enemy_start()
 
 
-func _process(delta: float) -> void:
-	pass
-
-
 func _on_grabable_component_area_entered(area: Area3D) -> void:
 	target_gripper = area.get_parent()
 	grabbed = true

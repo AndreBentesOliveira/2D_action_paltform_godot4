@@ -1,0 +1,12 @@
+[gd_resource type="ParticleProcessMaterial" format=3 uid="uid://bjlqm5c4a48ky"]
+
+[resource]
+resource_local_to_scene = true
+particle_flag_disable_z = true
+direction = Vector3(0, 1, 0)
+spread = 0.0
+initial_velocity_min = 3.0
+initial_velocity_max = 3.0
+angular_velocity_min = -256.9
+angular_velocity_max = 499.76
+gravity = Vector3(0, -7, 0)

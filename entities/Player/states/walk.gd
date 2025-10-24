@@ -6,6 +6,7 @@ func _enter_state(_old_state: StringName, _params: Dictionary) -> void:
 
 
 func _physics_process(_delta: float) -> void:
+	find_ground_angle()
 	x_movement(_delta)
 
 
@@ -40,3 +41,8 @@ func x_movement(delta: float) -> void:
 				return enter_state(&"Idle")
 	else:
 		return enter_state(&"Fall")
+
+
+func find_ground_angle():
+	var floor_normal = player.get_floor_normal()
+	visuals.rotation.z = -floor_normal.x
