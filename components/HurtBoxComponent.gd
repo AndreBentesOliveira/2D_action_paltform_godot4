@@ -18,7 +18,7 @@ func on_area_entered(area: Area3D) -> void:
 	if healthcomponent == null:
 		return
 	
-	healthcomponent. take_damage(1)
+	healthcomponent.take_damage(1)
 
 
 func on_ray_cast_entered(body):

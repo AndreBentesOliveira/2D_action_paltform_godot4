@@ -6,6 +6,7 @@ func _enter_state(_old_state: StringName, _params: Dictionary) -> void:
 
 
 func _physics_process(_delta: float) -> void:
+	sprite.speed_scale = player.velocity.x
 	find_ground_angle()
 	x_movement(_delta)
 

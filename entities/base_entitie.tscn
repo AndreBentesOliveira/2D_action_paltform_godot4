@@ -17,7 +17,19 @@ texture_filter = 0
 collision_layer = 8
 collision_mask = 8
 
-[node name="ThrownCollider" type="RayCast3D" parent="."]
+[node name="ThrownRayCasts" type="Node3D" parent="."]
+
+[node name="ThrownCollider" type="RayCast3D" parent="ThrownRayCasts"]
+target_position = Vector3(0.1, 0, 0)
+collision_mask = 7
+collide_with_areas = true
+
+[node name="ThrownCollider2" type="RayCast3D" parent="ThrownRayCasts"]
+target_position = Vector3(0.1, 0, 0)
+collision_mask = 7
+collide_with_areas = true
+
+[node name="ThrownCollider3" type="RayCast3D" parent="ThrownRayCasts"]
 target_position = Vector3(0.1, 0, 0)
 collision_mask = 7
 collide_with_areas = true
