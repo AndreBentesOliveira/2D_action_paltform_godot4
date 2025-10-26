@@ -20,9 +20,9 @@ func _ready():
 func take_damage(damage_amount):
 	if invencible:
 		return
+	health -= damage_amount
 	if debug:
 		print("take damage %s, Health: %s/%s" % [damage_amount, health, max_health])
-	health -= damage_amount
 	if health <= 0:
 		explode()
 

@@ -37,6 +37,9 @@ func start() -> void:
 
 
 func _physics_process(delta: float) -> void:
+	if is_on_floor():
+		visuals.rotation.z = -self.get_floor_normal().x
+	velocity.z = 0
 	trow_ray_cast_manager()
 	grabbed_and_trow_logic(delta)
 
@@ -46,7 +49,7 @@ func grabbed_and_trow_logic(delta):
 		global_position = target_gripper.global_position + texture_ofset_when_grabbed
 		sprite.hide()
 	elif thrown:
-		velocity.x = 80.0 * thrown_dir * delta
+		velocity.x = 60.0 * thrown_dir * delta
 		sprite.show()
 		visuals.rotation_degrees.z += 10.0
 		move_and_slide()
@@ -74,6 +77,3 @@ func trow_ray_cast_manager():
 		collide_when_thrown.emit(thrown_collider2.get_collider())
 	elif thrown_collider3.is_colliding():
 		collide_when_thrown.emit(thrown_collider3.get_collider())
-
-		grabbed = false
-		thrown = false

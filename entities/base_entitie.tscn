@@ -1,10 +1,32 @@
-[gd_scene load_steps=3 format=3 uid="uid://sq2tljtri5n3"]
+[gd_scene load_steps=7 format=3 uid="uid://sq2tljtri5n3"]
 
 [ext_resource type="Script" uid="uid://d3cx154jam3ac" path="res://entities/base_entitie.gd" id="1_574ob"]
 [ext_resource type="PackedScene" uid="uid://bdfyi736su7r5" path="res://components/grabable_component.tscn" id="2_373be"]
+[ext_resource type="Script" uid="uid://cyjj3nyqr8e3y" path="res://addons/state_machine_nodes/state_machine.gd" id="2_s00yr"]
+[ext_resource type="Script" uid="uid://dsnjlxvj4s1uu" path="res://addons/state_machine_nodes/state_node.gd" id="3_vuaqo"]
+[ext_resource type="Script" uid="uid://c26aoxjbints1" path="res://entities/common_entities_states/grabbed.gd" id="4_lah4p"]
+[ext_resource type="Script" uid="uid://b7f316rgkoiii" path="res://entities/common_entities_states/thrown.gd" id="5_6r2ix"]
 
 [node name="BaseEntitie" type="CharacterBody3D"]
 script = ExtResource("1_574ob")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "common_node")]
+script = ExtResource("2_s00yr")
+initial_state = NodePath("Idle")
+common_node = NodePath("..")
+metadata/_custom_type_script = "uid://cyjj3nyqr8e3y"
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("3_vuaqo")
+metadata/_custom_type_script = "uid://dsnjlxvj4s1uu"
+
+[node name="Grabbed" type="Node" parent="StateMachine"]
+script = ExtResource("4_lah4p")
+metadata/_custom_type_script = "uid://dsnjlxvj4s1uu"
+
+[node name="Thrown" type="Node" parent="StateMachine"]
+script = ExtResource("5_6r2ix")
+metadata/_custom_type_script = "uid://dsnjlxvj4s1uu"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 
@@ -21,15 +43,13 @@ collision_mask = 8
 
 [node name="ThrownCollider" type="RayCast3D" parent="ThrownRayCasts"]
 target_position = Vector3(0.1, 0, 0)
-collision_mask = 7
-collide_with_areas = true
 
 [node name="ThrownCollider2" type="RayCast3D" parent="ThrownRayCasts"]
 target_position = Vector3(0.1, 0, 0)
-collision_mask = 7
+collision_mask = 5
 collide_with_areas = true
 
 [node name="ThrownCollider3" type="RayCast3D" parent="ThrownRayCasts"]
 target_position = Vector3(0.1, 0, 0)
-collision_mask = 7
+collision_mask = 5
 collide_with_areas = true

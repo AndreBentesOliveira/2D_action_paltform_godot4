@@ -167,15 +167,3 @@ block_color = 3
 [node name="Slime" parent="EntitiesLayer" instance=ExtResource("7_lgr22")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.7, 0)
 collision_layer = 4
-
-[node name="Slime2" parent="EntitiesLayer" instance=ExtResource("7_lgr22")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 1, 0)
-collision_layer = 4
-
-[node name="Slime3" parent="EntitiesLayer" instance=ExtResource("7_lgr22")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7, 1, 0)
-collision_layer = 4
-
-[node name="Slime4" parent="EntitiesLayer" instance=ExtResource("7_lgr22")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 1.4, 0)
-collision_layer = 4

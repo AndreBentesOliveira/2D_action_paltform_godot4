@@ -4,11 +4,9 @@ class_name Grabable
 signal grabbed(entitie)
 var enabled := true
 
-func _ready() -> void:
-	pass
-
 
 func on_grabable_area_entered(area):
+	print(area)
 	if area is not Gripper:
 		return
 	if not enabled:

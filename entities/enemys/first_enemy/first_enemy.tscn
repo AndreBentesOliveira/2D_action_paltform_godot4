@@ -75,9 +75,15 @@ debug_color = Color(0.847169, 0.000957224, 0.906666, 0.42)
 
 [node name="ThrownCollider" parent="ThrownRayCasts" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.043179, 0)
+collision_mask = 7
+collide_with_areas = true
+
+[node name="ThrownCollider2" parent="ThrownRayCasts" index="1"]
+collision_mask = 7
 
 [node name="ThrownCollider3" parent="ThrownRayCasts" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0466334, 0)
+collision_mask = 7
 
 [node name="DebugLabel" parent="." index="10"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.141516, 0)
