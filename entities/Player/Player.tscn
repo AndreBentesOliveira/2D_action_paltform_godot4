@@ -219,6 +219,12 @@ text = "velocity.y"
 [node name="VelocityX" type="Label" parent="MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+text = "velocity.x"
+
+[node name="Health" type="Label" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Health"
 
 [node name="RayCast1" type="RayCast3D" parent="."]
 target_position = Vector3(0.135, 0, 0)
@@ -231,6 +237,7 @@ target_position = Vector3(0, -0.244, 0)
 collision_layer = 0
 collision_mask = 4
 script = ExtResource("19_62gbw")
+knock_back = true
 healthcomponent = NodePath("../HealthComponent")
 metadata/_custom_type_script = "uid://ca21856yep1nj"
 

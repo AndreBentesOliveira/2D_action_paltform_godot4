@@ -46,15 +46,30 @@ var can_eledge_grab := false
 var grab_entitie := false
 var entitie_grabbed : CharacterBody3D
 
+#KNOK BACK VARIABLES
+var knockback: float = 0.0
+var knockback_timer : float = 0.0
+
 
 func _ready() -> void:
 	gripper_component.grab.connect(on_player_grab_entitie)
+	%Health.text = "Health: " + str($HealthComponent.health)
+	$HealthComponent.health_change.connect(on_health_changed)
 	load_input_map()
 
 
 func _physics_process(delta: float) -> void:
-	%VelocityY.text = str("%.2f" % velocity.y)
-	%VelocityX.text = str("%.2f" % velocity.x)
+	print(knockback_timer)
+	if knockback_timer > 0.0:
+		velocity.x = knockback
+		knockback_timer -= delta
+		if knockback_timer <= 0.0:
+			knockback = 0.0
+	else:
+		knockback = 0.0
+	
+	%VelocityY.text = str("Velocity.y: " + "%.2f" % velocity.y)
+	%VelocityX.text = str("Velocity.x: " + "%.2f" % velocity.x)
 	if !sprite.flip_h:
 		eyes_ray_cast.position.x = 0.062
 		head_ray_cast.position.x = 0.062
@@ -76,8 +91,6 @@ func _physics_process(delta: float) -> void:
 	# The following line will only be processed if 'StateMachine.auto_process' is set to 'false'.
 	state_machine.call_physics_process(delta)
 	velocity.z = 0
-	#if not is_on_floor():
-		#check_for_ledge()
 	timers(delta)
 	move_and_slide()
 
@@ -191,3 +204,12 @@ func timers(delta: float) -> void:
 
 func gripper_area_disable(value: bool):
 	gripper_component.get_node("CollisionShape3D").call_deferred("set","disabled", value) 
+
+
+func on_health_changed(health):
+	%Health.text = "Health: " + str(health)
+
+
+func apply_knockback(dir: float, force : float, duration: float) -> void:
+	knockback = dir * force
+	knockback_timer = duration

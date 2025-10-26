@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://ckxrci77f0bq7"]
+[gd_scene load_steps=25 format=3 uid="uid://ckxrci77f0bq7"]
 
 [ext_resource type="Script" uid="uid://ewewltobs1v6" path="res://main.gd" id="1_5vw27"]
 [ext_resource type="PackedScene" uid="uid://dpuqtlr1m3dcj" path="res://entities/Player/Player.tscn" id="1_ig7tw"]
@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://bn66p4ar3fje4" path="res://addons/proto-csgs/textures/red/texture_13.png" id="5_7mycd"]
 [ext_resource type="Texture2D" uid="uid://c0x0tvmbhaqck" path="res://addons/proto-csgs/textures/orange/texture_13.png" id="5_lquwl"]
 [ext_resource type="PackedScene" uid="uid://ci5vu1sap676e" path="res://entities/enemys/first_enemy/first_enemy.tscn" id="7_lgr22"]
+[ext_resource type="Texture2D" uid="uid://c1rrn8gl1wfhi" path="res://256teste.png" id="9_03owx"]
+[ext_resource type="Texture2D" uid="uid://vkq4oyjrxwul" path="res://128teste.png" id="10_wkp8b"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fd1d0"]
 sky_energy_multiplier = 1.5
@@ -92,15 +94,15 @@ script = ExtResource("1_5vw27")
 environment = SubResource("Environment_rsl4a")
 
 [node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("target")]
-transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 1.23334, 0.834159)
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 5.9861, 1.23334, 0.834159)
 size = 2.609
 script = ExtResource("2_0xm2m")
 target = NodePath("../Player")
 smoothness = 4.0
-offset = Vector3(0, 0.335, 1)
+offset = Vector3(0, 2.46, 3.1)
 
 [node name="Player" parent="." instance=ExtResource("1_ig7tw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 0.7, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.4725, 0.7, 0)
 jump_coyote = 0.1
 jump_buffer = 0.2
 
@@ -167,3 +169,20 @@ block_color = 3
 [node name="Slime" parent="EntitiesLayer" instance=ExtResource("7_lgr22")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.7, 0)
 collision_layer = 4
+
+[node name="bg2" type="Sprite3D" parent="."]
+transform = Transform3D(0.866025, -0.5, 0, 0.5, 0.866025, 0, 0, 0, 1, -0.280069, 0.977886, -1.98902)
+texture_filter = 0
+texture = ExtResource("9_03owx")
+
+[node name="bg" type="Sprite3D" parent="."]
+transform = Transform3D(0.924858, 0.380312, 0, -0.380312, 0.924858, 0, 0, 0, 1, 1.75137, 0.977886, -1.98902)
+flip_h = true
+texture_filter = 0
+texture = ExtResource("9_03owx")
+
+[node name="128" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.4121, 1.13236, 0)
+flip_h = true
+texture_filter = 0
+texture = ExtResource("10_wkp8b")
