@@ -1,14 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://b5cwxrq76l7yw"]
+[gd_scene load_steps=7 format=3 uid="uid://b5cwxrq76l7yw"]
 
 [ext_resource type="Script" uid="uid://ctiasay8lw82c" path="res://entities/enemys/base_enemy.gd" id="1_dpifa"]
 [ext_resource type="PackedScene" uid="uid://sq2tljtri5n3" path="res://entities/base_entitie.tscn" id="1_usihd"]
-[ext_resource type="Script" uid="uid://cyjj3nyqr8e3y" path="res://addons/state_machine_nodes/state_machine.gd" id="2_14ai2"]
 [ext_resource type="Texture2D" uid="uid://b61wqofekqbdl" path="res://entities/enemys/first_enemy/base_enemy_grabed.png" id="3_5cc1h"]
 [ext_resource type="PackedScene" uid="uid://dmior2oihtvyn" path="res://components/HitBoxComponent.tscn" id="4_6wdoe"]
 [ext_resource type="PackedScene" uid="uid://lafm0n3g6bhk" path="res://components/HealthComponent.tscn" id="4_sb2ln"]
 [ext_resource type="PackedScene" uid="uid://vj60wmefmix5" path="res://components/HurtBoxComponent.tscn" id="5_6mhc8"]
-[ext_resource type="Script" uid="uid://c7arulpt1e5v0" path="res://entities/enemys/enemy_common_states/enemy_idle.gd" id="5_ir5xu"]
-[ext_resource type="Script" uid="uid://b0wapire6ula1" path="res://entities/enemys/enemy_common_states/enemy_patrol.gd" id="6_mmi2y"]
 
 [node name="BaseEnemy" instance=ExtResource("1_usihd")]
 collision_layer = 0
@@ -17,32 +14,16 @@ can_be_grabbed = true
 grabbed_texture = ExtResource("3_5cc1h")
 texture_ofset_when_grabbed = Vector3(0, -0.15, 0)
 
-[node name="StateMachine2" type="Node" parent="." index="0" node_paths=PackedStringArray("initial_state", "common_node")]
-script = ExtResource("2_14ai2")
-initial_state = NodePath("Idle")
-common_node = NodePath("..")
-metadata/_custom_type_script = "uid://cyjj3nyqr8e3y"
-
-[node name="Idle" type="Node" parent="StateMachine2" index="0"]
-script = ExtResource("5_ir5xu")
-metadata/_custom_type_script = "uid://dsnjlxvj4s1uu"
-
-[node name="Patrol" type="Node" parent="StateMachine2" index="1"]
-script = ExtResource("6_mmi2y")
-metadata/_custom_type_script = "uid://dsnjlxvj4s1uu"
-
-[node name="HealthComponent" parent="." index="1" instance=ExtResource("4_sb2ln")]
+[node name="HealthComponent" parent="." index="2" instance=ExtResource("4_sb2ln")]
 max_health = 1
 
-[node name="HitBoxComponent" parent="." index="5" instance=ExtResource("4_6wdoe")]
+[node name="HitBoxComponent" parent="." index="4" instance=ExtResource("4_6wdoe")]
 collision_layer = 4
 collision_mask = 0
 
-[node name="HurtBox" parent="." index="6" node_paths=PackedStringArray("healthcomponent") instance=ExtResource("5_6mhc8")]
+[node name="HurtBox" parent="." index="5" node_paths=PackedStringArray("healthcomponent") instance=ExtResource("5_6mhc8")]
 collision_mask = 6
 debug = true
 healthcomponent = NodePath("../HealthComponent")
 
-[node name="DebugLabel" type="Label3D" parent="." index="8"]
-
-[connection signal="state_transitioned" from="StateMachine2" to="." method="_on_state_machine_state_transitioned"]
+[node name="DebugLabel" type="Label3D" parent="." index="7"]

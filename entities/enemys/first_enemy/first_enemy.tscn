@@ -26,14 +26,14 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_qp6f8"]
-size = Vector3(0.0919922, 0.0272002, 0.1)
-
 [sub_resource type="SphereShape3D" id="SphereShape3D_ip25l"]
 radius = 0.05216
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_popww"]
 radius = 0.0642338
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qp6f8"]
+size = Vector3(0.0919922, 0.0272002, 0.1)
 
 [node name="Slime" instance=ExtResource("1_y5gwa")]
 script = ExtResource("2_phhhl")
@@ -47,31 +47,36 @@ texture = ExtResource("2_qp6f8")
 transform = Transform3D(0.0988129, 0, 0, 0, 0.0988129, 0, 0, 0, 0.0988129, 0, 0, 0)
 shape = SubResource("BoxShape3D_ip25l")
 
-[node name="CollisionShape3D" parent="." index="4"]
+[node name="CollisionShape3D" parent="." index="3"]
 shape = SubResource("BoxShape3D_popww")
 
 [node name="AnimatedSprite3D" parent="Visuals" index="0"]
 sprite_frames = SubResource("SpriteFrames_qp6f8")
 animation = &"idle"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="GrabableComponent" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00126953, 0.044481, 0)
-shape = SubResource("BoxShape3D_qp6f8")
-
-[node name="HitBoxComponent" parent="." index="7"]
+[node name="HitBoxComponent" parent="." index="6"]
 monitoring = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HitBoxComponent" index="0"]
 shape = SubResource("SphereShape3D_ip25l")
 debug_color = Color(0.997828, 0, 0.157054, 0.42)
 
-[node name="HurtBox" parent="." index="8"]
+[node name="HurtBox" parent="." index="7"]
 collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HurtBox" index="0"]
 shape = SubResource("SphereShape3D_popww")
 debug_color = Color(0.847169, 0.000957224, 0.906666, 0.42)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GrabableComponent" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00126953, 0.044481, 0)
+shape = SubResource("BoxShape3D_qp6f8")
+
+[node name="DebugLabel" parent="." index="9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.141516, 0)
+pixel_size = 0.0023
+text = "idle"
 
 [node name="ThrownCollider" parent="ThrownRayCasts" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.043179, 0)
@@ -85,9 +90,5 @@ collision_mask = 7
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0466334, 0)
 collision_mask = 7
 
-[node name="DebugLabel" parent="." index="10"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.141516, 0)
-pixel_size = 0.0023
-text = "idle"
-
 [connection signal="area_entered" from="GrabableComponent" to="." method="_on_grabable_component_area_entered"]
+[connection signal="grabbed" from="GrabableComponent" to="." method="_on_grabable_component_grabbed"]

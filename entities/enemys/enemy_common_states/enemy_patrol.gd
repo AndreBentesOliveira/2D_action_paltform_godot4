@@ -4,7 +4,8 @@ var timer : float
 var dir : int = 0
 
 func _enter_state(_old_state: StringName, _params: Dictionary) -> void:
-	sprite.play(&"patrol")
+	pass
+	#sprite.play(&"patrol")
 
 
 func _physics_process(_delta: float) -> void:

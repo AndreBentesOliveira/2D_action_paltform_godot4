@@ -59,7 +59,6 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	print(knockback_timer)
 	if knockback_timer > 0.0:
 		velocity.x = knockback
 		knockback_timer -= delta
