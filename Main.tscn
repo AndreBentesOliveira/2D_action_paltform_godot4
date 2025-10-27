@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cej3yoosomfd2" path="res://addons/proto-csgs/textures/dark/texture_13.png" id="4_lquwl"]
 [ext_resource type="Texture2D" uid="uid://bn66p4ar3fje4" path="res://addons/proto-csgs/textures/red/texture_13.png" id="5_7mycd"]
 [ext_resource type="Texture2D" uid="uid://c0x0tvmbhaqck" path="res://addons/proto-csgs/textures/orange/texture_13.png" id="5_lquwl"]
-[ext_resource type="PackedScene" uid="uid://ci5vu1sap676e" path="res://entities/enemys/first_enemy/first_enemy.tscn" id="7_lgr22"]
+[ext_resource type="PackedScene" uid="uid://ci5vu1sap676e" path="res://entities/enemys/first_enemy/slime_enemy.tscn" id="7_lgr22"]
 [ext_resource type="Texture2D" uid="uid://c1rrn8gl1wfhi" path="res://teste/256teste.png" id="9_03owx"]
 [ext_resource type="Texture2D" uid="uid://vkq4oyjrxwul" path="res://teste/128teste.png" id="10_wkp8b"]
 
@@ -167,16 +167,13 @@ block_color = 3
 [node name="EntitiesLayer" type="Node3D" parent="." groups=["entities_layer"]]
 
 [node name="Slime" parent="EntitiesLayer" instance=ExtResource("7_lgr22")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.7, 0)
-collision_layer = 4
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.03599, 0.654428, 0)
 
 [node name="Slime2" parent="EntitiesLayer" instance=ExtResource("7_lgr22")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.04151, 0.7, 0)
-collision_layer = 4
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.07524, 0.654428, 0)
 
 [node name="Slime3" parent="EntitiesLayer" instance=ExtResource("7_lgr22")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.69433, 0.7, 0)
-collision_layer = 4
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.978513, 0.654428, 0)
 
 [node name="bg" type="Sprite3D" parent="."]
 transform = Transform3D(0.924858, 0.380312, 0, -0.380312, 0.924858, 0, 0, 0, 1, 1.75137, 0.977886, -1.98902)

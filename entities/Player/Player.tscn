@@ -124,7 +124,7 @@ sprite = NodePath("Visuals/Sprite3D")
 ledge_grab_offset = Vector3(0.202, -0.105, 0)
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_vlwca")]
-max_health = 3
+max_health = 13
 debug = true
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "common_node")]

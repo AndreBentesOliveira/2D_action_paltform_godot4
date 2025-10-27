@@ -2,19 +2,8 @@ extends "common_state.gd"
 
 
 func _enter_state(_old_state: StringName, _params: Dictionary) -> void:
-	
-	var edge  = player.head_ray_cast.get_collision_point() - player.eyes_ray_cast.get_collision_point()
-	print(edge)
 	player.gripper_area_disable(true)
 	player.velocity = Vector3.ZERO
-	var offset_y = 0.04
-	#var offset_x = 0.04
-	#if sprite.flip_h:
-		#player.global_position.x -= offset_x
-	#else:
-		#player.global_position.x += offset_x
-#
-	player.global_position.y -= offset_y
 	sprite.play(&"grab_edge")
 
 

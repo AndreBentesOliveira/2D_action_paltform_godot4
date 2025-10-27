@@ -1,12 +1,14 @@
-extends "enemy_common_state.gd"
+extends "common_entitie_state.gd"
 
 
 func _enter_state(_old_state: StringName, _params: Dictionary) -> void:
-	enemy_node.velocity = Vector3.ZERO
+	entitie.velocity = Vector3.ZERO
 	sprite.play(&"idle")
 
 
 func _physics_process(_delta: float) -> void:
-	if entitie
-	if enemy_node.rand_change_state(_delta):
-		return enter_state(&"Patrol")
+	if entitie.grabbed:
+		print("GRABBED")
+		return enter_state(&"Grabbed")
+	if entitie.thrown:
+		return enter_state(&"Thrown")

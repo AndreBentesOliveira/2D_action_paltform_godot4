@@ -44,7 +44,7 @@ var is_jumping := false
 var is_attacking := false
 var can_eledge_grab := false
 var grab_entitie := false
-var entitie_grabbed : CharacterBody3D
+var entitie_grabbed : Array
 
 #KNOK BACK VARIABLES
 var knockback: float = 0.0
@@ -181,19 +181,27 @@ func x_movement(delta: float) -> void:
 
 
 func on_player_grab_entitie(entitie: CharacterBody3D):
+	$HealthComponent.invencible = true
 	gripper_area_disable(true)
 	grab_entitie = true
-	entitie_grabbed = entitie
-	entitie.get_parent().remove_child(entitie)
-	
-	if entitie.grabbed_texture == null:
-		return
-	var sprite_texture = Sprite3D.new()
-	sprite_texture.texture_filter = BaseMaterial3D.TEXTURE_FILTER_NEAREST
-	sprite_texture.texture = entitie.grabbed_texture
-	sprite.get_parent().add_child(sprite_texture)
-	sprite_texture.global_position += entitie.texture_ofset_when_grabbed
-	
+	entitie_grabbed.append(entitie)
+	if entitie_grabbed.size() == 1:
+		entitie_grabbed[0].grabbed = true
+		entitie_grabbed[0].get_parent().remove_child(entitie_grabbed[0])
+		if entitie.grabbed_texture == null:
+			return
+		var sprite_texture = Sprite3D.new()
+		sprite_texture.texture_filter = BaseMaterial3D.TEXTURE_FILTER_NEAREST
+		sprite_texture.texture = entitie_grabbed[0].grabbed_texture
+		sprite.get_parent().add_child(sprite_texture)
+		sprite_texture.global_position += entitie_grabbed[0].texture_ofset_when_grabbed
+	elif entitie_grabbed.size() >= 2:
+		for i in range(entitie_grabbed.size()):
+			if i != 0:
+				var dir = (entitie_grabbed[i].global_position - global_position).normalized()
+				entitie_grabbed[i].to_push(dir, 10.0, .5)
+
+
 
 func timers(delta: float) -> void:
 	# Using timer nodes here would mean unnecessary functions and node calls

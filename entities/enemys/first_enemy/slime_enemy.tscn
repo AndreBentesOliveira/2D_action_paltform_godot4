@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://ci5vu1sap676e"]
 
 [ext_resource type="PackedScene" uid="uid://b5cwxrq76l7yw" path="res://entities/enemys/base_enemy.tscn" id="1_y5gwa"]
-[ext_resource type="Script" uid="uid://cqji5xbertph5" path="res://entities/enemys/first_enemy/first_enemy.gd" id="2_phhhl"]
+[ext_resource type="Script" uid="uid://cqji5xbertph5" path="res://entities/enemys/first_enemy/slime_enemy.gd" id="2_oj2gu"]
 [ext_resource type="Texture2D" uid="uid://b61wqofekqbdl" path="res://entities/enemys/first_enemy/base_enemy_grabed.png" id="2_qp6f8"]
 [ext_resource type="PackedScene" uid="uid://du24pmqu1sykk" path="res://components/death_component.tscn" id="4_ip25l"]
 
@@ -36,8 +36,8 @@ radius = 0.0642338
 size = Vector3(0.0919922, 0.0272002, 0.1)
 
 [node name="Slime" instance=ExtResource("1_y5gwa")]
-script = ExtResource("2_phhhl")
-texture_ofset_when_grabbed = Vector3(0, -0.09, 0)
+script = ExtResource("2_oj2gu")
+texture_ofset_when_grabbed = Vector3(0, -0.06, 0)
 
 [node name="DeathComponent" parent="." index="0" node_paths=PackedStringArray("health_component") instance=ExtResource("4_ip25l")]
 health_component = NodePath("../HealthComponent")

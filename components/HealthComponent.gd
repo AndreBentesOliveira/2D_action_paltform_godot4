@@ -22,6 +22,8 @@ func _ready():
 
 func take_damage(damage_amount):
 	if invencible:
+		if debug:
+			print("INVENCIBLE")
 		return
 	health -= damage_amount
 	if debug:
