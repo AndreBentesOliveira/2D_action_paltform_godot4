@@ -3,13 +3,13 @@ extends "common_state.gd"
 var is_rotating: bool = false
 
 func _enter_state(_old_state: StringName, _params: Dictionary) -> void:
-	#print("Params: " + str(_params))
 	if _old_state == &"TrowEntitie":
 		rotate_to_angle(Vector3(0, 0, 0), .1)
 	sprite.play(&"idle")
 
 
 func _physics_process(_delta: float) -> void:
+	player.velocity = Vector3.ZERO
 	if player.is_on_floor():
 		if Input.get_axis(&"walk_left", &"walk_right") != 0.0:
 			return enter_state(&"Walk")

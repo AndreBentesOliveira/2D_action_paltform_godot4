@@ -15,11 +15,10 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor() and not thrown and not grabbed:
 		velocity.y -= 10.0 * delta
 	else:
-		velocity.y = 0.0
-	move_and_slide()
-	if grabbed:
 		pass
-	elif  thrown:
+		#velocity.y = 0.0
+	move_and_slide()
+	if  thrown:
 		#$CollisionShape3D.call_deferred("set","disabled", true)
 		if hit_box_component.has_node("CollisionShape3D"):
 			hit_box_component.get_node("CollisionShape3D").call_deferred("set","disabled", true)
