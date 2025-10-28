@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://dpuqtlr1m3dcj"]
+[gd_scene load_steps=31 format=3 uid="uid://dpuqtlr1m3dcj"]
 
 [ext_resource type="Script" uid="uid://bb2cx1iw4xeo2" path="res://entities/Player/Player.gd" id="1_cm1li"]
 [ext_resource type="Script" uid="uid://cyjj3nyqr8e3y" path="res://addons/state_machine_nodes/state_machine.gd" id="2_d3nms"]
@@ -116,6 +116,10 @@ animations = [{
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_62gbw"]
 radius = 0.099024
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_62gbw"]
+height = 0.17
+radius = 0.341797
 
 [node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("sprite")]
 collision_layer = 2
@@ -244,4 +248,14 @@ metadata/_custom_type_script = "uid://ca21856yep1nj"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox"]
 shape = SubResource("SphereShape3D_62gbw")
 
+[node name="DetectEnemy" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DetectEnemy"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+shape = SubResource("CylinderShape3D_62gbw")
+
 [connection signal="state_transitioned" from="StateMachine" to="." method="_on_state_machine_state_transitioned"]
+[connection signal="body_entered" from="DetectEnemy" to="." method="_on_detect_enemy_body_entered"]
+[connection signal="body_exited" from="DetectEnemy" to="." method="_on_detect_enemy_body_exited"]

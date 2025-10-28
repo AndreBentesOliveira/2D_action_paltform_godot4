@@ -36,6 +36,7 @@ radius = 0.0642338
 size = Vector3(0.0919922, 0.0272002, 0.1)
 
 [node name="Slime" instance=ExtResource("1_y5gwa")]
+collision_layer = 4
 script = ExtResource("2_oj2gu")
 texture_ofset_when_grabbed = Vector3(0, -0.06, 0)
 
@@ -80,15 +81,14 @@ text = "idle"
 
 [node name="ThrownCollider" parent="ThrownRayCasts" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.043179, 0)
-collision_mask = 7
-collide_with_areas = true
+collision_mask = 5
 
 [node name="ThrownCollider2" parent="ThrownRayCasts" index="1"]
-collision_mask = 7
+collide_with_areas = false
 
 [node name="ThrownCollider3" parent="ThrownRayCasts" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0466334, 0)
-collision_mask = 7
+collide_with_areas = false
 
 [connection signal="area_entered" from="GrabableComponent" to="." method="_on_grabable_component_area_entered"]
 [connection signal="grabbed" from="GrabableComponent" to="." method="_on_grabable_component_grabbed"]

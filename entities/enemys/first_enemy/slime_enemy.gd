@@ -16,8 +16,6 @@ func _ready() -> void:
 func _on_grabable_component_area_entered(area: Area3D) -> void:
 	if not area is Gripper:
 		return
-	#target_gripper = area.get_parent()
-	grabbed = true
 
 
 func on_collide_When_thrown(object):

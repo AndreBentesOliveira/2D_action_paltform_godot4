@@ -170,10 +170,10 @@ block_color = 3
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.03599, 0.654428, 0)
 
 [node name="Slime2" parent="EntitiesLayer" instance=ExtResource("7_lgr22")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.07524, 0.654428, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.12246, 0.654428, 0)
 
 [node name="Slime3" parent="EntitiesLayer" instance=ExtResource("7_lgr22")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.978513, 0.654428, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.944353, 0.654428, 0)
 
 [node name="bg" type="Sprite3D" parent="."]
 transform = Transform3D(0.924858, 0.380312, 0, -0.380312, 0.924858, 0, 0, 0, 1, 1.75137, 0.977886, -1.98902)

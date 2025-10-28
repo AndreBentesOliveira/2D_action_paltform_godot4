@@ -45,6 +45,7 @@ var is_attacking := false
 var can_eledge_grab := false
 var grab_entitie := false
 var entitie_grabbed : Array
+var enemys_in_area_grabb: Array
 
 #KNOK BACK VARIABLES
 var knockback: float = 0.0
@@ -186,6 +187,7 @@ func on_player_grab_entitie(entitie: CharacterBody3D):
 	grab_entitie = true
 	entitie_grabbed.append(entitie)
 	if entitie_grabbed.size() == 1:
+		push_enemys_away(entitie_grabbed[0])
 		entitie_grabbed[0].grabbed = true
 		entitie_grabbed[0].get_parent().remove_child(entitie_grabbed[0])
 		if entitie.grabbed_texture == null:
@@ -198,9 +200,15 @@ func on_player_grab_entitie(entitie: CharacterBody3D):
 	elif entitie_grabbed.size() >= 2:
 		for i in range(entitie_grabbed.size()):
 			if i != 0:
-				var dir = (entitie_grabbed[i].global_position - global_position).normalized()
-				entitie_grabbed[i].to_push(dir, 10.0, .5)
+				pass
+				#var dir = (entitie_grabbed[i].global_position - global_position).normalized()
+				#entitie_grabbed[i].to_push(dir, 5.0, .5)
 
+func push_enemys_away(entitie_grab: CharacterBody3D):
+	enemys_in_area_grabb.erase(entitie_grab)
+	for enemy in enemys_in_area_grabb:
+		var dir = (enemy.global_position - global_position).normalized()
+		enemy.to_push(dir, 5.0, .5)
 
 
 func timers(delta: float) -> void:
@@ -218,5 +226,16 @@ func on_health_changed(health):
 
 
 func apply_knockback(dir: float, force : float, duration: float) -> void:
-	knockback = dir * force
-	knockback_timer = duration
+	if not $HealthComponent.invencible:
+		knockback = dir * force
+		knockback_timer = duration
+
+
+
+
+func _on_detect_enemy_body_entered(body: Node3D) -> void:
+	enemys_in_area_grabb.append(body)
+
+
+func _on_detect_enemy_body_exited(body: Node3D) -> void:
+	enemys_in_area_grabb.erase(body)

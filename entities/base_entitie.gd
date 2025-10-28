@@ -36,7 +36,6 @@ func start() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	print(thrown)
 	if knockback_timer > 0.0:
 		velocity = Vector3(knockback.x,knockback.y, 0.0)
 		knockback_timer -= delta
@@ -49,17 +48,6 @@ func _physics_process(delta: float) -> void:
 		visuals.rotation.z = -self.get_floor_normal().x
 	velocity.z = 0
 	trow_ray_cast_manager()
-	#grabbed_and_trow_logic(delta)
-
-
-#func grabbed_and_trow_logic(delta):
-	##if grabbed:
-		##pass
-	##elif thrown:
-		##velocity.x = 60.0 * thrown_dir * delta
-		##sprite.show()
-		##visuals.rotation_degrees.z += 10.0
-		#move_and_slide()
 
 
 func was_thrown(direction: bool):

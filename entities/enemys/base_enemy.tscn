@@ -27,3 +27,5 @@ debug = true
 healthcomponent = NodePath("../HealthComponent")
 
 [node name="DebugLabel" type="Label3D" parent="." index="7"]
+
+[connection signal="state_transitioned" from="StateMachine" to="." method="_on_state_machine_state_transitioned"]
