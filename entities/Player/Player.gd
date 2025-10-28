@@ -208,7 +208,7 @@ func push_enemys_away(entitie_grab: CharacterBody3D):
 	enemys_in_area_grabb.erase(entitie_grab)
 	for enemy in enemys_in_area_grabb:
 		var dir = (enemy.global_position - global_position).normalized()
-		enemy.to_push(Vector3(dir.x, 1.0, 0.0), 1.0, .5)
+		enemy.to_push(Vector3(dir.x, .5, 0.0))
 
 
 func timers(delta: float) -> void:

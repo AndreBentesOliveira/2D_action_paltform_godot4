@@ -2,6 +2,7 @@ extends CharacterBody3D
 class_name Entitie
 
 signal collide_when_thrown(object)
+signal pushed(dir)
 
 @export var can_be_grabbed : bool
 @export var grabbed_texture : Texture
@@ -36,14 +37,6 @@ func start() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	if knockback_timer > 0.0:
-		velocity = Vector3(knockback.x,knockback.y, 0.0)
-		knockback_timer -= delta
-		if knockback_timer <= 0.0:
-			knockback = Vector3.ZERO
-	else:
-		pass
-
 	if is_on_floor():
 		visuals.rotation.z = -self.get_floor_normal().x
 	velocity.z = 0
@@ -53,9 +46,6 @@ func _physics_process(delta: float) -> void:
 func was_thrown(direction: bool):
 	grabbed = false
 	thrown = true
-	#thrown_collider.call_deferred("set","enabled", true)
-	#thrown_collider2.call_deferred("set","enabled", true)
-	#thrown_collider3.call_deferred("set","enabled", true)
 	if not direction:
 		thrown_dir = 1
 	else:
@@ -65,9 +55,8 @@ func was_thrown(direction: bool):
 	thrown_collider3.target_position.x *= thrown_dir
 
 
-func to_push(dir: Vector3, force : float, duration: float) -> void:
-	knockback = dir * force
-	knockback_timer = duration
+func to_push(dir: Vector3) -> void:
+	pushed.emit(dir)
 
 
 func trow_ray_cast_manager():

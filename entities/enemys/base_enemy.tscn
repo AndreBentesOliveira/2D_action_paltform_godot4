@@ -1,11 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://b5cwxrq76l7yw"]
+[gd_scene load_steps=9 format=3 uid="uid://b5cwxrq76l7yw"]
 
 [ext_resource type="Script" uid="uid://ctiasay8lw82c" path="res://entities/enemys/base_enemy.gd" id="1_dpifa"]
 [ext_resource type="PackedScene" uid="uid://sq2tljtri5n3" path="res://entities/base_entitie.tscn" id="1_usihd"]
 [ext_resource type="Texture2D" uid="uid://b61wqofekqbdl" path="res://entities/enemys/first_enemy/base_enemy_grabed.png" id="3_5cc1h"]
+[ext_resource type="Script" uid="uid://cgky517qva8s3" path="res://entities/enemys/enemy_common_states/pushed.gd" id="4_5cc1h"]
 [ext_resource type="PackedScene" uid="uid://dmior2oihtvyn" path="res://components/HitBoxComponent.tscn" id="4_6wdoe"]
 [ext_resource type="PackedScene" uid="uid://lafm0n3g6bhk" path="res://components/HealthComponent.tscn" id="4_sb2ln"]
 [ext_resource type="PackedScene" uid="uid://vj60wmefmix5" path="res://components/HurtBoxComponent.tscn" id="5_6mhc8"]
+[ext_resource type="Script" uid="uid://bjwtgx4e2ihy6" path="res://entities/enemys/enemy_common_states/stuned.gd" id="5_ir5xu"]
 
 [node name="BaseEnemy" instance=ExtResource("1_usihd")]
 collision_layer = 0
@@ -13,6 +15,14 @@ script = ExtResource("1_dpifa")
 can_be_grabbed = true
 grabbed_texture = ExtResource("3_5cc1h")
 texture_ofset_when_grabbed = Vector3(0, -0.15, 0)
+
+[node name="Pushed" type="Node" parent="StateMachine" index="3"]
+script = ExtResource("4_5cc1h")
+metadata/_custom_type_script = "uid://dsnjlxvj4s1uu"
+
+[node name="Stuned" type="Node" parent="StateMachine" index="4"]
+script = ExtResource("5_ir5xu")
+metadata/_custom_type_script = "uid://dsnjlxvj4s1uu"
 
 [node name="HealthComponent" parent="." index="2" instance=ExtResource("4_sb2ln")]
 max_health = 1

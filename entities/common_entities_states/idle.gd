@@ -13,3 +13,5 @@ func _physics_process(_delta: float) -> void:
 		return enter_state(&"Grabbed")
 	if entitie.thrown:
 		return enter_state(&"Thrown")
+	if entitie._pushed:
+		return enter_state(&"Pushed")
