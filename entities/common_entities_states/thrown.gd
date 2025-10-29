@@ -2,6 +2,7 @@ extends "common_entitie_state.gd"
 
 
 func _enter_state(_old_state: StringName, _params: Dictionary) -> void:
+	entitie.thrown = true
 	entitie.thrown_collider.call_deferred("set","enabled", true)
 	entitie.thrown_collider2.call_deferred("set","enabled", true)
 	entitie.thrown_collider3.call_deferred("set","enabled", true)
@@ -14,4 +15,4 @@ func _physics_process(_delta: float) -> void:
 
 
 func _exit_state(new_state: StringName, state_data: Dictionary) -> void:
-	pass
+	entitie.thrown = false

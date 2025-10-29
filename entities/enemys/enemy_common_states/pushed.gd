@@ -14,7 +14,10 @@ func _enter_state(_old_state: StringName, _params: Dictionary) -> void:
 
 
 func _physics_process(_delta: float) -> void:
-	pass
+	if enemy_node.is_on_floor() or enemy_node.is_on_wall():
+		return enter_state(&"Stuned")
+	if enemy_node.grabbed:
+		return enter_state(&"Grabbed")
 	#if is_up:
 		#enemy_node.velocity.y += 1.0 * _delta
 		#enemy_node.velocity.x += .5 * _delta
@@ -41,7 +44,7 @@ func _physics_process(_delta: float) -> void:
 
 
 func _exit_state(new_state: StringName, state_data: Dictionary) -> void:
-	pass
+	enemy_node._pushed = false
 	#enemy_node._pushed = false
 	#enemy_node._pushed_dir = Vector3.ZERO
 

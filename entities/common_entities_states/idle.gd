@@ -15,3 +15,8 @@ func _physics_process(_delta: float) -> void:
 		return enter_state(&"Thrown")
 	if entitie._pushed:
 		return enter_state(&"Pushed")
+
+func _exit_state(new_state: StringName, state_data: Dictionary) -> void:
+	entitie.thrown = false
+	entitie.grabbed = false
+	entitie._pushed = false
