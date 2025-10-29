@@ -2,10 +2,11 @@ extends "common_state.gd"
 
 
 func _enter_state(_old_state: StringName, _params: Dictionary) -> void:
+	player.head_ray_cast
 	player.gripper_area_disable(true)
 	player.velocity = Vector3.ZERO
 	sprite.play(&"grab_edge")
-
+	
 
 func _physics_process(_delta: float) -> void:
 	var wall_point = player.get_node("RayCast1").get_collision_point()
@@ -30,4 +31,5 @@ func _unhandled_input(event: InputEvent) -> void:
 		return enter_state(&"Fall")
 
 func _exit_state(new_state: StringName, state_data: Dictionary) -> void:
+	#player.head_ray_cast.position.y = 0.11
 	player.gripper_area_disable(false)

@@ -2,10 +2,12 @@ extends Node3D
 
 @export var health_component : Node
 @export var texture : Texture
+#@onready var thrown_particle = preload("res://effects/thrown_die.tres")
+
 
 func _ready() -> void:
-	#if not texture == null:
-		#$GPUParticles3D.draw_pass_1.material.albedo_texture = texture
+	if not texture == null:
+		$GPUParticles3D.draw_pass_1.material.albedo_texture = texture
 	if not health_component == null:
 		health_component.die.connect(on_died)
 

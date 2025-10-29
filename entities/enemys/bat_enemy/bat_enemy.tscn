@@ -1,0 +1,75 @@
+[gd_scene load_steps=11 format=3 uid="uid://bmn02rffiirgw"]
+
+[ext_resource type="PackedScene" uid="uid://b5cwxrq76l7yw" path="res://entities/enemys/base_enemy.tscn" id="1_ku2iu"]
+[ext_resource type="Script" uid="uid://ycgu3x45pw2e" path="res://entities/enemys/bat_enemy/bat_enemy.gd" id="2_f5u1v"]
+[ext_resource type="PackedScene" uid="uid://du24pmqu1sykk" path="res://components/death_component.tscn" id="4_71c33"]
+[ext_resource type="Texture2D" uid="uid://cs5yhf4i503t7" path="res://entities/objects/wood_box_sprite.png" id="4_ifaud"]
+[ext_resource type="Script" uid="uid://d21cpk4qiqcc8" path="res://entities/enemys/bat_enemy/patrol.gd" id="5_71c33"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_njdwb"]
+size = Vector3(1, 0.873535, 1)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_71c33"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_ifaud")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ifaud"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_71c33"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fkte2"]
+size = Vector3(0.782715, 0.0979004, 0.873779)
+
+[node name="BatEnemy" instance=ExtResource("1_ku2iu")]
+script = ExtResource("2_f5u1v")
+grabbed_texture = ExtResource("4_ifaud")
+
+[node name="DeathComponent" parent="." index="0" node_paths=PackedStringArray("health_component") instance=ExtResource("4_71c33")]
+health_component = NodePath("../HealthComponent")
+texture = ExtResource("4_ifaud")
+
+[node name="StateMachine" parent="." index="1" node_paths=PackedStringArray("initial_state")]
+initial_state = NodePath("Idle")
+
+[node name="Patrol" type="Node" parent="StateMachine" index="5"]
+script = ExtResource("5_71c33")
+metadata/_custom_type_script = "uid://dsnjlxvj4s1uu"
+
+[node name="CollisionShape3D" parent="." index="2"]
+transform = Transform3D(0.167136, 0, 0, 0, 0.167136, 0, 0, 0, 0.167136, 0, -0.0105684, 0)
+shape = SubResource("BoxShape3D_njdwb")
+
+[node name="HealthComponent" parent="." index="3"]
+debug = true
+
+[node name="AnimatedSprite3D" parent="Visuals" index="0"]
+sprite_frames = SubResource("SpriteFrames_71c33")
+animation = &"idle"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitBoxComponent" index="0"]
+transform = Transform3D(0.146781, 0, 0, 0, 0.146781, 0, 0, 0, 0.146781, 0, 0, 0)
+shape = SubResource("BoxShape3D_ifaud")
+debug_color = Color(1, 0.00251291, 0.074398, 0.42)
+
+[node name="HurtBox" parent="." index="6"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HurtBox" index="0"]
+transform = Transform3D(0.166141, 0, 0, 0, 0.166141, 0, 0, 0, 0.166141, 0, 0, 0)
+shape = SubResource("BoxShape3D_71c33")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GrabableComponent" index="1"]
+transform = Transform3D(0.187427, 0, 0, 0, 0.187427, 0, 0, 0, 0.187427, -0.000777895, 0.092228, 0.000571981)
+shape = SubResource("BoxShape3D_fkte2")
+
+[node name="DebugLabel" parent="." index="8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.199218, 0)
+text = "idle"

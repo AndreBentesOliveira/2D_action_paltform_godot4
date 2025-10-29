@@ -32,4 +32,10 @@ func on_entitie_pushed(dir):
 
 
 func _on_state_machine_state_transitioned(old_state: StringName, new_state: StringName, state_data: Dictionary) -> void:
+	print(new_state)
 	$DebugLabel.text = str(new_state)
+
+
+func apply_gravity(_delta):
+	if not is_on_floor() and not thrown and not grabbed:
+		velocity.y -= 10.0 * _delta

@@ -1,4 +1,5 @@
 extends StateNode
+class_name CommonEnemyState
 
 var enemy_node: CharacterBody3D
 var sprite: AnimatedSprite3D

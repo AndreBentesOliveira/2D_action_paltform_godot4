@@ -10,9 +10,8 @@
 [node name="BaseEntitie" type="CharacterBody3D"]
 script = ExtResource("1_574ob")
 
-[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "common_node")]
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("common_node")]
 script = ExtResource("2_s00yr")
-initial_state = NodePath("Idle")
 common_node = NodePath("..")
 metadata/_custom_type_script = "uid://cyjj3nyqr8e3y"
 

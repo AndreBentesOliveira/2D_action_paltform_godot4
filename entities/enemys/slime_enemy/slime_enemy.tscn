@@ -1,11 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://ci5vu1sap676e"]
+[gd_scene load_steps=10 format=3 uid="uid://ci5vu1sap676e"]
 
 [ext_resource type="PackedScene" uid="uid://b5cwxrq76l7yw" path="res://entities/enemys/base_enemy.tscn" id="1_y5gwa"]
-[ext_resource type="Script" uid="uid://cqji5xbertph5" path="res://entities/enemys/first_enemy/slime_enemy.gd" id="2_oj2gu"]
-[ext_resource type="Texture2D" uid="uid://b61wqofekqbdl" path="res://entities/enemys/first_enemy/base_enemy_grabed.png" id="2_qp6f8"]
+[ext_resource type="Script" uid="uid://cqji5xbertph5" path="res://entities/enemys/slime_enemy/slime_enemy.gd" id="2_oj2gu"]
+[ext_resource type="Texture2D" uid="uid://b61wqofekqbdl" path="res://entities/enemys/slime_enemy/base_enemy_grabed.png" id="2_qp6f8"]
 [ext_resource type="PackedScene" uid="uid://du24pmqu1sykk" path="res://components/death_component.tscn" id="4_ip25l"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_ip25l"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_popww"]
 size = Vector3(0.1, 0.1, 0.1)
@@ -38,31 +36,31 @@ size = Vector3(0.0919922, 0.0272002, 0.1)
 [node name="Slime" instance=ExtResource("1_y5gwa")]
 collision_layer = 4
 script = ExtResource("2_oj2gu")
+grabbed_texture = ExtResource("2_qp6f8")
 texture_ofset_when_grabbed = Vector3(0, -0.06, 0)
 
 [node name="DeathComponent" parent="." index="0" node_paths=PackedStringArray("health_component") instance=ExtResource("4_ip25l")]
 health_component = NodePath("../HealthComponent")
 texture = ExtResource("2_qp6f8")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="." index="1"]
-transform = Transform3D(0.0988129, 0, 0, 0, 0.0988129, 0, 0, 0, 0.0988129, 0, 0, 0)
-shape = SubResource("BoxShape3D_ip25l")
+[node name="StateMachine" parent="." index="1" node_paths=PackedStringArray("initial_state")]
+initial_state = NodePath("Idle")
 
-[node name="CollisionShape3D" parent="." index="3"]
+[node name="CollisionShape3D" parent="." index="2"]
 shape = SubResource("BoxShape3D_popww")
 
 [node name="AnimatedSprite3D" parent="Visuals" index="0"]
 sprite_frames = SubResource("SpriteFrames_qp6f8")
 animation = &"idle"
 
-[node name="HitBoxComponent" parent="." index="6"]
+[node name="HitBoxComponent" parent="." index="5"]
 monitoring = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HitBoxComponent" index="0"]
 shape = SubResource("SphereShape3D_ip25l")
 debug_color = Color(0.997828, 0, 0.157054, 0.42)
 
-[node name="HurtBox" parent="." index="7"]
+[node name="HurtBox" parent="." index="6"]
 collision_layer = 0
 collision_mask = 2
 
@@ -74,7 +72,7 @@ debug_color = Color(0.847169, 0.000957224, 0.906666, 0.42)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00126953, 0.044481, 0)
 shape = SubResource("BoxShape3D_qp6f8")
 
-[node name="DebugLabel" parent="." index="9"]
+[node name="DebugLabel" parent="." index="8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.141516, 0)
 pixel_size = 0.0023
 text = "idle"

@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://du24pmqu1sykk"]
 
 [ext_resource type="Script" uid="uid://8rcwrf72151y" path="res://components/death_component.gd" id="1_lcu1u"]
-[ext_resource type="Texture2D" uid="uid://b61wqofekqbdl" path="res://entities/enemys/first_enemy/base_enemy_grabed.png" id="2_aamas"]
+[ext_resource type="Texture2D" uid="uid://b61wqofekqbdl" path="res://entities/enemys/slime_enemy/base_enemy_grabed.png" id="2_aamas"]
 [ext_resource type="Material" uid="uid://bjlqm5c4a48ky" path="res://effects/thrown_die.tres" id="2_mwkmo"]
 
 [sub_resource type="Animation" id="Animation_mwkmo"]
@@ -55,6 +55,7 @@ _data = {
 }
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t5qci"]
+resource_local_to_scene = true
 transparency = 1
 shading_mode = 0
 albedo_texture = ExtResource("2_aamas")
@@ -64,7 +65,8 @@ particles_anim_h_frames = 1
 particles_anim_v_frames = 1
 particles_anim_loop = false
 
-[sub_resource type="QuadMesh" id="QuadMesh_g34sr"]
+[sub_resource type="QuadMesh" id="QuadMesh_mwkmo"]
+resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_t5qci")
 size = Vector2(0.147, 0.1)
 
@@ -81,4 +83,4 @@ emitting = false
 amount = 1
 lifetime = 2.0
 process_material = ExtResource("2_mwkmo")
-draw_pass_1 = SubResource("QuadMesh_g34sr")
+draw_pass_1 = SubResource("QuadMesh_mwkmo")
