@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://ckxrci77f0bq7"]
+[gd_scene load_steps=31 format=3 uid="uid://ckxrci77f0bq7"]
 
 [ext_resource type="Script" uid="uid://ewewltobs1v6" path="res://main.gd" id="1_5vw27"]
 [ext_resource type="PackedScene" uid="uid://dpuqtlr1m3dcj" path="res://entities/Player/Player.tscn" id="1_ig7tw"]
@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://c0x0tvmbhaqck" path="res://addons/proto-csgs/textures/orange/texture_13.png" id="5_lquwl"]
 [ext_resource type="PackedScene" uid="uid://ci5vu1sap676e" path="res://entities/enemys/slime_enemy/slime_enemy.tscn" id="7_lgr22"]
 [ext_resource type="Texture2D" uid="uid://c1rrn8gl1wfhi" path="res://teste/256teste.png" id="9_03owx"]
+[ext_resource type="PackedScene" uid="uid://bmn02rffiirgw" path="res://entities/enemys/bat_enemy/bat_enemy.tscn" id="9_20pc6"]
+[ext_resource type="PackedScene" uid="uid://cr3q1tmh1h0xf" path="res://assets/blender/ps1_character_render.glb" id="10_5vvyt"]
 [ext_resource type="Texture2D" uid="uid://vkq4oyjrxwul" path="res://teste/128teste.png" id="10_wkp8b"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fd1d0"]
@@ -220,6 +222,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.12246, 0.654428, 0)
 
 [node name="Slime3" parent="EntitiesLayer" instance=ExtResource("7_lgr22")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.944353, 0.654428, 0)
+
+[node name="BatEnemy" parent="EntitiesLayer" instance=ExtResource("9_20pc6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.60473, 1.14251, 0)
+
+[node name="ps1_character_render" parent="EntitiesLayer" instance=ExtResource("10_5vvyt")]
+transform = Transform3D(0.12, 0, 0, 0, 0.12, 0, 0, 0, 0.12, 5.31657, 0.949523, 0)
 
 [node name="bg" type="Sprite3D" parent="."]
 transform = Transform3D(0.924858, 0.380312, 0, -0.380312, 0.924858, 0, 0, 0, 1, 1.75137, 0.977886, -1.98902)

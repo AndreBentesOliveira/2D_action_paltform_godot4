@@ -81,12 +81,8 @@ text = "idle"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.043179, 0)
 collision_mask = 5
 
-[node name="ThrownCollider2" parent="ThrownRayCasts" index="1"]
-collide_with_areas = false
-
 [node name="ThrownCollider3" parent="ThrownRayCasts" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0466334, 0)
-collide_with_areas = false
 
 [connection signal="area_entered" from="GrabableComponent" to="." method="_on_grabable_component_area_entered"]
 [connection signal="grabbed" from="GrabableComponent" to="." method="_on_grabable_component_grabbed"]

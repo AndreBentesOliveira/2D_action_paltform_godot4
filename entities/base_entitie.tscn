@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://b7f316rgkoiii" path="res://entities/common_entities_states/thrown.gd" id="5_6r2ix"]
 
 [node name="BaseEntitie" type="CharacterBody3D"]
+collision_layer = 4
 script = ExtResource("1_574ob")
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("common_node")]
@@ -46,9 +47,7 @@ target_position = Vector3(0.1, 0, 0)
 [node name="ThrownCollider2" type="RayCast3D" parent="ThrownRayCasts"]
 target_position = Vector3(0.1, 0, 0)
 collision_mask = 5
-collide_with_areas = true
 
 [node name="ThrownCollider3" type="RayCast3D" parent="ThrownRayCasts"]
 target_position = Vector3(0.1, 0, 0)
 collision_mask = 5
-collide_with_areas = true

@@ -7,7 +7,6 @@ func _enter_state(_old_state: StringName, _params: Dictionary) -> void:
 
 
 func _physics_process(_delta: float) -> void:
-	entitie.velocity = Vector3.ZERO
 	if entitie.grabbed:
 		return enter_state(&"Grabbed")
 	if entitie.thrown:

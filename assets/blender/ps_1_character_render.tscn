@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bsdi7hhfimoo6"]
+
+[ext_resource type="PackedScene" uid="uid://cr3q1tmh1h0xf" path="res://assets/blender/ps1_character_render.glb" id="1_eiha4"]
+
+[node name="ps1_character_render" instance=ExtResource("1_eiha4")]
+
+[node name="hair" parent="Armature_001/Skeleton3D" index="0"]
+transform = Transform3D(2.04002, -2.5117e-13, 6.25278e-13, 3.08118e-13, 2.04002, -1.36794e-07, -5.68434e-13, 1.36794e-07, 2.04002, 8.10623e-05, 5.72815, 0.335368)

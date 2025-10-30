@@ -6,11 +6,14 @@ extends Enemy
 
 var timer : float = 0.0
 
-
 func _ready() -> void:
 	collide_when_thrown.connect(on_collide_When_thrown)
 	start()
 	enemy_start()
+
+func _physics_process(delta: float) -> void:
+	super(delta)
+	move_and_slide()
 
 
 func _on_grabable_component_area_entered(area: Area3D) -> void:

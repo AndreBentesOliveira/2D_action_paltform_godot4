@@ -8,16 +8,8 @@ var _pushed_dir : Vector3
 
 func enemy_start() -> void:
 	pushed.connect(on_entitie_pushed)
-
-
-func _physics_process(delta: float) -> void:
-	super(delta)
-	
-	#if not is_on_floor() and not thrown and not grabbed:
-		#velocity.y -= 10.0 * delta
-	#else:
-		#pass
-	move_and_slide()
+	$StateMachine.state_transitioned.connect(_on_state_machine_state_transitioned)
+	$DebugLabel.text = str($StateMachine.initial_state.name)
 	
 	if  thrown:
 		if hit_box_component.has_node("CollisionShape3D"):
@@ -32,7 +24,6 @@ func on_entitie_pushed(dir):
 
 
 func _on_state_machine_state_transitioned(old_state: StringName, new_state: StringName, state_data: Dictionary) -> void:
-	print(new_state)
 	$DebugLabel.text = str(new_state)
 
 

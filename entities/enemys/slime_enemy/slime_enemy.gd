@@ -13,6 +13,12 @@ func _ready() -> void:
 	enemy_start()
 
 
+func _physics_process(delta: float) -> void:
+	super(delta)
+	apply_gravity(delta)
+	move_and_slide()
+
+
 func _on_grabable_component_area_entered(area: Area3D) -> void:
 	if not area is Gripper:
 		return
