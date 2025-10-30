@@ -10,9 +10,9 @@ func _physics_process(_delta: float) -> void:
 	if enemy_node.is_on_wall():
 		dir = !dir
 	if dir:
-		enemy_node.velocity.x = 10.0 * 1.0 * _delta
+		enemy_node.velocity.x = enemy_node.move_speed * 1.0 * _delta
 	else:
-		enemy_node.velocity.x = 10.0 * -1.0 * _delta
+		enemy_node.velocity.x = enemy_node.move_speed * -1.0 * _delta
 
 	if enemy_node.grabbed:
 		return enter_state(&"Grabbed")

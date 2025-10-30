@@ -22,4 +22,4 @@ func on_area_entered(area: Area3D) -> void:
 	healthcomponent.take_damage(1)
 	if knock_back:
 		var knockback_direction = (area.global_position - global_position).normalized()
-		get_parent().apply_knockback(-knockback_direction.x, 1.0, 0.5)
+		get_parent().apply_knockback(-knockback_direction, 1.0, 0.5)

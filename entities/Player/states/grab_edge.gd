@@ -2,13 +2,14 @@ extends "common_state.gd"
 
 
 func _enter_state(_old_state: StringName, _params: Dictionary) -> void:
-	player.head_ray_cast
 	player.gripper_area_disable(true)
 	player.velocity = Vector3.ZERO
 	sprite.play(&"grab_edge")
 	
 
 func _physics_process(_delta: float) -> void:
+	if player.in_knockback:
+		return enter_state(&"Knockback")
 	var wall_point = player.get_node("RayCast1").get_collision_point()
 	var wall_normal = player.get_node("RayCast1").get_collision_normal()
 	player.get_node("RayCast2").global_position = wall_point - (wall_normal * 0.1) + Vector3(0, 0.3, 0)

@@ -31,6 +31,7 @@ size = Vector3(0.782715, 0.0979004, 0.873779)
 collision_layer = 4
 script = ExtResource("2_f5u1v")
 grabbed_texture = ExtResource("4_ifaud")
+texture_ofset_when_grabbed = Vector3(0, -0.02, 0)
 
 [node name="DeathComponent" parent="." index="0" node_paths=PackedStringArray("health_component") instance=ExtResource("4_71c33")]
 health_component = NodePath("../HealthComponent")

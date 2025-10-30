@@ -11,6 +11,7 @@
 [node name="BaseEnemy" instance=ExtResource("1_usihd")]
 collision_layer = 0
 script = ExtResource("1_dpifa")
+move_speed = 10.0
 can_be_grabbed = true
 
 [node name="Pushed" type="Node" parent="StateMachine" index="3"]

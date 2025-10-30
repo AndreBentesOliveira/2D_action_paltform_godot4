@@ -48,26 +48,21 @@ var entitie_grabbed : Array
 var enemys_in_area_grabb: Array
 
 #KNOK BACK VARIABLES
-var knockback: float = 0.0
+var knockback := Vector3.ZERO
 var knockback_timer : float = 0.0
+var in_knockback := false
 
+var gripper_collision: Node
 
 func _ready() -> void:
 	gripper_component.grab.connect(on_player_grab_entitie)
+	#gripper_collision = gripper_component.get_node("")
 	%Health.text = "Health: " + str($HealthComponent.health)
 	$HealthComponent.health_change.connect(on_health_changed)
 	load_input_map()
 
 
 func _physics_process(delta: float) -> void:
-	if knockback_timer > 0.0:
-		velocity.x = knockback
-		knockback_timer -= delta
-		if knockback_timer <= 0.0:
-			knockback = 0.0
-	else:
-		knockback = 0.0
-	
 	%VelocityY.text = str("Velocity.y: " + "%.2f" % velocity.y)
 	%VelocityX.text = str("Velocity.x: " + "%.2f" % velocity.x)
 	if !sprite.flip_h:
@@ -217,20 +212,31 @@ func timers(delta: float) -> void:
 	jump_coyote_timer -= delta
 	jump_buffer_timer -= delta
 
+
 func gripper_area_disable(value: bool):
 	gripper_component.get_node("CollisionShape3D").call_deferred("set","disabled", value) 
+
+
+func grabedge_enable(value: bool):
+	$HeadRayCast.call_deferred("set","enabled", value)
+	$EyesRayCast.call_deferred("set","enabled", value)
 
 
 func on_health_changed(health):
 	%Health.text = "Health: " + str(health)
 
 
-func apply_knockback(dir: float, force : float, duration: float) -> void:
+func apply_knockback(dir: Vector3, force : float, duration: float) -> void:
 	if not $HealthComponent.invencible:
+		in_knockback = true
 		knockback = dir * force
 		knockback_timer = duration
 
 
+func star_invencibility():
+	$HealthComponent.invencible = true
+	$Hurtbox/CollisionShape3D.call_deferred("set","disabled", true) 
+	$InvencibleTimer.start()
 
 
 func _on_detect_enemy_body_entered(body: Node3D) -> void:
@@ -239,3 +245,8 @@ func _on_detect_enemy_body_entered(body: Node3D) -> void:
 
 func _on_detect_enemy_body_exited(body: Node3D) -> void:
 	enemys_in_area_grabb.erase(body)
+
+
+func _on_invencible_timer_timeout() -> void:
+	$HealthComponent.invencible = false
+	$Hurtbox/CollisionShape3D.call_deferred("set","disabled", false) 

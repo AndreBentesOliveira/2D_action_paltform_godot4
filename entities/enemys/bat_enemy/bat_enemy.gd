@@ -4,6 +4,7 @@ extends Enemy
 @onready var state_machine: StateMachine = $StateMachine
 @onready var health_component: Node = $HealthComponent
 
+
 var timer : float = 0.0
 
 func _ready() -> void:

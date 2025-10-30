@@ -1,12 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://ci5vu1sap676e"]
+[gd_scene load_steps=11 format=3 uid="uid://ci5vu1sap676e"]
 
 [ext_resource type="PackedScene" uid="uid://b5cwxrq76l7yw" path="res://entities/enemys/base_enemy.tscn" id="1_y5gwa"]
 [ext_resource type="Script" uid="uid://cqji5xbertph5" path="res://entities/enemys/slime_enemy/slime_enemy.gd" id="2_oj2gu"]
 [ext_resource type="Texture2D" uid="uid://b61wqofekqbdl" path="res://entities/enemys/slime_enemy/base_enemy_grabed.png" id="2_qp6f8"]
 [ext_resource type="PackedScene" uid="uid://du24pmqu1sykk" path="res://components/death_component.tscn" id="4_ip25l"]
+[ext_resource type="Script" uid="uid://d21cpk4qiqcc8" path="res://entities/enemys/bat_enemy/patrol.gd" id="5_j0a6e"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_popww"]
-size = Vector3(0.1, 0.1, 0.1)
+[sub_resource type="SphereShape3D" id="SphereShape3D_j0a6e"]
+radius = 0.0486916
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qp6f8"]
 animations = [{
@@ -36,6 +37,7 @@ size = Vector3(0.0919922, 0.0272002, 0.1)
 [node name="Slime" instance=ExtResource("1_y5gwa")]
 collision_layer = 4
 script = ExtResource("2_oj2gu")
+move_speed = 25.0
 grabbed_texture = ExtResource("2_qp6f8")
 texture_ofset_when_grabbed = Vector3(0, -0.06, 0)
 
@@ -44,10 +46,14 @@ health_component = NodePath("../HealthComponent")
 texture = ExtResource("2_qp6f8")
 
 [node name="StateMachine" parent="." index="1" node_paths=PackedStringArray("initial_state")]
-initial_state = NodePath("Idle")
+initial_state = NodePath("Patrol")
+
+[node name="Patrol" type="Node" parent="StateMachine" index="5"]
+script = ExtResource("5_j0a6e")
+metadata/_custom_type_script = "uid://dsnjlxvj4s1uu"
 
 [node name="CollisionShape3D" parent="." index="2"]
-shape = SubResource("BoxShape3D_popww")
+shape = SubResource("SphereShape3D_j0a6e")
 
 [node name="AnimatedSprite3D" parent="Visuals" index="0"]
 sprite_frames = SubResource("SpriteFrames_qp6f8")

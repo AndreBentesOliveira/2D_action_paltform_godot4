@@ -18,7 +18,7 @@ func _physics_process(_delta: float) -> void:
 	if stun_timer > 0.0:
 		stun_timer -= _delta
 		if stun_timer <= 0.0:
-			return enter_state(&"Idle")
+			return enter_state(&"Patrol")
 
 
 func _exit_state(new_state: StringName, state_data: Dictionary) -> void:

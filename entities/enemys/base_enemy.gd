@@ -1,6 +1,8 @@
 extends Entitie
 class_name Enemy
 
+@export var move_speed := 10.0
+
 @onready var hit_box_component: Hitbox = $HitBoxComponent
 @onready var hurt_box: Hurtbox = $HurtBox
 var _pushed := false

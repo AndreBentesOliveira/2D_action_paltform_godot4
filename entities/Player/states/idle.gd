@@ -9,6 +9,9 @@ func _enter_state(_old_state: StringName, _params: Dictionary) -> void:
 
 
 func _physics_process(_delta: float) -> void:
+	player.gripper_area_disable(true)
+	if player.in_knockback:
+		return enter_state(&"Knockback")
 	player.velocity = Vector3.ZERO
 	if player.is_on_floor():
 		if Input.get_axis(&"walk_left", &"walk_right") != 0.0:
@@ -16,6 +19,8 @@ func _physics_process(_delta: float) -> void:
 	else:
 		return enter_state(&"Fall")
 
+func _exit_state(old_state: StringName, state_data: Dictionary) -> void:
+	player.gripper_area_disable(false)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed(&"jump"):

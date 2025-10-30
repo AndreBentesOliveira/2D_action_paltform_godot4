@@ -28,6 +28,8 @@ func _physics_process(_delta: float) -> void:
 		return enter_state(&"GrabEdge")
 	if player.grab_entitie:
 		return enter_state(&"GrabEntitie")
+	if player.in_knockback:
+		return enter_state(&"Knockback")
 	#if already_jump:
 		#if player.is_on_floor():
 			#return enter_state(&"TrowEntitie")

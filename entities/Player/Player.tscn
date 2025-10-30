@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://dpuqtlr1m3dcj"]
+[gd_scene load_steps=33 format=3 uid="uid://dpuqtlr1m3dcj"]
 
 [ext_resource type="Script" uid="uid://bb2cx1iw4xeo2" path="res://entities/Player/Player.gd" id="1_cm1li"]
 [ext_resource type="Script" uid="uid://cyjj3nyqr8e3y" path="res://addons/state_machine_nodes/state_machine.gd" id="2_d3nms"]
@@ -16,8 +16,10 @@
 [ext_resource type="Script" uid="uid://dvcprylokd63q" path="res://entities/Player/states/trow_entitie.gd" id="9_vsvda"]
 [ext_resource type="Texture2D" uid="uid://bs65petgokmun" path="res://entities/Player/sprites/walk_sprite.png" id="10_p3y6h"]
 [ext_resource type="Script" uid="uid://dg8dl3u84ocuc" path="res://entities/Player/states/jump_grab.gd" id="10_yj2w5"]
+[ext_resource type="Script" uid="uid://ccvg8tvd11icw" path="res://entities/Player/states/knockback.gd" id="12_qx7hw"]
 [ext_resource type="Texture2D" uid="uid://diwfk6fbjw7wf" path="res://entities/Player/sprites/grab.png" id="13_jpjna"]
 [ext_resource type="PackedScene" uid="uid://dnbtgpsho8fol" path="res://components/gripper_component.tscn" id="13_lf238"]
+[ext_resource type="Texture2D" uid="uid://bcj80km42ne41" path="res://entities/Player/sprites/hurt_sprite.png" id="16_0505q"]
 [ext_resource type="Script" uid="uid://ca21856yep1nj" path="res://components/HurtBoxComponent.gd" id="19_62gbw"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kct3s"]
@@ -79,6 +81,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("16_0505q")
+}],
+"loop": true,
+"name": &"hurt",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_egyt8")
 }, {
 "duration": 1.0,
@@ -119,7 +129,7 @@ radius = 0.099024
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_62gbw"]
 height = 0.17
-radius = 0.25293
+radius = 0.223633
 
 [node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("sprite")]
 collision_layer = 2
@@ -170,6 +180,10 @@ metadata/_custom_type_script = "uid://dsnjlxvj4s1uu"
 script = ExtResource("9_vsvda")
 metadata/_custom_type_script = "uid://dsnjlxvj4s1uu"
 
+[node name="Knockback" type="Node" parent="StateMachine"]
+script = ExtResource("12_qx7hw")
+metadata/_custom_type_script = "uid://dsnjlxvj4s1uu"
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_kct3s")
 
@@ -197,6 +211,7 @@ double_sided = false
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_egyt8")
 animation = &"idle"
+frame_progress = 0.720055
 
 [node name="TrowMark" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0786603, 0, 0)
@@ -256,6 +271,11 @@ collision_mask = 4
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 shape = SubResource("CylinderShape3D_62gbw")
 
+[node name="InvencibleTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
 [connection signal="state_transitioned" from="StateMachine" to="." method="_on_state_machine_state_transitioned"]
 [connection signal="body_entered" from="DetectEnemy" to="." method="_on_detect_enemy_body_entered"]
 [connection signal="body_exited" from="DetectEnemy" to="." method="_on_detect_enemy_body_exited"]
+[connection signal="timeout" from="InvencibleTimer" to="." method="_on_invencible_timer_timeout"]
