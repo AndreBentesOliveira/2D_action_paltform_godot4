@@ -87,6 +87,7 @@ func _physics_process(delta: float) -> void:
 	state_machine.call_physics_process(delta)
 	velocity.z = 0
 	timers(delta)
+	
 	move_and_slide()
 
 
@@ -116,12 +117,16 @@ func load_input_map() -> void:
 			InputMap.action_add_event(action, event)
 		
 	# Jump
-	add_keys.call(&"jump", [KEY_SPACE, KEY_UP, KEY_W])
+	add_keys.call(&"jump", [KEY_SPACE])
 	add_pads.call(&"jump", [JOY_BUTTON_DPAD_UP, JOY_BUTTON_A, JOY_BUTTON_B])
 	
-	# Crouch
+	# button_down
 	add_keys.call(&"down_button", [KEY_DOWN, KEY_S])
 	add_pads.call(&"down_button", [JOY_BUTTON_DPAD_DOWN])
+	
+	# button_up
+	add_keys.call(&"up_button", [KEY_UP, KEY_W])
+	add_pads.call(&"up_button", [JOY_BUTTON_DPAD_UP])
 	
 	# Walk (Left)
 	add_keys.call(&"walk_left", [KEY_LEFT, KEY_A])
@@ -130,7 +135,10 @@ func load_input_map() -> void:
 	# Walk (Right)
 	add_keys.call(&"walk_right", [KEY_RIGHT, KEY_D])
 	add_pads.call(&"walk_right", [JOY_BUTTON_DPAD_RIGHT])
-
+	
+	# action_button
+	add_keys.call(&"action_button", [KEY_E])
+	add_pads.call(&"action_button", [JOY_BUTTON_DPAD_UP])
 
 func apply_gravity(delta: float) -> void:
 	var applied_gravity : float = 0

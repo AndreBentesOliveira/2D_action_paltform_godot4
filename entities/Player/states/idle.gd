@@ -18,6 +18,9 @@ func _physics_process(_delta: float) -> void:
 			return enter_state(&"Walk")
 	else:
 		return enter_state(&"Fall")
+	
+	if Input.is_action_pressed(&"up_button") and Input.is_action_pressed(&"action_button"):
+		return enter_state(&"MoveUp")
 
 func _exit_state(old_state: StringName, state_data: Dictionary) -> void:
 	player.gripper_area_disable(false)
@@ -25,8 +28,6 @@ func _exit_state(old_state: StringName, state_data: Dictionary) -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed(&"jump"):
 		return enter_state(&"Jump")
-	#if event.is_action_pressed(&"crouch"):
-		#return enter_state(&"Crouch")
 
 
 func rotate_to_angle(angulo_alvo_graus: Vector3, duracao: float) -> void:

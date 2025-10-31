@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://cqji5xbertph5" path="res://entities/enemys/slime_enemy/slime_enemy.gd" id="2_oj2gu"]
 [ext_resource type="Texture2D" uid="uid://b61wqofekqbdl" path="res://entities/enemys/slime_enemy/base_enemy_grabed.png" id="2_qp6f8"]
 [ext_resource type="PackedScene" uid="uid://du24pmqu1sykk" path="res://components/death_component.tscn" id="4_ip25l"]
-[ext_resource type="Script" uid="uid://d21cpk4qiqcc8" path="res://entities/enemys/bat_enemy/patrol.gd" id="5_j0a6e"]
+[ext_resource type="Script" uid="uid://c8cgucmy8geox" path="res://entities/enemys/slime_enemy/grond_patrol.gd" id="5_j0a6e"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_j0a6e"]
 radius = 0.0486916
@@ -89,6 +89,10 @@ collision_mask = 5
 
 [node name="ThrownCollider3" parent="ThrownRayCasts" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0466334, 0)
+
+[node name="StopRaycast" type="RayCast3D" parent="." index="10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0745416, 0, 0)
+target_position = Vector3(0, -0.157, 0)
 
 [connection signal="area_entered" from="GrabableComponent" to="." method="_on_grabable_component_area_entered"]
 [connection signal="grabbed" from="GrabableComponent" to="." method="_on_grabable_component_grabbed"]

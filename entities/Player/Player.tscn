@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://dpuqtlr1m3dcj"]
+[gd_scene load_steps=34 format=3 uid="uid://dpuqtlr1m3dcj"]
 
 [ext_resource type="Script" uid="uid://bb2cx1iw4xeo2" path="res://entities/Player/Player.gd" id="1_cm1li"]
 [ext_resource type="Script" uid="uid://cyjj3nyqr8e3y" path="res://addons/state_machine_nodes/state_machine.gd" id="2_d3nms"]
@@ -21,13 +21,11 @@
 [ext_resource type="PackedScene" uid="uid://dnbtgpsho8fol" path="res://components/gripper_component.tscn" id="13_lf238"]
 [ext_resource type="Texture2D" uid="uid://bcj80km42ne41" path="res://entities/Player/sprites/hurt_sprite.png" id="16_0505q"]
 [ext_resource type="Script" uid="uid://ca21856yep1nj" path="res://components/HurtBoxComponent.gd" id="19_62gbw"]
+[ext_resource type="Script" uid="uid://cq5fm7p8hvuid" path="res://entities/Player/states/move_up.gd" id="20_11kqp"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kct3s"]
 radius = 0.0694377
 height = 0.240949
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_10ubs"]
-size = Vector3(0.127, 0.036, 0.073)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_egyt8"]
 atlas = ExtResource("8_rra6x")
@@ -124,6 +122,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_10ubs"]
+size = Vector3(0.127, 0.036, 0.073)
+
 [sub_resource type="SphereShape3D" id="SphereShape3D_62gbw"]
 radius = 0.099024
 
@@ -137,9 +138,21 @@ script = ExtResource("1_cm1li")
 sprite = NodePath("Visuals/Sprite3D")
 ledge_grab_offset = Vector3(0.202, -0.105, 0)
 
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_kct3s")
+
 [node name="HealthComponent" parent="." instance=ExtResource("2_vlwca")]
 max_health = 13
 debug = true
+
+[node name="Visuals" type="Node3D" parent="."]
+
+[node name="Sprite3D" type="AnimatedSprite3D" parent="Visuals"]
+double_sided = false
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_egyt8")
+animation = &"idle"
+frame_progress = 0.720055
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "common_node")]
 script = ExtResource("2_d3nms")
@@ -184,34 +197,9 @@ metadata/_custom_type_script = "uid://dsnjlxvj4s1uu"
 script = ExtResource("12_qx7hw")
 metadata/_custom_type_script = "uid://dsnjlxvj4s1uu"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("CapsuleShape3D_kct3s")
-
-[node name="HeadRayCast" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0616645, 0.103043, 0)
-target_position = Vector3(0.05, 0, 0)
-
-[node name="EyesRayCast" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0616645, 0.0371625, 0)
-target_position = Vector3(0.05, 0, 0)
-
-[node name="GripperComponent" parent="." instance=ExtResource("13_lf238")]
-collision_layer = 8
-collision_mask = 8
-grip_offset = Vector3(-0.024, -0.069, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="GripperComponent"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.12142, 0)
-shape = SubResource("BoxShape3D_10ubs")
-
-[node name="Visuals" type="Node3D" parent="."]
-
-[node name="Sprite3D" type="AnimatedSprite3D" parent="Visuals"]
-double_sided = false
-texture_filter = 0
-sprite_frames = SubResource("SpriteFrames_egyt8")
-animation = &"idle"
-frame_progress = 0.720055
+[node name="MoveUp" type="Node" parent="StateMachine"]
+script = ExtResource("20_11kqp")
+metadata/_custom_type_script = "uid://dsnjlxvj4s1uu"
 
 [node name="TrowMark" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0786603, 0, 0)
@@ -252,6 +240,23 @@ target_position = Vector3(0.135, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.12976, 0.218513, 0)
 target_position = Vector3(0, -0.244, 0)
 
+[node name="HeadRayCast" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0616645, 0.103043, 0)
+target_position = Vector3(0.05, 0, 0)
+
+[node name="EyesRayCast" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0616645, 0.0371625, 0)
+target_position = Vector3(0.05, 0, 0)
+
+[node name="GripperComponent" parent="." instance=ExtResource("13_lf238")]
+collision_layer = 8
+collision_mask = 8
+grip_offset = Vector3(-0.024, -0.069, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GripperComponent"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.12142, 0)
+shape = SubResource("BoxShape3D_10ubs")
+
 [node name="Hurtbox" type="Area3D" parent="." node_paths=PackedStringArray("healthcomponent")]
 collision_layer = 0
 collision_mask = 4
@@ -274,6 +279,9 @@ shape = SubResource("CylinderShape3D_62gbw")
 [node name="InvencibleTimer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+target_position = Vector3(0, 0, -0.5)
 
 [connection signal="state_transitioned" from="StateMachine" to="." method="_on_state_machine_state_transitioned"]
 [connection signal="body_entered" from="DetectEnemy" to="." method="_on_detect_enemy_body_entered"]

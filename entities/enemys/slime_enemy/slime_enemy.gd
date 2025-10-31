@@ -3,11 +3,12 @@ extends Enemy
 
 @onready var state_machine: StateMachine = $StateMachine
 @onready var health_component: Node = $HealthComponent
-
+@onready var stop_raycast: RayCast3D = $StopRaycast
 var timer : float = 0.0
 
 
 func _ready() -> void:
+	
 	collide_when_thrown.connect(on_collide_When_thrown)
 	start()
 	enemy_start()

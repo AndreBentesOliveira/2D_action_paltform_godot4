@@ -15,12 +15,13 @@ func _enter_state(_old_state: StringName, _params: Dictionary) -> void:
 
 
 func _physics_process(_delta: float) -> void:
-	if player.is_on_floor() and tween_end:
-		player.velocity = Vector3.ZERO
+	if player.is_on_floor(): #and tween_end:
+		#player.velocity = Vector3.ZERO
 		return enter_state(&"Idle")
 	if end_knockback:
-		player.velocity = Vector3.ZERO
+		#player.velocity = Vector3.ZERO
 		return enter_state(&"Idle")
+	
 	#if player.knockback_timer > 0.0:
 		#player.velocity.x = player.knockback
 		#player.knockback_timer -= _delta
@@ -38,14 +39,14 @@ func _exit_state(new_state: StringName, state_data: Dictionary) -> void:
 
 func push():
 	var tween = create_tween()
-	tween.tween_property(player, "velocity", Vector3(player.knockback.x * 1.0, 1.0, 0.0), .4)#\
-	#.set_ease(Tween.EASE_OUT)\
-	#.set_trans(Tween.TRANS_ELASTIC)
+	tween.tween_property(player, "velocity", Vector3(player.knockback.x * 1.0, 1.0, 0.0), .2)
+	tween.set_ease(Tween.EASE_OUT)
+	tween.set_trans(Tween.TRANS_BOUNCE)
 	await tween.finished
 	var tween2 = create_tween()
-	tween2.tween_property(player, "velocity", Vector3(player.knockback.x * 2.0, -0.9, 0.0), .3)#\
-	#.set_ease(Tween.EASE_OUT)\
-	#.set_trans(Tween.TRANS_ELASTIC)
+	tween2.tween_property(player, "velocity", Vector3(player.knockback.x * 1.0, -1.0, 0.0), .2)#\
+	tween2.set_ease(Tween.EASE_IN)
+	tween2.set_trans(Tween.TRANS_EXPO)
 	await tween2.finished
 	tween_end = true
 	end_knockback = true
