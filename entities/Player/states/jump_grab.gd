@@ -2,9 +2,14 @@ extends "common_state.gd"
 
 var jump_cont := 0
 var air_jump := true
-
+var normal_gravity : float
+var normal_jump_gravity : float
 
 func _enter_state(_old_state: StringName, _params: Dictionary) -> void:
+	normal_gravity = player.gravity_acceleration
+	normal_jump_gravity = player.jump_gravity_acceleration
+	player.gravity_acceleration = 1.0
+	player.jump_gravity_acceleration = 2.0
 	jump_cont = 0
 	air_jump = true
 
@@ -30,10 +35,9 @@ func _physics_process(_delta: float) -> void:
 		return enter_state(&"TrowEntitie")
 
 
-func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed(&"jump"):
-		pass
-
+func _exit_state(new_state: StringName, state_data: Dictionary) -> void:
+	player.gravity_acceleration = normal_gravity
+	player.jump_gravity_acceleration = normal_jump_gravity
 
 func get_input() -> Dictionary:
 	return {

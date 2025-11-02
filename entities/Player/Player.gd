@@ -6,7 +6,7 @@ extends CharacterBody3D
 @onready var eyes_ray_cast = $EyesRayCast
 @onready var head_ray_cast = $HeadRayCast
 @onready var gripper_component: Gripper = $GripperComponent
-
+@onready var go_up_raycast := $RayCast3D
 @export var max_speed: float = 1.5
 @export var acceleration: float = 2.0
 @export var turning_acceleration : float = 5.0

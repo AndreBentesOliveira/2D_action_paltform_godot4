@@ -1,9 +1,10 @@
-[gd_scene load_steps=34 format=3 uid="uid://dpuqtlr1m3dcj"]
+[gd_scene load_steps=35 format=3 uid="uid://dpuqtlr1m3dcj"]
 
 [ext_resource type="Script" uid="uid://bb2cx1iw4xeo2" path="res://entities/Player/Player.gd" id="1_cm1li"]
 [ext_resource type="Script" uid="uid://cyjj3nyqr8e3y" path="res://addons/state_machine_nodes/state_machine.gd" id="2_d3nms"]
 [ext_resource type="PackedScene" uid="uid://lafm0n3g6bhk" path="res://components/HealthComponent.tscn" id="2_vlwca"]
 [ext_resource type="Script" uid="uid://dybeln8tcynbv" path="res://entities/Player/states/idle.gd" id="3_85j51"]
+[ext_resource type="Texture2D" uid="uid://r65sspcmkfai" path="res://entities/Player/sprites/face_up.png" id="3_og7qb"]
 [ext_resource type="Script" uid="uid://s4f7tis06bjh" path="res://entities/Player/states/walk.gd" id="4_aq80t"]
 [ext_resource type="Script" uid="uid://i78lh0jckfg0" path="res://entities/Player/states/jump.gd" id="5_4kjul"]
 [ext_resource type="Script" uid="uid://cbni6oj5s6c2w" path="res://entities/Player/states/fall.gd" id="6_xwu5i"]
@@ -53,6 +54,14 @@ region = Rect2(48, 0, 24, 24)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_egyt8"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_og7qb")
+}],
+"loop": true,
+"name": &"face_up",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("7_6tce4")
@@ -151,8 +160,7 @@ debug = true
 double_sided = false
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_egyt8")
-animation = &"idle"
-frame_progress = 0.720055
+animation = &"face_up"
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "common_node")]
 script = ExtResource("2_d3nms")
@@ -282,6 +290,7 @@ one_shot = true
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
 target_position = Vector3(0, 0, -0.5)
+collision_mask = 16
 
 [connection signal="state_transitioned" from="StateMachine" to="." method="_on_state_machine_state_transitioned"]
 [connection signal="body_entered" from="DetectEnemy" to="." method="_on_detect_enemy_body_entered"]

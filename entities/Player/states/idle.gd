@@ -18,7 +18,10 @@ func _physics_process(_delta: float) -> void:
 			return enter_state(&"Walk")
 	else:
 		return enter_state(&"Fall")
-	
+	if Input.is_action_pressed(&"up_button") and player.go_up_raycast.is_colliding():
+		sprite.play(&"face_up")
+	else:
+		sprite.play(&"idle")
 	if Input.is_action_pressed(&"up_button") and Input.is_action_pressed(&"action_button"):
 		return enter_state(&"MoveUp")
 
