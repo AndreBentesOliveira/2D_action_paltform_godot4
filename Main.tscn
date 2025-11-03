@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://ckxrci77f0bq7"]
+[gd_scene load_steps=54 format=3 uid="uid://ckxrci77f0bq7"]
 
 [ext_resource type="Script" uid="uid://ewewltobs1v6" path="res://main.gd" id="1_5vw27"]
 [ext_resource type="PackedScene" uid="uid://dpuqtlr1m3dcj" path="res://entities/Player/Player.tscn" id="1_ig7tw"]
@@ -12,6 +12,17 @@
 [ext_resource type="Texture2D" uid="uid://c1rrn8gl1wfhi" path="res://teste/256teste.png" id="9_03owx"]
 [ext_resource type="PackedScene" uid="uid://bmn02rffiirgw" path="res://entities/enemys/bat_enemy/bat_enemy.tscn" id="9_20pc6"]
 [ext_resource type="Texture2D" uid="uid://vkq4oyjrxwul" path="res://teste/128teste.png" id="10_wkp8b"]
+[ext_resource type="Texture2D" uid="uid://doxy320um2u5y" path="res://assets/blender/walk_anomation_teste/0000.png" id="13_bg4s2"]
+[ext_resource type="Texture2D" uid="uid://downd8eyk1jop" path="res://assets/blender/walk_anomation_teste/0001.png" id="14_hhcpw"]
+[ext_resource type="Texture2D" uid="uid://vkd06fdvbx3l" path="res://assets/blender/walk_anomation_teste/0002.png" id="15_mxvw5"]
+[ext_resource type="Texture2D" uid="uid://pgnk8ra16loh" path="res://assets/blender/walk_anomation_teste/0003.png" id="16_xrxkg"]
+[ext_resource type="Texture2D" uid="uid://c1duds0gkp6g" path="res://assets/blender/walk_anomation_teste/0004.png" id="17_sqvbp"]
+[ext_resource type="Texture2D" uid="uid://bpm46i3tjyt3o" path="res://assets/blender/walk_anomation_teste/0005.png" id="18_hri7i"]
+[ext_resource type="Texture2D" uid="uid://ds4cbwb72uctd" path="res://assets/blender/walk_anomation_teste/0006.png" id="19_w3rk5"]
+[ext_resource type="Texture2D" uid="uid://dsxs8s3wgcfgj" path="res://assets/blender/walk_anomation_teste/0007.png" id="20_5mvff"]
+[ext_resource type="Texture2D" uid="uid://cumjbcmfs6bfy" path="res://assets/blender/walk_anomation_teste/0008.png" id="21_oye8v"]
+[ext_resource type="Texture2D" uid="uid://dfuitiynwilr0" path="res://assets/blender/walk_anomation_teste/0009.png" id="22_40n85"]
+[ext_resource type="Texture2D" uid="uid://dosffagh5ohg3" path="res://assets/blender/walk_anomation_teste/0010.png" id="23_gb15f"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fd1d0"]
 sky_energy_multiplier = 1.5
@@ -179,6 +190,47 @@ albedo_texture = ExtResource("5_lquwl")
 uv1_offset = Vector3(0.5, 0.5, 0.5)
 uv1_triplanar = true
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_sph85"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_bg4s2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_hhcpw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_mxvw5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_xrxkg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_sqvbp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_hri7i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_w3rk5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_5mvff")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_oye8v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_40n85")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_gb15f")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 10.0
+}]
+
 [node name="Main" type="Node3D"]
 script = ExtResource("1_5vw27")
 
@@ -194,7 +246,7 @@ smoothness = 4.0
 offset = Vector3(0, 0.57, 1.145)
 
 [node name="Player" parent="." instance=ExtResource("1_ig7tw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.97086, 2.12363, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.72914, 2.12363, 0)
 gravity_acceleration = 4.0
 jump_coyote = 0.1
 jump_buffer = 0.2
@@ -381,3 +433,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.40172, 1.13236, 0)
 flip_h = true
 texture_filter = 0
 texture = ExtResource("10_wkp8b")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.4, 1.11285, 0)
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_sph85")
+animation = &"walk"
+autoplay = "walk"
+frame_progress = 0.0700678
