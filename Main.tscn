@@ -238,7 +238,7 @@ script = ExtResource("1_5vw27")
 environment = SubResource("Environment_rsl4a")
 
 [node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("target")]
-transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, -0.605427, 1.83334, 0.834159)
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 5.49457, 1.43334, 0.834159)
 size = 2.609
 script = ExtResource("2_0xm2m")
 target = NodePath("../Player")
@@ -246,7 +246,7 @@ smoothness = 4.0
 offset = Vector3(0, 0.57, 1.145)
 
 [node name="Player" parent="." instance=ExtResource("1_ig7tw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.72914, 2.12363, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.52914, 0.62363, 0)
 gravity_acceleration = 4.0
 jump_coyote = 0.1
 jump_buffer = 0.2
@@ -362,10 +362,10 @@ material = SubResource("StandardMaterial3D_xrxkg")
 block_color = 1
 
 [node name="ProtoCSGBox3D6" parent="Meshs" instance=ExtResource("3_1bvp3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.1, 0.7, -0.9)
-collision_layer = 16
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.1, 0.7, -0.8)
+collision_layer = 17
 collision_mask = 0
-size = Vector3(1.8, 0.4, 1.2)
+size = Vector3(1.8, 0.4, 1.4)
 material = SubResource("StandardMaterial3D_5vw27")
 block_color = 5
 
@@ -386,6 +386,8 @@ block_color = 3
 
 [node name="ProtoCSGBox3D10" parent="Meshs" instance=ExtResource("3_1bvp3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.5, 3.95, 1.15, -0.025)
+collision_layer = 32
+collision_mask = 0
 size = Vector3(0.3, 1.3, 1.1)
 material = SubResource("StandardMaterial3D_wkp8b")
 block_color = 3
@@ -440,4 +442,5 @@ texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_sph85")
 animation = &"walk"
 autoplay = "walk"
-frame_progress = 0.0700678
+frame = 4
+frame_progress = 0.00604692

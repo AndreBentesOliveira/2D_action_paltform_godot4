@@ -53,6 +53,8 @@ var knockback_timer : float = 0.0
 var in_knockback := false
 
 var gripper_collision: Node
+var can_move_in_z := false
+
 
 func _ready() -> void:
 	gripper_component.grab.connect(on_player_grab_entitie)
@@ -74,6 +76,7 @@ func _physics_process(delta: float) -> void:
 		$RayCast1.target_position.x = 0.135
 		#teste
 		$TrowMark.position.x = 0.079
+		$DetectWall.target_position.x = 0.105
 	else:
 		eyes_ray_cast.position.x = -0.062
 		head_ray_cast.position.x = -0.062
@@ -83,9 +86,13 @@ func _physics_process(delta: float) -> void:
 		$RayCast1.target_position.x = -0.135
 		#teste
 		$TrowMark.position.x = -0.079
+		$DetectWall.target_position.x = -0.105
 	# The following line will only be processed if 'StateMachine.auto_process' is set to 'false'.
 	state_machine.call_physics_process(delta)
-	velocity.z = 0
+	if can_move_in_z:
+		pass
+	else:
+		velocity.z = 0
 	timers(delta)
 	
 	move_and_slide()

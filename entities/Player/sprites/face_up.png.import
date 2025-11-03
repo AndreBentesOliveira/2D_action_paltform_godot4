@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://r65sspcmkfai"
-path.s3tc="res://.godot/imported/face_up.png-8acd616b899d063b0ad1fef1b08c25ae.s3tc.ctex"
+path="res://.godot/imported/face_up.png-8acd616b899d063b0ad1fef1b08c25ae.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://entities/Player/sprites/face_up.png"
-dest_files=["res://.godot/imported/face_up.png-8acd616b899d063b0ad1fef1b08c25ae.s3tc.ctex"]
+dest_files=["res://.godot/imported/face_up.png-8acd616b899d063b0ad1fef1b08c25ae.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

@@ -30,6 +30,8 @@ func _physics_process(_delta: float) -> void:
 		return enter_state(&"GrabEntitie")
 	if player.in_knockback:
 		return enter_state(&"Knockback")
+	if player.get_node("DetectWall").is_colliding():
+		return enter_state(&"GrabWall")
 	#if already_jump:
 		#if player.is_on_floor():
 			#return enter_state(&"TrowEntitie")

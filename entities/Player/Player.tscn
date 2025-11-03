@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://dpuqtlr1m3dcj"]
+[gd_scene load_steps=36 format=3 uid="uid://dpuqtlr1m3dcj"]
 
 [ext_resource type="Script" uid="uid://bb2cx1iw4xeo2" path="res://entities/Player/Player.gd" id="1_cm1li"]
 [ext_resource type="Script" uid="uid://cyjj3nyqr8e3y" path="res://addons/state_machine_nodes/state_machine.gd" id="2_d3nms"]
@@ -23,6 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://bcj80km42ne41" path="res://entities/Player/sprites/hurt_sprite.png" id="16_0505q"]
 [ext_resource type="Script" uid="uid://ca21856yep1nj" path="res://components/HurtBoxComponent.gd" id="19_62gbw"]
 [ext_resource type="Script" uid="uid://cq5fm7p8hvuid" path="res://entities/Player/states/move_up.gd" id="20_11kqp"]
+[ext_resource type="Script" uid="uid://b4amd62828eo4" path="res://entities/Player/states/grab_wall.gd" id="22_8xwt4"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kct3s"]
 radius = 0.0694377
@@ -160,7 +161,7 @@ debug = true
 double_sided = false
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_egyt8")
-animation = &"face_up"
+animation = &"idle"
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "common_node")]
 script = ExtResource("2_d3nms")
@@ -207,6 +208,10 @@ metadata/_custom_type_script = "uid://dsnjlxvj4s1uu"
 
 [node name="MoveUp" type="Node" parent="StateMachine"]
 script = ExtResource("20_11kqp")
+metadata/_custom_type_script = "uid://dsnjlxvj4s1uu"
+
+[node name="GrabWall" type="Node" parent="StateMachine"]
+script = ExtResource("22_8xwt4")
 metadata/_custom_type_script = "uid://dsnjlxvj4s1uu"
 
 [node name="TrowMark" type="Marker3D" parent="."]
@@ -256,6 +261,14 @@ target_position = Vector3(0.05, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0616645, 0.0371625, 0)
 target_position = Vector3(0.05, 0, 0)
 
+[node name="RayCast3D" type="RayCast3D" parent="."]
+target_position = Vector3(0, 0, -0.5)
+collision_mask = 16
+
+[node name="DetectWall" type="RayCast3D" parent="."]
+target_position = Vector3(0.105, 0, 0)
+collision_mask = 32
+
 [node name="GripperComponent" parent="." instance=ExtResource("13_lf238")]
 collision_layer = 8
 collision_mask = 8
@@ -287,10 +300,6 @@ shape = SubResource("CylinderShape3D_62gbw")
 [node name="InvencibleTimer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
-
-[node name="RayCast3D" type="RayCast3D" parent="."]
-target_position = Vector3(0, 0, -0.5)
-collision_mask = 16
 
 [connection signal="state_transitioned" from="StateMachine" to="." method="_on_state_machine_state_transitioned"]
 [connection signal="body_entered" from="DetectEnemy" to="." method="_on_detect_enemy_body_entered"]

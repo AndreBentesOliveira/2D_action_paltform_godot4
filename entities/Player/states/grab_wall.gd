@@ -1,9 +1,8 @@
 extends "common_state.gd"
 
 func _enter_state(_old_state: StringName, _params: Dictionary) -> void:
-	player.can_move_in_z = true
 	player.velocity = Vector3.ZERO
-	player.star_invencibility()
+	#player.star_invencibility()
 	player.gripper_area_disable(true)
 	player.gripper_area_disable(true)
 	sprite.play(&"face_up")
@@ -16,7 +15,7 @@ func _physics_process(_delta: float) -> void:
 	else:
 		player.velocity.y = 0.0
 
+
 func _exit_state(new_state: StringName, state_data: Dictionary) -> void:
-	player.can_move_in_z = false
 	player.gripper_area_disable(false)
 	player.gripper_area_disable(false)
