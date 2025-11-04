@@ -266,7 +266,7 @@ target_position = Vector3(0, 0, -0.5)
 collision_mask = 16
 
 [node name="DetectWall" type="RayCast3D" parent="."]
-target_position = Vector3(0.105, 0, 0)
+target_position = Vector3(0.082, 0, 0)
 collision_mask = 32
 
 [node name="GripperComponent" parent="." instance=ExtResource("13_lf238")]
