@@ -8,7 +8,7 @@ var normal_jump_gravity : float
 func _enter_state(_old_state: StringName, _params: Dictionary) -> void:
 	normal_gravity = player.gravity_acceleration
 	normal_jump_gravity = player.jump_gravity_acceleration
-	player.gravity_acceleration = 1.0
+	player.gravity_acceleration = 2.5
 	player.jump_gravity_acceleration = 2.0
 	jump_cont = 0
 	air_jump = true

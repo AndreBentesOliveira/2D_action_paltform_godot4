@@ -252,7 +252,7 @@ smoothness = 4.0
 offset = Vector3(0, 0.57, 1.145)
 
 [node name="Player" parent="." instance=ExtResource("1_ig7tw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.52914, 0.62363, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.92914, 1.32363, 0)
 gravity_acceleration = 4.0
 jump_coyote = 0.1
 jump_buffer = 0.2
@@ -399,7 +399,7 @@ material = SubResource("StandardMaterial3D_wkp8b")
 block_color = 3
 
 [node name="ProtoCSGBox3D18" parent="Meshs/ProtoCSGBox3D10" instance=ExtResource("3_1bvp3")]
-transform = Transform3D(0.995725, 0.0923706, 0, -0.0923706, 0.995725, 0, 0, 0, 1, 0.152766, -0.0467981, 0)
+transform = Transform3D(0.999039, 0.0438461, 0, -0.0438461, 0.999039, 0, 0, 0, 1, 0.152766, -0.0467981, 0)
 operation = 2
 collision_layer = 33
 collision_mask = 0

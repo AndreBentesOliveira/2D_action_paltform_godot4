@@ -76,7 +76,7 @@ func _physics_process(delta: float) -> void:
 		$RayCast1.target_position.x = 0.135
 		#teste
 		$TrowMark.position.x = 0.079
-		$DetectWall.target_position.x = 0.105
+		$DetectWall.target_position.x = 0.082
 	else:
 		eyes_ray_cast.position.x = -0.062
 		head_ray_cast.position.x = -0.062
@@ -86,7 +86,7 @@ func _physics_process(delta: float) -> void:
 		$RayCast1.target_position.x = -0.135
 		#teste
 		$TrowMark.position.x = -0.079
-		$DetectWall.target_position.x = -0.105
+		$DetectWall.target_position.x = -0.082
 	# The following line will only be processed if 'StateMachine.auto_process' is set to 'false'.
 	state_machine.call_physics_process(delta)
 	if can_move_in_z:
@@ -147,6 +147,7 @@ func load_input_map() -> void:
 	add_keys.call(&"action_button", [KEY_E])
 	add_pads.call(&"action_button", [JOY_BUTTON_DPAD_UP])
 
+
 func apply_gravity(delta: float) -> void:
 	var applied_gravity : float = 0
 
@@ -168,7 +169,7 @@ func apply_gravity(delta: float) -> void:
 		applied_gravity *= jump_hang_gravity_mult
 
 	velocity.y -= applied_gravity
-	
+
 
 func x_movement(delta: float) -> void:
 	var x_dir: float = Input.get_axis(&"walk_left", &"walk_right")
