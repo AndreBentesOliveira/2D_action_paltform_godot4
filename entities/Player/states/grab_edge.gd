@@ -32,5 +32,6 @@ func _unhandled_input(event: InputEvent) -> void:
 		return enter_state(&"Fall")
 
 func _exit_state(new_state: StringName, state_data: Dictionary) -> void:
+	
 	#player.head_ray_cast.position.y = 0.11
 	player.gripper_area_disable(false)

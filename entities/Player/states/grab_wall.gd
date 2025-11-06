@@ -19,8 +19,8 @@ func _enter_state(_old_state: StringName, _params: Dictionary) -> void:
 
 
 func _physics_process(_delta: float) -> void:
+	check_for_ledge()
 	find_wall_angle()
-	print(player.can_eledge_grab)
 	if player.can_eledge_grab:
 		return enter_state(&"GrabEdge")
 	if player.is_on_floor():
@@ -29,10 +29,10 @@ func _physics_process(_delta: float) -> void:
 		#return enter_state(&"Knockback")
 	player.velocity.y = 0.0
 	if Input.is_action_pressed(&"down_button"):
-			player.velocity.y -= 70.0 * _delta
+			player.velocity.y -= 40.0 * _delta
 	if player.is_on_wall() and player.get_node("DetectWall").is_colliding():
 		if Input.is_action_pressed(&"up_button"):
-			player.velocity.y += 70.0 * _delta
+			player.velocity.y += 40.0 * _delta
 		
 		#player.velocity.y += 10.0 * _delta
 	#else:
@@ -52,3 +52,7 @@ func _unhandled_input(event: InputEvent) -> void:
 func find_wall_angle():
 	var wall_normal = player.get_wall_normal()
 	visuals.rotation.z = wall_normal.y
+
+
+func check_for_ledge():
+	player.can_eledge_grab = not player.head_ray_cast.is_colliding() and player.eyes_ray_cast.is_colliding()

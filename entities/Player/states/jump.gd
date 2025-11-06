@@ -49,6 +49,10 @@ func _physics_process(_delta: float) -> void:
 		if player.velocity.y <= 0.0:
 			return enter_state(&"Fall")
 
+func _exit_state(new_state: StringName, state_data: Dictionary) -> void:
+	if new_state == "GrabEdge":
+		player.velocity == Vector3.ZERO
+
 
 func get_input() -> Dictionary:
 	return {
@@ -75,9 +79,13 @@ func jump_logic(_delta: float) -> void:
 		eledge_grab = false
 		entitie_grab = false
 		wall_jump = false
-		# Compute the jump force based on gravity. Not 100% accurate since we
-		# vary gravity at different phases of the jump, but a useful estimate.
-		player.velocity.y = sqrt(2 * player.jump_gravity_acceleration * player.jump_height)
+		
+		if player.velocity.y < 0:
+			player.velocity.y += player.velocity.y
+		
+		player.velocity.y = player.jump_height
+		
+		#player.velocity.y = sqrt(2 * player.jump_gravity_acceleration * player.jump_height)
 	# We're not actually interested in checking if the player is holding the jump button
 #	if get_input().jump:pass
 
@@ -90,8 +98,8 @@ func jump_logic(_delta: float) -> void:
 	# This way we won't start slowly descending / floating once we hit a ceiling
 	# The value added to the threshold is arbitrary, But it solves a problem
 	# where jumping into a ceiling triggers jump_hang_speed_threshold gravity.
-	#if player.is_on_ceiling():
-		#player.velocity.y = player.jump_hang_speed_threshold
+	#if is_on_ceiling(): velocity.y = jump_hang_treshold + 100.0
 
 func check_for_ledge():
 	player.can_eledge_grab = not player.head_ray_cast.is_colliding() and player.eyes_ray_cast.is_colliding()
+	print("grab edge: " + str(player.can_eledge_grab))
