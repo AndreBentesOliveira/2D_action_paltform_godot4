@@ -165,7 +165,7 @@ func apply_gravity(delta: float) -> void:
 		applied_gravity = jump_gravity_acceleration * delta
 
 	# Lower the gravity at the peak of our jump (where velocity is the smallest)
-	if is_jumping and abs(velocity.y) > jump_hang_speed_threshold:
+	if is_jumping and velocity.y < jump_hang_speed_threshold:
 		applied_gravity *= jump_hang_gravity_mult
 
 	velocity.y -= applied_gravity

@@ -102,4 +102,3 @@ func jump_logic(_delta: float) -> void:
 
 func check_for_ledge():
 	player.can_eledge_grab = not player.head_ray_cast.is_colliding() and player.eyes_ray_cast.is_colliding()
-	print("grab edge: " + str(player.can_eledge_grab))
