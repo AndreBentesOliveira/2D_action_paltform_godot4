@@ -148,10 +148,10 @@ script = ExtResource("1_cm1li")
 sprite = NodePath("Visuals/Sprite3D")
 ledge_grab_offset = Vector3(0.202, -0.105, 0)
 jump_height = 1.895
-jump_cut = 0.6
+jump_cut = 1.0
 jump_gravity_acceleration = 3.0
-jump_hang_speed_threshold = 0.5
-jump_hang_gravity_mult = 0.5
+jump_hang_speed_threshold = 0.11
+jump_hang_gravity_mult = 0.8
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_kct3s")

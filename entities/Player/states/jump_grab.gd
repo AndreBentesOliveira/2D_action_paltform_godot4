@@ -6,10 +6,10 @@ var normal_gravity : float
 var normal_jump_gravity : float
 
 func _enter_state(_old_state: StringName, _params: Dictionary) -> void:
-	normal_gravity = player.gravity_acceleration
-	normal_jump_gravity = player.jump_gravity_acceleration
-	player.gravity_acceleration = 2.5
-	player.jump_gravity_acceleration = 2.0
+	#normal_gravity = player.gravity_acceleration
+	#normal_jump_gravity = player.jump_gravity_acceleration
+	#player.gravity_acceleration = 5.0
+	#player.jump_gravity_acceleration = 3.0
 	jump_cont = 0
 	air_jump = true
 
@@ -36,8 +36,9 @@ func _physics_process(_delta: float) -> void:
 
 
 func _exit_state(new_state: StringName, state_data: Dictionary) -> void:
-	player.gravity_acceleration = normal_gravity
-	player.jump_gravity_acceleration = normal_jump_gravity
+	pass
+	#player.gravity_acceleration = normal_gravity
+	#player.jump_gravity_acceleration = normal_jump_gravity
 
 func get_input() -> Dictionary:
 	return {
@@ -61,7 +62,11 @@ func jump_logic(_delta: float) -> void:
 		player.is_jumping = true
 		player.jump_coyote_timer = 0
 		player.jump_buffer_timer = 0
-		player.velocity.y = sqrt(2 * player.jump_gravity_acceleration * player.jump_height)
+		
+		if player.velocity.y < 0:
+			player.velocity.y += player.velocity.y
+		
+		player.velocity.y = player.jump_height
 
 	if get_input().released_jump and player.velocity.y > 0:
 		player.velocity.y -= (player.jump_cut * player.velocity.y)

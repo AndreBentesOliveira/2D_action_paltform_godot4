@@ -95,9 +95,6 @@ func jump_logic(_delta: float) -> void:
 	if get_input().released_jump and player.velocity.y > 0:
 		player.velocity.y -= (player.jump_cut * player.velocity.y)
 
-	# This way we won't start slowly descending / floating once we hit a ceiling
-	# The value added to the threshold is arbitrary, But it solves a problem
-	# where jumping into a ceiling triggers jump_hang_speed_threshold gravity.
 	#if is_on_ceiling(): velocity.y = jump_hang_treshold + 100.0
 
 func check_for_ledge():
