@@ -2,6 +2,8 @@ extends "common_state.gd"
 
 var move_y : float
 var eledge_grab = false
+var wall_direction: Vector3
+
 func _enter_state(_old_state: StringName, _params: Dictionary) -> void:
 	eledge_grab = false
 	if _old_state == "GrabEdge":
@@ -21,6 +23,10 @@ func _enter_state(_old_state: StringName, _params: Dictionary) -> void:
 func _physics_process(_delta: float) -> void:
 	check_for_ledge()
 	find_wall_angle()
+	#if !sprite.flip_h:
+		#player.velocity.x += 1.0 * _delta
+	#else:
+		#player.velocity.x += -.5 * _delta
 	if player.can_eledge_grab:
 		return enter_state(&"GrabEdge")
 	if player.is_on_floor():
@@ -52,7 +58,8 @@ func _unhandled_input(event: InputEvent) -> void:
 func find_wall_angle():
 	var wall_normal = player.get_wall_normal()
 	visuals.rotation.z = wall_normal.y
-
+	#wall_direction = Vector3.UP.cross(wall_normal).normalized()
+	#print(wall_direction, wall_normal)
 
 func check_for_ledge():
 	player.can_eledge_grab = not player.head_ray_cast.is_colliding() and player.eyes_ray_cast.is_colliding()

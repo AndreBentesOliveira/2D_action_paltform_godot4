@@ -65,6 +65,7 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
+	
 	%VelocityY.text = str("Velocity.y: " + "%.2f" % velocity.y)
 	%VelocityX.text = str("Velocity.x: " + "%.2f" % velocity.x)
 	if !sprite.flip_h:
