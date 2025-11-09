@@ -256,7 +256,7 @@ target_position = Vector3(0.135, 0, 0)
 
 [node name="RayCast2" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.12976, 0.218513, 0)
-target_position = Vector3(0, -0.244, 0)
+target_position = Vector3(0, -0.26, 0)
 
 [node name="HeadRayCast" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0616645, 0.103043, 0)
@@ -271,7 +271,7 @@ target_position = Vector3(0, 0, -0.5)
 collision_mask = 16
 
 [node name="DetectWall" type="RayCast3D" parent="."]
-target_position = Vector3(0.082, 0, 0)
+target_position = Vector3(0.081, 0, 0)
 collision_mask = 32
 
 [node name="GripperComponent" parent="." instance=ExtResource("13_lf238")]
