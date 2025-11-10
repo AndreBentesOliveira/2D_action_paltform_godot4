@@ -1,4 +1,4 @@
-[gd_scene load_steps=78 format=3 uid="uid://ckxrci77f0bq7"]
+[gd_scene load_steps=44 format=3 uid="uid://ckxrci77f0bq7"]
 
 [ext_resource type="Script" uid="uid://ewewltobs1v6" path="res://main.gd" id="1_5vw27"]
 [ext_resource type="PackedScene" uid="uid://dpuqtlr1m3dcj" path="res://entities/Player/Player.tscn" id="1_ig7tw"]
@@ -14,36 +14,6 @@
 [ext_resource type="PackedScene" uid="uid://hcs1k41pp446" path="res://addons/proto-csgs/proto_csg_polygon_3d.tscn" id="9_mxvw5"]
 [ext_resource type="Texture2D" uid="uid://dlsrm1by0p2tu" path="res://addons/proto-csgs/textures/orange/texture_01.png" id="10_mxvw5"]
 [ext_resource type="Texture2D" uid="uid://vkq4oyjrxwul" path="res://teste/128teste.png" id="10_wkp8b"]
-[ext_resource type="Texture2D" uid="uid://doxy320um2u5y" path="res://assets/blender/walk_animation_teste/0000.png" id="13_bg4s2"]
-[ext_resource type="Texture2D" uid="uid://downd8eyk1jop" path="res://assets/blender/walk_animation_teste/0001.png" id="14_hhcpw"]
-[ext_resource type="Texture2D" uid="uid://vkd06fdvbx3l" path="res://assets/blender/walk_animation_teste/0002.png" id="15_mxvw5"]
-[ext_resource type="Texture2D" uid="uid://bnyed0r3wcbsf" path="res://assets/blender/3danimation/fall/0000.png" id="15_v8qla"]
-[ext_resource type="Texture2D" uid="uid://d5rtsym5h2wc" path="res://assets/blender/3danimation/running_animation_teste/0000.png" id="15_vi5kq"]
-[ext_resource type="Texture2D" uid="uid://caxbwcsj5tnaf" path="res://assets/blender/3danimation/running_animation_teste/0001.png" id="16_5mkgo"]
-[ext_resource type="Texture2D" uid="uid://pgnk8ra16loh" path="res://assets/blender/walk_animation_teste/0003.png" id="16_xrxkg"]
-[ext_resource type="Texture2D" uid="uid://8on26rbxprf6" path="res://assets/blender/3danimation/fall/0001.png" id="16_y1tbi"]
-[ext_resource type="Texture2D" uid="uid://dlgjamlmi44tg" path="res://assets/blender/3danimation/fall/0002.png" id="17_c2s76"]
-[ext_resource type="Texture2D" uid="uid://c1duds0gkp6g" path="res://assets/blender/walk_animation_teste/0004.png" id="17_sqvbp"]
-[ext_resource type="Texture2D" uid="uid://ycbno7g68vbv" path="res://assets/blender/3danimation/fall/0003.png" id="18_f4ese"]
-[ext_resource type="Texture2D" uid="uid://bpm46i3tjyt3o" path="res://assets/blender/walk_animation_teste/0005.png" id="18_hri7i"]
-[ext_resource type="Texture2D" uid="uid://4qc1wv68epdh" path="res://assets/blender/3danimation/running_animation_teste/0003.png" id="18_ny7u2"]
-[ext_resource type="Texture2D" uid="uid://cg3lcmqqyq1xa" path="res://assets/blender/3danimation/fall/0004.png" id="19_rchyr"]
-[ext_resource type="Texture2D" uid="uid://ds4cbwb72uctd" path="res://assets/blender/walk_animation_teste/0006.png" id="19_w3rk5"]
-[ext_resource type="Texture2D" uid="uid://opwuhrj0btwo" path="res://assets/blender/3danimation/running_animation_teste/0004.png" id="19_x3yn0"]
-[ext_resource type="Texture2D" uid="uid://b01whcya4lgfj" path="res://assets/blender/3danimation/running_animation_teste/0005.png" id="20_1w2xm"]
-[ext_resource type="Texture2D" uid="uid://dsxs8s3wgcfgj" path="res://assets/blender/walk_animation_teste/0007.png" id="20_5mvff"]
-[ext_resource type="Texture2D" uid="uid://cpi1sgl4k3xx2" path="res://assets/blender/3danimation/fall/0005.png" id="20_pljue"]
-[ext_resource type="Texture2D" uid="uid://c2vl22scpxmqy" path="res://assets/blender/3danimation/running_animation_teste/0006.png" id="21_gngx1"]
-[ext_resource type="Texture2D" uid="uid://2lpu8ga3jbwi" path="res://assets/blender/3danimation/jump/0000.png" id="21_nx4yo"]
-[ext_resource type="Texture2D" uid="uid://cumjbcmfs6bfy" path="res://assets/blender/walk_animation_teste/0008.png" id="21_oye8v"]
-[ext_resource type="Texture2D" uid="uid://cgfqhk01wpfxi" path="res://assets/blender/3danimation/jump/0001.png" id="22_5tfui"]
-[ext_resource type="Texture2D" uid="uid://dfuitiynwilr0" path="res://assets/blender/walk_animation_teste/0009.png" id="22_40n85"]
-[ext_resource type="Texture2D" uid="uid://pnd7eico5iao" path="res://assets/blender/3danimation/running_animation_teste/0007.png" id="22_jt61w"]
-[ext_resource type="Texture2D" uid="uid://xobygpy1umby" path="res://assets/blender/3danimation/jump/0002.png" id="23_38apo"]
-[ext_resource type="Texture2D" uid="uid://dosffagh5ohg3" path="res://assets/blender/walk_animation_teste/0010.png" id="23_gb15f"]
-[ext_resource type="Texture2D" uid="uid://c5keo48307uq1" path="res://assets/blender/3danimation/running_animation_teste/0008.png" id="23_v8qla"]
-[ext_resource type="Texture2D" uid="uid://dntja03swoiyy" path="res://assets/blender/3danimation/running_animation_teste/0009.png" id="24_y1tbi"]
-[ext_resource type="Texture2D" uid="uid://bu3a2m6g6mbnv" path="res://assets/blender/3danimation/running_animation_teste/0010.png" id="25_c2s76"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fd1d0"]
 sky_energy_multiplier = 1.5
@@ -73,25 +43,7 @@ albedo_texture = ExtResource("4_lquwl")
 uv1_offset = Vector3(0.5, 0.5, 0.5)
 uv1_triplanar = true
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c2ibq"]
-resource_local_to_scene = true
-albedo_texture = ExtResource("4_lquwl")
-uv1_offset = Vector3(0.5, 0.5, 0.5)
-uv1_triplanar = true
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j4qnp"]
-resource_local_to_scene = true
-albedo_texture = ExtResource("4_lquwl")
-uv1_offset = Vector3(0.5, 0.5, 0.5)
-uv1_triplanar = true
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fpfj3"]
-resource_local_to_scene = true
-albedo_texture = ExtResource("4_lquwl")
-uv1_offset = Vector3(0.5, 0.5, 0.5)
-uv1_triplanar = true
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kjvhd"]
 resource_local_to_scene = true
 albedo_texture = ExtResource("4_lquwl")
 uv1_offset = Vector3(0.5, 0.5, 0.5)
@@ -229,122 +181,6 @@ albedo_texture = ExtResource("5_lquwl")
 uv1_offset = Vector3(0.5, 0.5, 0.5)
 uv1_triplanar = true
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_sph85"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("15_v8qla")
-}, {
-"duration": 1.0,
-"texture": ExtResource("16_y1tbi")
-}, {
-"duration": 1.0,
-"texture": ExtResource("17_c2s76")
-}, {
-"duration": 1.0,
-"texture": ExtResource("18_f4ese")
-}, {
-"duration": 1.0,
-"texture": ExtResource("19_rchyr")
-}, {
-"duration": 1.0,
-"texture": ExtResource("20_pljue")
-}],
-"loop": false,
-"name": &"fall",
-"speed": 15.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("21_nx4yo")
-}, {
-"duration": 1.0,
-"texture": ExtResource("22_5tfui")
-}, {
-"duration": 1.0,
-"texture": ExtResource("23_38apo")
-}],
-"loop": false,
-"name": &"jump",
-"speed": 15.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("15_vi5kq")
-}, {
-"duration": 1.0,
-"texture": ExtResource("16_5mkgo")
-}, {
-"duration": 1.0,
-"texture": null
-}, {
-"duration": 1.0,
-"texture": ExtResource("18_ny7u2")
-}, {
-"duration": 1.0,
-"texture": ExtResource("19_x3yn0")
-}, {
-"duration": 1.0,
-"texture": ExtResource("20_1w2xm")
-}, {
-"duration": 1.0,
-"texture": ExtResource("21_gngx1")
-}, {
-"duration": 1.0,
-"texture": ExtResource("22_jt61w")
-}, {
-"duration": 1.0,
-"texture": ExtResource("23_v8qla")
-}, {
-"duration": 1.0,
-"texture": ExtResource("24_y1tbi")
-}, {
-"duration": 1.0,
-"texture": ExtResource("25_c2s76")
-}],
-"loop": true,
-"name": &"run",
-"speed": 15.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("13_bg4s2")
-}, {
-"duration": 1.0,
-"texture": ExtResource("14_hhcpw")
-}, {
-"duration": 1.0,
-"texture": ExtResource("15_mxvw5")
-}, {
-"duration": 1.0,
-"texture": ExtResource("16_xrxkg")
-}, {
-"duration": 1.0,
-"texture": ExtResource("17_sqvbp")
-}, {
-"duration": 1.0,
-"texture": ExtResource("18_hri7i")
-}, {
-"duration": 1.0,
-"texture": ExtResource("19_w3rk5")
-}, {
-"duration": 1.0,
-"texture": ExtResource("20_5mvff")
-}, {
-"duration": 1.0,
-"texture": ExtResource("21_oye8v")
-}, {
-"duration": 1.0,
-"texture": ExtResource("22_40n85")
-}, {
-"duration": 1.0,
-"texture": ExtResource("23_gb15f")
-}],
-"loop": true,
-"name": &"walk",
-"speed": 10.0
-}]
-
 [node name="Main" type="Node3D"]
 script = ExtResource("1_5vw27")
 
@@ -357,19 +193,23 @@ size = 2.609
 script = ExtResource("2_0xm2m")
 target = NodePath("../Player")
 smoothness = 4.0
-offset = Vector3(0, 0.57, 1.145)
+offset = Vector3(0, 0.84, 2.685)
 
 [node name="Player" parent="." instance=ExtResource("1_ig7tw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.48628, 1.32363, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.41372, 1.32363, 0)
+jump_height = 2.5
+jump_hang_gravity_mult = 0.2
 
 [node name="Meshs" type="Node3D" parent="."]
 
 [node name="ProtoCSGBox3D" parent="Meshs" instance=ExtResource("3_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.9, 0)
+size = Vector3(1, 2.8, 1)
 material = SubResource("StandardMaterial3D_7mycd")
 
 [node name="ProtoCSGBox3D7" parent="Meshs" instance=ExtResource("3_1bvp3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.65, 1.49012e-08, 0)
-size = Vector3(0.3, 1, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.65, -0.9, 0)
+size = Vector3(0.3, 2.8, 1)
 material = SubResource("StandardMaterial3D_4c57u")
 
 [node name="ProtoCSGBox3D12" parent="Meshs" instance=ExtResource("3_1bvp3")]
@@ -377,25 +217,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.95, 1.05, 0)
 size = Vector3(0.3, 0.3, 1)
 material = SubResource("StandardMaterial3D_5vvyt")
 
-[node name="ProtoCSGBox3D14" parent="Meshs" instance=ExtResource("3_1bvp3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.65, 0.0499999, 0)
-size = Vector3(0.3, 0.1, 1)
-material = SubResource("StandardMaterial3D_c2ibq")
-
 [node name="ProtoCSGBox3D17" parent="Meshs" instance=ExtResource("3_1bvp3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.65, 0.55, 0)
-size = Vector3(0.3, 0.3, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.65, 0.35, 0)
+size = Vector3(0.3, 1.3, 1)
 material = SubResource("StandardMaterial3D_j4qnp")
-
-[node name="ProtoCSGBox3D23" parent="Meshs" instance=ExtResource("3_1bvp3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.65, 0.2, 0)
-size = Vector3(0.3, 0.2, 1)
-material = SubResource("StandardMaterial3D_fpfj3")
-
-[node name="ProtoCSGBox3D19" parent="Meshs" instance=ExtResource("3_1bvp3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.65, 1, 0)
-size = Vector3(0.3, 0.2, 1)
-material = SubResource("StandardMaterial3D_kjvhd")
 
 [node name="ProtoCSGBox3D21" parent="Meshs" instance=ExtResource("3_1bvp3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.65, 1.4, 0)
@@ -403,8 +228,8 @@ size = Vector3(0.3, 0.2, 1)
 material = SubResource("StandardMaterial3D_2gh4u")
 
 [node name="ProtoCSGBox3D22" parent="Meshs" instance=ExtResource("3_1bvp3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.65, 1.75, 0)
-size = Vector3(0.3, 0.1, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.65, 1.7, 0)
+size = Vector3(0.3, 0.2, 1)
 material = SubResource("StandardMaterial3D_oye8v")
 
 [node name="ProtoCSGBox3D24" parent="Meshs" instance=ExtResource("3_1bvp3")]
@@ -413,23 +238,23 @@ size = Vector3(0.3, 0.2, 1)
 material = SubResource("StandardMaterial3D_sc1dx")
 
 [node name="ProtoCSGBox3D13" parent="Meshs" instance=ExtResource("3_1bvp3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.15, 0.7, 0)
-size = Vector3(0.7, 0.4, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.15, -0.7, 0)
+size = Vector3(0.7, 3.2, 1)
 material = SubResource("StandardMaterial3D_c6i3y")
 
 [node name="ProtoCSGBox3D8" parent="Meshs" instance=ExtResource("3_1bvp3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.65, 0)
-size = Vector3(1, 2.3, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -0.25, 0)
+size = Vector3(1, 4.1, 1)
 material = SubResource("StandardMaterial3D_efxa6")
 
 [node name="ProtoCSGBox3D9" parent="Meshs" instance=ExtResource("3_1bvp3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.85, -0.4, 0)
-size = Vector3(6.7, 0.2, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.85, -1.3, 0)
+size = Vector3(6.7, 2, 1)
 material = SubResource("StandardMaterial3D_vivmo")
 
 [node name="ProtoCSGBox3D4" parent="Meshs" instance=ExtResource("3_1bvp3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.8, 0, 1.49012e-08)
-size = Vector3(16.6, 1, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.8, -0.9, 1.49012e-08)
+size = Vector3(16.6, 2.8, 1)
 material = SubResource("StandardMaterial3D_dg77c")
 
 [node name="ProtoCSGBox3D5" parent="Meshs" instance=ExtResource("3_1bvp3")]
@@ -453,8 +278,8 @@ material = SubResource("StandardMaterial3D_bg4s2")
 block_color = 1
 
 [node name="ProtoCSGBox3D15" parent="Meshs" instance=ExtResource("3_1bvp3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4, 1.85, 1.49012e-08)
-size = Vector3(1.6, 0.1, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.15, 1.85, 1.49012e-08)
+size = Vector3(1.7, 0.1, 1)
 material = SubResource("StandardMaterial3D_hhcpw")
 block_color = 1
 
@@ -491,7 +316,8 @@ size = Vector3(5, 1, 1)
 material = SubResource("StandardMaterial3D_w48qg")
 
 [node name="ProtoCSGBox3D2" parent="Meshs" instance=ExtResource("3_1bvp3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.5, 1, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.5, 1, -0.9, 0)
+size = Vector3(1, 2.8, 1)
 material = SubResource("StandardMaterial3D_272bh")
 block_color = 3
 
@@ -565,12 +391,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.40172, 1.13236, 0)
 flip_h = true
 texture_filter = 0
 texture = ExtResource("10_wkp8b")
-
-[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.4, 1.11285, 0)
-texture_filter = 0
-sprite_frames = SubResource("SpriteFrames_sph85")
-animation = &"jump"
-autoplay = "walk"
-frame = 2
-frame_progress = 1.0

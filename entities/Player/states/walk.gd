@@ -1,6 +1,5 @@
 extends "common_state.gd"
 
-
 func _enter_state(_old_state: StringName, _params: Dictionary) -> void:
 	sprite.play(&"walk")
 
@@ -8,9 +7,16 @@ func _enter_state(_old_state: StringName, _params: Dictionary) -> void:
 func _physics_process(_delta: float) -> void:
 	if player.in_knockback:
 		return enter_state(&"Knockback")
-	sprite.speed_scale = player.velocity.x
+	sprite.speed_scale = abs(player.velocity.x / .5)
+	if abs(player.velocity.x) > player.max_speed:
+		sprite.play(&"running")
 	find_ground_angle()
 	x_movement(_delta)
+
+
+
+func _exit_state(new_state: StringName, state_data: Dictionary) -> void:
+	sprite.speed_scale = 1.0
 
 
 func _unhandled_input(event: InputEvent) -> void:

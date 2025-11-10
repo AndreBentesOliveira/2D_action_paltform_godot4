@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/jump_grab0002.png-755e12c8ab9be565941c1542dea
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

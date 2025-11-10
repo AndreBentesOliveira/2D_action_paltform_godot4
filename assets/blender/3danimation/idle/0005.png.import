@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://downd8eyk1jop"
-path="res://.godot/imported/0001.png-b33fb69151f9799616845a9733fbb331.ctex"
+uid="uid://c2s3mlqy0snby"
+path="res://.godot/imported/0005.png-ff9de18a63284da3ecdcff5cafd7933b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/blender/walk_animation_teste/0001.png"
-dest_files=["res://.godot/imported/0001.png-b33fb69151f9799616845a9733fbb331.ctex"]
+source_file="res://assets/blender/3danimation/idle/0005.png"
+dest_files=["res://.godot/imported/0005.png-ff9de18a63284da3ecdcff5cafd7933b.ctex"]
 
 [params]
 

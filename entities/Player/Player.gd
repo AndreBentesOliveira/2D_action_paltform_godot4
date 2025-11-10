@@ -69,22 +69,22 @@ func _physics_process(delta: float) -> void:
 	%VelocityY.text = str("Velocity.y: " + "%.2f" % velocity.y)
 	%VelocityX.text = str("Velocity.x: " + "%.2f" % velocity.x)
 	if !sprite.flip_h:
-		eyes_ray_cast.position.x = 0.062
-		head_ray_cast.position.x = 0.062
+		eyes_ray_cast.position.x = 0.181
+		head_ray_cast.position.x = 0.181
 		eyes_ray_cast.target_position.x = 0.07
 		head_ray_cast.target_position.x = 0.07
 		#teste
-		$RayCast1.target_position.x = 0.135
+		$RayCast1.target_position.x = 0.235
 		#teste
 		$TrowMark.position.x = 0.079
 		$DetectWall.target_position.x = 0.081
 	else:
-		eyes_ray_cast.position.x = -0.062
-		head_ray_cast.position.x = -0.062
+		eyes_ray_cast.position.x = -0.181
+		head_ray_cast.position.x = -0.181
 		eyes_ray_cast.target_position.x = -0.07
 		head_ray_cast.target_position.x = -0.07
 		#teste
-		$RayCast1.target_position.x = -0.135
+		$RayCast1.target_position.x = -0.235
 		#teste
 		$TrowMark.position.x = -0.079
 		$DetectWall.target_position.x = -0.081
