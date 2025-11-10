@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://ckxrci77f0bq7"]
+[gd_scene load_steps=78 format=3 uid="uid://ckxrci77f0bq7"]
 
 [ext_resource type="Script" uid="uid://ewewltobs1v6" path="res://main.gd" id="1_5vw27"]
 [ext_resource type="PackedScene" uid="uid://dpuqtlr1m3dcj" path="res://entities/Player/Player.tscn" id="1_ig7tw"]
@@ -14,17 +14,36 @@
 [ext_resource type="PackedScene" uid="uid://hcs1k41pp446" path="res://addons/proto-csgs/proto_csg_polygon_3d.tscn" id="9_mxvw5"]
 [ext_resource type="Texture2D" uid="uid://dlsrm1by0p2tu" path="res://addons/proto-csgs/textures/orange/texture_01.png" id="10_mxvw5"]
 [ext_resource type="Texture2D" uid="uid://vkq4oyjrxwul" path="res://teste/128teste.png" id="10_wkp8b"]
-[ext_resource type="Texture2D" uid="uid://doxy320um2u5y" path="res://assets/blender/walk_anomation_teste/0000.png" id="13_bg4s2"]
-[ext_resource type="Texture2D" uid="uid://downd8eyk1jop" path="res://assets/blender/walk_anomation_teste/0001.png" id="14_hhcpw"]
-[ext_resource type="Texture2D" uid="uid://vkd06fdvbx3l" path="res://assets/blender/walk_anomation_teste/0002.png" id="15_mxvw5"]
-[ext_resource type="Texture2D" uid="uid://pgnk8ra16loh" path="res://assets/blender/walk_anomation_teste/0003.png" id="16_xrxkg"]
-[ext_resource type="Texture2D" uid="uid://c1duds0gkp6g" path="res://assets/blender/walk_anomation_teste/0004.png" id="17_sqvbp"]
-[ext_resource type="Texture2D" uid="uid://bpm46i3tjyt3o" path="res://assets/blender/walk_anomation_teste/0005.png" id="18_hri7i"]
-[ext_resource type="Texture2D" uid="uid://ds4cbwb72uctd" path="res://assets/blender/walk_anomation_teste/0006.png" id="19_w3rk5"]
-[ext_resource type="Texture2D" uid="uid://dsxs8s3wgcfgj" path="res://assets/blender/walk_anomation_teste/0007.png" id="20_5mvff"]
-[ext_resource type="Texture2D" uid="uid://cumjbcmfs6bfy" path="res://assets/blender/walk_anomation_teste/0008.png" id="21_oye8v"]
-[ext_resource type="Texture2D" uid="uid://dfuitiynwilr0" path="res://assets/blender/walk_anomation_teste/0009.png" id="22_40n85"]
-[ext_resource type="Texture2D" uid="uid://dosffagh5ohg3" path="res://assets/blender/walk_anomation_teste/0010.png" id="23_gb15f"]
+[ext_resource type="Texture2D" uid="uid://doxy320um2u5y" path="res://assets/blender/walk_animation_teste/0000.png" id="13_bg4s2"]
+[ext_resource type="Texture2D" uid="uid://downd8eyk1jop" path="res://assets/blender/walk_animation_teste/0001.png" id="14_hhcpw"]
+[ext_resource type="Texture2D" uid="uid://vkd06fdvbx3l" path="res://assets/blender/walk_animation_teste/0002.png" id="15_mxvw5"]
+[ext_resource type="Texture2D" uid="uid://bnyed0r3wcbsf" path="res://assets/blender/3danimation/fall/0000.png" id="15_v8qla"]
+[ext_resource type="Texture2D" uid="uid://d5rtsym5h2wc" path="res://assets/blender/3danimation/running_animation_teste/0000.png" id="15_vi5kq"]
+[ext_resource type="Texture2D" uid="uid://caxbwcsj5tnaf" path="res://assets/blender/3danimation/running_animation_teste/0001.png" id="16_5mkgo"]
+[ext_resource type="Texture2D" uid="uid://pgnk8ra16loh" path="res://assets/blender/walk_animation_teste/0003.png" id="16_xrxkg"]
+[ext_resource type="Texture2D" uid="uid://8on26rbxprf6" path="res://assets/blender/3danimation/fall/0001.png" id="16_y1tbi"]
+[ext_resource type="Texture2D" uid="uid://dlgjamlmi44tg" path="res://assets/blender/3danimation/fall/0002.png" id="17_c2s76"]
+[ext_resource type="Texture2D" uid="uid://c1duds0gkp6g" path="res://assets/blender/walk_animation_teste/0004.png" id="17_sqvbp"]
+[ext_resource type="Texture2D" uid="uid://ycbno7g68vbv" path="res://assets/blender/3danimation/fall/0003.png" id="18_f4ese"]
+[ext_resource type="Texture2D" uid="uid://bpm46i3tjyt3o" path="res://assets/blender/walk_animation_teste/0005.png" id="18_hri7i"]
+[ext_resource type="Texture2D" uid="uid://4qc1wv68epdh" path="res://assets/blender/3danimation/running_animation_teste/0003.png" id="18_ny7u2"]
+[ext_resource type="Texture2D" uid="uid://cg3lcmqqyq1xa" path="res://assets/blender/3danimation/fall/0004.png" id="19_rchyr"]
+[ext_resource type="Texture2D" uid="uid://ds4cbwb72uctd" path="res://assets/blender/walk_animation_teste/0006.png" id="19_w3rk5"]
+[ext_resource type="Texture2D" uid="uid://opwuhrj0btwo" path="res://assets/blender/3danimation/running_animation_teste/0004.png" id="19_x3yn0"]
+[ext_resource type="Texture2D" uid="uid://b01whcya4lgfj" path="res://assets/blender/3danimation/running_animation_teste/0005.png" id="20_1w2xm"]
+[ext_resource type="Texture2D" uid="uid://dsxs8s3wgcfgj" path="res://assets/blender/walk_animation_teste/0007.png" id="20_5mvff"]
+[ext_resource type="Texture2D" uid="uid://cpi1sgl4k3xx2" path="res://assets/blender/3danimation/fall/0005.png" id="20_pljue"]
+[ext_resource type="Texture2D" uid="uid://c2vl22scpxmqy" path="res://assets/blender/3danimation/running_animation_teste/0006.png" id="21_gngx1"]
+[ext_resource type="Texture2D" uid="uid://2lpu8ga3jbwi" path="res://assets/blender/3danimation/jump/0000.png" id="21_nx4yo"]
+[ext_resource type="Texture2D" uid="uid://cumjbcmfs6bfy" path="res://assets/blender/walk_animation_teste/0008.png" id="21_oye8v"]
+[ext_resource type="Texture2D" uid="uid://cgfqhk01wpfxi" path="res://assets/blender/3danimation/jump/0001.png" id="22_5tfui"]
+[ext_resource type="Texture2D" uid="uid://dfuitiynwilr0" path="res://assets/blender/walk_animation_teste/0009.png" id="22_40n85"]
+[ext_resource type="Texture2D" uid="uid://pnd7eico5iao" path="res://assets/blender/3danimation/running_animation_teste/0007.png" id="22_jt61w"]
+[ext_resource type="Texture2D" uid="uid://xobygpy1umby" path="res://assets/blender/3danimation/jump/0002.png" id="23_38apo"]
+[ext_resource type="Texture2D" uid="uid://dosffagh5ohg3" path="res://assets/blender/walk_animation_teste/0010.png" id="23_gb15f"]
+[ext_resource type="Texture2D" uid="uid://c5keo48307uq1" path="res://assets/blender/3danimation/running_animation_teste/0008.png" id="23_v8qla"]
+[ext_resource type="Texture2D" uid="uid://dntja03swoiyy" path="res://assets/blender/3danimation/running_animation_teste/0009.png" id="24_y1tbi"]
+[ext_resource type="Texture2D" uid="uid://bu3a2m6g6mbnv" path="res://assets/blender/3danimation/running_animation_teste/0010.png" id="25_c2s76"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fd1d0"]
 sky_energy_multiplier = 1.5
@@ -212,6 +231,81 @@ uv1_triplanar = true
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_sph85"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_v8qla")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_y1tbi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_c2s76")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_f4ese")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_rchyr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_pljue")
+}],
+"loop": false,
+"name": &"fall",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("21_nx4yo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_5tfui")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_38apo")
+}],
+"loop": false,
+"name": &"jump",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_vi5kq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_5mkgo")
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_ny7u2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_x3yn0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_1w2xm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_gngx1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_jt61w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_v8qla")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_y1tbi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_c2s76")
+}],
+"loop": true,
+"name": &"run",
+"speed": 15.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("13_bg4s2")
@@ -476,7 +570,7 @@ texture = ExtResource("10_wkp8b")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.4, 1.11285, 0)
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_sph85")
-animation = &"walk"
+animation = &"jump"
 autoplay = "walk"
-frame = 4
-frame_progress = 0.00604692
+frame = 2
+frame_progress = 1.0
