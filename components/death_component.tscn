@@ -68,7 +68,6 @@ particles_anim_loop = false
 [sub_resource type="QuadMesh" id="QuadMesh_mwkmo"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_t5qci")
-size = Vector2(0.147, 0.1)
 
 [node name="DeathComponent" type="Node3D"]
 script = ExtResource("1_lcu1u")

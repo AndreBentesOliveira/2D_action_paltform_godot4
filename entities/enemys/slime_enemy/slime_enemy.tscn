@@ -2,18 +2,27 @@
 
 [ext_resource type="PackedScene" uid="uid://b5cwxrq76l7yw" path="res://entities/enemys/base_enemy.tscn" id="1_y5gwa"]
 [ext_resource type="Script" uid="uid://cqji5xbertph5" path="res://entities/enemys/slime_enemy/slime_enemy.gd" id="2_oj2gu"]
-[ext_resource type="Texture2D" uid="uid://b61wqofekqbdl" path="res://entities/enemys/slime_enemy/base_enemy_grabed.png" id="2_qp6f8"]
 [ext_resource type="PackedScene" uid="uid://du24pmqu1sykk" path="res://components/death_component.tscn" id="4_ip25l"]
 [ext_resource type="Script" uid="uid://c8cgucmy8geox" path="res://entities/enemys/slime_enemy/grond_patrol.gd" id="5_j0a6e"]
+[ext_resource type="Texture2D" uid="uid://cunxh42shk3yi" path="res://entities/enemys/slime_enemy/untitled.png" id="6_5crr3"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_j0a6e"]
-radius = 0.0486916
+radius = 0.345136
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qp6f8"]
+size = Vector3(0.3, 0.065, 0.35)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ip25l"]
+radius = 0.287648
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_popww"]
+radius = 0.3
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qp6f8"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_qp6f8")
+"texture": ExtResource("6_5crr3")
 }],
 "loop": true,
 "name": &"idle",
@@ -25,25 +34,16 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_ip25l"]
-radius = 0.05216
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_popww"]
-radius = 0.0642338
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_qp6f8"]
-size = Vector3(0.0919922, 0.0272002, 0.1)
-
 [node name="Slime" instance=ExtResource("1_y5gwa")]
 collision_layer = 4
 script = ExtResource("2_oj2gu")
 move_speed = 25.0
-grabbed_texture = ExtResource("2_qp6f8")
-texture_ofset_when_grabbed = Vector3(0, -0.06, 0)
+grabbed_texture = ExtResource("6_5crr3")
+texture_ofset_when_grabbed = Vector3(0, 0.2, 0)
 
 [node name="DeathComponent" parent="." index="0" node_paths=PackedStringArray("health_component") instance=ExtResource("4_ip25l")]
 health_component = NodePath("../HealthComponent")
-texture = ExtResource("2_qp6f8")
+texture = ExtResource("6_5crr3")
 
 [node name="StateMachine" parent="." index="1" node_paths=PackedStringArray("initial_state")]
 initial_state = NodePath("Patrol")
@@ -53,13 +53,17 @@ script = ExtResource("5_j0a6e")
 metadata/_custom_type_script = "uid://dsnjlxvj4s1uu"
 
 [node name="CollisionShape3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.345014, 0)
 shape = SubResource("SphereShape3D_j0a6e")
 
-[node name="AnimatedSprite3D" parent="Visuals" index="0"]
-sprite_frames = SubResource("SpriteFrames_qp6f8")
-animation = &"idle"
+[node name="GrabableComponent" parent="." index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.722748, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GrabableComponent" index="1"]
+shape = SubResource("BoxShape3D_qp6f8")
 
 [node name="HitBoxComponent" parent="." index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.343396, 0)
 monitoring = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HitBoxComponent" index="0"]
@@ -67,6 +71,7 @@ shape = SubResource("SphereShape3D_ip25l")
 debug_color = Color(0.997828, 0, 0.157054, 0.42)
 
 [node name="HurtBox" parent="." index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.341694, 0)
 collision_layer = 0
 collision_mask = 2
 
@@ -74,25 +79,37 @@ collision_mask = 2
 shape = SubResource("SphereShape3D_popww")
 debug_color = Color(0.847169, 0.000957224, 0.906666, 0.42)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="GrabableComponent" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00126953, 0.044481, 0)
-shape = SubResource("BoxShape3D_qp6f8")
-
-[node name="DebugLabel" parent="." index="8"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.141516, 0)
-pixel_size = 0.0023
-text = "idle"
+[node name="ThrownRayCasts" parent="." index="7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.330463, 0)
 
 [node name="ThrownCollider" parent="ThrownRayCasts" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.043179, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.343179, 0)
+target_position = Vector3(0.43, 0, 0)
 collision_mask = 5
 
+[node name="ThrownCollider2" parent="ThrownRayCasts" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0336732, 0)
+target_position = Vector3(0.43, 0, 0)
+
 [node name="ThrownCollider3" parent="ThrownRayCasts" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0466334, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.274448, 0)
+target_position = Vector3(0.43, 0, 0)
+
+[node name="DebugLabel" parent="." index="8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.941516, 0)
+pixel_size = 0.0065
+text = "idle"
+
+[node name="Visuals" parent="." index="9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.390813, 0)
+
+[node name="AnimatedSprite3D" parent="Visuals" index="0"]
+sprite_frames = SubResource("SpriteFrames_qp6f8")
+animation = &"idle"
 
 [node name="StopRaycast" type="RayCast3D" parent="." index="10"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0745416, 0, 0)
-target_position = Vector3(0, -0.157, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.333114, 0.0182208, 0)
+target_position = Vector3(0, -0.192, 0)
 
 [connection signal="area_entered" from="GrabableComponent" to="." method="_on_grabable_component_area_entered"]
 [connection signal="grabbed" from="GrabableComponent" to="." method="_on_grabable_component_grabbed"]

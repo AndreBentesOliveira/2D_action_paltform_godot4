@@ -30,7 +30,7 @@ func rotate_to_angle(angulo_alvo_graus: Vector3, duracao: float) -> void:
 		return
 	is_rotating = true
 	var tween = create_tween()
-	tween.tween_property(visuals, "rotation_degrees", angulo_alvo_graus, duracao)\
+	tween.tween_property(sprite, "rotation_degrees", angulo_alvo_graus, duracao)\
 	#.set_trans(Tween.TRANS_QUINT)\
 	.set_ease(Tween.EASE_OUT)
 	await tween.finished

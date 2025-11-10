@@ -30,11 +30,6 @@ metadata/_custom_type_script = "uid://dsnjlxvj4s1uu"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 
-[node name="Visuals" type="Node3D" parent="."]
-
-[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Visuals"]
-texture_filter = 0
-
 [node name="GrabableComponent" parent="." instance=ExtResource("2_373be")]
 collision_layer = 8
 collision_mask = 8
@@ -51,3 +46,8 @@ collision_mask = 5
 [node name="ThrownCollider3" type="RayCast3D" parent="ThrownRayCasts"]
 target_position = Vector3(0.1, 0, 0)
 collision_mask = 5
+
+[node name="Visuals" type="Node3D" parent="."]
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Visuals"]
+texture_filter = 0

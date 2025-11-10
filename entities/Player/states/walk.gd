@@ -55,3 +55,5 @@ func x_movement(delta: float) -> void:
 func find_ground_angle():
 	var floor_normal = player.get_floor_normal()
 	visuals.rotation.z = -floor_normal.x
+	print(abs(-floor_normal.x))
+	#visuals.position.y = abs(-floor_normal.x)

@@ -10,10 +10,10 @@ func _physics_process(_delta: float) -> void:
 	if enemy_node.is_on_wall() or not enemy_node.stop_raycast.is_colliding():
 		dir = !dir
 	if dir:
-		enemy_node.stop_raycast.position.x = 0.075
+		enemy_node.stop_raycast.position.x = 0.333
 		enemy_node.velocity.x = enemy_node.move_speed * 1.0 * _delta
 	else:
-		enemy_node.stop_raycast.position.x = -0.075
+		enemy_node.stop_raycast.position.x = -0.333
 		enemy_node.velocity.x = enemy_node.move_speed * -1.0 * _delta
 		
 	if enemy_node.grabbed:
