@@ -1,6 +1,15 @@
 extends "common_state.gd"
 
 var is_rotating: bool = false
+var ent_spr_pos = [
+	Vector3(0, 0.191, 0.0),
+	Vector3(-0.411, 0.369, 0.0),
+	Vector3(-0.47, 0.461, 0.0),
+	Vector3(-0.38, 0.829, 0.0),
+	Vector3(0.298, 0.882, 0.0),
+	Vector3(0.439, 0.481, 0.0)
+]
+
 
 func _enter_state(_old_state: StringName, _params: Dictionary) -> void:
 	if !sprite.flip_h:
@@ -8,14 +17,14 @@ func _enter_state(_old_state: StringName, _params: Dictionary) -> void:
 	else:
 		rotate_to_angle(Vector3(.0, .0, 270.0), .2)
 	player.velocity = Vector3.ZERO
-	sprite.play(&"grab_entitie")
+	sprite.play(&"thrown")
 	
 
 
 func _physics_process(_delta: float) -> void:
 	player.velocity = Vector3.ZERO
-
-
+	print(sprite.frame)
+	
 func _unhandled_input(event: InputEvent) -> void:
 	pass
 
@@ -25,15 +34,19 @@ func _exit_state(new_state: StringName, state_data: Dictionary) -> void:
 	player.get_node("HealthComponent").invencible = false
 
 
+
+func rotate_sprite():
+	for 
 func rotate_to_angle(angulo_alvo_graus: Vector3, duracao: float) -> void:
-	if is_rotating:
-		return
-	is_rotating = true
-	var tween = create_tween()
-	tween.tween_property(sprite, "rotation_degrees", angulo_alvo_graus, duracao)\
-	#.set_trans(Tween.TRANS_QUINT)\
-	.set_ease(Tween.EASE_OUT)
-	await tween.finished
+	#if is_rotating:
+		#return
+	#is_rotating = true
+	#var tween = create_tween()
+	#tween.tween_property(sprite, "rotation_degrees", angulo_alvo_graus, duracao)\
+	##.set_trans(Tween.TRANS_QUINT)\
+	#.set_ease(Tween.EASE_OUT)
+	#await tween.finished
+	await sprite.animation_finished
 	is_rotating = false
 	var entities = get_tree().get_first_node_in_group("entities_layer")
 	entities.add_child(player.entitie_grabbed[0])

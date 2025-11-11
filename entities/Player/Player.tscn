@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=3 uid="uid://dpuqtlr1m3dcj"]
+[gd_scene load_steps=81 format=3 uid="uid://dpuqtlr1m3dcj"]
 
 [ext_resource type="Script" uid="uid://bb2cx1iw4xeo2" path="res://entities/Player/Player.gd" id="1_cm1li"]
 [ext_resource type="Script" uid="uid://cyjj3nyqr8e3y" path="res://addons/state_machine_nodes/state_machine.gd" id="2_d3nms"]
@@ -64,6 +64,15 @@
 [ext_resource type="Texture2D" uid="uid://bkeouojmtdbia" path="res://assets/blender/3danimation/walk_animation_teste/0008.png" id="30_8dbc2"]
 [ext_resource type="Texture2D" uid="uid://j7cqcj53wneu" path="res://assets/blender/3danimation/walk_animation_teste/0009.png" id="31_jbrtn"]
 [ext_resource type="Texture2D" uid="uid://dse6xx2n1vfyk" path="res://assets/blender/3danimation/walk_animation_teste/0010.png" id="32_avq1a"]
+[ext_resource type="Texture2D" uid="uid://diluj0g0phjmo" path="res://assets/blender/3danimation/thrown/jump_grab0000.png" id="40_04bpq"]
+[ext_resource type="Texture2D" uid="uid://bvsl4uq14wxw8" path="res://assets/blender/3danimation/thrown/jump_grab0001.png" id="41_1w8ii"]
+[ext_resource type="Texture2D" uid="uid://bqwypagnblbaf" path="res://assets/blender/3danimation/thrown/jump_grab0002.png" id="42_bv3kr"]
+[ext_resource type="Texture2D" uid="uid://ttkqphcd2j5g" path="res://assets/blender/3danimation/thrown/jump_grab0003.png" id="43_6e7p1"]
+[ext_resource type="Texture2D" uid="uid://c0j643j0x2hur" path="res://assets/blender/3danimation/thrown/jump_grab0004.png" id="44_wcs33"]
+[ext_resource type="Texture2D" uid="uid://dugnurni1dn20" path="res://assets/blender/3danimation/thrown/jump_grab0005.png" id="45_j5x0h"]
+[ext_resource type="Texture2D" uid="uid://5nc1h7vxofm3" path="res://assets/blender/3danimation/thrown/jump_grab0006.png" id="46_hxqpa"]
+[ext_resource type="Texture2D" uid="uid://nsg6fyi1lsps" path="res://assets/blender/3danimation/thrown/jump_grab0007.png" id="47_gsdjs"]
+[ext_resource type="Texture2D" uid="uid://c2f75dea6v1ds" path="res://assets/blender/3danimation/thrown/jump_grab0008.png" id="48_55vtu"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kct3s"]
 radius = 0.182348
@@ -229,6 +238,38 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("40_04bpq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_1w8ii")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_bv3kr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("43_6e7p1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("44_wcs33")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_j5x0h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("46_hxqpa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("47_gsdjs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("48_55vtu")
+}],
+"loop": false,
+"name": &"thrown",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("22_b4gij")
 }, {
 "duration": 1.0,
@@ -277,6 +318,12 @@ height = 1.01242
 height = 0.17
 radius = 0.635742
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uq3xi"]
+albedo_color = Color(0.919444, 0, 0.00385826, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_jwv6y"]
+material = SubResource("StandardMaterial3D_uq3xi")
+
 [node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("sprite")]
 collision_layer = 2
 script = ExtResource("1_cm1li")
@@ -305,7 +352,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.619792, 0)
 double_sided = false
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_egyt8")
-animation = &"walk"
+animation = &"thrown"
+frame = 8
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "common_node")]
 script = ExtResource("2_d3nms")
@@ -359,7 +407,7 @@ script = ExtResource("22_8xwt4")
 metadata/_custom_type_script = "uid://dsnjlxvj4s1uu"
 
 [node name="TrowMark" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0786603, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.433788, 0.480752, 0)
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 10
@@ -450,6 +498,17 @@ shape = SubResource("CylinderShape3D_62gbw")
 [node name="InvencibleTimer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
+
+[node name="Debug" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.17, 0, 0, 0, 0.17, 0, 0, 0, 0.17, 0, 0, 0)
+mesh = SubResource("SphereMesh_jwv6y")
+
+[node name="Debug2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.17, 0, 0, 0, 0.17, 0, 0, 0, 0.17, 0, 0.207063, 0)
+mesh = SubResource("SphereMesh_jwv6y")
+
+[node name="Marker3D" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.438501, 0.480757, 0)
 
 [connection signal="state_transitioned" from="StateMachine" to="." method="_on_state_machine_state_transitioned"]
 [connection signal="body_entered" from="DetectEnemy" to="." method="_on_detect_enemy_body_entered"]
