@@ -55,11 +55,11 @@ func _unhandled_input(event: InputEvent) -> void:
 		return enter_state(&"Jump")
 
 
-func find_wall_angle():
+func find_wall_angle() -> void:
 	var wall_normal = player.get_wall_normal()
 	visuals.rotation.z = wall_normal.y
 	#wall_direction = Vector3.UP.cross(wall_normal).normalized()
 	#print(wall_direction, wall_normal)
 
-func check_for_ledge():
+func check_for_ledge() -> void:
 	player.can_eledge_grab = not player.head_ray_cast.is_colliding() and player.eyes_ray_cast.is_colliding()

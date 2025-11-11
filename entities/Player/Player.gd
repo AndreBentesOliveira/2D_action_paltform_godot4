@@ -3,10 +3,10 @@ extends CharacterBody3D
 @export var sprite: Node
 @export var ledge_grab_offset : Vector3
 @onready var state_machine: StateMachine = $StateMachine
-@onready var eyes_ray_cast = $EyesRayCast
-@onready var head_ray_cast = $HeadRayCast
+@onready var eyes_ray_cast : RayCast3D = $EyesRayCast
+@onready var head_ray_cast: RayCast3D = $HeadRayCast
 @onready var gripper_component: Gripper = $GripperComponent
-@onready var go_up_raycast := $RayCast3D
+@onready var go_up_raycast :RayCast3D = $RayCast3D
 @export var max_speed: float = 1.5
 @export var acceleration: float = 2.0
 @export var turning_acceleration : float = 5.0
@@ -216,7 +216,7 @@ func on_player_grab_entitie(entitie: CharacterBody3D):
 				#var dir = (entitie_grabbed[i].global_position - global_position).normalized()
 				#entitie_grabbed[i].to_push(dir, 5.0, .5)
 
-func push_enemys_away(entitie_grab: CharacterBody3D):
+func push_enemys_away(entitie_grab: CharacterBody3D) -> void:
 	enemys_in_area_grabb.erase(entitie_grab)
 	for enemy in enemys_in_area_grabb:
 		var dir = (enemy.global_position - global_position).normalized()
@@ -230,16 +230,16 @@ func timers(delta: float) -> void:
 	jump_buffer_timer -= delta
 
 
-func gripper_area_disable(value: bool):
+func gripper_area_disable(value: bool) -> void:
 	gripper_component.get_node("CollisionShape3D").call_deferred("set","disabled", value) 
 
 
-func grabedge_enable(value: bool):
+func grabedge_enable(value: bool) -> void:
 	$HeadRayCast.call_deferred("set","enabled", value)
 	$EyesRayCast.call_deferred("set","enabled", value)
 
 
-func on_health_changed(health):
+func on_health_changed(health) -> void:
 	%Health.text = "Health: " + str(health)
 
 
@@ -250,7 +250,7 @@ func apply_knockback(dir: Vector3, force : float, duration: float) -> void:
 		knockback_timer = duration
 
 
-func star_invencibility():
+func star_invencibility() -> void:
 	$HealthComponent.invencible = true
 	$Hurtbox/CollisionShape3D.call_deferred("set","disabled", true) 
 	$InvencibleTimer.start()

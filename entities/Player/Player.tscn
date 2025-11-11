@@ -266,7 +266,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"thrown",
-"speed": 15.0
+"speed": 17.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -353,7 +353,6 @@ double_sided = false
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_egyt8")
 animation = &"thrown"
-frame = 8
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "common_node")]
 script = ExtResource("2_d3nms")
@@ -507,9 +506,7 @@ mesh = SubResource("SphereMesh_jwv6y")
 transform = Transform3D(0.17, 0, 0, 0, 0.17, 0, 0, 0, 0.17, 0, 0.207063, 0)
 mesh = SubResource("SphereMesh_jwv6y")
 
-[node name="Marker3D" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.438501, 0.480757, 0)
-
+[connection signal="frame_changed" from="Visuals/Sprite3D" to="StateMachine/TrowEntitie" method="_on_sprite_3d_frame_changed"]
 [connection signal="state_transitioned" from="StateMachine" to="." method="_on_state_machine_state_transitioned"]
 [connection signal="body_entered" from="DetectEnemy" to="." method="_on_detect_enemy_body_entered"]
 [connection signal="body_exited" from="DetectEnemy" to="." method="_on_detect_enemy_body_exited"]
