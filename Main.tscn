@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://ckxrci77f0bq7"]
+[gd_scene load_steps=54 format=3 uid="uid://ckxrci77f0bq7"]
 
 [ext_resource type="Script" uid="uid://ewewltobs1v6" path="res://main.gd" id="1_5vw27"]
 [ext_resource type="PackedScene" uid="uid://dpuqtlr1m3dcj" path="res://entities/Player/Player.tscn" id="1_ig7tw"]
@@ -27,6 +27,9 @@ sky_material = SubResource("ProceduralSkyMaterial_fd1d0")
 [sub_resource type="Environment" id="Environment_rsl4a"]
 background_mode = 2
 sky = SubResource("Sky_a0b88")
+reflected_light_source = 1
+glow_intensity = 3.75
+glow_hdr_threshold = 1.8
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oye8v"]
 resource_local_to_scene = true
@@ -71,12 +74,6 @@ uv1_offset = Vector3(0.5, 0.5, 0.5)
 uv1_triplanar = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_devvj"]
-resource_local_to_scene = true
-albedo_texture = ExtResource("4_lquwl")
-uv1_offset = Vector3(0.5, 0.5, 0.5)
-uv1_triplanar = true
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kjvhd"]
 resource_local_to_scene = true
 albedo_texture = ExtResource("4_lquwl")
 uv1_offset = Vector3(0.5, 0.5, 0.5)
@@ -346,11 +343,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.15, -1.3, -3.05)
 size = Vector3(5.1, 2, 7.1)
 material = SubResource("StandardMaterial3D_devvj")
 
-[node name="ProtoCSGBox3D10" parent="Meshs" instance=ExtResource("3_1bvp3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.59932, 1.75, -3.7)
-size = Vector3(14.1986, 8.1, 6.4)
-material = SubResource("StandardMaterial3D_kjvhd")
-
 [node name="ProtoCSGBox3D19" parent="Meshs" instance=ExtResource("3_1bvp3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, -0.1, 2.98024e-08)
 size = Vector3(1.7, 0.4, 1)
@@ -493,7 +485,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 2.3, 0.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.4137, 0.175582, 0.078927)
 mesh = SubResource("SphereMesh_j4qnp")
 surface_material_override/0 = SubResource("ShaderMaterial_fpfj3")
 
