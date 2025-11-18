@@ -1,5 +1,7 @@
 extends "common_state.gd"
 
+var land_point: Vector3
+
 func _enter_state(_old_state: StringName, _params: Dictionary) -> void:
 	player.gripper_area_disable(true)
 	player.velocity = Vector3.ZERO
@@ -20,13 +22,15 @@ func _physics_process(_delta: float) -> void:
 			var edge_position = ledge_point + (wall_normal * player.ledge_grab_offset.x) + (Vector3.UP * player.ledge_grab_offset.y)
 			visuals.global_position = edge_position
 			player.get_node("Debug").global_position = ledge_point
+			land_point = ledge_point
 			#print("visual global positio: " + str(visuals.global_position))
 			#print("edge_position global positio: " + str(edge_position))
 
+
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed(&"jump"):
+	if event.is_action_pressed(&"jump") or event.is_action_pressed(&"up_button"):
 		player.can_eledge_grab = false
-		return enter_state(&"Jump")
+		return enter_state(&"ClimbEdge", {"land_point" : land_point})
 	if event.is_action_pressed(&"down_button"):
 		player.can_eledge_grab = false
 		return enter_state(&"Fall")

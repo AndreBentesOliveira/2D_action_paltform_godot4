@@ -1,4 +1,4 @@
-[gd_scene load_steps=82 format=3 uid="uid://dpuqtlr1m3dcj"]
+[gd_scene load_steps=83 format=3 uid="uid://dpuqtlr1m3dcj"]
 
 [ext_resource type="Script" uid="uid://bb2cx1iw4xeo2" path="res://entities/Player/Player.gd" id="1_cm1li"]
 [ext_resource type="Script" uid="uid://cyjj3nyqr8e3y" path="res://addons/state_machine_nodes/state_machine.gd" id="2_d3nms"]
@@ -74,6 +74,7 @@
 [ext_resource type="Texture2D" uid="uid://nsg6fyi1lsps" path="res://assets/blender/3danimation/thrown/jump_grab0007.png" id="47_gsdjs"]
 [ext_resource type="Texture2D" uid="uid://c2f75dea6v1ds" path="res://assets/blender/3danimation/thrown/jump_grab0008.png" id="48_55vtu"]
 [ext_resource type="Texture2D" uid="uid://c8n3luyosblsq" path="res://assets/blender/3danimation/turning2.png" id="50_bv3kr"]
+[ext_resource type="Script" path="res://entities/Player/states/climb_edge.gd" id="73_bv3kr"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kct3s"]
 radius = 0.182348
@@ -358,11 +359,11 @@ debug = true
 
 [node name="Sprite3D" type="AnimatedSprite3D" parent="Visuals"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.619792, 0)
-shaded = true
 double_sided = false
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_egyt8")
-animation = &"turning"
+animation = &"thrown"
+frame = 8
 frame_progress = 1.0
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "common_node")]
@@ -416,6 +417,10 @@ metadata/_custom_type_script = "uid://dsnjlxvj4s1uu"
 script = ExtResource("22_8xwt4")
 metadata/_custom_type_script = "uid://dsnjlxvj4s1uu"
 
+[node name="ClimbEdge" type="Node" parent="StateMachine"]
+script = ExtResource("73_bv3kr")
+metadata/_custom_type_script = "uid://dsnjlxvj4s1uu"
+
 [node name="TrowMark" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.433788, 0.480752, 0)
 
@@ -449,8 +454,8 @@ layout_mode = 2
 text = "Health"
 
 [node name="RayCast1" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.967775, 0)
-target_position = Vector3(0.235, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.886389, 0)
+target_position = Vector3(0.47, 0, 0)
 
 [node name="RayCast2" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.705849, 1.55586, 0)
@@ -458,15 +463,15 @@ target_position = Vector3(0, -0.374, 0)
 
 [node name="HeadRayCast" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.01646, 0)
-target_position = Vector3(0.295, 0, 0)
+target_position = Vector3(0.333, 0, 0)
 
 [node name="EyesRayCast" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.928653, 0)
-target_position = Vector3(0.295, 0, 0)
+target_position = Vector3(0.333, 0, 0)
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.623755, 0)
-target_position = Vector3(0, 0, -0.5)
+target_position = Vector3(0, 0, -0.645)
 collision_mask = 16
 
 [node name="DetectWall" type="RayCast3D" parent="."]
@@ -511,7 +516,6 @@ one_shot = true
 
 [node name="Debug" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.17, 0, 0, 0, 0.17, 0, 0, 0, 0.17, 0, 0, 0)
-visible = false
 mesh = SubResource("SphereMesh_jwv6y")
 
 [node name="Debug2" type="MeshInstance3D" parent="."]

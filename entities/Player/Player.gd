@@ -78,20 +78,20 @@ func _physics_process(delta: float) -> void:
 	if !sprite.flip_h:
 		#eyes_ray_cast.position.x = 0.181
 		#head_ray_cast.position.x = 0.181
-		eyes_ray_cast.target_position.x = 0.295
-		head_ray_cast.target_position.x = 0.295
+		eyes_ray_cast.target_position.x = 0.333
+		head_ray_cast.target_position.x = 0.333
 		#teste
-		$RayCast1.target_position.x = 0.235
+		$RayCast1.target_position.x = 0.47
 		#teste
 		$TrowMark.position.x = 0.434
 		$DetectWall.target_position.x = 0.081
 	else:
 		#eyes_ray_cast.position.x = -0.181
 		#head_ray_cast.position.x = -0.181
-		eyes_ray_cast.target_position.x = -0.295
-		head_ray_cast.target_position.x = -0.295
+		eyes_ray_cast.target_position.x = -0.333
+		head_ray_cast.target_position.x = -0.333
 		#teste
-		$RayCast1.target_position.x = -0.235
+		$RayCast1.target_position.x = -0.47
 		#teste
 		$TrowMark.position.x = -0.434
 		$DetectWall.target_position.x = -0.081

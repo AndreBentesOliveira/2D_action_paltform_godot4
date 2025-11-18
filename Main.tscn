@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://ckxrci77f0bq7"]
+[gd_scene load_steps=55 format=3 uid="uid://ckxrci77f0bq7"]
 
 [ext_resource type="Script" uid="uid://ewewltobs1v6" path="res://main.gd" id="1_5vw27"]
 [ext_resource type="PackedScene" uid="uid://dpuqtlr1m3dcj" path="res://entities/Player/Player.tscn" id="1_ig7tw"]
@@ -11,9 +11,12 @@
 [ext_resource type="Texture2D" uid="uid://cd3fcinti1un5" path="res://addons/proto-csgs/textures/dark/texture_01.png" id="7_5vvyt"]
 [ext_resource type="PackedScene" uid="uid://ci5vu1sap676e" path="res://entities/enemys/slime_enemy/slime_enemy.tscn" id="7_lgr22"]
 [ext_resource type="PackedScene" uid="uid://hcs1k41pp446" path="res://addons/proto-csgs/proto_csg_polygon_3d.tscn" id="9_mxvw5"]
+[ext_resource type="Texture2D" uid="uid://cmuv3ve5x2al8" path="res://addons/proto-csgs/textures/light/texture_13.png" id="11_j4qnp"]
 [ext_resource type="Shader" uid="uid://bn7q4xnnutfck" path="res://effects/rain.gdshader" id="12_5vvyt"]
 [ext_resource type="Shader" uid="uid://rfbawuqib5mr" path="res://effects/ctr_glith_effect.gdshader" id="13_c6i3y"]
 [ext_resource type="Shader" uid="uid://cfxhj0bogl5kp" path="res://effects/fire.gdshader" id="14_c2ibq"]
+[ext_resource type="Shader" uid="uid://un2cowepsdhv" path="res://effects/water.gdshader" id="16_fpfj3"]
+[ext_resource type="Shader" uid="uid://jll11asejmhy" path="res://pixel_water.gdshader" id="17_sc1dx"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fd1d0"]
 sky_energy_multiplier = 1.5
@@ -25,25 +28,7 @@ sky_material = SubResource("ProceduralSkyMaterial_fd1d0")
 background_mode = 2
 sky = SubResource("Sky_a0b88")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j4qnp"]
-resource_local_to_scene = true
-albedo_texture = ExtResource("4_lquwl")
-uv1_offset = Vector3(0.5, 0.5, 0.5)
-uv1_triplanar = true
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2gh4u"]
-resource_local_to_scene = true
-albedo_texture = ExtResource("4_lquwl")
-uv1_offset = Vector3(0.5, 0.5, 0.5)
-uv1_triplanar = true
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oye8v"]
-resource_local_to_scene = true
-albedo_texture = ExtResource("4_lquwl")
-uv1_offset = Vector3(0.5, 0.5, 0.5)
-uv1_triplanar = true
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sc1dx"]
 resource_local_to_scene = true
 albedo_texture = ExtResource("4_lquwl")
 uv1_offset = Vector3(0.5, 0.5, 0.5)
@@ -61,6 +46,18 @@ albedo_texture = ExtResource("7_5vvyt")
 uv1_offset = Vector3(0.5, 0.5, 0.5)
 uv1_triplanar = true
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j4qnp"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("7_5vvyt")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2gh4u"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("7_5vvyt")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5vvyt"]
 resource_local_to_scene = true
 albedo_texture = ExtResource("4_lquwl")
@@ -68,6 +65,12 @@ uv1_offset = Vector3(0.5, 0.5, 0.5)
 uv1_triplanar = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vivmo"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_lquwl")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_devvj"]
 resource_local_to_scene = true
 albedo_texture = ExtResource("4_lquwl")
 uv1_offset = Vector3(0.5, 0.5, 0.5)
@@ -151,6 +154,42 @@ albedo_texture = ExtResource("5_lquwl")
 uv1_offset = Vector3(0.5, 0.5, 0.5)
 uv1_triplanar = true
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sph85"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("11_j4qnp")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o7g6l"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("11_j4qnp")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hri7i"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("5_lquwl")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w3rk5"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("5_lquwl")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5mvff"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("5_lquwl")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_40n85"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("5_lquwl")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_c2ibq"]
 shader = ExtResource("12_5vvyt")
 shader_parameter/rain_amount = 100.0
@@ -167,9 +206,9 @@ shader_parameter/slant = 0.2
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_c6i3y"]
 shader = ExtResource("13_c6i3y")
-shader_parameter/resolution_x = 1152
-shader_parameter/resolution_y = 648
-shader_parameter/color_bit_depth = 5
+shader_parameter/resolution_x = 576
+shader_parameter/resolution_y = 324
+shader_parameter/color_bit_depth = 6
 shader_parameter/dither_strength = 0.0
 shader_parameter/jitter_amount = 0.0
 shader_parameter/jitter_speed = 0.0
@@ -198,6 +237,41 @@ shader_parameter/max_alpha = 0.4
 shader_parameter/border_width = 0.75
 shader_parameter/bottom_color_fade_y_end = 0.2
 shader_parameter/bottom_color_fade_y_start = 0.6
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_fpfj3"]
+size = Vector2(50, 50)
+subdivide_width = 32
+subdivide_depth = 32
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kjvhd"]
+render_priority = 0
+shader = ExtResource("16_fpfj3")
+shader_parameter/WATER_COL = Color(0.04, 0.38, 0.88, 1)
+shader_parameter/WATER2_COL = Color(0.04, 0.35, 0.78, 1)
+shader_parameter/FOAM_COL = Color(0.8125, 0.9609, 0.9648, 1)
+shader_parameter/distortion_speed = 2.0
+shader_parameter/tile = Vector2(30, 30)
+shader_parameter/wave_speed = 3.0
+shader_parameter/wave_amplitude = 0.5
+shader_parameter/wave_frequency = 1.5
+shader_parameter/time_offset = 0.0
+shader_parameter/water_size = Vector2(50, 50)
+shader_parameter/water_transparency = 0.8
+shader_parameter/water_depth_factor = -0.74
+shader_parameter/foam_width = 2.105
+shader_parameter/foam_edge_softness = 1.405
+shader_parameter/foam_smoothness = 0.03
+shader_parameter/foam_distortion_speed = 0.5
+shader_parameter/foam_distortion_amount = 0.475
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sc1dx"]
+render_priority = 0
+shader = ExtResource("17_sc1dx")
+shader_parameter/color1 = Color(0, 0.401843, 0.589039, 1)
+shader_parameter/color2 = Color(0, 0.207603, 0.441981, 1)
+shader_parameter/color3 = Color(0, 0.313015, 0.374922, 1)
+shader_parameter/x_amount = 200.0
+shader_parameter/y_amount = 200.0
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_5vw27")
@@ -232,25 +306,10 @@ grab_jump_gravity_acceleration = 1.0
 
 [node name="Meshs" type="Node3D" parent="."]
 
-[node name="ProtoCSGBox3D17" parent="Meshs" instance=ExtResource("3_1bvp3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.65, 0.35, 0)
-size = Vector3(0.3, 1.3, 1)
-material = SubResource("StandardMaterial3D_j4qnp")
-
-[node name="ProtoCSGBox3D21" parent="Meshs" instance=ExtResource("3_1bvp3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.65, 1.4, 0)
-size = Vector3(0.3, 0.2, 1)
-material = SubResource("StandardMaterial3D_2gh4u")
-
 [node name="ProtoCSGBox3D22" parent="Meshs" instance=ExtResource("3_1bvp3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.65, 1.7, 0)
-size = Vector3(0.3, 0.2, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.85, 0.75, 0)
+size = Vector3(0.7, 2.1, 1)
 material = SubResource("StandardMaterial3D_oye8v")
-
-[node name="ProtoCSGBox3D24" parent="Meshs" instance=ExtResource("3_1bvp3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.45, 1.4, 0)
-size = Vector3(0.3, 0.2, 1)
-material = SubResource("StandardMaterial3D_sc1dx")
 
 [node name="ProtoCSGBox3D8" parent="Meshs" instance=ExtResource("3_1bvp3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, -0.5, 0)
@@ -258,9 +317,19 @@ size = Vector3(5.8, 3.6, 1)
 material = SubResource("StandardMaterial3D_efxa6")
 
 [node name="ProtoCSGPolygon3D" parent="Meshs" instance=ExtResource("9_mxvw5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 2.00981, 3.6, 0.1, 0.5)
-polygon = PackedVector2Array(-0.3, 0, -0.3, 2.6, 0.8, 2.6, 2, 3.1, 3.4, 3.1, 4.4, 2.9, 4.4, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.00638, 3.6, 0.1, 0.5)
+polygon = PackedVector2Array(-0.3, 0, -0.3, 2.6, 0.8, 2.6, 2, 3.1, 3.4, 3.1, 6.8, 3.1, 6.8, 0)
 material = SubResource("StandardMaterial3D_c6i3y")
+
+[node name="ProtoCSGPolygon3D3" parent="Meshs" instance=ExtResource("9_mxvw5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.00638, 10.7, 0.1, 0.5)
+polygon = PackedVector2Array(-0.3, 0, -0.3, 3.1, 0.8, 2.6, 2.3, 3.2, 4.3, 5, 6.8, 3.1, 6.8, 0)
+material = SubResource("StandardMaterial3D_j4qnp")
+
+[node name="ProtoCSGPolygon3D2" parent="Meshs" instance=ExtResource("9_mxvw5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.60881, 3.6, 0.1, -0.5)
+polygon = PackedVector2Array(-0.3, 0, -0.3, 2.6, 1.2, 4.2, 2.9, 3.6, 4.6, 3.8, 6.8, 3.1, 6.8, 0)
+material = SubResource("StandardMaterial3D_2gh4u")
 
 [node name="ProtoCSGBox3D11" parent="Meshs" instance=ExtResource("3_1bvp3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.2, -1.1, 0)
@@ -268,13 +337,18 @@ size = Vector3(5.8, 2.4, 1)
 material = SubResource("StandardMaterial3D_5vvyt")
 
 [node name="ProtoCSGBox3D9" parent="Meshs" instance=ExtResource("3_1bvp3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.59932, -1.3, 0)
-size = Vector3(14.1986, 2, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.95002, -1.3, 0)
+size = Vector3(14.9, 2, 1)
 material = SubResource("StandardMaterial3D_vivmo")
 
+[node name="ProtoCSGBox3D12" parent="Meshs" instance=ExtResource("3_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.15, -1.3, -3.05)
+size = Vector3(5.1, 2, 7.1)
+material = SubResource("StandardMaterial3D_devvj")
+
 [node name="ProtoCSGBox3D10" parent="Meshs" instance=ExtResource("3_1bvp3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.59932, 1.75, -1)
-size = Vector3(14.1986, 8.1, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.59932, 1.75, -3.7)
+size = Vector3(14.1986, 8.1, 6.4)
 material = SubResource("StandardMaterial3D_kjvhd")
 
 [node name="ProtoCSGBox3D19" parent="Meshs" instance=ExtResource("3_1bvp3")]
@@ -325,10 +399,10 @@ material = SubResource("StandardMaterial3D_xrxkg")
 block_color = 1
 
 [node name="ProtoCSGBox3D6" parent="Meshs" instance=ExtResource("3_1bvp3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6, 1.7, -1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 1.7, -1.3)
 collision_layer = 17
 collision_mask = 0
-size = Vector3(3.4, 2, 1)
+size = Vector3(5.8, 2, 1.6)
 material = SubResource("StandardMaterial3D_5vw27")
 block_color = 5
 
@@ -354,6 +428,43 @@ size = Vector3(0.9, 3.4, 1.5)
 material = SubResource("StandardMaterial3D_gb15f")
 block_color = 3
 
+[node name="ProtoCSGBox3D30" parent="Meshs" instance=ExtResource("3_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.5, -22.6, 6.15, 0.1)
+size = Vector3(2.4, 0.9, 3.6)
+material = SubResource("StandardMaterial3D_sph85")
+block_color = 2
+
+[node name="ProtoCSGBox3D31" parent="Meshs/ProtoCSGBox3D30" instance=ExtResource("3_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, -0.0500001)
+operation = 2
+size = Vector3(2.4, 1, 2.9)
+material = SubResource("StandardMaterial3D_o7g6l")
+block_color = 2
+
+[node name="ProtoCSGBox3D26" parent="Meshs" instance=ExtResource("3_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.5, -16.95, 1.7, 0.125)
+size = Vector3(0.9, 4, 1.5)
+material = SubResource("StandardMaterial3D_hri7i")
+block_color = 3
+
+[node name="ProtoCSGBox3D27" parent="Meshs" instance=ExtResource("3_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.5, -20.05, 1.9, 0.125)
+size = Vector3(0.9, 4.4, 1.5)
+material = SubResource("StandardMaterial3D_w3rk5")
+block_color = 3
+
+[node name="ProtoCSGBox3D29" parent="Meshs" instance=ExtResource("3_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.5, -24.25, 3.05, -0.125)
+size = Vector3(0.9, 6.7, 6.9)
+material = SubResource("StandardMaterial3D_5mvff")
+block_color = 3
+
+[node name="ProtoCSGBox3D28" parent="Meshs" instance=ExtResource("3_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.5, -20.95, 3.05, -0.1)
+size = Vector3(0.9, 6.7, 7)
+material = SubResource("StandardMaterial3D_40n85")
+block_color = 3
+
 [node name="EntitiesLayer" type="Node3D" parent="." groups=["entities_layer"]]
 
 [node name="Slime" parent="EntitiesLayer" instance=ExtResource("7_lgr22")]
@@ -363,6 +474,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.86401, 0.654428, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.05565, 2.05443, 0)
 
 [node name="Rain" type="ColorRect" parent="."]
+visible = false
 material = SubResource("ShaderMaterial_c2ibq")
 anchors_preset = 15
 anchor_right = 1.0
@@ -372,6 +484,7 @@ grow_vertical = 2
 color = Color(1, 1, 1, 0)
 
 [node name="CtrFilter" type="ColorRect" parent="."]
+visible = false
 material = SubResource("ShaderMaterial_c6i3y")
 anchors_preset = 15
 anchor_right = 1.0
@@ -386,3 +499,14 @@ surface_material_override/0 = SubResource("ShaderMaterial_fpfj3")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="MeshInstance3D"]
 light_color = Color(1, 0.723994, 0.106359, 1)
+
+[node name="waterShader" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.6, -0.8, -3.2)
+mesh = SubResource("PlaneMesh_fpfj3")
+surface_material_override/0 = SubResource("ShaderMaterial_kjvhd")
+
+[node name="PixelWater" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.6, -0.8, -3.2)
+visible = false
+mesh = SubResource("PlaneMesh_fpfj3")
+surface_material_override/0 = SubResource("ShaderMaterial_sc1dx")
