@@ -4,6 +4,7 @@ var eledge_grab := false
 var entitie_grab : = false
 var wall_jump := false
 func _enter_state(_old_state: StringName, _params: Dictionary) -> void:
+	stretch()
 	visuals.rotation = Vector3.ZERO
 	eledge_grab = false
 	entitie_grab = false
@@ -99,3 +100,9 @@ func jump_logic(_delta: float) -> void:
 
 func check_for_ledge():
 	player.can_eledge_grab = not player.head_ray_cast.is_colliding() and player.eyes_ray_cast.is_colliding()
+
+
+func stretch():
+	var tween = create_tween()
+	tween.tween_property(sprite, "scale", Vector3(0.762, 1.323, 1.0), .1)
+	tween.tween_property(sprite, "scale", Vector3(1.0, 1.0, 1.0), .1)

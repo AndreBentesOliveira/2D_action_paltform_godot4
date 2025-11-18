@@ -4,12 +4,19 @@ var jump_cont := 0
 var air_jump := true
 var normal_gravity : float
 var normal_jump_gravity : float
+var normal_jump_hang_speed: float
+var normal_jump_height: float
 
 func _enter_state(_old_state: StringName, _params: Dictionary) -> void:
-	#normal_gravity = player.gravity_acceleration
-	#normal_jump_gravity = player.jump_gravity_acceleration
-	#player.gravity_acceleration = 5.0
-	#player.jump_gravity_acceleration = 3.0
+	normal_gravity = player.gravity_acceleration
+	normal_jump_gravity = player.jump_gravity_acceleration
+	normal_jump_hang_speed = player.jump_gravity_acceleration
+	normal_jump_height = player.jump_height
+	
+	player.gravity_acceleration = player.grab_gravity_acceleration
+	player.jump_gravity_acceleration = player.grab_jump_gravity_acceleration
+	player.jump_gravity_acceleration = player.grab_jump_hang_speed_threshold
+	player.jump_height = player.grab_jump_height
 	jump_cont = 0
 	air_jump = true
 
@@ -36,9 +43,10 @@ func _physics_process(_delta: float) -> void:
 
 
 func _exit_state(new_state: StringName, state_data: Dictionary) -> void:
-	pass
-	#player.gravity_acceleration = normal_gravity
-	#player.jump_gravity_acceleration = normal_jump_gravity
+	player.gravity_acceleration = normal_gravity
+	player.jump_gravity_acceleration = normal_jump_gravity
+	player.jump_gravity_acceleration = normal_jump_hang_speed
+	player.jump_height = normal_jump_hang_speed
 
 func get_input() -> Dictionary:
 	return {

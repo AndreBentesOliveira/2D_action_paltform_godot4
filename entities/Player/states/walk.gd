@@ -40,6 +40,10 @@ func x_movement(delta: float) -> void:
 		# (This keeps our momentum gained from outside or slopes)
 		if abs(player.velocity.x) >= player.max_speed and does_input_dir_follow_momentum:
 			return
+		if !does_input_dir_follow_momentum and abs(player.velocity.x) > player.max_speed/2.0:
+			sprite.play(&"turning")
+		else:
+			sprite.play(&"running")
 		# Are we turning?
 		# Deciding between acceleration and turn_acceleration
 		var accel_rate : float = player.acceleration if does_input_dir_follow_momentum else player.turning_acceleration

@@ -19,3 +19,14 @@ func _physics_process(delta: float) -> void:
 			return enter_state(&"Walk")
 		else:
 			return enter_state(&"Idle")
+
+
+func _exit_state(new_state: StringName, state_data: Dictionary) -> void:
+	if new_state == "Walk" or  new_state == "Idle":
+		knead()
+
+
+func knead():
+	var tween = create_tween()
+	tween.tween_property(visuals, "scale", Vector3(1.592, 0.836, 1.0), .1)
+	tween.tween_property(visuals, "scale", Vector3(1.0, 1.0, 1.0), .1)

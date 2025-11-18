@@ -1,4 +1,4 @@
-[gd_scene load_steps=81 format=3 uid="uid://dpuqtlr1m3dcj"]
+[gd_scene load_steps=82 format=3 uid="uid://dpuqtlr1m3dcj"]
 
 [ext_resource type="Script" uid="uid://bb2cx1iw4xeo2" path="res://entities/Player/Player.gd" id="1_cm1li"]
 [ext_resource type="Script" uid="uid://cyjj3nyqr8e3y" path="res://addons/state_machine_nodes/state_machine.gd" id="2_d3nms"]
@@ -41,7 +41,7 @@
 [ext_resource type="Texture2D" uid="uid://8pahlak516g8" path="res://assets/blender/3danimation/jump_grab.png" id="15_1w8ii"]
 [ext_resource type="Texture2D" uid="uid://b4nxo5kda7lnc" path="res://assets/blender/3danimation/running_animation_teste/0005.png" id="15_fgjlw"]
 [ext_resource type="Texture2D" uid="uid://2lpu8ga3jbwi" path="res://assets/blender/3danimation/jump/0000.png" id="15_p4rte"]
-[ext_resource type="Texture2D" uid="uid://bcj80km42ne41" path="res://entities/Player/sprites/hurt_sprite.png" id="16_0505q"]
+[ext_resource type="Texture2D" uid="uid://dah3dl0nprvsg" path="res://assets/blender/3danimation/hurt.png" id="16_04bpq"]
 [ext_resource type="Texture2D" uid="uid://ottp0wb62mt3" path="res://assets/blender/3danimation/running_animation_teste/0006.png" id="16_sbmlo"]
 [ext_resource type="Texture2D" uid="uid://cgfqhk01wpfxi" path="res://assets/blender/3danimation/jump/0001.png" id="16_yy78a"]
 [ext_resource type="Texture2D" uid="uid://b2j2fobxkj3yi" path="res://assets/blender/3danimation/running_animation_teste/0007.png" id="17_pxnfm"]
@@ -73,6 +73,7 @@
 [ext_resource type="Texture2D" uid="uid://5nc1h7vxofm3" path="res://assets/blender/3danimation/thrown/jump_grab0006.png" id="46_hxqpa"]
 [ext_resource type="Texture2D" uid="uid://nsg6fyi1lsps" path="res://assets/blender/3danimation/thrown/jump_grab0007.png" id="47_gsdjs"]
 [ext_resource type="Texture2D" uid="uid://c2f75dea6v1ds" path="res://assets/blender/3danimation/thrown/jump_grab0008.png" id="48_55vtu"]
+[ext_resource type="Texture2D" uid="uid://c8n3luyosblsq" path="res://assets/blender/3danimation/turning2.png" id="50_bv3kr"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kct3s"]
 radius = 0.182348
@@ -109,7 +110,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"fall",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -146,7 +147,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("16_0505q")
+"texture": ExtResource("16_04bpq")
 }],
 "loop": true,
 "name": &"hurt",
@@ -193,7 +194,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"jump",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -270,6 +271,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("50_bv3kr")
+}],
+"loop": false,
+"name": &"turning",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("22_b4gij")
 }, {
 "duration": 1.0,
@@ -330,11 +339,11 @@ script = ExtResource("1_cm1li")
 sprite = NodePath("Visuals/Sprite3D")
 ledge_grab_offset = Vector3(0.305, -1.105, 0)
 max_speed = 2.5
-jump_height = 1.895
-jump_cut = 1.0
-jump_gravity_acceleration = 3.0
+jump_height = 2.5
+jump_cut = 0.945
+jump_gravity_acceleration = 2.0
 jump_hang_speed_threshold = 0.11
-jump_hang_gravity_mult = 0.8
+jump_hang_gravity_mult = 0.5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.623755, 0)
@@ -349,10 +358,12 @@ debug = true
 
 [node name="Sprite3D" type="AnimatedSprite3D" parent="Visuals"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.619792, 0)
+shaded = true
 double_sided = false
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_egyt8")
-animation = &"thrown"
+animation = &"turning"
+frame_progress = 1.0
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "common_node")]
 script = ExtResource("2_d3nms")
@@ -446,12 +457,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.705849, 1.55586, 0)
 target_position = Vector3(0, -0.374, 0)
 
 [node name="HeadRayCast" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.181249, 1.05466, 0)
-target_position = Vector3(0.081, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.01646, 0)
+target_position = Vector3(0.295, 0, 0)
 
 [node name="EyesRayCast" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.181249, 0.99322, 0)
-target_position = Vector3(0.081, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.928653, 0)
+target_position = Vector3(0.295, 0, 0)
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.623755, 0)
@@ -500,10 +511,12 @@ one_shot = true
 
 [node name="Debug" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.17, 0, 0, 0, 0.17, 0, 0, 0, 0.17, 0, 0, 0)
+visible = false
 mesh = SubResource("SphereMesh_jwv6y")
 
 [node name="Debug2" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.17, 0, 0, 0, 0.17, 0, 0, 0, 0.17, 0, 0.207063, 0)
+visible = false
 mesh = SubResource("SphereMesh_jwv6y")
 
 [connection signal="frame_changed" from="Visuals/Sprite3D" to="StateMachine/TrowEntitie" method="_on_sprite_3d_frame_changed"]

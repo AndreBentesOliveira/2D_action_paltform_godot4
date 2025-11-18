@@ -40,7 +40,14 @@ var jump_coyote_timer : float = 0
 var jump_buffer_timer : float = 0
 var is_jumping := false
 # ----------------------------------- #
-
+#-------------------------------------#
+# JUMP VARIABLES WHEN GRAB ENTITIE
+@export_category("GRAB JUMP")
+@export var grab_jump_height: float = 1.5
+@export var grab_gravity_acceleration: float = 5.0
+@export var grab_jump_gravity_acceleration: float = 3.0
+@export var grab_jump_hang_speed_threshold: float = 0.1
+#-------------------------------------#
 var is_attacking := false
 var can_eledge_grab := false
 var grab_entitie := false
@@ -69,20 +76,20 @@ func _physics_process(delta: float) -> void:
 	%VelocityY.text = str("Velocity.y: " + "%.2f" % velocity.y)
 	%VelocityX.text = str("Velocity.x: " + "%.2f" % velocity.x)
 	if !sprite.flip_h:
-		eyes_ray_cast.position.x = 0.181
-		head_ray_cast.position.x = 0.181
-		eyes_ray_cast.target_position.x = 0.07
-		head_ray_cast.target_position.x = 0.07
+		#eyes_ray_cast.position.x = 0.181
+		#head_ray_cast.position.x = 0.181
+		eyes_ray_cast.target_position.x = 0.295
+		head_ray_cast.target_position.x = 0.295
 		#teste
 		$RayCast1.target_position.x = 0.235
 		#teste
 		$TrowMark.position.x = 0.434
 		$DetectWall.target_position.x = 0.081
 	else:
-		eyes_ray_cast.position.x = -0.181
-		head_ray_cast.position.x = -0.181
-		eyes_ray_cast.target_position.x = -0.07
-		head_ray_cast.target_position.x = -0.07
+		#eyes_ray_cast.position.x = -0.181
+		#head_ray_cast.position.x = -0.181
+		eyes_ray_cast.target_position.x = -0.295
+		head_ray_cast.target_position.x = -0.295
 		#teste
 		$RayCast1.target_position.x = -0.235
 		#teste
