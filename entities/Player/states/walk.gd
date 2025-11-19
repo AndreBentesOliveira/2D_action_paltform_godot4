@@ -10,9 +10,9 @@ func _physics_process(_delta: float) -> void:
 	sprite.speed_scale = abs(player.velocity.x / .5)
 	if abs(player.velocity.x) > player.max_speed:
 		sprite.play(&"running")
-	find_ground_angle()
+	if player.can_rotate_sprite:
+		find_ground_angle()
 	x_movement(_delta)
-
 
 
 func _exit_state(new_state: StringName, state_data: Dictionary) -> void:
@@ -40,9 +40,11 @@ func x_movement(delta: float) -> void:
 		# (This keeps our momentum gained from outside or slopes)
 		if abs(player.velocity.x) >= player.max_speed and does_input_dir_follow_momentum:
 			return
-		
-		if !does_input_dir_follow_momentum and abs(player.velocity.x) > player.max_speed/2.0:
+		#!does_input_dir_follow_momentum and abs(player.velocity.x) > player.max_speed/2.0
+		if player.velocity.x > 0 and x_dir < 0 or player.velocity.x < 0 and x_dir > 0:
 			sprite.play(&"turning")
+			player.turnig_particles.emitting = true
+			player.turnig_particles.process_material.direction.x = -x_dir
 		else:
 			sprite.play(&"running")
 		# Are we turning?
@@ -60,5 +62,3 @@ func x_movement(delta: float) -> void:
 func find_ground_angle() -> void:
 	var floor_normal = player.get_floor_normal()
 	visuals.rotation.z = lerp(visuals.rotation.z, -floor_normal.x, .5)
-	#print(abs(-floor_normal.x))
-	#visuals.position.y = abs(-floor_normal.x)

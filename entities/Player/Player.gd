@@ -7,8 +7,9 @@ extends CharacterBody3D
 @onready var head_ray_cast: RayCast3D = $HeadRayCast
 @onready var gripper_component: Gripper = $GripperComponent
 @onready var go_up_raycast :RayCast3D = $RayCast3D
-@export var max_speed: float = 1.5
-@export var acceleration: float = 2.0
+@onready var turnig_particles: GPUParticles3D = $TurningParticles
+@export var max_speed: float = 3.0
+@export var acceleration: float = 3.0
 @export var turning_acceleration : float = 5.0
 @export var deceleration: float = 5.0
 
@@ -62,6 +63,7 @@ var in_knockback := false
 var gripper_collision: Node
 var can_move_in_z := false
 
+var can_rotate_sprite: bool
 
 func _ready() -> void:
 	gripper_component.grab.connect(on_player_grab_entitie)
@@ -72,27 +74,22 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	
+	if not $DetectFloorL.is_colliding() or not $DetectFloorR.is_colliding():
+		can_rotate_sprite = false
+	else:
+		can_rotate_sprite = true
 	%VelocityY.text = str("Velocity.y: " + "%.2f" % velocity.y)
 	%VelocityX.text = str("Velocity.x: " + "%.2f" % velocity.x)
 	if !sprite.flip_h:
-		#eyes_ray_cast.position.x = 0.181
-		#head_ray_cast.position.x = 0.181
 		eyes_ray_cast.target_position.x = 0.333
 		head_ray_cast.target_position.x = 0.333
-		#teste
 		$RayCast1.target_position.x = 0.47
-		#teste
 		$TrowMark.position.x = 0.434
 		$DetectWall.target_position.x = 0.081
 	else:
-		#eyes_ray_cast.position.x = -0.181
-		#head_ray_cast.position.x = -0.181
 		eyes_ray_cast.target_position.x = -0.333
 		head_ray_cast.target_position.x = -0.333
-		#teste
 		$RayCast1.target_position.x = -0.47
-		#teste
 		$TrowMark.position.x = -0.434
 		$DetectWall.target_position.x = -0.081
 	# The following line will only be processed if 'StateMachine.auto_process' is set to 'false'.
