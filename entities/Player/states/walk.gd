@@ -40,6 +40,7 @@ func x_movement(delta: float) -> void:
 		# (This keeps our momentum gained from outside or slopes)
 		if abs(player.velocity.x) >= player.max_speed and does_input_dir_follow_momentum:
 			return
+		
 		if !does_input_dir_follow_momentum and abs(player.velocity.x) > player.max_speed/2.0:
 			sprite.play(&"turning")
 		else:
@@ -58,6 +59,6 @@ func x_movement(delta: float) -> void:
 
 func find_ground_angle() -> void:
 	var floor_normal = player.get_floor_normal()
-	visuals.rotation.z = -floor_normal.x
+	visuals.rotation.z = lerp(visuals.rotation.z, -floor_normal.x, .5)
 	#print(abs(-floor_normal.x))
 	#visuals.position.y = abs(-floor_normal.x)

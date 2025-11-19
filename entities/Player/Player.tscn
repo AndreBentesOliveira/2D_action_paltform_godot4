@@ -74,7 +74,7 @@
 [ext_resource type="Texture2D" uid="uid://nsg6fyi1lsps" path="res://assets/blender/3danimation/thrown/jump_grab0007.png" id="47_gsdjs"]
 [ext_resource type="Texture2D" uid="uid://c2f75dea6v1ds" path="res://assets/blender/3danimation/thrown/jump_grab0008.png" id="48_55vtu"]
 [ext_resource type="Texture2D" uid="uid://c8n3luyosblsq" path="res://assets/blender/3danimation/turning2.png" id="50_bv3kr"]
-[ext_resource type="Script" path="res://entities/Player/states/climb_edge.gd" id="73_bv3kr"]
+[ext_resource type="Script" uid="uid://c74uf4renx5m6" path="res://entities/Player/states/climb_edge.gd" id="73_bv3kr"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kct3s"]
 radius = 0.182348
