@@ -8,6 +8,7 @@ extends CharacterBody3D
 @onready var gripper_component: Gripper = $GripperComponent
 @onready var go_up_raycast :RayCast3D = $RayCast3D
 @onready var turnig_particles: GPUParticles3D = $TurningParticles
+@onready var jump_particles : GPUParticles3D = $JumpParticles
 @export var max_speed: float = 3.0
 @export var acceleration: float = 3.0
 @export var turning_acceleration : float = 5.0

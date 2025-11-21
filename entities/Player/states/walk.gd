@@ -8,8 +8,6 @@ func _physics_process(_delta: float) -> void:
 	if player.in_knockback:
 		return enter_state(&"Knockback")
 	sprite.speed_scale = abs(player.velocity.x / .5)
-	if abs(player.velocity.x) > player.max_speed:
-		sprite.play(&"running")
 	if player.can_rotate_sprite:
 		find_ground_angle()
 	x_movement(_delta)
@@ -41,12 +39,15 @@ func x_movement(delta: float) -> void:
 		if abs(player.velocity.x) >= player.max_speed and does_input_dir_follow_momentum:
 			return
 		#!does_input_dir_follow_momentum and abs(player.velocity.x) > player.max_speed/2.0
-		if player.velocity.x > 0 and x_dir < 0 or player.velocity.x < 0 and x_dir > 0:
+		if (player.velocity.x > 0 and x_dir < 0 or player.velocity.x < 0 and x_dir > 0) and (abs(player.velocity.x) >= player.max_speed/2.0):
 			sprite.play(&"turning")
-			player.turnig_particles.emitting = true
 			player.turnig_particles.process_material.direction.x = -x_dir
+			player.turnig_particles.emitting = true
 		else:
-			sprite.play(&"running")
+			if abs(player.velocity.x) >= player.max_speed - 0.5:
+				sprite.play(&"running")
+			else:
+				sprite.play(&"walk")
 		# Are we turning?
 		# Deciding between acceleration and turn_acceleration
 		var accel_rate : float = player.acceleration if does_input_dir_follow_momentum else player.turning_acceleration

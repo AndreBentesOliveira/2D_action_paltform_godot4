@@ -534,7 +534,6 @@ light_color = Color(1, 0.723994, 0.106359, 1)
 
 [node name="waterShader" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.6, -0.8, -3.2)
-visible = false
 mesh = SubResource("PlaneMesh_fpfj3")
 surface_material_override/0 = SubResource("ShaderMaterial_kjvhd")
 
