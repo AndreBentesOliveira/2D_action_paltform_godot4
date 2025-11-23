@@ -6,9 +6,10 @@ extends CharacterBody3D
 @onready var eyes_ray_cast : RayCast3D = $EyesRayCast
 @onready var head_ray_cast: RayCast3D = $HeadRayCast
 @onready var gripper_component: Gripper = $GripperComponent
-@onready var go_up_raycast :RayCast3D = $RayCast3D
+@onready var face_up_raycast :RayCast3D = $FaceUp
+@onready var face_down_raycast :RayCast3D = $FaceDown
 @onready var turnig_particles: GPUParticles3D = $TurningParticles
-@onready var jump_particles : GPUParticles3D = $JumpParticles
+@onready var particle_emitter: Marker3D = $ParticlesEmitter
 @export var max_speed: float = 3.0
 @export var acceleration: float = 3.0
 @export var turning_acceleration : float = 5.0
@@ -65,6 +66,7 @@ var gripper_collision: Node
 var can_move_in_z := false
 
 var can_rotate_sprite: bool
+var blink_timer: float = 0.0
 
 func _ready() -> void:
 	gripper_component.grab.connect(on_player_grab_entitie)
@@ -270,5 +272,11 @@ func _on_detect_enemy_body_exited(body: Node3D) -> void:
 
 
 func _on_invencible_timer_timeout() -> void:
+	visible = true
+	$BlinkTimer.stop()
 	$HealthComponent.invencible = false
 	$Hurtbox/CollisionShape3D.call_deferred("set","disabled", false) 
+
+
+func _on_blink_timer_timeout() -> void:
+	visible = !visible

@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://ckxrci77f0bq7"]
+[gd_scene load_steps=64 format=3 uid="uid://ckxrci77f0bq7"]
 
 [ext_resource type="Script" uid="uid://ewewltobs1v6" path="res://main.gd" id="1_5vw27"]
 [ext_resource type="PackedScene" uid="uid://dpuqtlr1m3dcj" path="res://entities/Player/Player.tscn" id="1_ig7tw"]
@@ -134,6 +134,13 @@ resource_local_to_scene = true
 albedo_texture = ExtResource("5_7mycd")
 uv1_offset = Vector3(0.5, 0.5, 0.5)
 uv1_triplanar = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_5tuhn"]
+radius = 0.25
+height = 0.5
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5tuhn"]
+size = Vector3(5.8, 1, 1.4)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sqvbp"]
 resource_local_to_scene = true
@@ -307,11 +314,11 @@ script = ExtResource("1_5vw27")
 environment = SubResource("Environment_rsl4a")
 
 [node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("target")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.4054, 1.43334, 3.13416)
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, -10.4054, 1.43334, 3.13416)
 size = 2.609
 script = ExtResource("2_0xm2m")
 target = NodePath("../Player")
-dead_zone_size = Vector2(0.7, 1)
+dead_zone_size = Vector2(0.7, 0.5)
 base_offset = Vector3(0, 1, 4)
 look_ahead_amount = 2.0
 offset_smooth_speed = 0.5
@@ -424,12 +431,33 @@ material = SubResource("StandardMaterial3D_xrxkg")
 block_color = 1
 
 [node name="ProtoCSGBox3D6" parent="Meshs" instance=ExtResource("3_1bvp3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 1.7, -1.3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 1.3, -1.3)
 collision_layer = 17
 collision_mask = 0
-size = Vector3(5.8, 2, 1.6)
+size = Vector3(5.8, 1.2, 1.6)
 material = SubResource("StandardMaterial3D_5vw27")
 block_color = 5
+
+[node name="Marker3D" type="Marker3D" parent="Meshs/ProtoCSGBox3D6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
+
+[node name="Debug" type="MeshInstance3D" parent="Meshs/ProtoCSGBox3D6/Marker3D"]
+mesh = SubResource("SphereMesh_5tuhn")
+
+[node name="AreaZ" type="Area3D" parent="Meshs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 2.5, -0.0499999)
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Meshs/AreaZ"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.15)
+shape = SubResource("BoxShape3D_5tuhn")
+
+[node name="Marker3D" type="Marker3D" parent="Meshs/AreaZ"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3, -1.2, 0.05)
+
+[node name="Debug" type="MeshInstance3D" parent="Meshs/AreaZ/Marker3D"]
+mesh = SubResource("SphereMesh_5tuhn")
 
 [node name="ProtoCSGBox3D16" parent="Meshs" instance=ExtResource("3_1bvp3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.15, 0.7, -0.9)

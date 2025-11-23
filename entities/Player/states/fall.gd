@@ -22,7 +22,7 @@ func _physics_process(delta: float) -> void:
 
 
 func _exit_state(new_state: StringName, state_data: Dictionary) -> void:
-	player.jump_particles.emitting = true
+	player.particle_emitter.emitte()
 	if new_state == "Walk" or  new_state == "Idle":
 		knead()
 

@@ -1,7 +1,10 @@
 extends "common_state.gd"
 
 func _enter_state(_old_state: StringName, _params: Dictionary) -> void:
-	sprite.play(&"walk")
+	if abs(player.velocity.x) >= player.max_speed - 0.5:
+		sprite.play(&"running")
+	else:
+		sprite.play(&"walk")
 
 
 func _physics_process(_delta: float) -> void:
@@ -43,11 +46,14 @@ func x_movement(delta: float) -> void:
 			sprite.play(&"turning")
 			player.turnig_particles.process_material.direction.x = -x_dir
 			player.turnig_particles.emitting = true
+		
 		else:
 			if abs(player.velocity.x) >= player.max_speed - 0.5:
 				sprite.play(&"running")
+			
 			else:
 				sprite.play(&"walk")
+		
 		# Are we turning?
 		# Deciding between acceleration and turn_acceleration
 		var accel_rate : float = player.acceleration if does_input_dir_follow_momentum else player.turning_acceleration

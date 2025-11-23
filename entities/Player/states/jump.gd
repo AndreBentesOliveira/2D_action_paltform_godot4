@@ -4,7 +4,6 @@ var eledge_grab := false
 var entitie_grab : = false
 var wall_jump := false
 func _enter_state(_old_state: StringName, _params: Dictionary) -> void:
-	player.jump_particles.emitting = true
 	stretch()
 	visuals.rotation = Vector3.ZERO
 	eledge_grab = false

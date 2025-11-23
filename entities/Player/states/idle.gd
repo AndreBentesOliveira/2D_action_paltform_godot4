@@ -18,12 +18,16 @@ func _physics_process(_delta: float) -> void:
 			return enter_state(&"Walk")
 	else:
 		return enter_state(&"Fall")
-	if Input.is_action_pressed(&"up_button") and player.go_up_raycast.is_colliding():
+	if Input.is_action_pressed(&"up_button") and player.face_up_raycast.is_colliding():
 		sprite.play(&"face_up")
+	elif Input.is_action_pressed(&"down_button") and player.face_down_raycast.is_colliding():
+		sprite.play(&"face_down")
 	else:
 		sprite.play(&"idle")
-	if Input.is_action_pressed(&"up_button") and Input.is_action_pressed(&"action_button"):
-		return enter_state(&"MoveUp")
+	if Input.is_action_pressed(&"up_button") and Input.is_action_pressed(&"action_button") and player.face_up_raycast.is_colliding():
+		return enter_state(&"MoveUp", {"wall" : player.face_up_raycast.get_collider()})
+	elif Input.is_action_pressed(&"down_button") and Input.is_action_pressed(&"action_button") and player.face_down_raycast.is_colliding():
+		return enter_state(&"MoveUp", {"wall" : player.face_down_raycast.get_collider()})
 
 func _exit_state(old_state: StringName, state_data: Dictionary) -> void:
 	player.gripper_area_disable(false)

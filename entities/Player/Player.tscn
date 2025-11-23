@@ -1,4 +1,4 @@
-[gd_scene load_steps=110 format=3 uid="uid://dpuqtlr1m3dcj"]
+[gd_scene load_steps=109 format=3 uid="uid://dpuqtlr1m3dcj"]
 
 [ext_resource type="Script" uid="uid://bb2cx1iw4xeo2" path="res://entities/Player/Player.gd" id="1_cm1li"]
 [ext_resource type="Script" uid="uid://cyjj3nyqr8e3y" path="res://addons/state_machine_nodes/state_machine.gd" id="2_d3nms"]
@@ -65,6 +65,7 @@
 [ext_resource type="Texture2D" uid="uid://tq6dr4baatvm" path="res://assets/blender/3danimation/walk_animation_teste/0002.png" id="24_gmmxa"]
 [ext_resource type="Texture2D" uid="uid://bs2f2ol07ikq7" path="res://assets/blender/3danimation/walk_animation_teste/0003.png" id="25_e6oj7"]
 [ext_resource type="Texture2D" uid="uid://f5nsxe0cxnia" path="res://assets/blender/3danimation/walk_animation_teste/0004.png" id="26_p4rte"]
+[ext_resource type="Texture2D" uid="uid://d2dgtvuti8alm" path="res://assets/blender/3danimation/hurt_flash.png" id="26_r8i7f"]
 [ext_resource type="Texture2D" uid="uid://cbr3ugunvaybd" path="res://assets/blender/3danimation/walk_animation_teste/0005.png" id="27_yy78a"]
 [ext_resource type="Texture2D" uid="uid://nnpa27wiasus" path="res://assets/blender/3danimation/walk_animation_teste/0006.png" id="28_uq3xi"]
 [ext_resource type="Texture2D" uid="uid://kd87abyvogf2" path="res://assets/blender/3danimation/walk_animation_teste/0007.png" id="29_jwv6y"]
@@ -93,7 +94,9 @@
 [ext_resource type="Texture2D" uid="uid://c2f75dea6v1ds" path="res://assets/blender/3danimation/thrown/jump_grab0008.png" id="48_55vtu"]
 [ext_resource type="Texture2D" uid="uid://c8n3luyosblsq" path="res://assets/blender/3danimation/turning2.png" id="50_bv3kr"]
 [ext_resource type="Script" uid="uid://c74uf4renx5m6" path="res://entities/Player/states/climb_edge.gd" id="73_bv3kr"]
+[ext_resource type="PackedScene" uid="uid://qorhampe1ns5" path="res://entities/Player/states/state_history.tscn" id="92_yn1cc"]
 [ext_resource type="Material" uid="uid://bqvfwj5a8byga" path="res://effects/particle.material" id="94_yv4sb"]
+[ext_resource type="Script" uid="uid://dui25rofh7niw" path="res://components/particles_emitter.gd" id="95_5ssvd"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kct3s"]
 radius = 0.182348
@@ -189,10 +192,13 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("16_04bpq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_r8i7f")
 }],
 "loop": true,
 "name": &"hurt",
-"speed": 1.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -420,7 +426,6 @@ point_count = 4
 curve = SubResource("Curve_4pnfo")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_4pnfo"]
-particle_flag_disable_z = true
 direction = Vector3(-1, 0.8, 0)
 spread = 30.484
 initial_velocity_min = 1.0
@@ -432,30 +437,6 @@ scale_max = 2.0
 scale_curve = SubResource("CurveTexture_yv4sb")
 
 [sub_resource type="QuadMesh" id="QuadMesh_4pnfo"]
-material = ExtResource("94_yv4sb")
-size = Vector2(0.1, 0.1)
-
-[sub_resource type="Curve" id="Curve_yv4sb"]
-_data = [Vector2(0, 0.809707), 0.0, 0.0, 0, 0, Vector2(0.503704, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="CurveTexture" id="CurveTexture_5ssvd"]
-curve = SubResource("Curve_yv4sb")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_yv4sb"]
-direction = Vector3(0, 0, 0)
-spread = 180.0
-flatness = 1.0
-initial_velocity_min = 3.85
-initial_velocity_max = 3.85
-gravity = Vector3(0, 2, 0)
-damping_min = 9.0
-damping_max = 9.0
-scale_min = 2.0
-scale_max = 3.0
-scale_curve = SubResource("CurveTexture_5ssvd")
-
-[sub_resource type="QuadMesh" id="QuadMesh_yv4sb"]
 material = ExtResource("94_yv4sb")
 size = Vector2(0.1, 0.1)
 
@@ -486,12 +467,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.619792, 0)
 double_sided = false
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_egyt8")
-animation = &"turning"
-frame_progress = 1.0
+animation = &"hurt"
+frame_progress = 0.982509
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "common_node")]
 script = ExtResource("2_d3nms")
-history_max_size = 3
+history_max_size = 6
 initial_state = NodePath("Idle")
 common_node = NodePath("..")
 metadata/_custom_type_script = "uid://cyjj3nyqr8e3y"
@@ -547,7 +528,22 @@ metadata/_custom_type_script = "uid://dsnjlxvj4s1uu"
 [node name="TrowMark" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.433788, 0.480752, 0)
 
+[node name="StateHistory" parent="." node_paths=PackedStringArray("state_machine") instance=ExtResource("92_yn1cc")]
+visible = false
+anchors_preset = 1
+anchor_top = 0.0
+anchor_bottom = 0.0
+offset_left = -192.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 365.0
+grow_vertical = 1
+size_flags_horizontal = 0
+size_flags_vertical = 8
+state_machine = NodePath("../StateMachine")
+
 [node name="MarginContainer" type="MarginContainer" parent="."]
+visible = false
 anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 53.0
@@ -592,10 +588,16 @@ target_position = Vector3(0.333, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.928653, 0)
 target_position = Vector3(0.333, 0, 0)
 
-[node name="RayCast3D" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.623755, 0)
+[node name="FaceUp" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.292511, 0)
 target_position = Vector3(0, 0, -0.645)
 collision_mask = 16
+
+[node name="FaceDown" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.292511, 0)
+target_position = Vector3(0, 0, 0.645)
+collision_mask = 16
+collide_with_areas = true
 
 [node name="DetectWall" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.584432, 0)
@@ -665,18 +667,15 @@ explosiveness = 0.6
 process_material = SubResource("ParticleProcessMaterial_4pnfo")
 draw_pass_1 = SubResource("QuadMesh_4pnfo")
 
-[node name="JumpParticles" type="GPUParticles3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.124463)
-emitting = false
-amount = 15
-lifetime = 0.5
-one_shot = true
-explosiveness = 1.0
-process_material = SubResource("ParticleProcessMaterial_yv4sb")
-draw_pass_1 = SubResource("QuadMesh_yv4sb")
+[node name="ParticlesEmitter" type="Marker3D" parent="."]
+script = ExtResource("95_5ssvd")
+
+[node name="BlinkTimer" type="Timer" parent="."]
+wait_time = 0.01
 
 [connection signal="frame_changed" from="Visuals/Sprite3D" to="StateMachine/TrowEntitie" method="_on_sprite_3d_frame_changed"]
 [connection signal="state_transitioned" from="StateMachine" to="." method="_on_state_machine_state_transitioned"]
 [connection signal="body_entered" from="DetectEnemy" to="." method="_on_detect_enemy_body_entered"]
 [connection signal="body_exited" from="DetectEnemy" to="." method="_on_detect_enemy_body_exited"]
 [connection signal="timeout" from="InvencibleTimer" to="." method="_on_invencible_timer_timeout"]
+[connection signal="timeout" from="BlinkTimer" to="." method="_on_blink_timer_timeout"]

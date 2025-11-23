@@ -24,7 +24,7 @@ border_color = Color(0, 0, 0, 0.501961)
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
-[node name="StateHistory" type="VBoxContainer" node_paths=PackedStringArray("state_machine")]
+[node name="StateHistory" type="VBoxContainer"]
 custom_minimum_size = Vector2(192, 164)
 anchors_preset = 3
 anchor_left = 1.0
@@ -39,7 +39,6 @@ grow_horizontal = 0
 grow_vertical = 0
 theme_override_constants/separation = 0
 script = ExtResource("1_bokbj")
-state_machine = NodePath("")
 metadata/_edit_group_ = true
 
 [node name="Count" type="Label" parent="."]
