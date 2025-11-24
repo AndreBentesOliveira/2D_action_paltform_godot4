@@ -13,7 +13,7 @@ func _physics_process(_delta: float) -> void:
 		return enter_state(&"Knockback")
 	var wall_point = player.get_node("RayCast1").get_collision_point()
 	var wall_normal = player.get_node("RayCast1").get_collision_normal()
-	player.get_node("RayCast2").global_position = wall_point - (wall_normal * 0.1) + Vector3(0, .3, 0)
+	player.get_node("RayCast2").global_position = wall_point - (wall_normal * 0.1) + Vector3(0, .5, 0)
 	player.get_node("RayCast2").force_raycast_update()
 	if player.get_node("RayCast2").is_colliding():
 		var floor_normal = player.get_node("RayCast2").get_collision_normal()

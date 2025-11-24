@@ -164,10 +164,13 @@ func apply_gravity(delta: float) -> void:
 		return
 
 	# Normal gravity limit
-	if velocity.y <= max_gravity_falling_speed:
+	
+	if abs(velocity.y) <= max_gravity_falling_speed:
 		applied_gravity = gravity_acceleration * delta
 	# else: we're falling too fast for more gravity.
-
+	#else:
+		#print("PARAA")
+		#applied_gravity = 0.0
 	# If moving upwards while jumping, use jump_gravity_acceleration to achieve lower gravity
 	if is_jumping and velocity.y > 0:
 		applied_gravity = jump_gravity_acceleration * delta
@@ -175,7 +178,6 @@ func apply_gravity(delta: float) -> void:
 	# Lower the gravity at the peak of our jump (where velocity is the smallest)
 	if is_jumping and velocity.y < jump_hang_speed_threshold:
 		applied_gravity *= jump_hang_gravity_mult
-
 	velocity.y -= applied_gravity
 
 
