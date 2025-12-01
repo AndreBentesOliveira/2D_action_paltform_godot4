@@ -282,3 +282,16 @@ func _on_invencible_timer_timeout() -> void:
 
 func _on_blink_timer_timeout() -> void:
 	visible = !visible
+
+
+func detect_edge():
+	var wall_point = get_node("RayCast1").get_collision_point()
+	var wall_normal = get_node("RayCast1").get_collision_normal()
+	get_node("RayCast2").global_position = wall_point - (wall_normal * 0.1) + Vector3(0, .3, 0)
+	get_node("RayCast2").force_raycast_update()
+	#if get_node("RayCast2").is_colliding():
+		#var floor_normal = get_node("RayCast2").get_collision_normal()
+		#if floor_normal.is_equal_approx(Vector3.UP):
+			#var ledge_point = get_node("RayCast2").get_collision_point()
+			#var edge_position = ledge_point + (wall_normal * ledge_grab_offset.x) + (Vector3.UP * ledge_grab_offset.y)
+			#print("edge_position global positio: " + str(edge_position))
