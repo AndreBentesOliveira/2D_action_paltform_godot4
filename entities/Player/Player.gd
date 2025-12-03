@@ -23,6 +23,7 @@ extends CharacterBody3D
 # ------------- #
 
 # JUMP VARIABLES ------------------- #
+@export_category("JUMP")
 ## Height in world units. For a tile-based game, you likely want to multiply
 ## by tile size to tune in numbers of tiles.
 @export var jump_height : float = 0.7

@@ -451,6 +451,10 @@ jump_gravity_acceleration = 2.0
 jump_hang_speed_threshold = 0.11
 jump_hang_gravity_mult = 0.5
 jump_buffer = 1.0
+grab_jump_height = 2.5
+grab_gravity_acceleration = 2.0
+grab_jump_gravity_acceleration = 2.0
+grab_jump_hang_speed_threshold = 0.11
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.623755, 0)
@@ -547,7 +551,6 @@ size_flags_vertical = 8
 state_machine = NodePath("../StateMachine")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
-visible = false
 anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 53.0

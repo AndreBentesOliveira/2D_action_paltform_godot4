@@ -264,15 +264,15 @@ shader_parameter/bottom_color_fade_y_start = 0.6
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_fpfj3"]
 size = Vector2(50, 50)
-subdivide_width = 32
-subdivide_depth = 32
+subdivide_width = 10
+subdivide_depth = 10
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kjvhd"]
 render_priority = 0
 shader = ExtResource("16_fpfj3")
-shader_parameter/WATER_COL = Color(0.04, 0.38, 0.88, 1)
-shader_parameter/WATER2_COL = Color(0.04, 0.35, 0.78, 1)
-shader_parameter/FOAM_COL = Color(0.8125, 0.9609, 0.9648, 1)
+shader_parameter/WATER_COL = Color(0.282353, 0.545098, 0.831373, 1)
+shader_parameter/WATER2_COL = Color(0.470588, 0.843137, 1, 1)
+shader_parameter/FOAM_COL = Color(0.690196, 1, 0.945098, 1)
 shader_parameter/distortion_speed = 2.0
 shader_parameter/tile = Vector2(30, 30)
 shader_parameter/wave_speed = 1.0
@@ -280,13 +280,13 @@ shader_parameter/wave_amplitude = 0.2
 shader_parameter/wave_frequency = 1.5
 shader_parameter/time_offset = 0.0
 shader_parameter/water_size = Vector2(50, 50)
-shader_parameter/water_transparency = 0.8
-shader_parameter/water_depth_factor = -0.74
-shader_parameter/foam_width = 2.105
-shader_parameter/foam_edge_softness = 1.405
+shader_parameter/water_transparency = 1.355
+shader_parameter/water_depth_factor = -0.105
+shader_parameter/foam_width = 0.53
+shader_parameter/foam_edge_softness = 1.565
 shader_parameter/foam_smoothness = 0.03
-shader_parameter/foam_distortion_speed = 0.5
-shader_parameter/foam_distortion_amount = 0.475
+shader_parameter/foam_distortion_speed = 1.0
+shader_parameter/foam_distortion_amount = 0.689
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sc1dx"]
 render_priority = 0
@@ -338,11 +338,11 @@ jump_cut = 0.5
 jump_gravity_acceleration = 3.0
 jump_hang_speed_threshold = 0.1
 jump_hang_gravity_mult = 0.8
-jump_coyote = 1.0
 jump_buffer = 0.5
-grab_jump_height = 1.0
-grab_gravity_acceleration = 0.4
-grab_jump_gravity_acceleration = 1.0
+grab_jump_height = 3.0
+grab_gravity_acceleration = 12.0
+grab_jump_gravity_acceleration = 3.0
+grab_jump_hang_speed_threshold = 0.1
 
 [node name="Meshs" type="Node3D" parent="."]
 
@@ -542,10 +542,14 @@ block_color = 3
 [node name="Slime" parent="EntitiesLayer" instance=ExtResource("7_lgr22")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.86401, 0.654428, 0)
 
+[node name="Slime2" parent="EntitiesLayer" instance=ExtResource("7_lgr22")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.26401, 0.654428, 0)
+
 [node name="Slime4" parent="EntitiesLayer" instance=ExtResource("7_lgr22")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.05565, 2.05443, 0)
 
 [node name="Rain" type="ColorRect" parent="."]
+visible = false
 material = SubResource("ShaderMaterial_c2ibq")
 anchors_preset = 15
 anchor_right = 1.0
@@ -555,6 +559,7 @@ grow_vertical = 2
 color = Color(1, 1, 1, 0)
 
 [node name="CtrFilter" type="ColorRect" parent="."]
+visible = false
 material = SubResource("ShaderMaterial_c6i3y")
 anchors_preset = 15
 anchor_right = 1.0
