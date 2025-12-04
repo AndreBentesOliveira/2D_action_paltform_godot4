@@ -25,7 +25,10 @@ func _physics_process(_delta: float) -> void:
 			land_point = ledge_point
 			#print("visual global positio: " + str(visuals.global_position))
 			#print("edge_position global positio: " + str(edge_position))
-
+	if player.get_node("RayCast2").position.x < 0.0:
+		sprite.flip_h = true
+	else:
+		sprite.flip_h = false
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed(&"jump") or event.is_action_pressed(&"up_button"):
@@ -34,6 +37,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed(&"down_button"):
 		player.can_eledge_grab = false
 		return enter_state(&"Fall")
+
 
 func _exit_state(new_state: StringName, state_data: Dictionary) -> void:
 	visuals.position = Vector3.ZERO

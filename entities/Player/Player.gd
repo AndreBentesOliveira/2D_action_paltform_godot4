@@ -70,6 +70,7 @@ var can_rotate_sprite: bool
 var blink_timer: float = 0.0
 
 func _ready() -> void:
+	global_position = Vector3(-12.6, 3.4, 0.0)
 	gripper_component.grab.connect(on_player_grab_entitie)
 	#gripper_collision = gripper_component.get_node("")
 	%Health.text = "Health: " + str($HealthComponent.health)
@@ -103,7 +104,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.z = 0
 	timers(delta)
-	
+	detect_edge()
 	move_and_slide()
 
 

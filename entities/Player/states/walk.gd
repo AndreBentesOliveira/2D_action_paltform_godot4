@@ -63,6 +63,7 @@ func x_movement(delta: float) -> void:
 		if x_dir == 0.0 and is_zero_approx(player.velocity.x):
 				return enter_state(&"Idle")
 	else:
+		print("ENTER FALL STATE")
 		return enter_state(&"Fall")
 
 

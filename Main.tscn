@@ -263,9 +263,9 @@ shader_parameter/bottom_color_fade_y_end = 0.2
 shader_parameter/bottom_color_fade_y_start = 0.6
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_fpfj3"]
-size = Vector2(50, 50)
-subdivide_width = 10
-subdivide_depth = 10
+size = Vector2(10, 10)
+subdivide_width = 2
+subdivide_depth = 2
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kjvhd"]
 render_priority = 0
@@ -274,7 +274,7 @@ shader_parameter/WATER_COL = Color(0.282353, 0.545098, 0.831373, 1)
 shader_parameter/WATER2_COL = Color(0.470588, 0.843137, 1, 1)
 shader_parameter/FOAM_COL = Color(0.690196, 1, 0.945098, 1)
 shader_parameter/distortion_speed = 2.0
-shader_parameter/tile = Vector2(30, 30)
+shader_parameter/tile = Vector2(10, 10)
 shader_parameter/wave_speed = 1.0
 shader_parameter/wave_amplitude = 0.2
 shader_parameter/wave_frequency = 1.5
@@ -291,9 +291,9 @@ shader_parameter/foam_distortion_amount = 0.689
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sc1dx"]
 render_priority = 0
 shader = ExtResource("17_sc1dx")
-shader_parameter/color1 = Color(0, 0.401843, 0.589039, 1)
-shader_parameter/color2 = Color(0, 0.207603, 0.441981, 1)
-shader_parameter/color3 = Color(0, 0.313015, 0.374922, 1)
+shader_parameter/color1 = Color(3.08037e-06, 0.634975, 0.917699, 1)
+shader_parameter/color2 = Color(0.39113, 0.652663, 0.999987, 1)
+shader_parameter/color3 = Color(0.610541, 0.916131, 1, 1)
 shader_parameter/x_amount = 200.0
 shader_parameter/y_amount = 200.0
 
@@ -338,7 +338,7 @@ jump_cut = 0.5
 jump_gravity_acceleration = 3.0
 jump_hang_speed_threshold = 0.1
 jump_hang_gravity_mult = 0.8
-jump_buffer = 0.5
+jump_buffer = 0.2
 grab_jump_height = 3.0
 grab_gravity_acceleration = 12.0
 grab_jump_gravity_acceleration = 3.0
@@ -569,6 +569,7 @@ grow_vertical = 2
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.738, 0, 0, 0, 0.738, 0, 0, 0, 0.738, -8.4137, 0.775582, 0.578927)
+visible = false
 mesh = SubResource("SphereMesh_j4qnp")
 surface_material_override/0 = SubResource("ShaderMaterial_fpfj3")
 
@@ -600,3 +601,6 @@ skeleton = NodePath("../Meshs/ProtoCSGBox3D23")
 transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, -10.1732, 2.60401, 0)
 visible = false
 shadow_enabled = true
+
+[node name="Marker3D" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.6, 3.4, 0)
