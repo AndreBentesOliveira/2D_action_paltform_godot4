@@ -4,6 +4,7 @@ var eledge_grab := false
 var entitie_grab : = false
 var wall_jump := false
 func _enter_state(_old_state: StringName, _params: Dictionary) -> void:
+	player.gripper_area_disable(false)
 	stretch()
 	visuals.rotation = Vector3.ZERO
 	eledge_grab = false
@@ -32,7 +33,6 @@ func _physics_process(_delta: float) -> void:
 	player.x_movement(_delta)
 	player.apply_gravity(_delta)
 	check_for_ledge()
-	jump_logic(_delta)
 	if player.can_eledge_grab:
 		return enter_state(&"GrabEdge")
 	if player.grab_entitie:
@@ -63,40 +63,7 @@ func get_input() -> Dictionary:
 	}
 
 
-func jump_logic(_delta: float) -> void:
-	# Reset our jump requirements
-	if player.is_on_floor():
-		player.jump_coyote_timer = player.jump_coyote
-		player.is_jumping = false
-		
-	if get_input().just_jump:
-		player.jump_buffer_timer = player.jump_buffer
 
-	# Jump if grounded, there is jump input, and we aren't jumping already
-	if (player.jump_coyote_timer > 0 and player.jump_buffer_timer > 0 and not player.is_jumping) or (wall_jump or entitie_grab or eledge_grab):
-		player.is_jumping = true
-		player.jump_coyote_timer = 0
-		player.jump_buffer_timer = 0
-		eledge_grab = false
-		entitie_grab = false
-		wall_jump = false
-		
-		if player.velocity.y < 0:
-			player.velocity.y += player.velocity.y
-		
-		player.velocity.y = player.jump_height
-		
-		#player.velocity.y = sqrt(2 * player.jump_gravity_acceleration * player.jump_height)
-	# We're not actually interested in checking if the player is holding the jump button
-#	if get_input().jump:pass
-
-	# Cut the velocity if let go of jump. This means our jumpheight is variable
-	# This should only happen when moving upwards, as doing this while falling would lead to
-	# The ability to stutter our player mid falling
-	if get_input().released_jump and player.velocity.y > 0:
-		player.velocity.y -= (player.jump_cut * player.velocity.y)
-
-	#if is_on_ceiling(): velocity.y = jump_hang_treshold + 100.0
 
 func check_for_ledge():
 	player.can_eledge_grab = not player.head_ray_cast.is_colliding() and player.eyes_ray_cast.is_colliding()

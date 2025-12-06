@@ -70,7 +70,7 @@ var can_rotate_sprite: bool
 var blink_timer: float = 0.0
 
 func _ready() -> void:
-	global_position = Vector3(-12.6, 3.4, 0.0)
+	#global_position = Vector3(-12.6, 3.4, 0.0)
 	gripper_component.grab.connect(on_player_grab_entitie)
 	#gripper_collision = gripper_component.get_node("")
 	%Health.text = "Health: " + str($HealthComponent.health)
@@ -79,6 +79,10 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
+	#if is_on_floor():
+		#jump_coyote_timer = jump_coyote
+		#is_jumping = false
+	#print("Jump_coyot_time: " + str(jump_coyote_timer))
 	if not $DetectFloorL.is_colliding() or not $DetectFloorR.is_colliding():
 		can_rotate_sprite = false
 	else:
@@ -104,6 +108,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.z = 0
 	timers(delta)
+	jump_logic(delta)
 	detect_edge()
 	move_and_slide()
 
@@ -158,6 +163,47 @@ func load_input_map() -> void:
 	add_pads.call(&"action_button", [JOY_BUTTON_DPAD_UP])
 
 
+func get_input() -> Dictionary:
+	return {
+		"just_jump": Input.is_action_just_pressed("jump"),
+		"jump": Input.is_action_pressed("jump"),
+		"released_jump": Input.is_action_just_released("jump")
+	}
+
+
+func jump_logic(_delta: float) -> void:
+	# Reset our jump requirements
+	if is_on_floor():
+		jump_coyote_timer = jump_coyote
+		is_jumping = false
+		
+	if get_input().just_jump:
+		jump_buffer_timer = jump_buffer
+
+	# Jump if grounded, there is jump input, and we aren't jumping already
+	if (jump_coyote_timer > 0 and jump_buffer_timer > 0 and not is_jumping):
+		is_jumping = true
+		jump_coyote_timer = 0
+		jump_buffer_timer = 0
+		
+		if velocity.y < 0:
+			velocity.y += velocity.y
+		
+		velocity.y = jump_height
+		
+		#player.velocity.y = sqrt(2 * player.jump_gravity_acceleration * player.jump_height)
+	# We're not actually interested in checking if the player is holding the jump button
+#	if get_input().jump:pass
+
+	# Cut the velocity if let go of jump. This means our jumpheight is variable
+	# This should only happen when moving upwards, as doing this while falling would lead to
+	# The ability to stutter our player mid falling
+	if get_input().released_jump and velocity.y > 0:
+		velocity.y -= (jump_cut * velocity.y)
+
+	#if is_on_ceiling(): velocity.y = jump_hang_treshold + 100.0
+
+
 func apply_gravity(delta: float) -> void:
 	var applied_gravity : float = 0
 
@@ -169,10 +215,8 @@ func apply_gravity(delta: float) -> void:
 	
 	if abs(velocity.y) <= max_gravity_falling_speed:
 		applied_gravity = gravity_acceleration * delta
-	# else: we're falling too fast for more gravity.
-	#else:
-		#print("PARAA")
-		#applied_gravity = 0.0
+
+
 	# If moving upwards while jumping, use jump_gravity_acceleration to achieve lower gravity
 	if is_jumping and velocity.y > 0:
 		applied_gravity = jump_gravity_acceleration * delta
