@@ -1,17 +1,17 @@
-[gd_scene load_steps=35 format=4 uid="uid://b2qgq4jcpthr5"]
+[gd_scene load_steps=36 format=4 uid="uid://b2qgq4jcpthr5"]
 
 [ext_resource type="Texture2D" uid="uid://c8sjj83tqbbp7" path="res://assets/blender/assets_blender_teste/scenarios_journey-8x.png" id="1_ejykj"]
-[ext_resource type="Shader" uid="uid://bsq6njgxfy7x5" path="res://assets/blender/assets_blender_teste/pixelate_objects.gdshader" id="2_wfcyy"]
+[ext_resource type="Shader" uid="uid://ddpilw1vyxdk7" path="res://effects/shaders/outline.gdshader" id="2_wfcyy"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_lwppg"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ejykj"]
 render_priority = 0
 shader = ExtResource("2_wfcyy")
-shader_parameter/pixelation = 0.003
-shader_parameter/opacity = 0.84
+shader_parameter/color = Color(0.0228622, 1.09046e-08, 3.00817e-09, 1)
+shader_parameter/thickness = 0.01
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_01n83"]
 resource_name = "color"
-next_pass = SubResource("ShaderMaterial_lwppg")
+next_pass = SubResource("ShaderMaterial_ejykj")
 cull_mode = 2
 albedo_texture = ExtResource("1_ejykj")
 
@@ -313,6 +313,9 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_fm1fk")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_wfcyy"]
+size = Vector3(1, 0.2, 1)
+
 [sub_resource type="ArrayMesh" id="ArrayMesh_3xld1"]
 _surfaces = [{
 "aabb": AABB(-0.126562, -0.113459, 1.32911, 0.252721, 0.243705, 0.287876),
@@ -560,9 +563,37 @@ mesh = SubResource("ArrayMesh_nhk2n")
 skeleton = NodePath("")
 
 [node name="platform-fortified" type="MeshInstance3D" parent="."]
-transform = Transform3D(-0.725602, 0.461005, 0.510859, 0.447683, 0.880067, -0.158313, -0.522573, 0.11383, -0.844962, -1.38397, 0.658821, -1.83918)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.3, -0.2, 0.7)
 mesh = SubResource("ArrayMesh_y58ii")
 skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="platform-fortified"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="platform-fortified/StaticBody3D"]
+transform = Transform3D(1, 0, -2.02505e-13, 0, 1, 0, 2.02505e-13, 0, 1, 0, 0.1, 0)
+shape = SubResource("BoxShape3D_wfcyy")
+
+[node name="platform-fortified2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3.3, -0.2, 0.7)
+mesh = SubResource("ArrayMesh_y58ii")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="platform-fortified2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="platform-fortified2/StaticBody3D"]
+transform = Transform3D(1, 0, -2.02505e-13, 0, 1, 0, 2.02505e-13, 0, 1, 0, 0.1, 0)
+shape = SubResource("BoxShape3D_wfcyy")
+
+[node name="platform-fortified3" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.3, -0.2, 0.7)
+mesh = SubResource("ArrayMesh_y58ii")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="platform-fortified3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="platform-fortified3/StaticBody3D"]
+transform = Transform3D(1, 0, -2.02505e-13, 0, 1, 0, 2.02505e-13, 0, 1, 0, 0.1, 0)
+shape = SubResource("BoxShape3D_wfcyy")
 
 [node name="Object_2" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.47603, -0.879429, 0, 0, 0, 1, -0.879429, -0.47603, 0, 1.08399, -0.626686, 2.08187)

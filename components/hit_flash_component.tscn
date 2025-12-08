@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://kdy6b1qj7k7m"]
 
 [ext_resource type="Script" uid="uid://dpl73c4fnlqyy" path="res://components/hit_flash_component.gd" id="1_4ob18"]
-[ext_resource type="Shader" uid="uid://clixchpoj0yk3" path="res://effects/hit_flash_component.gdshader" id="2_muq71"]
+[ext_resource type="Shader" uid="uid://clixchpoj0yk3" path="res://effects/shaders/hit_flash_component.gdshader" id="2_muq71"]
 
 [node name="HitFlashComponent" type="Node"]
 script = ExtResource("1_4ob18")

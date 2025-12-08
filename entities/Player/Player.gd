@@ -208,7 +208,7 @@ func apply_gravity(delta: float) -> void:
 	var applied_gravity : float = 0
 
 	# No gravity if we are grounded
-	if jump_coyote_timer > 0:
+	if jump_coyote_timer > 0 and is_on_floor():
 		return
 
 	# Normal gravity limit

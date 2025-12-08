@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://djnqxaqoeq17"]
 
-[ext_resource type="Shader" uid="uid://clixchpoj0yk3" path="res://effects/hit_flash_component.gdshader" id="1_1eebu"]
+[ext_resource type="Shader" uid="uid://clixchpoj0yk3" path="res://effects/shaders/hit_flash_component.gdshader" id="1_1eebu"]
 [ext_resource type="Texture2D" uid="uid://dah3dl0nprvsg" path="res://assets/blender/3danimation/hurt.png" id="2_fksoq"]
 
 [resource]
