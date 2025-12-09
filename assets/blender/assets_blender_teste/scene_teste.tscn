@@ -1,13 +1,13 @@
 [gd_scene load_steps=36 format=4 uid="uid://b2qgq4jcpthr5"]
 
 [ext_resource type="Texture2D" uid="uid://c8sjj83tqbbp7" path="res://assets/blender/assets_blender_teste/scenarios_journey-8x.png" id="1_ejykj"]
-[ext_resource type="Shader" uid="uid://ddpilw1vyxdk7" path="res://effects/shaders/outline.gdshader" id="2_wfcyy"]
+[ext_resource type="Shader" uid="uid://g3qyy8ifkca2" path="res://effects/pixelate_objects.gdshader" id="2_wfcyy"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ejykj"]
 render_priority = 0
 shader = ExtResource("2_wfcyy")
-shader_parameter/color = Color(0.0228622, 1.09046e-08, 3.00817e-09, 1)
-shader_parameter/thickness = 0.01
+shader_parameter/pixelation = 0.003
+shader_parameter/opacity = 0.5
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_01n83"]
 resource_name = "color"
