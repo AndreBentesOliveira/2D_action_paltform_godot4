@@ -345,17 +345,17 @@ material = SubResource("StandardMaterial3D_c6i3y")
 
 [node name="ProtoCSGPolygon3D3" parent="Meshs" instance=ExtResource("9_mxvw5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.00638, 10.7, 0.1, 0.5)
-polygon = PackedVector2Array(-0.3, 0, -0.3, 3.1, 0.8, 2.6, 2.3, 3.2, 4.3, 5, 6.8, 3.1, 6.8, 0)
+polygon = PackedVector2Array(-0.3, 0, -0.3, 3.1, 0.8, 2.6, 2.3, 3.2, 4.5, 6, 6.9, 6, 6.8, 0)
 material = SubResource("StandardMaterial3D_j4qnp")
 
 [node name="ProtoCSGPolygon3D2" parent="Meshs" instance=ExtResource("9_mxvw5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.60881, 3.6, 0.1, -0.5)
-polygon = PackedVector2Array(-0.3, 0, -0.3, 2.6, 1.2, 4.2, 2.9, 3.6, 4.6, 3.8, 6.8, 3.1, 6.8, 0)
+polygon = PackedVector2Array(-0.3, 0, -0.3, 2.6, -0.3, 3.6, 2.9, 3.6, 4.6, 3.8, 8.04, 3.82, 14.2955, 4.41494, 14.9, 1.7, 16.3, 1.7, 16.5, -0.2)
 material = SubResource("StandardMaterial3D_2gh4u")
 
 [node name="ProtoCSGBox3D11" parent="Meshs" instance=ExtResource("3_1bvp3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.8, -1.1, 0)
-size = Vector3(15, 2.4, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.05, -1.1, 0)
+size = Vector3(23.5, 2.4, 1)
 material = SubResource("StandardMaterial3D_5vvyt")
 
 [node name="ProtoCSGBox3D9" parent="Meshs" instance=ExtResource("3_1bvp3")]
@@ -452,6 +452,36 @@ shape = SubResource("BoxShape3D_5tuhn")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3, -1.2, 0.05)
 
 [node name="Debug" type="MeshInstance3D" parent="Meshs/AreaZ/Marker3D"]
+mesh = SubResource("SphereMesh_5tuhn")
+
+[node name="ProtoCSGBox3D7" parent="Meshs" instance=ExtResource("3_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 0.85, -1.3)
+collision_layer = 17
+collision_mask = 0
+size = Vector3(5.8, 2.1, 1.6)
+material = SubResource("StandardMaterial3D_5vw27")
+block_color = 5
+
+[node name="Marker3D" type="Marker3D" parent="Meshs/ProtoCSGBox3D7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
+
+[node name="Debug" type="MeshInstance3D" parent="Meshs/ProtoCSGBox3D7/Marker3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("SphereMesh_5tuhn")
+
+[node name="AreaZ2" type="Area3D" parent="Meshs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 2.5, -0.0499999)
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Meshs/AreaZ2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.15)
+shape = SubResource("BoxShape3D_5tuhn")
+
+[node name="Marker3D" type="Marker3D" parent="Meshs/AreaZ2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -2.4, 0.05)
+
+[node name="Debug" type="MeshInstance3D" parent="Meshs/AreaZ2/Marker3D"]
 mesh = SubResource("SphereMesh_5tuhn")
 
 [node name="ProtoCSGBox3D16" parent="Meshs" instance=ExtResource("3_1bvp3")]
@@ -552,7 +582,6 @@ surface_material_override/0 = SubResource("ShaderMaterial_kjvhd")
 
 [node name="Sun" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.866025, -4.43878e-08, 0.500001, -0.482963, 0.258819, 0.836516, -0.12941, -0.965926, 0.224144, -11.299, 7.02901, 0.562917)
-visible = false
 light_energy = 0.5
 light_indirect_energy = 0.0
 light_volumetric_fog_energy = 0.0
