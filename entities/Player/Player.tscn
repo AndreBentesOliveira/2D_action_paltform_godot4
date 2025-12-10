@@ -1,4 +1,4 @@
-[gd_scene load_steps=109 format=3 uid="uid://dpuqtlr1m3dcj"]
+[gd_scene load_steps=108 format=3 uid="uid://dpuqtlr1m3dcj"]
 
 [ext_resource type="Script" uid="uid://bb2cx1iw4xeo2" path="res://entities/Player/Player.gd" id="1_cm1li"]
 [ext_resource type="Script" uid="uid://cyjj3nyqr8e3y" path="res://addons/state_machine_nodes/state_machine.gd" id="2_d3nms"]
@@ -91,7 +91,6 @@
 [ext_resource type="Texture2D" uid="uid://dugnurni1dn20" path="res://assets/blender/3danimation/thrown/jump_grab0005.png" id="45_j5x0h"]
 [ext_resource type="Texture2D" uid="uid://5nc1h7vxofm3" path="res://assets/blender/3danimation/thrown/jump_grab0006.png" id="46_hxqpa"]
 [ext_resource type="Texture2D" uid="uid://nsg6fyi1lsps" path="res://assets/blender/3danimation/thrown/jump_grab0007.png" id="47_gsdjs"]
-[ext_resource type="Texture2D" uid="uid://c2f75dea6v1ds" path="res://assets/blender/3danimation/thrown/jump_grab0008.png" id="48_55vtu"]
 [ext_resource type="Texture2D" uid="uid://c8n3luyosblsq" path="res://assets/blender/3danimation/turning2.png" id="50_bv3kr"]
 [ext_resource type="Script" uid="uid://c74uf4renx5m6" path="res://entities/Player/states/climb_edge.gd" id="73_bv3kr"]
 [ext_resource type="PackedScene" uid="uid://qorhampe1ns5" path="res://entities/Player/states/state_history.tscn" id="92_yn1cc"]
@@ -346,9 +345,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("47_gsdjs")
-}, {
-"duration": 1.0,
-"texture": ExtResource("48_55vtu")
 }],
 "loop": false,
 "name": &"thrown",
@@ -462,7 +458,7 @@ shape = SubResource("CapsuleShape3D_kct3s")
 debug_color = Color(0.760784, 0, 0.870588, 1)
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_vlwca")]
-max_health = 13
+max_health = 1
 debug = true
 
 [node name="Visuals" type="Node3D" parent="."]
@@ -475,7 +471,7 @@ double_sided = false
 alpha_cut = 2
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_egyt8")
-animation = &"idle"
+animation = &"thrown"
 frame = 7
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "common_node")]
@@ -534,7 +530,7 @@ script = ExtResource("73_bv3kr")
 metadata/_custom_type_script = "uid://dsnjlxvj4s1uu"
 
 [node name="TrowMark" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.433788, 0.480752, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.52727, 0.280752, 0)
 
 [node name="StateHistory" parent="." node_paths=PackedStringArray("state_machine") instance=ExtResource("92_yn1cc")]
 visible = false
@@ -640,7 +636,7 @@ collision_layer = 0
 collision_mask = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DetectEnemy"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.485185, 0)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.085185, 0)
 shape = SubResource("CylinderShape3D_62gbw")
 
 [node name="InvencibleTimer" type="Timer" parent="."]
@@ -656,6 +652,11 @@ mesh = SubResource("SphereMesh_jwv6y")
 transform = Transform3D(0.17, 0, 0, 0, 0.17, 0, 0, 0, 0.17, 0, 0.207063, 0)
 visible = false
 mesh = SubResource("SphereMesh_jwv6y")
+
+[node name="L" type="Label3D" parent="Debug2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.56356, 0.0634236, 0)
+pixel_size = 0.0285
+text = "1"
 
 [node name="DetectFloorR" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.12, 0.136, 0)

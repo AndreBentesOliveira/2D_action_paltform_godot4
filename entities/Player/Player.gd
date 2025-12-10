@@ -275,7 +275,7 @@ func push_enemys_away(entitie_grab: CharacterBody3D) -> void:
 	enemys_in_area_grabb.erase(entitie_grab)
 	for enemy in enemys_in_area_grabb:
 		var dir = (enemy.global_position - global_position).normalized()
-		enemy.to_push(Vector3(dir.x, .5, 0.0))
+		enemy.to_push(Vector3(dir.x, 2.0, 0.0))
 
 
 func timers(delta: float) -> void:
@@ -335,6 +335,7 @@ func detect_edge():
 	var wall_normal = get_node("RayCast1").get_collision_normal()
 	get_node("RayCast2").global_position = wall_point - (wall_normal * 0.1) + Vector3(0, .3, 0)
 	get_node("RayCast2").force_raycast_update()
+	get_node("RayCast1").force_raycast_update()
 	#if get_node("RayCast2").is_colliding():
 		#var floor_normal = get_node("RayCast2").get_collision_normal()
 		#if floor_normal.is_equal_approx(Vector3.UP):

@@ -6,7 +6,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ejykj"]
 render_priority = 0
 shader = ExtResource("2_wfcyy")
-shader_parameter/pixelation = 0.003
+shader_parameter/pixelation = 0.004
 shader_parameter/opacity = 0.5
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_01n83"]

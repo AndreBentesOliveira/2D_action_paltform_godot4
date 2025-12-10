@@ -1,5 +1,6 @@
 extends "common_entitie_state.gd"
 
+var thrown_speed := 300
 
 func _enter_state(_old_state: StringName, _params: Dictionary) -> void:
 	entitie.thrown = true
@@ -11,9 +12,9 @@ func _enter_state(_old_state: StringName, _params: Dictionary) -> void:
 			entitie.hit_box_component.get_node("CollisionShape3D").call_deferred("set","disabled", true)
 
 func _physics_process(_delta: float) -> void:
-	entitie.velocity.x = 300.0 * entitie.thrown_dir * _delta
+	entitie.velocity.x = (thrown_speed * entitie.thrown_dir) * _delta
 	sprite.show()
-	visuals.rotation_degrees.z += 10.0
+	visuals.rotation_degrees.z += 1000.0 * _delta
 
 
 func _exit_state(new_state: StringName, state_data: Dictionary) -> void:

@@ -52,7 +52,7 @@ func _physics_process(_delta: float) -> void:
 
 func _exit_state(new_state: StringName, state_data: Dictionary) -> void:
 	if new_state == "GrabEdge":
-		player.velocity == Vector3.ZERO
+		player.velocity = Vector3.ZERO
 
 
 func get_input() -> Dictionary:

@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://du24pmqu1sykk"]
 
 [ext_resource type="Script" uid="uid://8rcwrf72151y" path="res://components/death_component.gd" id="1_lcu1u"]
-[ext_resource type="Texture2D" uid="uid://b61wqofekqbdl" path="res://entities/enemys/slime_enemy/base_enemy_grabed.png" id="2_aamas"]
 [ext_resource type="Material" uid="uid://bjlqm5c4a48ky" path="res://effects/thrown_die.tres" id="2_mwkmo"]
+[ext_resource type="Texture2D" uid="uid://cunxh42shk3yi" path="res://entities/enemys/slime_enemy/untitled.png" id="3_mwkmo"]
 
 [sub_resource type="Animation" id="Animation_mwkmo"]
 length = 0.001
@@ -21,6 +21,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_aamas"]
 resource_name = "default"
+length = 4.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -40,7 +41,7 @@ tracks/1/path = NodePath(".")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.966667),
+"times": PackedFloat32Array(3.76667),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -58,7 +59,7 @@ _data = {
 resource_local_to_scene = true
 transparency = 1
 shading_mode = 0
-albedo_texture = ExtResource("2_aamas")
+albedo_texture = ExtResource("3_mwkmo")
 texture_filter = 0
 billboard_mode = 3
 particles_anim_h_frames = 1
@@ -67,7 +68,9 @@ particles_anim_loop = false
 
 [sub_resource type="QuadMesh" id="QuadMesh_mwkmo"]
 resource_local_to_scene = true
+lightmap_size_hint = Vector2i(7, 7)
 material = SubResource("StandardMaterial3D_t5qci")
+size = Vector2(0.7, 0.7)
 
 [node name="DeathComponent" type="Node3D"]
 script = ExtResource("1_lcu1u")
@@ -80,6 +83,7 @@ libraries = {
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
 emitting = false
 amount = 1
-lifetime = 2.0
+lifetime = 5.0
+fixed_fps = 0
 process_material = ExtResource("2_mwkmo")
 draw_pass_1 = SubResource("QuadMesh_mwkmo")

@@ -4,6 +4,7 @@ extends Node3D
 @export var texture : Texture
 #@onready var thrown_particle = preload("res://effects/thrown_die.tres")
 
+var particle_dir : int
 
 func _ready() -> void:
 	if not texture == null:
@@ -13,6 +14,7 @@ func _ready() -> void:
 
 
 func on_died():
+	$GPUParticles3D.process_material.direction.x = -particle_dir
 	if owner == null || not owner is Node3D:
 		return
 	var spawn_position = owner.global_position

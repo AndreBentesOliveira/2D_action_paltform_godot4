@@ -24,5 +24,5 @@ render_target_update_mode = 4
 offset_right = 280.0
 offset_bottom = 277.0
 theme_override_font_sizes/font_size = 100
-text = "TESTE
+text = "UI
 "

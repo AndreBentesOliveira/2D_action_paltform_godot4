@@ -23,6 +23,13 @@ enabled=PackedStringArray("res://addons/state_machine_nodes/plugin.cfg")
 
 entities_layer=""
 
+[importer_defaults]
+
+texture={
+&"compress/mode": 3,
+&"detect_3d/compress_to": 0
+}
+
 [input]
 
 move_right={
@@ -85,3 +92,4 @@ action_button={
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+shading/overrides/force_vertex_shading=true
