@@ -533,7 +533,6 @@ metadata/_custom_type_script = "uid://dsnjlxvj4s1uu"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.52727, 0.280752, 0)
 
 [node name="StateHistory" parent="." node_paths=PackedStringArray("state_machine") instance=ExtResource("92_yn1cc")]
-visible = false
 anchors_preset = 1
 anchor_top = 0.0
 anchor_bottom = 0.0
@@ -547,7 +546,6 @@ size_flags_vertical = 8
 state_machine = NodePath("../StateMachine")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
-visible = false
 anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 53.0

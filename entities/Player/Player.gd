@@ -331,11 +331,14 @@ func _on_blink_timer_timeout() -> void:
 
 
 func detect_edge():
-	var wall_point = get_node("RayCast1").get_collision_point()
-	var wall_normal = get_node("RayCast1").get_collision_normal()
-	get_node("RayCast2").global_position = wall_point - (wall_normal * 0.1) + Vector3(0, .3, 0)
-	get_node("RayCast2").force_raycast_update()
-	get_node("RayCast1").force_raycast_update()
+	if $RayCast1.is_colliding():
+		var wall_point = get_node("RayCast1").get_collision_point()
+		var wall_normal = get_node("RayCast1").get_collision_normal()
+		get_node("RayCast2").global_position = wall_point - (wall_normal * 0.1) + Vector3(0, .3, 0)
+		get_node("RayCast2").force_raycast_update()
+	else:
+		get_node("RayCast2").global_position = global_position
+	#get_node("RayCast1").force_raycast_update()
 	#if get_node("RayCast2").is_colliding():
 		#var floor_normal = get_node("RayCast2").get_collision_normal()
 		#if floor_normal.is_equal_approx(Vector3.UP):
