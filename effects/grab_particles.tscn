@@ -1,6 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://66fx0yxdnaji"]
+[gd_scene load_steps=9 format=3 uid="uid://66fx0yxdnaji"]
 
-[ext_resource type="Material" uid="uid://bqvfwj5a8byga" path="res://effects/particle.material" id="1_tv1pd"]
+[ext_resource type="Texture2D" uid="uid://bsff82pgk1mk1" path="res://effects/star_particle.png" id="1_tv1pd"]
 
 [sub_resource type="Curve" id="Curve_yv4sb"]
 _data = [Vector2(0, 0.809707), 0.0, 0.0, 0, 0, Vector2(0.503704, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -11,19 +11,25 @@ curve = SubResource("Curve_yv4sb")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_yv4sb"]
 direction = Vector3(0, 0, 0)
-spread = 180.0
-flatness = 1.0
+spread = 112.174
 initial_velocity_min = 3.85
 initial_velocity_max = 3.85
-gravity = Vector3(0, 2, 0)
+gravity = Vector3(0, 0, 0)
 damping_min = 9.0
 damping_max = 9.0
 scale_min = 2.0
 scale_max = 3.0
 scale_curve = SubResource("CurveTexture_5ssvd")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ft8rb"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(1, 1, 1, 0.768)
+albedo_texture = ExtResource("1_tv1pd")
+texture_filter = 0
+
 [sub_resource type="QuadMesh" id="QuadMesh_yv4sb"]
-material = ExtResource("1_tv1pd")
+material = SubResource("StandardMaterial3D_ft8rb")
 size = Vector2(0.1, 0.1)
 
 [sub_resource type="Animation" id="Animation_02lbr"]

@@ -49,10 +49,8 @@ _data = {
 }
 
 [node name="JumpParticles" type="GPUParticles3D"]
-emitting = false
 amount = 15
 lifetime = 0.5
-one_shot = true
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_yv4sb")
 draw_pass_1 = SubResource("QuadMesh_yv4sb")

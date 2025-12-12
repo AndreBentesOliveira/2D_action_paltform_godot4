@@ -105,6 +105,8 @@ text = "idle"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.390813, 0)
 
 [node name="AnimatedSprite3D" parent="Visuals" index="0"]
+shaded = true
+alpha_cut = 2
 sprite_frames = SubResource("SpriteFrames_qp6f8")
 animation = &"idle"
 
