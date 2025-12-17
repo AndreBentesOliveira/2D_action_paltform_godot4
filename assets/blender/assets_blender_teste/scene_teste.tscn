@@ -1,7 +1,7 @@
 [gd_scene load_steps=36 format=4 uid="uid://b2qgq4jcpthr5"]
 
 [ext_resource type="Texture2D" uid="uid://c8sjj83tqbbp7" path="res://assets/blender/assets_blender_teste/scenarios_journey-8x.png" id="1_ejykj"]
-[ext_resource type="Shader" uid="uid://g3qyy8ifkca2" path="res://effects/pixelate_objects.gdshader" id="2_wfcyy"]
+[ext_resource type="Shader" path="res://effects/pixelate_objects.gdshader" id="2_wfcyy"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ejykj"]
 render_priority = 0

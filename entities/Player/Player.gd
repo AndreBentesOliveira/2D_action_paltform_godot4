@@ -108,7 +108,6 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.z = 0
 	timers(delta)
-	jump_logic(delta)
 	detect_edge()
 	move_and_slide()
 

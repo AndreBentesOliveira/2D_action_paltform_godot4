@@ -30,6 +30,7 @@ func _enter_state(_old_state: StringName, _params: Dictionary) -> void:
 
 
 func _physics_process(_delta: float) -> void:
+	player.jump_logic(_delta)
 	player.x_movement(_delta)
 	player.apply_gravity(_delta)
 	check_for_ledge()
