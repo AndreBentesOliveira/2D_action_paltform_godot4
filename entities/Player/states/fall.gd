@@ -1,14 +1,16 @@
 extends "jump.gd"
 
-
 func _enter_state(_old_state: StringName, _params: Dictionary) -> void:
+	can_jump = true
 	sprite.play(&"fall")
-	if _old_state == "GrabEdge":
+	if _old_state == &"GrabEdge":
 		player.head_ray_cast.enabled = false
 		player.eyes_ray_cast.enabled = false
 		await get_tree().create_timer(0.2).timeout
 		player.head_ray_cast.enabled = true
 		player.eyes_ray_cast.enabled = true
+	elif _old_state == &"ClimbEdge":
+		can_jump = false
 	player.gripper_area_disable(false)
 
 
@@ -25,8 +27,10 @@ func _physics_process(delta: float) -> void:
 
 
 func _exit_state(new_state: StringName, state_data: Dictionary) -> void:
-	player.particle_emitter.emitte()
+	if new_state == &"Jump":
+		can_jump
 	if new_state == "Walk" or  new_state == "Idle":
+		player.particle_emitter.emitte()
 		knead()
 
 

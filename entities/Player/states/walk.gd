@@ -8,6 +8,7 @@ func _enter_state(_old_state: StringName, _params: Dictionary) -> void:
 
 
 func _physics_process(_delta: float) -> void:
+	player.jump_logic(_delta)
 	if player.in_knockback:
 		return enter_state(&"Knockback")
 	sprite.speed_scale = abs(player.velocity.x / .5)

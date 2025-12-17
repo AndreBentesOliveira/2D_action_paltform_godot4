@@ -94,13 +94,13 @@ func _physics_process(delta: float) -> void:
 		head_ray_cast.target_position.x = 0.333
 		$RayCast1.target_position.x = 0.47
 		$TrowMark.position.x = 0.434
-		$DetectWall.target_position.x = 0.081
+		$DetectWall.target_position.x = 0.281
 	else:
 		eyes_ray_cast.target_position.x = -0.333
 		head_ray_cast.target_position.x = -0.333
 		$RayCast1.target_position.x = -0.47
 		$TrowMark.position.x = -0.434
-		$DetectWall.target_position.x = -0.081
+		$DetectWall.target_position.x = -0.281
 	# The following line will only be processed if 'StateMachine.auto_process' is set to 'false'.
 	state_machine.call_physics_process(delta)
 	if can_move_in_z:
@@ -108,6 +108,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.z = 0
 	timers(delta)
+	#jump_logic(delta)
 	detect_edge()
 	move_and_slide()
 

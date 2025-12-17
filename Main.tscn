@@ -301,7 +301,6 @@ jump_cut = 0.5
 jump_gravity_acceleration = 3.0
 jump_hang_speed_threshold = 0.1
 jump_hang_gravity_mult = 0.8
-jump_coyote = 0.2
 jump_buffer = 0.2
 grab_jump_height = 3.0
 grab_gravity_acceleration = 12.0
@@ -540,6 +539,7 @@ block_color = 3
 
 [node name="ProtoCSGBox3D27" parent="Meshs" instance=ExtResource("3_1bvp3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.5, -20.05, 1.9, 0.125)
+collision_layer = 33
 size = Vector3(0.9, 4.4, 1.5)
 material = SubResource("StandardMaterial3D_w3rk5")
 block_color = 3

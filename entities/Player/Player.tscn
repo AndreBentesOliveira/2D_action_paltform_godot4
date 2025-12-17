@@ -446,6 +446,7 @@ jump_cut = 0.945
 jump_gravity_acceleration = 2.0
 jump_hang_speed_threshold = 0.11
 jump_hang_gravity_mult = 0.5
+jump_coyote = 0.2
 jump_buffer = 1.0
 grab_jump_height = 2.5
 grab_gravity_acceleration = 2.0
@@ -604,7 +605,7 @@ collide_with_areas = true
 
 [node name="DetectWall" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.584432, 0)
-target_position = Vector3(0.081, 0, 0)
+target_position = Vector3(0.281, 0, 0)
 collision_mask = 32
 
 [node name="GripperComponent" parent="." instance=ExtResource("13_lf238")]

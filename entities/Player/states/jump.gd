@@ -1,26 +1,18 @@
 extends "common_state.gd"
 
-var eledge_grab := false
-var entitie_grab : = false
-var wall_jump := false
+var can_jump := true
+
 func _enter_state(_old_state: StringName, _params: Dictionary) -> void:
 	player.gripper_area_disable(false)
 	stretch()
 	visuals.rotation = Vector3.ZERO
-	eledge_grab = false
-	entitie_grab = false
-	wall_jump = false
 	if _old_state == "GrabWall":
-		wall_jump = true
 		player.get_node("DetectWall").enabled = false
 		player.get_node("DetectWall").enabled = false
 		await get_tree().create_timer(0.1).timeout
 		player.get_node("DetectWall").enabled = true
 		player.get_node("DetectWall").enabled = true
-	if _old_state == "GrabEntitie":
-		entitie_grab = true
 	if _old_state == "GrabEdge":
-		eledge_grab = true
 		player.head_ray_cast.enabled = false
 		player.eyes_ray_cast.enabled = false
 		await get_tree().create_timer(0.1).timeout
@@ -30,9 +22,9 @@ func _enter_state(_old_state: StringName, _params: Dictionary) -> void:
 
 
 func _physics_process(_delta: float) -> void:
+	player.apply_gravity(_delta)
 	player.jump_logic(_delta)
 	player.x_movement(_delta)
-	player.apply_gravity(_delta)
 	check_for_ledge()
 	if player.can_eledge_grab:
 		return enter_state(&"GrabEdge")
@@ -56,12 +48,12 @@ func _exit_state(new_state: StringName, state_data: Dictionary) -> void:
 		player.velocity = Vector3.ZERO
 
 
-func get_input() -> Dictionary:
-	return {
-		"just_jump": Input.is_action_just_pressed("jump"),
-		"jump": Input.is_action_pressed("jump"),
-		"released_jump": Input.is_action_just_released("jump")
-	}
+#func get_input() -> Dictionary:
+	#return {
+		#"just_jump": Input.is_action_just_pressed("jump"),
+		#"jump": Input.is_action_pressed("jump"),
+		#"released_jump": Input.is_action_just_released("jump")
+	#}
 
 
 
