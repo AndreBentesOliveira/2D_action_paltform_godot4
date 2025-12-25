@@ -67,7 +67,6 @@ func x_movement(delta: float) -> void:
 		print("ENTER FALL STATE")
 		return enter_state(&"Fall")
 
-
 func find_ground_angle() -> void:
 	var floor_normal = player.get_floor_normal()
 	visuals.rotation.z = lerp(visuals.rotation.z, -floor_normal.x, .5)

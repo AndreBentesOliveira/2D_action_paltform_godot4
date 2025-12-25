@@ -7,6 +7,7 @@ func _enter_state(_old_state: StringName, _params: Dictionary) -> void:
 	stretch()
 	visuals.rotation = Vector3.ZERO
 	if _old_state == "GrabWall":
+		player.can_jump = true
 		player.get_node("DetectWall").enabled = false
 		player.get_node("DetectWall").enabled = false
 		await get_tree().create_timer(0.1).timeout

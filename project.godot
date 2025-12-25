@@ -29,6 +29,10 @@ texture={
 &"compress/mode": 3,
 &"detect_3d/compress_to": 0
 }
+3d_texture={
+&"compress/mode": 3,
+&"mipmaps/generate": false
+}
 
 [input]
 

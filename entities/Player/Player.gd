@@ -68,6 +68,8 @@ var can_move_in_z := false
 
 var can_rotate_sprite: bool
 var blink_timer: float = 0.0
+var can_jump := false
+
 
 func _ready() -> void:
 	#global_position = Vector3(-12.6, 3.4, 0.0)
@@ -79,10 +81,10 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	#if is_on_floor():
-		#jump_coyote_timer = jump_coyote
-		#is_jumping = false
-	#print("Jump_coyot_time: " + str(jump_coyote_timer))
+	#print(get_floor_normal())
+	print(get_floor_angle())
+	print(floor_max_angle)
+	floor_max_angle = 0.35
 	if not $DetectFloorL.is_colliding() or not $DetectFloorR.is_colliding():
 		can_rotate_sprite = false
 	else:
@@ -181,7 +183,8 @@ func jump_logic(_delta: float) -> void:
 		jump_buffer_timer = jump_buffer
 
 	# Jump if grounded, there is jump input, and we aren't jumping already
-	if (jump_coyote_timer > 0 and jump_buffer_timer > 0 and not is_jumping):
+	if (jump_coyote_timer > 0 and jump_buffer_timer > 0 and not is_jumping) or can_jump:
+		can_jump = false
 		is_jumping = true
 		jump_coyote_timer = 0
 		jump_buffer_timer = 0

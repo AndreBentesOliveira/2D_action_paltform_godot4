@@ -1,4 +1,4 @@
-[gd_scene load_steps=108 format=3 uid="uid://dpuqtlr1m3dcj"]
+[gd_scene load_steps=116 format=3 uid="uid://dpuqtlr1m3dcj"]
 
 [ext_resource type="Script" uid="uid://bb2cx1iw4xeo2" path="res://entities/Player/Player.gd" id="1_cm1li"]
 [ext_resource type="Script" uid="uid://cyjj3nyqr8e3y" path="res://addons/state_machine_nodes/state_machine.gd" id="2_d3nms"]
@@ -62,6 +62,7 @@
 [ext_resource type="Script" uid="uid://b4amd62828eo4" path="res://entities/Player/states/grab_wall.gd" id="22_8xwt4"]
 [ext_resource type="Texture2D" uid="uid://dwk4rcx6tw0yo" path="res://assets/blender/3danimation/walk_animation_teste/0000.png" id="22_b4gij"]
 [ext_resource type="Texture2D" uid="uid://b6ykmmcxwemuo" path="res://assets/blender/3danimation/walk_animation_teste/0001.png" id="23_aysm5"]
+[ext_resource type="Texture2D" uid="uid://d31ckay7rkutv" path="res://assets/blender/3danimation/wall_grab.png" id="23_ucl1b"]
 [ext_resource type="Texture2D" uid="uid://tq6dr4baatvm" path="res://assets/blender/3danimation/walk_animation_teste/0002.png" id="24_gmmxa"]
 [ext_resource type="Texture2D" uid="uid://bs2f2ol07ikq7" path="res://assets/blender/3danimation/walk_animation_teste/0003.png" id="25_e6oj7"]
 [ext_resource type="Texture2D" uid="uid://f5nsxe0cxnia" path="res://assets/blender/3danimation/walk_animation_teste/0004.png" id="26_p4rte"]
@@ -93,6 +94,13 @@
 [ext_resource type="Texture2D" uid="uid://nsg6fyi1lsps" path="res://assets/blender/3danimation/thrown/jump_grab0007.png" id="47_gsdjs"]
 [ext_resource type="Texture2D" uid="uid://c8n3luyosblsq" path="res://assets/blender/3danimation/turning2.png" id="50_bv3kr"]
 [ext_resource type="Script" uid="uid://c74uf4renx5m6" path="res://entities/Player/states/climb_edge.gd" id="73_bv3kr"]
+[ext_resource type="Texture2D" uid="uid://ibma1bb63v18" path="res://assets/blender/3danimation/climb_wall/climb_wall0001.png" id="80_315dw"]
+[ext_resource type="Texture2D" uid="uid://dcxl2g85qg4qx" path="res://assets/blender/3danimation/climb_wall/climb_wall0002.png" id="81_d1glr"]
+[ext_resource type="Texture2D" uid="uid://biv01jecl7bir" path="res://assets/blender/3danimation/climb_wall/climb_wall0003.png" id="82_17mi7"]
+[ext_resource type="Texture2D" uid="uid://bqfkxu3e06sia" path="res://assets/blender/3danimation/climb_wall/climb_wall0004.png" id="83_q3538"]
+[ext_resource type="Texture2D" uid="uid://pfgwmp1ktolb" path="res://assets/blender/3danimation/climb_wall/climb_wall0005.png" id="84_3oe26"]
+[ext_resource type="Texture2D" uid="uid://cf86gbpyt4885" path="res://assets/blender/3danimation/climb_wall/climb_wall0006.png" id="85_t26f7"]
+[ext_resource type="Texture2D" uid="uid://jljt368mcxat" path="res://assets/blender/3danimation/wall_slide.png" id="86_d1glr"]
 [ext_resource type="PackedScene" uid="uid://qorhampe1ns5" path="res://entities/Player/states/state_history.tscn" id="92_yn1cc"]
 [ext_resource type="Material" uid="uid://bqvfwj5a8byga" path="res://effects/particle.material" id="94_yv4sb"]
 [ext_resource type="Script" uid="uid://dui25rofh7niw" path="res://components/particles_emitter.gd" id="95_5ssvd"]
@@ -395,6 +403,45 @@ animations = [{
 "loop": true,
 "name": &"walk",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("80_315dw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("81_d1glr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("82_17mi7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("83_q3538")
+}, {
+"duration": 1.0,
+"texture": ExtResource("84_3oe26")
+}, {
+"duration": 1.0,
+"texture": ExtResource("85_t26f7")
+}],
+"loop": true,
+"name": &"wall_climb",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("23_ucl1b")
+}],
+"loop": true,
+"name": &"wall_grab",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("86_d1glr")
+}],
+"loop": true,
+"name": &"wall_slide",
+"speed": 5.0
 }]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_10ubs"]
@@ -472,8 +519,9 @@ double_sided = false
 alpha_cut = 2
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_egyt8")
-animation = &"thrown"
-frame = 7
+animation = &"wall_climb"
+frame = 1
+frame_progress = 0.11096
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "common_node")]
 script = ExtResource("2_d3nms")
@@ -604,7 +652,7 @@ collision_mask = 16
 collide_with_areas = true
 
 [node name="DetectWall" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.584432, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.963347, 0)
 target_position = Vector3(0.281, 0, 0)
 collision_mask = 32
 

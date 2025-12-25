@@ -288,17 +288,17 @@ transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 
 size = 2.609
 script = ExtResource("2_0xm2m")
 target = NodePath("../Player")
-dead_zone_size = Vector2(0.5, 0.4)
+dead_zone_size = Vector2(0.5, 0.2)
 base_offset = Vector3(0, 1, 3)
 look_ahead_amount = 2.105
-offset_smooth_speed = 0.5
+offset_smooth_speed = 1.5
 
 [node name="Player" parent="." instance=ExtResource("1_ig7tw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.0642, 5.67914, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.2358, 6.57914, 0)
 gravity_acceleration = 12.0
 max_gravity_falling_speed = 6.5
 jump_height = 3.0
-jump_cut = 0.5
+jump_cut = 0.3
 jump_gravity_acceleration = 3.0
 jump_hang_speed_threshold = 0.1
 jump_hang_gravity_mult = 0.8
@@ -351,7 +351,7 @@ material = SubResource("StandardMaterial3D_c6i3y")
 
 [node name="ProtoCSGPolygon3D3" parent="Meshs" instance=ExtResource("9_mxvw5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.00638, 10.7, 0.1, 0.5)
-polygon = PackedVector2Array(-0.3, 0, -0.3, 3.1, 0.8, 2.6, 2.3, 3.2, 4.5, 6, 6.9, 6, 6.8, 0)
+polygon = PackedVector2Array(-0.3, 0, -0.3, 3.1, 0.8, 2.6, 2.3, 3.2, 4.5, 6, 6.9, 6, 8.9, 5, 12.6535, 3.39413, 12.7, 0)
 material = SubResource("StandardMaterial3D_j4qnp")
 
 [node name="ProtoCSGPolygon3D2" parent="Meshs" instance=ExtResource("9_mxvw5")]
