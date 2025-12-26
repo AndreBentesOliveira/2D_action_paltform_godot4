@@ -1,4 +1,4 @@
-[gd_scene load_steps=118 format=3 uid="uid://dpuqtlr1m3dcj"]
+[gd_scene load_steps=117 format=3 uid="uid://dpuqtlr1m3dcj"]
 
 [ext_resource type="Script" uid="uid://bb2cx1iw4xeo2" path="res://entities/Player/Player.gd" id="1_cm1li"]
 [ext_resource type="Script" uid="uid://cyjj3nyqr8e3y" path="res://addons/state_machine_nodes/state_machine.gd" id="2_d3nms"]
@@ -93,7 +93,6 @@
 [ext_resource type="Texture2D" uid="uid://5nc1h7vxofm3" path="res://assets/blender/3danimation/thrown/jump_grab0006.png" id="46_hxqpa"]
 [ext_resource type="Texture2D" uid="uid://nsg6fyi1lsps" path="res://assets/blender/3danimation/thrown/jump_grab0007.png" id="47_gsdjs"]
 [ext_resource type="Texture2D" uid="uid://c8n3luyosblsq" path="res://assets/blender/3danimation/turning2.png" id="50_bv3kr"]
-[ext_resource type="Texture2D" uid="uid://c0xudyvrp6clt" path="res://assets/blender/3danimation/slide.png" id="59_q3538"]
 [ext_resource type="Script" uid="uid://c74uf4renx5m6" path="res://entities/Player/states/climb_edge.gd" id="73_bv3kr"]
 [ext_resource type="Texture2D" uid="uid://ibma1bb63v18" path="res://assets/blender/3danimation/climb_wall/climb_wall0001.png" id="80_315dw"]
 [ext_resource type="Texture2D" uid="uid://dcxl2g85qg4qx" path="res://assets/blender/3danimation/climb_wall/climb_wall0002.png" id="81_d1glr"]
@@ -333,14 +332,6 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("59_q3538")
-}],
-"loop": true,
-"name": &"slide",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
 "texture": ExtResource("40_04bpq")
 }, {
 "duration": 1.0,
@@ -529,7 +520,9 @@ double_sided = false
 alpha_cut = 2
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_egyt8")
-animation = &"slide"
+animation = &"wall_climb"
+frame = 1
+frame_progress = 0.11096
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "common_node")]
 script = ExtResource("2_d3nms")
@@ -720,11 +713,11 @@ text = "1"
 
 [node name="DetectFloorR" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.12, 0.136, 0)
-target_position = Vector3(0, -0.445, 0)
+target_position = Vector3(0, -0.33, 0)
 
 [node name="DetectFloorL" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.12, 0.136, 0)
-target_position = Vector3(0, -0.445, 0)
+target_position = Vector3(0, -0.33, 0)
 
 [node name="TurningParticles" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.059658, 0.278105)

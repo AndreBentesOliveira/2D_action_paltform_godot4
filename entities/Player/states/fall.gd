@@ -24,6 +24,8 @@ func _physics_process(delta: float) -> void:
 			return enter_state(&"Walk")
 		else:
 			return enter_state(&"Idle")
+	if player.get_floor_angle() >= 0.80 and not rad_to_deg(player.get_floor_angle()) >= 90.0:
+		return enter_state(&"Slide")
 
 
 func _exit_state(new_state: StringName, state_data: Dictionary) -> void:

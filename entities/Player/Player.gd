@@ -72,19 +72,19 @@ var can_jump := false
 
 
 func _ready() -> void:
-	#global_position = Vector3(-12.6, 3.4, 0.0)
+	floor_max_angle = deg_to_rad(70)
 	gripper_component.grab.connect(on_player_grab_entitie)
-	#gripper_collision = gripper_component.get_node("")
 	%Health.text = "Health: " + str($HealthComponent.health)
 	$HealthComponent.health_change.connect(on_health_changed)
 	load_input_map()
 
 
 func _physics_process(delta: float) -> void:
-	#print(get_floor_normal())
-	print(get_floor_angle())
-	print(floor_max_angle)
-	floor_max_angle = 0.35
+	#print(get_floor_angle())
+	#print(rad_to_deg(get_floor_angle()))
+	floor_max_angle = deg_to_rad(70)
+	#print(floor_max_angle)
+	#floor_max_angle = deg_to_rad(45)
 	if not $DetectFloorL.is_colliding() or not $DetectFloorR.is_colliding():
 		can_rotate_sprite = false
 	else:
@@ -108,10 +108,12 @@ func _physics_process(delta: float) -> void:
 	if can_move_in_z:
 		pass
 	else:
-		velocity.z = 0
+		velocity.z = 0.0
 	timers(delta)
 	#jump_logic(delta)
 	detect_edge()
+	if can_rotate_sprite:
+		find_ground_angle()
 	move_and_slide()
 
 
@@ -169,7 +171,8 @@ func get_input() -> Dictionary:
 	return {
 		"just_jump": Input.is_action_just_pressed("jump"),
 		"jump": Input.is_action_pressed("jump"),
-		"released_jump": Input.is_action_just_released("jump")
+		"released_jump": Input.is_action_just_released("jump"),
+		"down_button" : Input.is_action_pressed(&"down_button")
 	}
 
 
@@ -341,10 +344,8 @@ func detect_edge():
 		get_node("RayCast2").force_raycast_update()
 	else:
 		get_node("RayCast2").global_position = global_position
-	#get_node("RayCast1").force_raycast_update()
-	#if get_node("RayCast2").is_colliding():
-		#var floor_normal = get_node("RayCast2").get_collision_normal()
-		#if floor_normal.is_equal_approx(Vector3.UP):
-			#var ledge_point = get_node("RayCast2").get_collision_point()
-			#var edge_position = ledge_point + (wall_normal * ledge_grab_offset.x) + (Vector3.UP * ledge_grab_offset.y)
-			#print("edge_position global positio: " + str(edge_position))
+
+
+func find_ground_angle() -> void:
+	var floor_normal = get_floor_normal()
+	$Visuals.rotation.z = lerp($Visuals.rotation.z, -floor_normal.x, .5)

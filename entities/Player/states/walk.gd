@@ -8,12 +8,12 @@ func _enter_state(_old_state: StringName, _params: Dictionary) -> void:
 
 
 func _physics_process(_delta: float) -> void:
+	if player.get_floor_angle() >= 0.80 and player.can_rotate_sprite:
+		return enter_state(&"Slide")
 	player.jump_logic(_delta)
 	if player.in_knockback:
 		return enter_state(&"Knockback")
 	sprite.speed_scale = abs(player.velocity.x / .5)
-	if player.can_rotate_sprite:
-		find_ground_angle()
 	x_movement(_delta)
 
 
@@ -22,6 +22,9 @@ func _exit_state(new_state: StringName, state_data: Dictionary) -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
+	print(event)
+	if player.get_input().down_button and player.get_floor_angle() >= 0.42:
+		return enter_state(&"Slide")
 	if event.is_action_pressed(&"jump"):
 		get_viewport().set_input_as_handled()
 		return enter_state(&"Jump")
@@ -64,9 +67,4 @@ func x_movement(delta: float) -> void:
 		if x_dir == 0.0 and is_zero_approx(player.velocity.x):
 				return enter_state(&"Idle")
 	else:
-		print("ENTER FALL STATE")
 		return enter_state(&"Fall")
-
-func find_ground_angle() -> void:
-	var floor_normal = player.get_floor_normal()
-	visuals.rotation.z = lerp(visuals.rotation.z, -floor_normal.x, .5)

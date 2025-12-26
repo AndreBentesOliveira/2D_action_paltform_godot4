@@ -351,7 +351,7 @@ material = SubResource("StandardMaterial3D_c6i3y")
 
 [node name="ProtoCSGPolygon3D3" parent="Meshs" instance=ExtResource("9_mxvw5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.00638, 10.7, 0.1, 0.5)
-polygon = PackedVector2Array(-0.3, 0, -0.3, 3.1, 0.8, 2.6, 2.3, 3.2, 4.5, 6, 6.9, 6, 8.9, 5, 12.6535, 3.39413, 12.7, 0)
+polygon = PackedVector2Array(-0.3, 0, -0.3, 3.1, 0.8, 2.6, 2.3, 3.2, 4.5, 6, 6.9, 6, 10.8, 4.2, 11.8, 4.8, 11.8, 0)
 material = SubResource("StandardMaterial3D_j4qnp")
 
 [node name="ProtoCSGPolygon3D2" parent="Meshs" instance=ExtResource("9_mxvw5")]
@@ -360,8 +360,8 @@ polygon = PackedVector2Array(-0.3, 0, -0.3, 2.6, -0.3, 3.6, 2.9, 3.6, 4.6, 3.8, 
 material = SubResource("StandardMaterial3D_2gh4u")
 
 [node name="ProtoCSGBox3D11" parent="Meshs" instance=ExtResource("3_1bvp3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.05, -1.1, 0)
-size = Vector3(23.5, 2.4, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.15, -1.1, 0)
+size = Vector3(47.7, 2.4, 1)
 material = SubResource("StandardMaterial3D_5vvyt")
 
 [node name="ProtoCSGBox3D9" parent="Meshs" instance=ExtResource("3_1bvp3")]

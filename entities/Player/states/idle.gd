@@ -10,6 +10,8 @@ func _enter_state(_old_state: StringName, _params: Dictionary) -> void:
 
 func _physics_process(_delta: float) -> void:
 	player.gripper_area_disable(true)
+	if player.get_floor_angle() >= 0.80 and player.can_rotate_sprite:
+		return enter_state(&"Slide")
 	if player.in_knockback:
 		return enter_state(&"Knockback")
 	player.velocity = Vector3.ZERO
@@ -33,6 +35,8 @@ func _exit_state(old_state: StringName, state_data: Dictionary) -> void:
 	player.gripper_area_disable(false)
 
 func _unhandled_input(event: InputEvent) -> void:
+	if player.get_input().down_button and player.get_floor_angle() >= 0.42:
+		return enter_state(&"Slide")
 	if event.is_action_pressed(&"jump"):
 		return enter_state(&"Jump")
 
