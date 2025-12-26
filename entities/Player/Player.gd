@@ -82,7 +82,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	#print(get_floor_angle())
 	#print(rad_to_deg(get_floor_angle()))
-	floor_max_angle = deg_to_rad(70)
+	#floor_max_angle = deg_to_rad(70)
 	#print(floor_max_angle)
 	#floor_max_angle = deg_to_rad(45)
 	if not $DetectFloorL.is_colliding() or not $DetectFloorR.is_colliding():

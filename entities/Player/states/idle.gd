@@ -1,6 +1,6 @@
 extends "common_state.gd"
 
-var is_rotating: bool = false
+#var is_rotating: bool = false
 
 func _enter_state(_old_state: StringName, _params: Dictionary) -> void:
 	if _old_state == &"TrowEntitie":
@@ -42,13 +42,10 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func rotate_to_angle(angulo_alvo_graus: Vector3, duracao: float) -> void:
-	if is_rotating:
-		return
-	is_rotating = true
+	#if is_rotating:
+		#return
+	#is_rotating = true
 	var tween = create_tween()
 	tween.tween_property(sprite, "rotation_degrees", angulo_alvo_graus, duracao)#\
-	#.set_trans(Tween.TRANS_QUINT)\
-	#.set_ease(Tween.EASE_OUT)
 	await tween.finished
-	is_rotating = false
-	print("Rotação para ", angulo_alvo_graus, "° concluída.")
+	#is_rotating = false
