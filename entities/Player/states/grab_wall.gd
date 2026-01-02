@@ -20,7 +20,6 @@ func _enter_state(_old_state: StringName, _params: Dictionary) -> void:
 		player.head_ray_cast.enabled = true
 		player.eyes_ray_cast.enabled = true
 	player.velocity = Vector3.ZERO
-	#player.star_invencibility()
 	player.gripper_area_disable(true)
 	player.gripper_area_disable(true)
 	sprite.play(&"wall_grab")

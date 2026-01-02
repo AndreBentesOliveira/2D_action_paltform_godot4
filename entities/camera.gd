@@ -2,15 +2,14 @@ extends Camera3D
 
 @export var target: Node3D
 @export var smooth_speed: float = 5.0
-
 @export var dead_zone_size: Vector2 = Vector2(1, 1)
-
 @export var base_offset: Vector3 = Vector3(0, -0.5, 0.0)
-
 @export var look_ahead_amount: float = 80.0
 @export var offset_smooth_speed: float = 3.0
 
+
 var current_offset: Vector3
+
 
 func _ready() -> void:
 	current_offset = base_offset
@@ -30,7 +29,10 @@ func _process(delta: float) -> void:
 	else:
 		player_direction = 1.0
 	
-	target_offset.x +=look_ahead_amount * player_direction
+	if target.current_state == "GrabEdge" or target.current_state == "GrabWall":
+		target_offset.x += 1.0 * -player_direction
+	else:
+		target_offset.x += look_ahead_amount * player_direction
 	current_offset = current_offset.lerp(target_offset, offset_smooth_speed * delta)
 	
 	var target_pos = target.global_position + current_offset

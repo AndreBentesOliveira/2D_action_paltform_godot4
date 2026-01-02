@@ -22,6 +22,7 @@ enabled=PackedStringArray("res://addons/state_machine_nodes/plugin.cfg")
 [global_group]
 
 entities_layer=""
+player=""
 
 [importer_defaults]
 
@@ -90,6 +91,8 @@ action_button={
 3d_physics/layer_3="enemys"
 3d_physics/layer_4="grab_and_grip"
 3d_physics/layer_5="move_in_z"
+3d_physics/layer_6="barrel_platform"
+3d_physics/layer_7="move_platforms"
 
 [rendering]
 

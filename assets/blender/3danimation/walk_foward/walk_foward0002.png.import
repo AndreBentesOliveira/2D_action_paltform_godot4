@@ -2,29 +2,28 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dshfna40h6mbg"
-path.s3tc="res://.godot/imported/texture_12.png-2f307305483580fd7337eb0358f4afb8.s3tc.ctex"
+uid="uid://vf7matu2tldp"
+path="res://.godot/imported/walk_foward0002.png-40a5a87f315da3cf8ffe425d07c5069f.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/proto-csgs/textures/purple/texture_12.png"
-dest_files=["res://.godot/imported/texture_12.png-2f307305483580fd7337eb0358f4afb8.s3tc.ctex"]
+source_file="res://assets/blender/3danimation/walk_foward/walk_foward0002.png"
+dest_files=["res://.godot/imported/walk_foward0002.png-40a5a87f315da3cf8ffe425d07c5069f.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/normal_map=2
+compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
-roughness/mode=1
+roughness/mode=0
 roughness/src_normal=""
 process/fix_alpha_border=true
 process/premult_alpha=false

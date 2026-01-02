@@ -3,6 +3,7 @@ extends "common_state.gd"
 var can_jump := true
 
 func _enter_state(_old_state: StringName, _params: Dictionary) -> void:
+	player.floor_max_angle = deg_to_rad(45)
 	player.gripper_area_disable(false)
 	stretch()
 	visuals.rotation = Vector3.ZERO
@@ -45,6 +46,7 @@ func _physics_process(_delta: float) -> void:
 			return enter_state(&"Fall")
 
 func _exit_state(new_state: StringName, state_data: Dictionary) -> void:
+	player.floor_max_angle = deg_to_rad(70)
 	if new_state == "GrabEdge":
 		player.velocity = Vector3.ZERO
 

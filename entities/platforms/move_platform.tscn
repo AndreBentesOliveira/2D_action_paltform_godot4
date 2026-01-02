@@ -1,0 +1,58 @@
+[gd_scene load_steps=8 format=3 uid="uid://c4wa6pet87abu"]
+
+[ext_resource type="PackedScene" uid="uid://dxw7cledbpiia" path="res://addons/proto-csgs/proto_csg_box_3d.tscn" id="1_6fiql"]
+[ext_resource type="Script" uid="uid://c51af1wpp6ksr" path="res://entities/platforms/move_platform.gd" id="1_063np"]
+[ext_resource type="Texture2D" uid="uid://c4j2nn0114vun" path="res://addons/proto-csgs/textures/purple/texture_13.png" id="2_063np"]
+[ext_resource type="Texture2D" uid="uid://dshfna40h6mbg" path="res://addons/proto-csgs/textures/purple/texture_12.png" id="4_jkrn2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x3yn0"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("2_063np")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_devvj"]
+size = Vector3(2, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7wa3c"]
+resource_local_to_scene = true
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.458824)
+albedo_texture = ExtResource("4_jkrn2")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[node name="MovePlatform" type="Node3D"]
+script = ExtResource("1_063np")
+stop_moving = true
+move_to = Vector3(2, 0, 0)
+speed = 2.0
+
+[node name="AnimatableBody3D" type="AnimatableBody3D" parent="."]
+collision_layer = 65
+collision_mask = 0
+
+[node name="ProtoCSGBox3D" parent="AnimatableBody3D" instance=ExtResource("1_6fiql")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.98023e-08, 0, 0)
+calculate_tangents = false
+use_collision = false
+size = Vector3(2, 1, 1)
+material = SubResource("StandardMaterial3D_x3yn0")
+block_color = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AnimatableBody3D"]
+shape = SubResource("BoxShape3D_devvj")
+
+[node name="RemoteLeft" type="RemoteTransform3D" parent="AnimatableBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2, -0.6, 0)
+
+[node name="RemoteRight" type="RemoteTransform3D" parent="AnimatableBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2, -0.6, 0)
+
+[node name="Debug_location" parent="." instance=ExtResource("1_6fiql")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+use_collision = false
+size = Vector3(2, 1, 1)
+material = SubResource("StandardMaterial3D_7wa3c")
+block_color = 4
+block_style = 11

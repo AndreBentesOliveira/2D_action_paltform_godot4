@@ -10,6 +10,7 @@ extends CharacterBody3D
 @onready var face_down_raycast :RayCast3D = $FaceDown
 @onready var turnig_particles: GPUParticles3D = $TurningParticles
 @onready var particle_emitter: Marker3D = $ParticlesEmitter
+@onready var move_plat_detect: RayCast3D = $DetectMovePlatform
 @export var max_speed: float = 3.0
 @export var acceleration: float = 3.0
 @export var turning_acceleration : float = 5.0
@@ -69,7 +70,7 @@ var can_move_in_z := false
 var can_rotate_sprite: bool
 var blink_timer: float = 0.0
 var can_jump := false
-
+var current_state : StringName
 
 func _ready() -> void:
 	floor_max_angle = deg_to_rad(70)
@@ -94,12 +95,14 @@ func _physics_process(delta: float) -> void:
 	if !sprite.flip_h:
 		eyes_ray_cast.target_position.x = 0.333
 		head_ray_cast.target_position.x = 0.333
+		move_plat_detect.target_position.x = 0.281
 		$RayCast1.target_position.x = 0.47
 		$TrowMark.position.x = 0.434
 		$DetectWall.target_position.x = 0.281
 	else:
 		eyes_ray_cast.target_position.x = -0.333
 		head_ray_cast.target_position.x = -0.333
+		move_plat_detect.target_position.x = -0.281
 		$RayCast1.target_position.x = -0.47
 		$TrowMark.position.x = -0.434
 		$DetectWall.target_position.x = -0.281
@@ -124,7 +127,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _on_state_machine_state_transitioned(_old_state: StringName, new_state: StringName, _state_data: Dictionary) -> void:
 	%State.text = str(new_state)
-
+	current_state = new_state
 
 func load_input_map() -> void:
 	var add_keys = func(action: StringName, keycodes: Array) -> void:
@@ -144,7 +147,7 @@ func load_input_map() -> void:
 		
 	# Jump
 	add_keys.call(&"jump", [KEY_SPACE])
-	add_pads.call(&"jump", [JOY_BUTTON_DPAD_UP, JOY_BUTTON_A, JOY_BUTTON_B])
+	add_pads.call(&"jump", [JOY_BUTTON_A, JOY_BUTTON_B])
 	
 	# button_down
 	add_keys.call(&"down_button", [KEY_DOWN, KEY_S])

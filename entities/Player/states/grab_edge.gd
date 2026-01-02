@@ -3,6 +3,9 @@ extends "common_state.gd"
 var land_point: Vector3
 
 func _enter_state(_old_state: StringName, _params: Dictionary) -> void:
+	if player.move_plat_detect.is_colliding():
+		print("DETECT_MOVE_PLATFORM")
+		player.move_plat_detect.get_collider().get_parent().attach_player(player)
 	player.gripper_area_disable(true)
 	player.velocity = Vector3.ZERO
 	sprite.play(&"grab_edge")
@@ -40,6 +43,8 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func _exit_state(new_state: StringName, state_data: Dictionary) -> void:
+	if player.move_plat_detect.is_colliding():
+		player.move_plat_detect.get_collider().get_parent().desattach_player()
 	visuals.position = Vector3.ZERO
 	#player.head_ray_cast.position.y = 0.11
 	player.gripper_area_disable(false)
