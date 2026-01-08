@@ -32,7 +32,7 @@ func _exit_state(new_state: StringName, state_data: Dictionary) -> void:
 	if new_state == &"Jump":
 		can_jump
 	if new_state == "Walk" or  new_state == "Idle":
-		player.particle_emitter.emitte()
+		player.particle_emitter.emitte("jump_particles")
 		knead()
 
 

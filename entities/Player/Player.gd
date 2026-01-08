@@ -96,14 +96,14 @@ func _physics_process(delta: float) -> void:
 		eyes_ray_cast.target_position.x = 0.333
 		head_ray_cast.target_position.x = 0.333
 		move_plat_detect.target_position.x = 0.281
-		$RayCast1.target_position.x = 0.47
+		$RayCast1.target_position.x = 0.6
 		$TrowMark.position.x = 0.434
 		$DetectWall.target_position.x = 0.281
 	else:
 		eyes_ray_cast.target_position.x = -0.333
 		head_ray_cast.target_position.x = -0.333
 		move_plat_detect.target_position.x = -0.281
-		$RayCast1.target_position.x = -0.47
+		$RayCast1.target_position.x = -0.6
 		$TrowMark.position.x = -0.434
 		$DetectWall.target_position.x = -0.281
 	# The following line will only be processed if 'StateMachine.auto_process' is set to 'false'.
@@ -154,16 +154,16 @@ func load_input_map() -> void:
 	add_pads.call(&"down_button", [JOY_BUTTON_DPAD_DOWN])
 	
 	# button_up
-	add_keys.call(&"up_button", [KEY_UP, KEY_W])
-	add_pads.call(&"up_button", [JOY_BUTTON_DPAD_UP])
+	#add_keys.call(&"up_button", [KEY_UP, KEY_W])
+	#add_pads.call(&"up_button", [JOY_BUTTON_DPAD_UP])
 	
 	# Walk (Left)
-	add_keys.call(&"walk_left", [KEY_LEFT, KEY_A])
-	add_pads.call(&"walk_left", [JOY_BUTTON_DPAD_LEFT])
+	#add_keys.call(&"walk_left", [KEY_LEFT, KEY_A])
+	#add_pads.call(&"walk_left", [JOY_BUTTON_DPAD_LEFT])
 
 	# Walk (Right)
-	add_keys.call(&"walk_right", [KEY_RIGHT, KEY_D])
-	add_pads.call(&"walk_right", [JOY_BUTTON_DPAD_RIGHT])
+	#add_keys.call(&"walk_right", [KEY_RIGHT, KEY_D])
+	#add_pads.call(&"walk_right", [JOY_BUTTON_DPAD_RIGHT])
 	
 	# action_button
 	add_keys.call(&"action_button", [KEY_E])

@@ -1,6 +1,7 @@
 extends "common_state.gd"
 
 func _enter_state(_old_state: StringName, _params: Dictionary) -> void:
+	#player.particle_emitter.emitte("run_particles")
 	if abs(player.velocity.x) >= player.max_speed - 0.5:
 		sprite.play(&"running")
 	else:

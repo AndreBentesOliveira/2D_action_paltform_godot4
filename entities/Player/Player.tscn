@@ -724,7 +724,7 @@ text = "Health"
 
 [node name="RayCast1" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.661128, 0)
-target_position = Vector3(0.47, 0, 0)
+target_position = Vector3(0.6, 0, 0)
 
 [node name="RayCast2" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.706, 1.15296, 0)

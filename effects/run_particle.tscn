@@ -1,0 +1,109 @@
+[gd_scene load_steps=14 format=3 uid="uid://b34bhx4por5ix"]
+
+[ext_resource type="Texture2D" uid="uid://bog7p0028wlnf" path="res://effects/SmokeFX Lite SpriteSheet 1A-4.png" id="1_gpo8f"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k4w3i"]
+atlas = ExtResource("1_gpo8f")
+region = Rect2(0, 0, 63, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_01avc"]
+atlas = ExtResource("1_gpo8f")
+region = Rect2(63, 0, 63, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_epuk4"]
+atlas = ExtResource("1_gpo8f")
+region = Rect2(126, 0, 63, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ak6lh"]
+atlas = ExtResource("1_gpo8f")
+region = Rect2(189, 0, 63, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c8osu"]
+atlas = ExtResource("1_gpo8f")
+region = Rect2(252, 0, 63, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_npsyl"]
+atlas = ExtResource("1_gpo8f")
+region = Rect2(315, 0, 63, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ohks"]
+atlas = ExtResource("1_gpo8f")
+region = Rect2(378, 0, 63, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rnk6d"]
+atlas = ExtResource("1_gpo8f")
+region = Rect2(441, 0, 63, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w2j07"]
+atlas = ExtResource("1_gpo8f")
+region = Rect2(504, 0, 63, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4ewhf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k4w3i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_01avc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_epuk4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ak6lh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c8osu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_npsyl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ohks")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rnk6d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w2j07")
+}],
+"loop": false,
+"name": &"dust",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_gpo8f"]
+resource_name = "queu_free"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4ewhf"]
+_data = {
+&"queu_free": SubResource("Animation_gpo8f")
+}
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D"]
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_4ewhf")
+animation = &"dust"
+autoplay = "dust"
+frame = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_4ewhf")
+}
+autoplay = "queu_free"
