@@ -1,6 +1,6 @@
 extends "common_state.gd"
 
-var land_point: Vector3
+#var land_point: Vector3
 
 func _enter_state(_old_state: StringName, _params: Dictionary) -> void:
 	if player.move_plat_detect.is_colliding():
@@ -24,13 +24,10 @@ func _physics_process(_delta: float) -> void:
 			var edge_position = ledge_point + (wall_normal * player.ledge_grab_offset.x) + (Vector3.UP * player.ledge_grab_offset.y)
 			visuals.global_position = edge_position
 			player.get_node("Debug").global_position = ledge_point
-			land_point = ledge_point
-			print(player.global_position)
-			print(land_point)
-	var distance_to_land_point = player.global_position - land_point
-	if (distance_to_land_point.x > 1 and distance_to_land_point.x > 0) or\
-		(distance_to_land_point.x < -1 and distance_to_land_point.x < 0):
-		land_point = player.global_position
+			#land_point = ledge_point
+			#print(player.global_position)
+			#print(land_point)
+			#land_point = player.global_position
 			#print("visual global positio: " + str(visuals.global_position))
 			#print("edge_position global positio: " + str(edge_position))
 	if player.get_node("RayCast2").position.x < 0.0:
@@ -41,7 +38,7 @@ func _physics_process(_delta: float) -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed(&"jump") or event.is_action_pressed(&"up_button"):
 		player.can_eledge_grab = false
-		return enter_state(&"ClimbEdge", {"land_point" : land_point})
+		return enter_state(&"ClimbEdge") #{"land_point" : land_point}
 	if event.is_action_pressed(&"down_button"):
 		player.can_eledge_grab = false
 		return enter_state(&"Fall")

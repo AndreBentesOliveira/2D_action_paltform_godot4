@@ -8,7 +8,6 @@ var timer : float = 0.0
 
 
 func _ready() -> void:
-	
 	collide_when_thrown.connect(on_collide_When_thrown)
 	start()
 	enemy_start()
@@ -40,13 +39,3 @@ func on_collide_When_thrown(object):
 func on_ray_cast_entered(particle_dir: int) -> void:
 	$DeathComponent.particle_dir = -particle_dir
 	health_component.explode()
-
-
-#func rand_change_state(_delta: float) -> bool:
-	#timer += _delta
-	#if timer > 2.0:
-		#timer = 0
-		#var number = randf_range(0.0, 1.0)
-		#if  number <= .2:
-			#return true
-	#return false

@@ -54,6 +54,8 @@ var is_jumping := false
 @export var grab_jump_hang_speed_threshold: float = 0.1
 #-------------------------------------#
 var is_attacking := false
+var att_dir := 0.0
+
 var can_eledge_grab := false
 var grab_entitie := false
 var entitie_grabbed : Array
@@ -72,6 +74,7 @@ var blink_timer: float = 0.0
 var can_jump := false
 var current_state : StringName
 
+
 func _ready() -> void:
 	floor_max_angle = deg_to_rad(70)
 	gripper_component.grab.connect(on_player_grab_entitie)
@@ -79,13 +82,28 @@ func _ready() -> void:
 	$HealthComponent.health_change.connect(on_health_changed)
 	load_input_map()
 
+func attack():
+	if !sprite.flip_h:
+		att_dir = 1
+	else:
+		att_dir = -1
+	is_attacking = true
+	var tween = create_tween()
+	tween.tween_property($Weapon,"target_position", Vector3(2.0 * att_dir, .0, .0), .4)\
+	.set_ease(Tween.EASE_OUT)\
+	.set_trans(Tween.TRANS_BACK)
+	tween.tween_property($Weapon,"target_position", Vector3(0.0, .0, .0), 0.1)
+	await tween.finished
+	is_attacking = false
+
 
 func _physics_process(delta: float) -> void:
-	#print(get_floor_angle())
-	#print(rad_to_deg(get_floor_angle()))
-	#floor_max_angle = deg_to_rad(70)
-	#print(floor_max_angle)
-	#floor_max_angle = deg_to_rad(45)
+	$Debug3.position.x = $Weapon.target_position.x
+	if $Weapon.is_colliding():
+		if is_instance_valid($Weapon.get_collider()):
+			$Weapon.get_collider().to_push(Vector3(att_dir, 2.0, .0))
+	if Input.is_action_just_pressed("attack") and not is_attacking:
+		attack()
 	if not $DetectFloorL.is_colliding() or not $DetectFloorR.is_colliding():
 		can_rotate_sprite = false
 	else:
@@ -272,7 +290,7 @@ func on_player_grab_entitie(entitie: CharacterBody3D):
 		sprite_texture.texture_filter = BaseMaterial3D.TEXTURE_FILTER_NEAREST
 		sprite_texture.texture = entitie_grabbed[0].grabbed_texture
 		sprite.get_parent().add_child(sprite_texture)
-		sprite_texture.global_position += entitie_grabbed[0].texture_ofset_when_grabbed
+		#sprite_texture.global_position += entitie_grabbed[0].texture_ofset_when_grabbed
 	elif entitie_grabbed.size() >= 2:
 		for i in range(entitie_grabbed.size()):
 			if i != 0:

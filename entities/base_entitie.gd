@@ -6,7 +6,7 @@ signal pushed(dir)
 
 @export var can_be_grabbed : bool
 @export var grabbed_texture : Texture
-@export var texture_ofset_when_grabbed : Vector3
+#@export var texture_ofset_when_grabbed : Vector3
 @onready var grabable_component: Grabable = $GrabableComponent
 @onready var sprite: AnimatedSprite3D = $Visuals/AnimatedSprite3D
 @onready var visuals : Node = $Visuals

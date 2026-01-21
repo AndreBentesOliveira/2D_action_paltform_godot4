@@ -19,7 +19,6 @@ animations = [{
 
 [node name="WoodBox" instance=ExtResource("1_44g7a")]
 grabbed_texture = ExtResource("2_swu3p")
-texture_ofset_when_grabbed = Vector3(0, -0.15, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="GrabableComponent" index="1"]
 transform = Transform3D(0.16834, 0, 0, 0, 0.546203, 0, 0, 0, 1, 0, 0.0849413, -7.45058e-09)

@@ -1,5 +1,7 @@
 extends Enemy
 
+enum move_type{move_h, move_v}
+@export var move_type_: move_type
 
 @onready var state_machine: StateMachine = $StateMachine
 @onready var health_component: Node = $HealthComponent
@@ -11,6 +13,7 @@ func _ready() -> void:
 	collide_when_thrown.connect(on_collide_When_thrown)
 	start()
 	enemy_start()
+
 
 func _physics_process(delta: float) -> void:
 	super(delta)
@@ -29,7 +32,7 @@ func on_collide_When_thrown(object):
 	grabbed = false
 	thrown = false
 	if object.has_method("on_ray_cast_entered"):
-		object.on_ray_cast_entered()
+		object.on_ray_cast_entered(thrown_dir)
 	health_component.explode()
 
 

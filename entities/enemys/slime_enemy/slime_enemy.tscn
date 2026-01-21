@@ -39,7 +39,6 @@ collision_layer = 4
 script = ExtResource("2_oj2gu")
 move_speed = 25.0
 grabbed_texture = ExtResource("6_5crr3")
-texture_ofset_when_grabbed = Vector3(0, 0.2, 0)
 
 [node name="DeathComponent" parent="." index="0" node_paths=PackedStringArray("health_component") instance=ExtResource("4_ip25l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.391, 0)

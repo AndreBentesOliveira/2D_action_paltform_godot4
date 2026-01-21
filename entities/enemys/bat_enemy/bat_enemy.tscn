@@ -9,6 +9,13 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_njdwb"]
 size = Vector3(1, 0.873535, 1)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_fkte2"]
+size = Vector3(2.72546, 0.402832, 0.896912)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ifaud"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_71c33"]
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_71c33"]
 animations = [{
 "frames": [{
@@ -20,18 +27,12 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_ifaud"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_71c33"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_fkte2"]
-size = Vector3(0.782715, 0.0979004, 0.873779)
-
 [node name="BatEnemy" instance=ExtResource("1_ku2iu")]
 collision_layer = 4
 script = ExtResource("2_f5u1v")
+move_type_ = 1
+move_speed = 100.0
 grabbed_texture = ExtResource("4_ifaud")
-texture_ofset_when_grabbed = Vector3(0, -0.02, 0)
 
 [node name="DeathComponent" parent="." index="0" node_paths=PackedStringArray("health_component") instance=ExtResource("4_71c33")]
 health_component = NodePath("../HealthComponent")
@@ -51,12 +52,15 @@ shape = SubResource("BoxShape3D_njdwb")
 [node name="HealthComponent" parent="." index="3"]
 debug = true
 
-[node name="AnimatedSprite3D" parent="Visuals" index="0"]
-sprite_frames = SubResource("SpriteFrames_71c33")
-animation = &"idle"
+[node name="GrabableComponent" parent="." index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.253896, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GrabableComponent" index="1"]
+transform = Transform3D(0.187427, 0, 0, 0, 0.187427, 0, 0, 0, 0.635671, 0.0102842, 0.0579346, 0.000746611)
+shape = SubResource("BoxShape3D_fkte2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HitBoxComponent" index="0"]
-transform = Transform3D(0.146781, 0, 0, 0, 0.146781, 0, 0, 0, 0.146781, 0, 0, 0)
+transform = Transform3D(0.572446, 0, 0, 0, 0.572446, 0, 0, 0, 0.572446, 0, 0, 0)
 shape = SubResource("BoxShape3D_ifaud")
 debug_color = Color(1, 0.00251291, 0.074398, 0.42)
 
@@ -68,17 +72,23 @@ collision_mask = 2
 transform = Transform3D(0.166141, 0, 0, 0, 0.166141, 0, 0, 0, 0.166141, 0, 0, 0)
 shape = SubResource("BoxShape3D_71c33")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="GrabableComponent" index="1"]
-transform = Transform3D(0.187427, 0, 0, 0, 0.187427, 0, 0, 0, 0.187427, -0.000777895, 0.092228, 0.000571981)
-shape = SubResource("BoxShape3D_fkte2")
+[node name="ThrownCollider" parent="ThrownRayCasts" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0776557, 0)
+enabled = false
+collision_mask = 5
+
+[node name="ThrownCollider2" parent="ThrownRayCasts" index="1"]
+enabled = false
+
+[node name="ThrownCollider3" parent="ThrownRayCasts" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0794829, 0)
+enabled = false
 
 [node name="DebugLabel" parent="." index="8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.199218, 0)
 text = "idle"
 
-[node name="ThrownCollider" parent="ThrownRayCasts" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0776557, 0)
-collision_mask = 5
-
-[node name="ThrownCollider3" parent="ThrownRayCasts" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0794829, 0)
+[node name="AnimatedSprite3D" parent="Visuals" index="0"]
+pixel_size = 0.03
+sprite_frames = SubResource("SpriteFrames_71c33")
+animation = &"idle"
