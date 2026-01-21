@@ -1,23 +1,27 @@
-[gd_scene load_steps=137 format=3 uid="uid://dpuqtlr1m3dcj"]
+[gd_scene load_steps=141 format=3 uid="uid://dpuqtlr1m3dcj"]
 
 [ext_resource type="Script" uid="uid://bb2cx1iw4xeo2" path="res://entities/Player/Player.gd" id="1_cm1li"]
 [ext_resource type="Script" uid="uid://cyjj3nyqr8e3y" path="res://addons/state_machine_nodes/state_machine.gd" id="2_d3nms"]
 [ext_resource type="PackedScene" uid="uid://lafm0n3g6bhk" path="res://components/HealthComponent.tscn" id="2_vlwca"]
 [ext_resource type="Script" uid="uid://dybeln8tcynbv" path="res://entities/Player/states/idle.gd" id="3_85j51"]
 [ext_resource type="Texture2D" uid="uid://cqm1cbtkv5y13" path="res://assets/blender/3danimation/idle_face_down/go_down_idle/idle_down0000.png" id="3_e3op6"]
+[ext_resource type="Texture2D" uid="uid://k4prbb81qp1s" path="res://assets/blender/3danimation/edger_climb/edge_climb001.png" id="3_epuk4"]
 [ext_resource type="Texture2D" uid="uid://bwf2ipv5r1njy" path="res://assets/blender/3danimation/go_up_idle/0000.png" id="3_krqou"]
 [ext_resource type="Texture2D" uid="uid://cocwj07as4hje" path="res://assets/blender/3danimation/go_up_idle/0001.png" id="4_1wqwg"]
+[ext_resource type="Texture2D" uid="uid://cdsq5o7h13g3s" path="res://assets/blender/3danimation/edger_climb/edge_climb002.png" id="4_ak6lh"]
 [ext_resource type="Script" uid="uid://s4f7tis06bjh" path="res://entities/Player/states/walk.gd" id="4_aq80t"]
 [ext_resource type="Texture2D" uid="uid://bnyed0r3wcbsf" path="res://assets/blender/3danimation/fall/0000.png" id="4_uq3xi"]
 [ext_resource type="Texture2D" uid="uid://bxhktiqlslor" path="res://assets/blender/3danimation/idle_face_down/go_down_idle/idle_down0001.png" id="4_wwoxt"]
 [ext_resource type="Script" uid="uid://i78lh0jckfg0" path="res://entities/Player/states/jump.gd" id="5_4kjul"]
 [ext_resource type="Texture2D" uid="uid://bpo6dqdp5nf4a" path="res://assets/blender/3danimation/go_up_idle/0002.png" id="5_87j2j"]
+[ext_resource type="Texture2D" uid="uid://dg8c4q11ve2qk" path="res://assets/blender/3danimation/edger_climb/edge_climb003.png" id="5_c8osu"]
 [ext_resource type="Texture2D" uid="uid://8on26rbxprf6" path="res://assets/blender/3danimation/fall/0001.png" id="5_jwv6y"]
 [ext_resource type="Texture2D" uid="uid://dl34vlwn80ud0" path="res://assets/blender/3danimation/idle_face_down/go_down_idle/idle_down0002.png" id="5_k4w3i"]
 [ext_resource type="Texture2D" uid="uid://n1tyxkkpl1tn" path="res://assets/blender/3danimation/idle_face_down/go_down_idle/idle_down0003.png" id="6_01avc"]
 [ext_resource type="Texture2D" uid="uid://yel27n745bn2" path="res://assets/blender/3danimation/grab.png" id="6_3lwh0"]
 [ext_resource type="Texture2D" uid="uid://b7vnmcdws4xeu" path="res://assets/blender/3danimation/go_up_idle/0003.png" id="6_6owkb"]
 [ext_resource type="Texture2D" uid="uid://dlgjamlmi44tg" path="res://assets/blender/3danimation/fall/0002.png" id="6_8dbc2"]
+[ext_resource type="Texture2D" uid="uid://8snn7m5nklot" path="res://assets/blender/3danimation/edger_climb/edge_climb004.png" id="6_npsyl"]
 [ext_resource type="Script" uid="uid://cbni6oj5s6c2w" path="res://entities/Player/states/fall.gd" id="6_xwu5i"]
 [ext_resource type="Texture2D" uid="uid://x5hi3vduov5s" path="res://assets/blender/3danimation/go_up_idle/0004.png" id="7_04eoo"]
 [ext_resource type="Script" uid="uid://cqes4e6wria0w" path="res://entities/Player/states/grab_edge.gd" id="7_85j51"]
@@ -132,6 +136,23 @@ height = 1.23915
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_egyt8"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_epuk4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ak6lh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_c8osu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_npsyl")
+}],
+"loop": false,
+"name": &"edge_climb",
+"speed": 10.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("3_e3op6")
@@ -615,7 +636,9 @@ double_sided = false
 alpha_cut = 2
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_egyt8")
-animation = &"face_down"
+animation = &"edge_climb"
+frame = 3
+frame_progress = 1.0
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "common_node")]
 script = ExtResource("2_d3nms")
@@ -723,7 +746,7 @@ layout_mode = 2
 text = "Health"
 
 [node name="RayCast1" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.661128, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.799985, 0)
 target_position = Vector3(0.6, 0, 0)
 
 [node name="RayCast2" type="RayCast3D" parent="."]
@@ -834,6 +857,7 @@ script = ExtResource("95_5ssvd")
 [node name="BlinkTimer" type="Timer" parent="."]
 wait_time = 0.01
 
+[connection signal="animation_finished" from="Visuals/Sprite3D" to="StateMachine/ClimbEdge" method="_on_sprite_3d_animation_finished"]
 [connection signal="frame_changed" from="Visuals/Sprite3D" to="StateMachine/TrowEntitie" method="_on_sprite_3d_frame_changed"]
 [connection signal="state_transitioned" from="StateMachine" to="." method="_on_state_machine_state_transitioned"]
 [connection signal="body_entered" from="DetectEnemy" to="." method="_on_detect_enemy_body_entered"]

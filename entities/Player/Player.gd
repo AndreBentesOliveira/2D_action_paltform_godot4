@@ -345,8 +345,8 @@ func detect_edge():
 		var wall_normal = get_node("RayCast1").get_collision_normal()
 		get_node("RayCast2").global_position = wall_point - (wall_normal * 0.1) + Vector3(0, .3, 0)
 		get_node("RayCast2").force_raycast_update()
-	else:
-		get_node("RayCast2").global_position = global_position
+	#else:
+		#get_node("RayCast2").global_position = global_position
 
 
 func find_ground_angle() -> void:

@@ -17,6 +17,6 @@ func emitte(particle: String):
 		"jump_particles":
 			p = jump_particles.instantiate()
 			p.emitting = true
-			p.global_position = self.global_position
+			#p.global_position = self.global_position
 	entities.add_child(p)
-	
+	p.global_position = self.global_position

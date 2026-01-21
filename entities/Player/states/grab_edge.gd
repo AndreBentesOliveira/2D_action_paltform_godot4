@@ -4,7 +4,6 @@ var land_point: Vector3
 
 func _enter_state(_old_state: StringName, _params: Dictionary) -> void:
 	if player.move_plat_detect.is_colliding():
-		print("DETECT_MOVE_PLATFORM")
 		player.move_plat_detect.get_collider().get_parent().attach_player(player)
 	player.gripper_area_disable(true)
 	player.velocity = Vector3.ZERO
@@ -26,6 +25,12 @@ func _physics_process(_delta: float) -> void:
 			visuals.global_position = edge_position
 			player.get_node("Debug").global_position = ledge_point
 			land_point = ledge_point
+			print(player.global_position)
+			print(land_point)
+	var distance_to_land_point = player.global_position - land_point
+	if (distance_to_land_point.x > 1 and distance_to_land_point.x > 0) or\
+		(distance_to_land_point.x < -1 and distance_to_land_point.x < 0):
+		land_point = player.global_position
 			#print("visual global positio: " + str(visuals.global_position))
 			#print("edge_position global positio: " + str(edge_position))
 	if player.get_node("RayCast2").position.x < 0.0:

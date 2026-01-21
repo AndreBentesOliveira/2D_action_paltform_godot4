@@ -2,7 +2,7 @@ extends "common_state.gd"
 
 
 func _enter_state(_old_state: StringName, _params: Dictionary) -> void:
-	player.particle_emitter.emitte()
+ 	#player.particle_emitter.emitte()
 	player.velocity = Vector3.ZERO
 	sprite.play(&"grab_entitie")
 
