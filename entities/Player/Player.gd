@@ -102,6 +102,7 @@ func _physics_process(delta: float) -> void:
 	if $Weapon.is_colliding():
 		if is_instance_valid($Weapon.get_collider()):
 			$Weapon.get_collider().to_push(Vector3(att_dir, 2.0, .0))
+			print($Weapon.get_collider().name)
 	if Input.is_action_just_pressed("attack") and not is_attacking:
 		attack()
 	if not $DetectFloorL.is_colliding() or not $DetectFloorR.is_colliding():

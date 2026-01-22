@@ -56,6 +56,7 @@ func was_thrown(direction: bool):
 
 
 func to_push(dir: Vector3) -> void:
+	print("PUSH")
 	pushed.emit(dir)
 
 

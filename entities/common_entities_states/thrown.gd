@@ -12,6 +12,7 @@ func _enter_state(_old_state: StringName, _params: Dictionary) -> void:
 			entitie.hit_box_component.get_node("CollisionShape3D").call_deferred("set","disabled", true)
 
 func _physics_process(_delta: float) -> void:
+	entitie.velocity.y = 0.0
 	entitie.velocity.x = (thrown_speed * entitie.thrown_dir) * _delta
 	sprite.show()
 	visuals.rotation_degrees.z += 1000.0 * _delta

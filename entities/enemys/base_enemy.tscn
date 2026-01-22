@@ -12,6 +12,7 @@
 collision_layer = 0
 script = ExtResource("1_dpifa")
 move_speed = 10.0
+return_to_init_position = false
 can_be_grabbed = true
 
 [node name="Pushed" type="Node" parent="StateMachine" index="3"]

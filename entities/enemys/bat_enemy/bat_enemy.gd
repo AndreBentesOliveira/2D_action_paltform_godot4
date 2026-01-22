@@ -6,10 +6,11 @@ enum move_type{move_h, move_v}
 @onready var state_machine: StateMachine = $StateMachine
 @onready var health_component: Node = $HealthComponent
 
-
+var init_position : Vector3
 var timer : float = 0.0
 
 func _ready() -> void:
+	init_position = global_position
 	collide_when_thrown.connect(on_collide_When_thrown)
 	start()
 	enemy_start()

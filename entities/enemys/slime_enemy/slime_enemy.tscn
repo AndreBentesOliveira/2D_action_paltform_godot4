@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://ci5vu1sap676e"]
+[gd_scene load_steps=12 format=3 uid="uid://ci5vu1sap676e"]
 
 [ext_resource type="PackedScene" uid="uid://b5cwxrq76l7yw" path="res://entities/enemys/base_enemy.tscn" id="1_y5gwa"]
 [ext_resource type="Script" uid="uid://cqji5xbertph5" path="res://entities/enemys/slime_enemy/slime_enemy.gd" id="2_oj2gu"]
 [ext_resource type="PackedScene" uid="uid://du24pmqu1sykk" path="res://components/death_component.tscn" id="4_ip25l"]
 [ext_resource type="Script" uid="uid://c8cgucmy8geox" path="res://entities/enemys/slime_enemy/grond_patrol.gd" id="5_j0a6e"]
 [ext_resource type="Texture2D" uid="uid://cunxh42shk3yi" path="res://entities/enemys/slime_enemy/untitled.png" id="6_5crr3"]
+[ext_resource type="Texture2D" uid="uid://dtv6bkp2sqkww" path="res://entities/enemys/slime_enemy/slime_flash.png" id="6_15ycl"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_j0a6e"]
 radius = 0.345136
@@ -20,6 +21,17 @@ radius = 0.3
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qp6f8"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_15ycl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_5crr3")
+}],
+"loop": true,
+"name": &"hurt",
+"speed": 15.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("6_5crr3")

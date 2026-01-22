@@ -2,7 +2,7 @@ extends Entitie
 class_name Enemy
 
 @export var move_speed := 10.0
-
+@export var return_to_init_position : bool = false
 @onready var hit_box_component: Hitbox = $HitBoxComponent
 @onready var hurt_box: Hurtbox = $HurtBox
 var _pushed := false
@@ -21,6 +21,8 @@ func enemy_start() -> void:
 
 
 func on_entitie_pushed(dir):
+	if _pushed:
+		return
 	_pushed = true
 	_pushed_dir = dir
 

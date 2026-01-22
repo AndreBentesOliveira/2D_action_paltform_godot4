@@ -3,7 +3,7 @@ extends CommonEnemyState
 var dir := false
 
 func _enter_state(_old_state: StringName, _params: Dictionary) -> void:
-	print("Enter patrol")
+	pass
 
 
 func _physics_process(_delta: float) -> void:
