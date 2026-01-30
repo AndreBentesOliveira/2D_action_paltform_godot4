@@ -15,6 +15,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	super(delta)
+	state_machine.call_physics_process(delta)
 	apply_gravity(delta)
 	move_and_slide()
 

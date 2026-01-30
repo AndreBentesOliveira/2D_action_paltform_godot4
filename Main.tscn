@@ -1082,11 +1082,13 @@ shadow_enabled = true
 
 [node name="waterShader" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.1, 31.4, -0.4)
+visible = false
 mesh = SubResource("PlaneMesh_fpfj3")
 surface_material_override/0 = SubResource("ShaderMaterial_kjvhd")
 
 [node name="Sun" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.866025, -4.43878e-08, 0.500001, -0.482963, 0.258819, 0.836516, -0.12941, -0.965926, 0.224144, -11.299, 7.02901, 0.562917)
+visible = false
 light_energy = 0.5
 light_indirect_energy = 0.0
 light_volumetric_fog_energy = 0.0

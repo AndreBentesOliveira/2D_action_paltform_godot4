@@ -8,11 +8,11 @@
 [ext_resource type="PackedScene" uid="uid://vj60wmefmix5" path="res://components/HurtBoxComponent.tscn" id="5_6mhc8"]
 [ext_resource type="Script" uid="uid://bjwtgx4e2ihy6" path="res://entities/enemys/enemy_common_states/stuned.gd" id="5_ir5xu"]
 
-[node name="BaseEnemy" instance=ExtResource("1_usihd")]
+[node name="BaseEnemy" groups=["enemys"] instance=ExtResource("1_usihd")]
 collision_layer = 0
 script = ExtResource("1_dpifa")
-move_speed = 10.0
-return_to_init_position = false
+move_speed = null
+return_to_init_position = null
 can_be_grabbed = true
 
 [node name="Pushed" type="Node" parent="StateMachine" index="3"]

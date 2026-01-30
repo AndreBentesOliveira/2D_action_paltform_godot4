@@ -50,6 +50,7 @@ animations = [{
 collision_layer = 4
 script = ExtResource("2_oj2gu")
 move_speed = 25.0
+return_to_init_position = false
 grabbed_texture = ExtResource("6_5crr3")
 
 [node name="DeathComponent" parent="." index="0" node_paths=PackedStringArray("health_component") instance=ExtResource("4_ip25l")]
@@ -58,6 +59,7 @@ health_component = NodePath("../HealthComponent")
 texture = ExtResource("6_5crr3")
 
 [node name="StateMachine" parent="." index="1" node_paths=PackedStringArray("initial_state")]
+auto_process = false
 initial_state = NodePath("Patrol")
 
 [node name="Patrol" type="Node" parent="StateMachine" index="5"]

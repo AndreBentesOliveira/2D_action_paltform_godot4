@@ -23,6 +23,7 @@ enabled=PackedStringArray("res://addons/state_machine_nodes/plugin.cfg")
 
 entities_layer=""
 player=""
+enemys=""
 
 [importer_defaults]
 
