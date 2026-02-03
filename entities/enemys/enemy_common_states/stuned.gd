@@ -12,7 +12,7 @@ func _enter_state(_old_state: StringName, _params: Dictionary) -> void:
 func _physics_process(_delta: float) -> void:
 	enemy_node._pushed = false
 	enemy_node.apply_gravity(_delta)
-	if enemy_node.thrown:
+	if enemy_node.grabbed:
 		return enter_state(&"Grabbed")
 	if enemy_node.hit_box_component.has_node("CollisionShape3D"):
 			enemy_node.hit_box_component.get_node("CollisionShape3D").call_deferred("set","disabled", true)

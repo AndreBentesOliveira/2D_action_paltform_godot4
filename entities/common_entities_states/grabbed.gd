@@ -1,7 +1,8 @@
 extends "common_entitie_state.gd"
 
 func _enter_state(_old_state: StringName, _params: Dictionary) -> void:
-	sprite.hide()
+	entitie.velocity = Vector3.ZERO
+	#sprite.hide()
 
 
 func _physics_process(_delta: float) -> void:

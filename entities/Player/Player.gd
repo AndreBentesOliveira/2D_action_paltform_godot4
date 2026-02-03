@@ -54,7 +54,6 @@ var is_jumping := false
 @export var grab_jump_hang_speed_threshold: float = 0.1
 #-------------------------------------#
 var is_attacking := false
-var att_dir := 0.0
 
 var can_eledge_grab := false
 var grab_entitie := false
@@ -73,6 +72,7 @@ var can_rotate_sprite: bool
 var blink_timer: float = 0.0
 var can_jump := false
 var current_state : StringName
+var attack_colddown : float = 0.0
 
 
 func _ready() -> void:
@@ -82,29 +82,14 @@ func _ready() -> void:
 	$HealthComponent.health_change.connect(on_health_changed)
 	load_input_map()
 
-func attack():
-	if !sprite.flip_h:
-		att_dir = 1
-	else:
-		att_dir = -1
-	is_attacking = true
-	var tween = create_tween()
-	tween.tween_property($Weapon,"target_position", Vector3(2.0 * att_dir, .0, .0), .4)\
-	.set_ease(Tween.EASE_OUT)\
-	.set_trans(Tween.TRANS_BACK)
-	tween.tween_property($Weapon,"target_position", Vector3(0.0, .0, .0), 0.1)
-	await tween.finished
-	is_attacking = false
-
 
 func _physics_process(delta: float) -> void:
+	if is_attacking:
+		attack_colddown += delta
+		if attack_colddown >= 1.0:
+			is_attacking = false
+			attack_colddown = 0.0
 	$Debug3.position.x = $Weapon.target_position.x
-	if $Weapon.is_colliding():
-		if is_instance_valid($Weapon.get_collider()):
-			$Weapon.get_collider().to_push(Vector3(att_dir, 2.0, .0))
-			print($Weapon.get_collider().name)
-	if Input.is_action_just_pressed("attack") and not is_attacking:
-		attack()
 	if not $DetectFloorL.is_colliding() or not $DetectFloorR.is_colliding():
 		can_rotate_sprite = false
 	else:
@@ -284,7 +269,7 @@ func on_player_grab_entitie(entitie: CharacterBody3D):
 	if entitie_grabbed.size() == 1:
 		push_enemys_away(entitie_grabbed[0])
 		entitie_grabbed[0].grabbed = true
-		entitie_grabbed[0].get_parent().remove_child(entitie_grabbed[0])
+		#entitie_grabbed[0].get_parent().remove_child(entitie_grabbed[0])
 		if entitie.grabbed_texture == null:
 			return
 		var sprite_texture = Sprite3D.new()

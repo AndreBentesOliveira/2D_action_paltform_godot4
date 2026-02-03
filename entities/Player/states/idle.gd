@@ -2,8 +2,6 @@ extends "common_state.gd"
 
 
 func _enter_state(_old_state: StringName, _params: Dictionary) -> void:
-	if _old_state == &"TrowEntitie":
-		rotate_to_angle(Vector3(0, 0, 0), .1)
 	sprite.play(&"idle")
 
 
@@ -34,11 +32,14 @@ func _physics_process(_delta: float) -> void:
 func _exit_state(old_state: StringName, state_data: Dictionary) -> void:
 	player.gripper_area_disable(false)
 
+
 func _unhandled_input(event: InputEvent) -> void:
 	if player.get_input().down_button and player.get_floor_angle() >= 0.42:
 		return enter_state(&"Slide")
 	if event.is_action_pressed(&"jump"):
 		return enter_state(&"Jump")
+	if event.is_action_pressed(&"attack") and not player.is_attacking:
+		return enter_state(&"Attack")
 
 
 func rotate_to_angle(angulo_alvo_graus: Vector3, duracao: float) -> void:

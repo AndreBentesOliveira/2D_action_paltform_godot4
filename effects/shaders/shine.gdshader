@@ -18,7 +18,7 @@ uniform float NOISE_magnitude: hint_range(0, 1) = 0.0;
 void vertex() {}
 
 void fragment() {
-	
+
 	float ang = atan((UV.x-0.5)/(UV.y-0.5));
 
 	vec4 mixa = vec4(1,1,1,1);

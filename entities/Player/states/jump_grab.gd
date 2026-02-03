@@ -22,6 +22,7 @@ func _enter_state(_old_state: StringName, _params: Dictionary) -> void:
 
 
 func _physics_process(_delta: float) -> void:
+	player.entitie_grabbed[0].global_position = player.global_position + Vector3(0, -.2, 0)
 	if not player.is_on_floor():
 		player.x_movement(_delta)
 	else:

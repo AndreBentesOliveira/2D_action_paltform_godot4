@@ -1,7 +1,6 @@
 extends "common_state.gd"
 
 func _enter_state(_old_state: StringName, _params: Dictionary) -> void:
-	#player.particle_emitter.emitte("run_particles")
 	if abs(player.velocity.x) >= player.max_speed - 0.5:
 		sprite.play(&"running")
 	else:
@@ -28,6 +27,8 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed(&"jump"):
 		get_viewport().set_input_as_handled()
 		return enter_state(&"Jump")
+	if event.is_action_pressed(&"attack") and not player.is_attacking:
+		return enter_state(&"Attack")
 
 
 func x_movement(delta: float) -> void:

@@ -50,13 +50,9 @@ func _exit_state(new_state: StringName, state_data: Dictionary) -> void:
 	if new_state == "GrabEdge":
 		player.velocity = Vector3.ZERO
 
-
-#func get_input() -> Dictionary:
-	#return {
-		#"just_jump": Input.is_action_just_pressed("jump"),
-		#"jump": Input.is_action_pressed("jump"),
-		#"released_jump": Input.is_action_just_released("jump")
-	#}
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed(&"attack") and not player.is_attacking:
+		return enter_state(&"Attack")
 
 
 

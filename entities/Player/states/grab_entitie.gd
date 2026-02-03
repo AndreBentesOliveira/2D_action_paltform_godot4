@@ -5,9 +5,11 @@ func _enter_state(_old_state: StringName, _params: Dictionary) -> void:
  	#player.particle_emitter.emitte()
 	player.velocity = Vector3.ZERO
 	sprite.play(&"grab_entitie")
-
+	visuals.get_children()[1].hide()
+	
 
 func _physics_process(_delta: float) -> void:
+	player.global_position = player.entitie_grabbed[0].global_position + Vector3(0, .3, 0)
 	player.apply_gravity(_delta)
 	if not player.is_on_floor():
 		player.x_movement(_delta)

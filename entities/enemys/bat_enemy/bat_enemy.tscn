@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bmn02rffiirgw"]
+[gd_scene load_steps=13 format=3 uid="uid://bmn02rffiirgw"]
 
 [ext_resource type="PackedScene" uid="uid://b5cwxrq76l7yw" path="res://entities/enemys/base_enemy.tscn" id="1_ku2iu"]
 [ext_resource type="Script" uid="uid://ycgu3x45pw2e" path="res://entities/enemys/bat_enemy/bat_enemy.gd" id="2_f5u1v"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cs5yhf4i503t7" path="res://entities/objects/wood_box_sprite.png" id="4_ifaud"]
 [ext_resource type="Script" uid="uid://d21cpk4qiqcc8" path="res://entities/enemys/bat_enemy/patrol.gd" id="5_71c33"]
 [ext_resource type="Script" uid="uid://cm5d11oxqskxm" path="res://entities/enemys/bat_enemy/return_patrol.gd" id="6_fkte2"]
+[ext_resource type="Texture2D" uid="uid://ci4g4diwqcm00" path="res://entities/Player/sprites/animation_placeholder.tres" id="7_njdwb"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_njdwb"]
 size = Vector3(3.22594, 3.07623, 3.41455)
@@ -14,11 +15,20 @@ size = Vector3(3.22594, 3.07623, 3.41455)
 size = Vector3(2.72546, 0.402832, 0.896912)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ifaud"]
+size = Vector3(1, 0.819366, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_71c33"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_71c33"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_njdwb")
+}],
+"loop": true,
+"name": &"hurt",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("4_ifaud")
@@ -65,14 +75,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.253896, 0)
 transform = Transform3D(0.187427, 0, 0, 0, 0.187427, 0, 0, 0, 0.635671, 0.0102842, 0.0579346, 0.000746611)
 shape = SubResource("BoxShape3D_fkte2")
 
+[node name="HitBoxComponent" parent="." index="5"]
+collision_layer = 256
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HitBoxComponent" index="0"]
-transform = Transform3D(0.572446, 0, 0, 0, 0.572446, 0, 0, 0, 0.572446, 0, 0, 0)
+transform = Transform3D(0.572446, 0, 0, 0, 0.572446, 0, 0, 0, 0.572446, 0, 0.0204657, 0)
 shape = SubResource("BoxShape3D_ifaud")
 debug_color = Color(1, 0.00251291, 0.074398, 0.42)
 
 [node name="HurtBox" parent="." index="6"]
 collision_layer = 0
-collision_mask = 2
+collision_mask = 128
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HurtBox" index="0"]
 transform = Transform3D(0.166141, 0, 0, 0, 0.166141, 0, 0, 0, 0.166141, 0, 0, 0)
@@ -100,4 +113,4 @@ text = "idle"
 [node name="AnimatedSprite3D" parent="Visuals" index="0"]
 pixel_size = 0.03
 sprite_frames = SubResource("SpriteFrames_71c33")
-animation = &"idle"
+animation = &"hurt"

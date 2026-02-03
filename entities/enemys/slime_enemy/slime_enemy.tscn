@@ -14,7 +14,7 @@ radius = 0.345136
 size = Vector3(0.3, 0.065, 0.35)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ip25l"]
-radius = 0.287648
+radius = 0.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_popww"]
 radius = 0.3
@@ -78,6 +78,7 @@ shape = SubResource("BoxShape3D_qp6f8")
 
 [node name="HitBoxComponent" parent="." index="5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.343396, 0)
+collision_layer = 256
 monitoring = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HitBoxComponent" index="0"]
@@ -87,7 +88,7 @@ debug_color = Color(0.997828, 0, 0.157054, 0.42)
 [node name="HurtBox" parent="." index="6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.341694, 0)
 collision_layer = 0
-collision_mask = 2
+collision_mask = 128
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HurtBox" index="0"]
 shape = SubResource("SphereShape3D_popww")

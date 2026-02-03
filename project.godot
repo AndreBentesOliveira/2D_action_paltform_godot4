@@ -105,6 +105,8 @@ up_button={
 3d_physics/layer_5="move_in_z"
 3d_physics/layer_6="barrel_platform"
 3d_physics/layer_7="move_platforms"
+3d_physics/layer_8="player_attack"
+3d_physics/layer_9="enemy_a"
 
 [rendering]
 

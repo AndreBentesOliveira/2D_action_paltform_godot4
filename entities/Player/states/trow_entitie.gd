@@ -16,7 +16,9 @@ var ent_spr_pos = [
 
 
 func _enter_state(_old_state: StringName, _params: Dictionary) -> void:
+	player.entitie_grabbed[0].sprite.hide()
 	entitie_sprite = visuals.get_children()[1]
+	entitie_sprite.show()
 	entitie_sprite.global_position.z = .050
 	rotate_to_angle()
 	player.velocity = Vector3.ZERO
@@ -36,7 +38,7 @@ func rotate_to_angle() -> void:
 	await sprite.animation_finished
 	is_rotating = false
 	var entities = get_tree().get_first_node_in_group("entities_layer")
-	entities.add_child(player.entitie_grabbed[0])
+	#entities.add_child(player.entitie_grabbed[0])
 	player.entitie_grabbed[0].global_position = player.get_node("TrowMark").global_position
 	player.entitie_grabbed[0].was_thrown(sprite.flip_h)
 	visuals.get_children()[1].queue_free()

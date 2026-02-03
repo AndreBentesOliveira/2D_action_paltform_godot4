@@ -1,4 +1,4 @@
-[gd_scene load_steps=141 format=3 uid="uid://dpuqtlr1m3dcj"]
+[gd_scene load_steps=143 format=3 uid="uid://dpuqtlr1m3dcj"]
 
 [ext_resource type="Script" uid="uid://bb2cx1iw4xeo2" path="res://entities/Player/Player.gd" id="1_cm1li"]
 [ext_resource type="Script" uid="uid://cyjj3nyqr8e3y" path="res://addons/state_machine_nodes/state_machine.gd" id="2_d3nms"]
@@ -104,6 +104,7 @@
 [ext_resource type="Texture2D" uid="uid://dugnurni1dn20" path="res://assets/blender/3danimation/thrown/jump_grab0005.png" id="45_j5x0h"]
 [ext_resource type="Texture2D" uid="uid://5nc1h7vxofm3" path="res://assets/blender/3danimation/thrown/jump_grab0006.png" id="46_hxqpa"]
 [ext_resource type="Texture2D" uid="uid://nsg6fyi1lsps" path="res://assets/blender/3danimation/thrown/jump_grab0007.png" id="47_gsdjs"]
+[ext_resource type="Texture2D" uid="uid://ci4g4diwqcm00" path="res://entities/Player/sprites/animation_placeholder.tres" id="48_c8osu"]
 [ext_resource type="Texture2D" uid="uid://c8n3luyosblsq" path="res://assets/blender/3danimation/turning2.png" id="50_bv3kr"]
 [ext_resource type="Texture2D" uid="uid://c0xudyvrp6clt" path="res://assets/blender/3danimation/slide.png" id="59_q3538"]
 [ext_resource type="Script" uid="uid://c74uf4renx5m6" path="res://entities/Player/states/climb_edge.gd" id="73_bv3kr"]
@@ -129,6 +130,7 @@
 [ext_resource type="Material" uid="uid://bqvfwj5a8byga" path="res://effects/particle.material" id="94_yv4sb"]
 [ext_resource type="Script" uid="uid://dui25rofh7niw" path="res://components/particles_emitter.gd" id="95_5ssvd"]
 [ext_resource type="Script" uid="uid://dvbbxyp5pp8co" path="res://entities/Player/states/slide.gd" id="100_17mi7"]
+[ext_resource type="Script" uid="uid://dfqa64mbcmxgm" path="res://entities/Player/states/attack.gd" id="125_ak6lh"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kct3s"]
 radius = 0.155314
@@ -320,6 +322,14 @@ animations = [{
 "loop": false,
 "name": &"jump",
 "speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("48_c8osu")
+}],
+"loop": true,
+"name": &"place_holder",
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -636,7 +646,7 @@ double_sided = false
 alpha_cut = 2
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_egyt8")
-animation = &"idle"
+animation = &"place_holder"
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "common_node")]
 script = ExtResource("2_d3nms")
@@ -695,6 +705,10 @@ metadata/_custom_type_script = "uid://dsnjlxvj4s1uu"
 
 [node name="Slide" type="Node" parent="StateMachine"]
 script = ExtResource("100_17mi7")
+metadata/_custom_type_script = "uid://dsnjlxvj4s1uu"
+
+[node name="Attack" type="Node" parent="StateMachine"]
+script = ExtResource("125_ak6lh")
 metadata/_custom_type_script = "uid://dsnjlxvj4s1uu"
 
 [node name="TrowMark" type="Marker3D" parent="."]
@@ -794,7 +808,7 @@ shape = SubResource("BoxShape3D_10ubs")
 [node name="Hurtbox" type="Area3D" parent="." node_paths=PackedStringArray("healthcomponent")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.601875, 0)
 collision_layer = 0
-collision_mask = 4
+collision_mask = 256
 script = ExtResource("19_62gbw")
 knock_back = true
 healthcomponent = NodePath("../HealthComponent")
@@ -859,7 +873,7 @@ wait_time = 0.01
 
 [node name="Weapon" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.630526, 0)
-target_position = Vector3(0.1, 0, 0)
+target_position = Vector3(0, 0, 0)
 collision_mask = 4
 debug_shape_custom_color = Color(0.749537, 0, 0.131738, 1)
 
