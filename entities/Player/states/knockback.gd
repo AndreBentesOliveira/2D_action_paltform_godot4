@@ -14,6 +14,7 @@ func _physics_process(_delta: float) -> void:
 		return enter_state(&"Idle")
 		
 
+@warning_ignore("unused_parameter")
 func _exit_state(new_state: StringName, state_data: Dictionary) -> void:
 	player.get_node("BlinkTimer").start()
 	player.in_knockback = false

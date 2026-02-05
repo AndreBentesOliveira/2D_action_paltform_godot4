@@ -27,6 +27,7 @@ func on_entitie_pushed(dir):
 	_pushed_dir = dir
 
 
+@warning_ignore("unused_parameter")
 func _on_state_machine_state_transitioned(old_state: StringName, new_state: StringName, state_data: Dictionary) -> void:
 	$DebugLabel.text = str(new_state)
 

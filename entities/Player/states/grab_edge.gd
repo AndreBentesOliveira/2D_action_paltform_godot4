@@ -44,6 +44,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		return enter_state(&"Fall")
 
 
+@warning_ignore("unused_parameter")
 func _exit_state(new_state: StringName, state_data: Dictionary) -> void:
 	if player.move_plat_detect.is_colliding():
 		player.move_plat_detect.get_collider().get_parent().desattach_player()

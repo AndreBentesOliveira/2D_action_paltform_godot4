@@ -1,5 +1,6 @@
 extends Node
 
+@warning_ignore("unused_signal")
 signal health_changed(value)
 signal die
 signal health_change(current_health)
@@ -41,8 +42,8 @@ func heal(amount):
 		print("heal %s, Health: %s/%s"% [amount, health, max_health])
 
 
-func health_persent():
-	return health * 100 / max_health
+#func health_persent():
+	#return health * 100 / max_health
 
 
 func explode():

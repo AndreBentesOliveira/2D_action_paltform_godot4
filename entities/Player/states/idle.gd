@@ -29,6 +29,7 @@ func _physics_process(_delta: float) -> void:
 		return enter_state(&"MoveUp", {"wall" : player.face_down_raycast.get_collider()})
 
 
+@warning_ignore("unused_parameter")
 func _exit_state(old_state: StringName, state_data: Dictionary) -> void:
 	player.gripper_area_disable(false)
 

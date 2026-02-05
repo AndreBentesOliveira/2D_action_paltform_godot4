@@ -43,6 +43,7 @@ func _physics_process(_delta: float) -> void:
 		return enter_state(&"TrowEntitie")
 
 
+@warning_ignore("unused_parameter")
 func _exit_state(new_state: StringName, state_data: Dictionary) -> void:
 	player.gravity_acceleration = normal_gravity
 	player.jump_gravity_acceleration = normal_jump_gravity

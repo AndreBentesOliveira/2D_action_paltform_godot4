@@ -19,6 +19,7 @@ func _physics_process(_delta: float) -> void:
 	x_movement(_delta)
 
 
+@warning_ignore("unused_parameter")
 func _exit_state(new_state: StringName, state_data: Dictionary) -> void:
 	sprite.speed_scale = 1.0
 

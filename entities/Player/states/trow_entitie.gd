@@ -29,6 +29,7 @@ func _physics_process(_delta: float) -> void:
 	player.velocity = Vector3.ZERO
 
 
+@warning_ignore("unused_parameter")
 func _exit_state(new_state: StringName, state_data: Dictionary) -> void:
 	player.entitie_grabbed = []
 	player.get_node("HealthComponent").invencible = false
@@ -37,8 +38,6 @@ func _exit_state(new_state: StringName, state_data: Dictionary) -> void:
 func rotate_to_angle() -> void:
 	await sprite.animation_finished
 	is_rotating = false
-	var entities = get_tree().get_first_node_in_group("entities_layer")
-	#entities.add_child(player.entitie_grabbed[0])
 	player.entitie_grabbed[0].global_position = player.get_node("TrowMark").global_position
 	player.entitie_grabbed[0].was_thrown(sprite.flip_h)
 	visuals.get_children()[1].queue_free()

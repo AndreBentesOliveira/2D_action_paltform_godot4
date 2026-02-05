@@ -15,6 +15,7 @@ func _physics_process(_delta: float) -> void:
 			player.get_node("Weapon").get_collider().to_push(Vector3(att_dir, 2.0, .0))
 
 
+@warning_ignore("unused_parameter")
 func _exit_state(new_state: StringName, state_data: Dictionary) -> void:
 	pass
 

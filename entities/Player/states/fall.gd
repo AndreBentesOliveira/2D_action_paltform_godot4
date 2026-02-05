@@ -28,10 +28,11 @@ func _physics_process(delta: float) -> void:
 		return enter_state(&"Slide")
 
 
+@warning_ignore("unused_parameter")
 func _exit_state(new_state: StringName, state_data: Dictionary) -> void:
 	if new_state == &"Jump":
-		can_jump
-	if new_state == "Walk" or  new_state == "Idle":
+		can_jump = true
+	if new_state == "Walk" or  new_state == "Idle" or new_state == "Jump":
 		player.particle_emitter.emitte("jump_particles")
 		knead()
 

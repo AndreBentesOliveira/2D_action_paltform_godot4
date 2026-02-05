@@ -22,6 +22,7 @@ func _enter_state(_old_state: StringName, _params: Dictionary) -> void:
 func _physics_process(_delta: float) -> void:
 	pass
 
+@warning_ignore("unused_parameter")
 func _exit_state(new_state: StringName, state_data: Dictionary) -> void:
 	player.can_move_in_z = false
 	player.gripper_area_disable(false)

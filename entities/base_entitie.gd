@@ -36,9 +36,10 @@ func start() -> void:
 			grabable_component.get_node("CollisionShape3D").call_deferred("set","enabled", false)
 
 
+@warning_ignore("unused_parameter")
 func _physics_process(delta: float) -> void:
 	if is_on_floor():
-		visuals.rotation.z = -self.get_floor_normal().x
+		visuals.rotation.z = (-self.get_floor_normal()).x * delta
 	velocity.z = 0
 	trow_ray_cast_manager()
 

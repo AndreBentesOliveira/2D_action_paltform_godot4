@@ -832,20 +832,22 @@ one_shot = true
 
 [node name="Debug" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.17, 0, 0, 0, 0.17, 0, 0, 0, 0.17, 0, 0, 0)
-mesh = SubResource("SphereMesh_jwv6y")
-
-[node name="Debug3" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.17, 0, 0, 0, 0.17, 0, 0, 0, 0.17, 0, 0.631, 0)
+visible = false
 mesh = SubResource("SphereMesh_jwv6y")
 
 [node name="Debug2" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.17, 0, 0, 0, 0.17, 0, 0, 0, 0.17, 0, 0.207063, 0)
+visible = false
 mesh = SubResource("SphereMesh_jwv6y")
 
 [node name="L" type="Label3D" parent="Debug2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.56356, 0.0634236, 0)
 pixel_size = 0.0285
 text = "1"
+
+[node name="Debug3" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.17, 0, 0, 0, 0.17, 0, 0, 0, 0.17, 0, 0.631, 0)
+mesh = SubResource("SphereMesh_jwv6y")
 
 [node name="DetectFloorR" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.12, 0.136, 0)
@@ -877,7 +879,6 @@ target_position = Vector3(0, 0, 0)
 collision_mask = 4
 debug_shape_custom_color = Color(0.749537, 0, 0.131738, 1)
 
-[connection signal="animation_finished" from="Visuals/Sprite3D" to="StateMachine/ClimbEdge" method="_on_sprite_3d_animation_finished"]
 [connection signal="frame_changed" from="Visuals/Sprite3D" to="StateMachine/TrowEntitie" method="_on_sprite_3d_frame_changed"]
 [connection signal="state_transitioned" from="StateMachine" to="." method="_on_state_machine_state_transitioned"]
 [connection signal="body_entered" from="DetectEnemy" to="." method="_on_detect_enemy_body_entered"]

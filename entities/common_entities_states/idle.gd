@@ -14,6 +14,7 @@ func _physics_process(_delta: float) -> void:
 	if entitie._pushed:
 		return enter_state(&"Pushed")
 
+@warning_ignore("unused_parameter")
 func _exit_state(new_state: StringName, state_data: Dictionary) -> void:
 	entitie.thrown = false
 	entitie.grabbed = false

@@ -25,6 +25,7 @@ func _physics_process(_delta: float) -> void:
 				return enter_state(&"Patrol")
 
 
+@warning_ignore("unused_parameter")
 func _exit_state(new_state: StringName, state_data: Dictionary) -> void:
 	enemy_node._pushed = false
 	if new_state == "Grabbed":

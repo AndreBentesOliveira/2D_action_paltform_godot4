@@ -45,6 +45,7 @@ func _physics_process(_delta: float) -> void:
 		if player.velocity.y <= 0.0:
 			return enter_state(&"Fall")
 
+@warning_ignore("unused_parameter")
 func _exit_state(new_state: StringName, state_data: Dictionary) -> void:
 	player.floor_max_angle = deg_to_rad(70)
 	if new_state == "GrabEdge":

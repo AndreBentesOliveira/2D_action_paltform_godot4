@@ -53,6 +53,7 @@ func _physics_process(_delta: float) -> void:
 		sprite.play(&"wall_grab")
 
 
+@warning_ignore("unused_parameter")
 func _exit_state(new_state: StringName, state_data: Dictionary) -> void:
 	visuals.position = Vector3.ZERO
 	player.gripper_area_disable(false)
