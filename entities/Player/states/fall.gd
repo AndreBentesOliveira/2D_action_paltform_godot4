@@ -1,6 +1,11 @@
 extends "jump.gd"
 
+var can_fall_animations : bool
+
 func _enter_state(_old_state: StringName, _params: Dictionary) -> void:
+	can_fall_animations = true
+	if _old_state == &"Attack":
+		can_fall_animations = false
 	can_jump = true
 	sprite.play(&"fall")
 	if _old_state == &"GrabEdge":
@@ -33,8 +38,9 @@ func _exit_state(new_state: StringName, state_data: Dictionary) -> void:
 	if new_state == &"Jump":
 		can_jump = true
 	if new_state == "Walk" or  new_state == "Idle" or new_state == "Jump":
-		player.particle_emitter.emitte("jump_particles")
-		knead()
+		if can_fall_animations:
+			player.particle_emitter.emitte("jump_particles")
+			knead()
 
 
 func knead():

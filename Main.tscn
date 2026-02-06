@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://ewewltobs1v6" path="res://main.gd" id="1_5vw27"]
 [ext_resource type="PackedScene" uid="uid://dpuqtlr1m3dcj" path="res://entities/Player/Player.tscn" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://dut2oucca4lq4" path="res://entities/camera.gd" id="2_0xm2m"]
-[ext_resource type="Texture2D" uid="uid://cqqt2o6guctdg" path="res://effects/sky_03_2k.png" id="2_hhcpw"]
+[ext_resource type="Texture2D" uid="uid://cc1curpr2j2fy" path="res://effects/sky_40_2k.png" id="2_hhcpw"]
 [ext_resource type="PackedScene" uid="uid://dxw7cledbpiia" path="res://addons/proto-csgs/proto_csg_box_3d.tscn" id="3_1bvp3"]
 [ext_resource type="Texture2D" uid="uid://c1rrn8gl1wfhi" path="res://teste/256teste.png" id="4_3b0ty"]
 [ext_resource type="Texture2D" uid="uid://cej3yoosomfd2" path="res://addons/proto-csgs/textures/dark/texture_13.png" id="4_lquwl"]
@@ -28,14 +28,17 @@
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_mxvw5"]
 panorama = ExtResource("2_hhcpw")
 
-[sub_resource type="Sky" id="Sky_a0b88"]
+[sub_resource type="Sky" id="Sky_hhcpw"]
 sky_material = SubResource("PanoramaSkyMaterial_mxvw5")
 
 [sub_resource type="Environment" id="Environment_rsl4a"]
 background_mode = 2
-sky = SubResource("Sky_a0b88")
-glow_intensity = 3.75
-glow_hdr_threshold = 1.8
+sky = SubResource("Sky_hhcpw")
+glow_intensity = 0.4
+glow_bloom = 0.4
+fog_light_color = Color(0.440863, 0.699303, 0.965687, 1)
+fog_light_energy = 0.1
+fog_sky_affect = 0.374
 adjustment_enabled = true
 adjustment_brightness = 1.1
 adjustment_contrast = 1.1
@@ -568,7 +571,7 @@ look_ahead_amount = 2.105
 offset_smooth_speed = 2.0
 
 [node name="Player" parent="." groups=["player"] instance=ExtResource("1_ig7tw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.3828, 35.1, -1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.9521, 35.1, -1)
 acceleration = 4.0
 turning_acceleration = 6.0
 gravity_acceleration = 15.0

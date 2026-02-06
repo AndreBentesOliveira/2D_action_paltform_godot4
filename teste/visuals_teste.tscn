@@ -1,0 +1,166 @@
+[gd_scene load_steps=19 format=3 uid="uid://b73kyhvmyn1gi"]
+
+[ext_resource type="Texture2D" uid="uid://cc1curpr2j2fy" path="res://effects/sky_40_2k.png" id="1_bw1k4"]
+[ext_resource type="PackedScene" uid="uid://dpuqtlr1m3dcj" path="res://entities/Player/Player.tscn" id="2_gepk6"]
+[ext_resource type="Texture2D" uid="uid://c1rrn8gl1wfhi" path="res://teste/256teste.png" id="3_fodp2"]
+[ext_resource type="Texture2D" uid="uid://vkq4oyjrxwul" path="res://teste/128teste.png" id="4_aeql6"]
+[ext_resource type="Texture2D" uid="uid://c3mdcuyafgfhn" path="res://teste/128_teste_pallet.png" id="5_nmxuq"]
+[ext_resource type="PackedScene" uid="uid://dxw7cledbpiia" path="res://addons/proto-csgs/proto_csg_box_3d.tscn" id="6_fodp2"]
+[ext_resource type="PackedScene" uid="uid://b2qgq4jcpthr5" path="res://assets/blender/assets_blender_teste/scene_teste.tscn" id="6_nmxuq"]
+[ext_resource type="Texture2D" uid="uid://cej3yoosomfd2" path="res://addons/proto-csgs/textures/dark/texture_13.png" id="7_aeql6"]
+[ext_resource type="Script" uid="uid://dut2oucca4lq4" path="res://entities/camera.gd" id="9_n20qi"]
+[ext_resource type="Shader" uid="uid://rfbawuqib5mr" path="res://effects/shaders/ctr_glith_effect.gdshader" id="10_n20qi"]
+[ext_resource type="Shader" uid="uid://un2cowepsdhv" path="res://effects/shaders/water.gdshader" id="11_bw1k4"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_n20qi"]
+panorama = ExtResource("1_bw1k4")
+
+[sub_resource type="Sky" id="Sky_a0b88"]
+sky_material = SubResource("PanoramaSkyMaterial_n20qi")
+process_mode = 1
+
+[sub_resource type="Environment" id="Environment_bw1k4"]
+background_mode = 2
+sky = SubResource("Sky_a0b88")
+sky_rotation = Vector3(0, -1.81514, 0)
+tonemap_exposure = 1.1
+glow_enabled = true
+glow_intensity = 0.4
+glow_bloom = 0.4
+fog_light_color = Color(0.440863, 0.699303, 0.965687, 1)
+fog_light_energy = 0.1
+fog_sky_affect = 0.374
+adjustment_enabled = true
+adjustment_brightness = 1.1
+adjustment_contrast = 0.98
+adjustment_saturation = 1.25
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bw1k4"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("7_aeql6")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bw1k4"]
+shader = ExtResource("10_n20qi")
+shader_parameter/resolution_x = 1100
+shader_parameter/resolution_y = 589
+shader_parameter/color_bit_depth = 6
+shader_parameter/dither_strength = 0.0
+shader_parameter/jitter_amount = 0.0
+shader_parameter/jitter_speed = 0.0
+shader_parameter/jitter_frequency = 0.0
+shader_parameter/chromatic_aberration_strength = 0.0
+shader_parameter/vignette_strength = 0.45
+shader_parameter/vignette_radius = 0.9
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_phk2g"]
+size = Vector2(50, 16)
+subdivide_width = 5
+subdivide_depth = 5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2f6jp"]
+render_priority = 0
+shader = ExtResource("11_bw1k4")
+shader_parameter/WATER_COL = Color(0.282353, 0.545098, 0.831373, 1)
+shader_parameter/WATER2_COL = Color(0.470588, 0.843137, 1, 1)
+shader_parameter/FOAM_COL = Color(0.690196, 1, 0.945098, 1)
+shader_parameter/distortion_speed = 2.0
+shader_parameter/tile = Vector2(50, 16)
+shader_parameter/wave_speed = 1.0
+shader_parameter/wave_amplitude = 0.2
+shader_parameter/wave_frequency = 1.5
+shader_parameter/time_offset = 0.0
+shader_parameter/water_size = Vector2(50, 50)
+shader_parameter/water_transparency = 1.355
+shader_parameter/water_depth_factor = -0.105
+shader_parameter/foam_width = 0.53
+shader_parameter/foam_edge_softness = 1.565
+shader_parameter/foam_smoothness = 0.03
+shader_parameter/foam_distortion_speed = 1.0
+shader_parameter/foam_distortion_amount = 0.689
+
+[node name="VisualsTeste" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_bw1k4")
+
+[node name="Sun" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(0.866025, -4.31531e-07, 0.5, -0.482963, 0.258819, 0.836516, -0.12941, -0.965926, 0.224144, 4.701, 1.02901, 0.562917)
+light_energy = 0.5
+light_indirect_energy = 0.0
+light_volumetric_fog_energy = 0.0
+shadow_enabled = true
+directional_shadow_mode = 1
+
+[node name="Player" parent="." groups=["player"] instance=ExtResource("2_gepk6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.431161, 0)
+acceleration = 4.0
+turning_acceleration = 6.0
+gravity_acceleration = 15.0
+max_gravity_falling_speed = 6.5
+jump_hang_speed_threshold = 0.545
+jump_hang_gravity_mult = 0.96
+grab_jump_height = 3.0
+grab_gravity_acceleration = 12.0
+grab_jump_gravity_acceleration = 3.0
+grab_jump_hang_speed_threshold = 0.1
+
+[node name="Sprite3D" type="Sprite3D" parent="Player"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.77155, 0.654051, 0.0182236)
+visible = false
+shaded = true
+alpha_cut = 2
+texture_filter = 0
+texture = ExtResource("3_fodp2")
+
+[node name="Sprite3D2" type="Sprite3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.97155, 0.654051, 0.0182236)
+visible = false
+shaded = true
+alpha_cut = 2
+texture_filter = 0
+texture = ExtResource("4_aeql6")
+
+[node name="Sprite3D3" type="Sprite3D" parent="Player"]
+transform = Transform3D(1.00714, 0, 0, 0, 1.00714, 0, 0, 0, 1.00714, -0.9, 0.6, 0)
+shaded = true
+alpha_cut = 2
+texture_filter = 0
+texture = ExtResource("5_nmxuq")
+
+[node name="SceneTeste" parent="." instance=ExtResource("6_nmxuq")]
+transform = Transform3D(1.522, 0, 0, 0, 1.522, 0, 0, 0, 1.522, 0, 0, -1)
+
+[node name="ProtoCSGBox3D17" parent="SceneTeste" instance=ExtResource("6_fodp2")]
+transform = Transform3D(0.65703, 0, 0, 0, 0.65703, 0, 0, 0, 0.65703, 0.394218, -0.197109, 0.558476)
+visible = false
+size = Vector3(4.4, 0.6, 6)
+material = SubResource("StandardMaterial3D_bw1k4")
+
+[node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("target")]
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, -4.3054, 24.1464, 3.26942)
+size = 6.814
+script = ExtResource("9_n20qi")
+target = NodePath("../Player")
+dead_zone_size = Vector2(0.5, 0.2)
+base_offset = Vector3(0, 1.5, 4)
+look_ahead_amount = 2.105
+offset_smooth_speed = 2.0
+
+[node name="EntitiesLayer" type="Node3D" parent="." groups=["entities_layer"]]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_bw1k4")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="waterShader" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+visible = false
+mesh = SubResource("PlaneMesh_phk2g")
+surface_material_override/0 = SubResource("ShaderMaterial_2f6jp")
